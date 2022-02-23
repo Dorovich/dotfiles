@@ -58,6 +58,7 @@ nnoremap <S-w> b
 
 " I hate escape more than anything else
 inoremap jk <Esc>
+inoremap kj <Esc>
 
 " TAB in general mode will move between buffers
 nnoremap <TAB> :bnext<CR>
