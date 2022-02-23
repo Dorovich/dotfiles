@@ -19,11 +19,6 @@ export ALM="/media/vido25/Almacenamiento"
 # binarios en ~/.local
 export PATH="${PATH}:${HOME}/.local/bin"
 
-# compilador de C++ para PRO1:
-alias p1++="g++ -ansi -O2 -DNDEBUG -D_GLIBCXX_DEBUG -Wall -Wextra -Werror -Wno-sign-compare -Wshadow"
-# compilador de C++ para PRO2:
-alias p2++="g++ -D GLIBCXX DEBUG -O2 -Wall -Wextra -Werror -Wno-sign-compare -std=c++11"
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -67,7 +62,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# aliases
+###########################################
+###               ALIASES               ###
+###########################################
+
 alias v="nvim"
 alias aptup="sudo apt update && sudo apt upgrade"
 alias aptupd="sudo apt update"
@@ -93,6 +91,7 @@ alias fullclean="clean && sudo bleachbit -c --preset"
 # alias x-r="sudo xbps-remove -o"
 # alias x-u="sudo xbps-install -Su"
 
+###   FI    ###
 
 ############################################
 ###           BASH PWD COMMAND           ###
@@ -138,5 +137,19 @@ reset=$(tput sgr0)
 # https://askubuntu.com/questions/24358/how-do-i-get-long-command-lines-to-wrap-to-the-next-line
 export PS1="\n\[$bold$color1\]@\[$reset\] \[$bold$color2\]\$NEW_PWD\[$reset\] > "
 
-# FI
+###   FI    ###
+
+############################################
+###              CONFIG UNI              ###
+############################################
+
+# compilador de C++ para PRO1:
+alias p1++="g++ -ansi -O2 -DNDEBUG -D_GLIBCXX_DEBUG -Wall -Wextra -Werror -Wno-sign-compare -Wshadow"
+# compilador de C++ para PRO2:
+alias p2++="g++ -D GLIBCXX DEBUG -O2 -Wall -Wextra -Werror -Wno-sign-compare -std=c++11"
+
+export OBJ="$HOME/Documentos/UPC/PRO2/objectes"
+export INC="$HOME/Documentos/UPC/PRO2/inclusions"
+
+###   FI    ###
 
