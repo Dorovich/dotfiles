@@ -148,10 +148,10 @@ alias p1++="g++ -ansi -O2 -DNDEBUG -D_GLIBCXX_DEBUG -Wall -Wextra -Werror -Wno-s
 # compilador de C++ para PRO2:
 alias p2++="g++ -D GLIBCXX DEBUG -O2 -Wall -Wextra -Werror -Wno-sign-compare -std=c++11"
 
-export UPC="$HOME/Documentos/UPC"
+export PRO="$HOME/Documentos/UPC/PRO2"
 export INC="$HOME/Documentos/UPC/PRO2/include"
 export OBJ="$HOME/Documentos/UPC/PRO2/objects"
 
 ###   FI    ###
 
-figlet -f smslant le terminal -t -c | lolcat
+# figlet -f smslant le terminal -t -c | lolcat
