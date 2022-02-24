@@ -146,7 +146,7 @@ export PS1="\n\[$bold$color1\]@\[$reset\] \[$bold$color2\]\$NEW_PWD\[$reset\] > 
 # compilador de C++ para PRO1:
 alias p1++="g++ -ansi -O2 -DNDEBUG -D_GLIBCXX_DEBUG -Wall -Wextra -Werror -Wno-sign-compare -Wshadow"
 # compilador de C++ para PRO2:
-alias p2++="g++ -D GLIBCXX DEBUG -O2 -Wall -Wextra -Werror -Wno-sign-compare -std=c++11"
+alias p2++="g++ -D_GLIBCXX_DEBUG -O2 -Wall -Wextra -Werror -Wno-sign-compare -std=c++11"
 
 export PRO="$HOME/Documentos/UPC/PRO2"
 export INC="$HOME/Documentos/UPC/PRO2/include"
