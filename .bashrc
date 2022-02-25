@@ -152,6 +152,8 @@ export PRO="$HOME/Documentos/UPC/PRO2"
 export INC="$HOME/Documentos/UPC/PRO2/include"
 export OBJ="$HOME/Documentos/UPC/PRO2/objects"
 
+alias vp="cd $PRO && nvim"
+
 ###   FI    ###
 
 # figlet -f smslant le terminal -t -c | lolcat

@@ -21,6 +21,8 @@ Plug 'itchyny/lightline.vim'                               "       Barra de esta
 Plug 'terryma/vim-multiple-cursors'                        " [C-n] Editar multiples instancias
 Plug 'neoclide/coc.nvim', {'branch': 'release'}            "       Autocompletado
 Plug 'mengelbrecht/lightline-bufferline'                   "       Barra de buffers superior
+Plug 'ryanoasis/vim-devicons'                              "       Iconos dentro de la terminal
+Plug 'mhinz/vim-startify'                                  "       Pantalla de inicio
 
 call plug#end()
 
@@ -135,3 +137,30 @@ let g:NERDTreeDirArrowCollapsible="-"
 
 " autocompletado con TAB
 inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
+
+" startify
+let g:startify_custom_header = [
+    \ "                                                                     ",
+    \ "              ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗     ",
+    \ "              ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║     ",
+    \ "              ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║     ",
+    \ "              ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║     ",
+    \ "              ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║     ",
+    \ "              ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝     ",
+    \ "                                                                     ",
+    \ ]
+            
+let g:startify_change_to_dir = 1
+let g:startify_enable_special = 0
+let g:startify_files_number = 5
+let g:startify_lists = [
+    \ { 'type': 'files',     'header': ['   recent']             },
+    \ { 'type': 'dir',       'header': ['   files @ '. getcwd()] },
+    \ { 'type': 'bookmarks', 'header': ['   bookmarks']          },
+    \ ]
+let g:startify_bookmarks = [
+    \ { 'f': '~/.config/nvim/init.vim'     },
+    \ { 'g': '~/.bashrc'                   },
+    \ { 'h': '~/.config/kitty/kitty.conf'  },
+    \ ]
+
