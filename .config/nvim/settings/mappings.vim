@@ -1,6 +1,10 @@
 " tecla lider es ESPACIO, se usa en modo normal
 let g:mapleader = ' '
 
+" CONTROL-H y CONTROL-L para moverse a principio/final de linea
+nnoremap <S-h> I<ESC>
+nnoremap <S-l> A<ESC>
+
 " w to go a word forward (default), shift-w to go a word backwards
 nnoremap <S-w> b
 
