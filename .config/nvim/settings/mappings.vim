@@ -1,6 +1,10 @@
 " tecla lider es ESPACIO, se usa en modo normal
 let g:mapleader = ' '
 
+" CONTROL-S para guardar
+inoremap <C-s> :w<CR>
+nnoremap <C-s> :w<CR>
+
 " CONTROL-H y CONTROL-L para moverse a principio/final de linea
 nnoremap <S-h> I<ESC>
 nnoremap <S-l> A<ESC>
