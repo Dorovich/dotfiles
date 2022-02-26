@@ -2,8 +2,7 @@ config.load_autoconfig(False)
 config.set('content.cookies.accept', 'all', 'chrome-devtools://*')
 config.set('content.cookies.accept', 'all', 'devtools://*')
 c.content.geolocation = False
-c.content.headers.user_agent = "Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0"
-config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99 Safari/537.36', 'https://*.slack.com/*')
+c.content.headers.user_agent = "Mozilla/5.0 ({os_info}; rv:84.0) Gecko/20100101 Firefox/84.0"
 config.set('content.images', True, 'chrome-devtools://*')
 config.set('content.images', True, 'devtools://*')
 config.set('content.javascript.enabled', True, 'chrome-devtools://*')
