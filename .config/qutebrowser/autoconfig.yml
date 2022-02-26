@@ -6,11 +6,5 @@
 
 config_version: 2
 settings:
-  colors.webpage.darkmode.enabled:
-    global: true
-  content.blocking.method:
-    global: both
-  content.geolocation:
-    global: false
-  scrolling.smooth:
-    global: true
+  tabs.title.format:
+    global: '{audio}{index}: {current_title}'
