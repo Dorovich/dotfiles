@@ -31,7 +31,7 @@ c.content.blocking.enabled = True
 c.content.blocking.hosts.lists = ['https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts']
 c.content.blocking.method = 'both'
 
-config.bind(',m', 'spawn mpv {url}')
+config.bind(',m', 'hint links spawn mpv {hint-url}')
 
 c.url.searchengines = {"DEFAULT": "https://duckduckgo.com/?q={}"}
 
