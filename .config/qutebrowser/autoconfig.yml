@@ -6,8 +6,6 @@
 
 config_version: 2
 settings:
-  content.headers.user_agent:
-    https://soundcloud.com/*: Mozilla/5.0 ({os_info}; rv:84.0) Gecko/20100101 Firefox/84.0
   statusbar.show:
     global: always
   tabs.show:
