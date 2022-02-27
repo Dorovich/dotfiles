@@ -12,6 +12,7 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 c.colors.webpage.darkmode.enabled = True
 c.content.canvas_reading = False
 c.content.webgl = False
+c.content.autoplay = False
 
 c.content.blocking.adblock.lists = [ \
         "https://easylist.to/easylist/easylist.txt", \
