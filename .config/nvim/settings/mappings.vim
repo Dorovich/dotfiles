@@ -2,7 +2,6 @@
 let g:mapleader = ' '
 
 " CONTROL-S para guardar
-inoremap <C-s> :w<CR>
 nnoremap <C-s> :w<CR>
 
 " CONTROL-H y CONTROL-L para moverse a principio/final de linea

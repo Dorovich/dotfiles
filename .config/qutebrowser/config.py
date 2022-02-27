@@ -31,10 +31,16 @@ c.content.blocking.enabled = True
 c.content.blocking.hosts.lists = ['https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts']
 c.content.blocking.method = 'both'
 
+# Some bindings on normal mode
+config.bind('xb', 'config-cycle statusbar.show always never')
+config.bind('xt', 'config-cycle tabs.show always never')
+config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
 config.bind(',m', 'hint links spawn mpv {hint-url}')
 
+# Default search engine
 c.url.searchengines = {"DEFAULT": "https://duckduckgo.com/?q={}"}
 
+# Font config
 monospace = "12px 'FiraCode NF'"
 
 c.fonts.hints = "bold 13px 'Ubuntu Mono'"
@@ -108,3 +114,4 @@ c.completion.quick = False
 # `{protocol}`: Protocol (http/https/...) of the current web page.
 # `{audio}`: Indicator for audio/mute status.
 c.window.title_format = "{private}{perc}{current_title}{title_sep}qutebrowser"
+
