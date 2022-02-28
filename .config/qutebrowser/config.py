@@ -54,7 +54,7 @@ c.url.searchengines = {
     'am': 'https://www.amazon.com/s?k={}',
     'aw': 'https://wiki.archlinux.org/?search={}',
     'ggl': 'https://www.google.com/search?q={}',
-    're': 'https://www.reddit.com/r/{}',
+    'rd': 'https://www.reddit.com/r/{}',
     'wiki': 'https://en.wikipedia.org/wiki/{}',
     'yt': 'https://www.youtube.com/results?search_query={}'
     }
