@@ -45,6 +45,9 @@ config.bind('xt', 'config-cycle tabs.show always never')
 config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
 config.bind(',m', 'hint links spawn mpv --force-window=immediate {hint-url}')
 
+# Setting default page for when opening new tabs/windows
+# c.url.default_page = 'file:///home/vido25/.config/qutebrowser/homepage.html'
+
 # Default search engine, and shortcuts to other. use after :open (-t/-w)
 c.url.searchengines = {
     'DEFAULT': 'https://duckduckgo.com/?q={}',
