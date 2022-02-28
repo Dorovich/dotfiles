@@ -1,6 +1,4 @@
 config.load_autoconfig(False)
-config.set('content.cookies.accept', 'all', 'chrome-devtools://*')
-config.set('content.cookies.accept', 'all', 'devtools://*')
 c.content.geolocation = False
 c.content.headers.user_agent = "Mozilla/5.0 ({os_info}; rv:84.0) Gecko/20100101 Firefox/84.0"
 config.set('content.images', True, 'chrome-devtools://*')
@@ -32,14 +30,34 @@ c.content.blocking.enabled = True
 c.content.blocking.hosts.lists = ['https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts']
 c.content.blocking.method = 'both'
 
+# Which cookies to accept. With QtWebEngine, this setting also controls
+# other features with tracking capabilities similar to those of cookies;
+# including IndexedDB, DOM storage, filesystem API, service workers, and
+# AppCache. Note that with QtWebKit, only `all` and `never` are
+# supported as per-domain values. Setting `no-3rdparty` or `no-
+# unknown-3rdparty` per-domain on QtWebKit will have the same effect as
+# `all`.
+c.content.cookies.accept = "no-unknown-3rdparty"
+
 # Some bindings on normal mode
 config.bind('xb', 'config-cycle statusbar.show always never')
 config.bind('xt', 'config-cycle tabs.show always never')
 config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
 config.bind(',m', 'hint links spawn mpv {hint-url}')
 
-# Default search engine
-c.url.searchengines = {"DEFAULT": "https://duckduckgo.com/?q={}"}
+# Default search engine, and shortcuts to other. use after :open (-t/-w)
+c.url.searchengines = {
+    'DEFAULT': 'https://duckduckgo.com/?q={}',
+    'am': 'https://www.amazon.com/s?k={}',
+    'aw': 'https://wiki.archlinux.org/?search={}',
+    'goog': 'https://www.google.com/search?q={}',
+    're': 'https://www.reddit.com/r/{}',
+    'wiki': 'https://en.wikipedia.org/wiki/{}',
+    'yt': 'https://www.youtube.com/results?search_query={}'
+    }
+
+# Chars used for hint strings.
+c.hints.chars = "asdfghjklie"
 
 # Font config
 monospace = "12px 'FiraCode NF'"
