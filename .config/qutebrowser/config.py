@@ -16,26 +16,26 @@ c.content.autoplay = False
 c.content.blocking.enabled = True
 c.content.blocking.method = 'both'
 c.content.blocking.adblock.lists = [ \
-        "https://easylist.to/easylist/easylist.txt", \
-        "https://easylist.to/easylist/easyprivacy.txt", \
-        "https://secure.fanboy.co.nz/fanboy-cookiemonster.txt", \
-        "https://easylist.to/easylist/fanboy-annoyance.txt", \
-        "https://secure.fanboy.co.nz/fanboy-annoyance.txt", \
-        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances.txt", \
-        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2020.txt", \
-        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2021.txt", \
-        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2022.txt", \
-        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt", \
-        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/resource-abuse.txt", \
-        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/privacy.txt", \
-        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badware.txt", \
-        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt" \
-        ]
+    "https://easylist.to/easylist/easylist.txt", \
+    "https://easylist.to/easylist/easyprivacy.txt", \
+    "https://secure.fanboy.co.nz/fanboy-cookiemonster.txt", \
+    "https://easylist.to/easylist/fanboy-annoyance.txt", \
+    "https://secure.fanboy.co.nz/fanboy-annoyance.txt", \
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances.txt", \
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2020.txt", \
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2021.txt", \
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2022.txt", \
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt", \
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/resource-abuse.txt", \
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/privacy.txt", \
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badware.txt", \
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt" \
+    ]
 c.content.blocking.hosts.lists = [ \
-        'https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts', \
-        'https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews/hosts', \
-        'https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling/hosts' \
-        ]
+    'https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts', \
+    'https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews/hosts', \
+    'https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling/hosts' \
+    ]
 
 # Which cookies to accept. With QtWebEngine, this setting also controls
 # other features with tracking capabilities similar to those of cookies;
