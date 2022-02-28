@@ -50,7 +50,7 @@ c.url.searchengines = {
     'DEFAULT': 'https://duckduckgo.com/?q={}',
     'am': 'https://www.amazon.com/s?k={}',
     'aw': 'https://wiki.archlinux.org/?search={}',
-    'goog': 'https://www.google.com/search?q={}',
+    'ggl': 'https://www.google.com/search?q={}',
     're': 'https://www.reddit.com/r/{}',
     'wiki': 'https://en.wikipedia.org/wiki/{}',
     'yt': 'https://www.youtube.com/results?search_query={}'
