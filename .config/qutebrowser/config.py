@@ -13,6 +13,7 @@ c.content.webgl = False
 c.content.autoplay = False
 
 # Content blocking
+# Use 'pip install adblock' to be able to use brave adblock ('both' method)
 c.content.blocking.enabled = True
 c.content.blocking.method = 'both'
 c.content.blocking.adblock.lists = [ \
