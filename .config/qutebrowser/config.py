@@ -21,6 +21,9 @@ c.content.blocking.adblock.lists = [ \
     "https://secure.fanboy.co.nz/fanboy-cookiemonster.txt", \
     "https://easylist.to/easylist/fanboy-annoyance.txt", \
     "https://secure.fanboy.co.nz/fanboy-annoyance.txt", \
+    "https://easylist-downloads.adblockplus.org/abp-filters-anti-cv.txt", \
+    "https://raw.githubusercontent.com/piperun/iploggerfilter/master/filterlist", \
+    "https://raw.githubusercontent.com/gwarser/filter-lists/master/lan-block.txt", \
     "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances.txt", \
     "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2020.txt", \
     "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2021.txt", \
