@@ -33,7 +33,8 @@ c.content.blocking.adblock.lists = [ \
         ]
 c.content.blocking.hosts.lists = [ \
         'https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts', \
-        'https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews/hosts' \
+        'https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews/hosts', \
+        'https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling/hosts' \
         ]
 
 # Which cookies to accept. With QtWebEngine, this setting also controls
