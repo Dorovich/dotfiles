@@ -12,6 +12,9 @@ c.content.canvas_reading = False
 c.content.webgl = False
 c.content.autoplay = False
 
+# Content blocking
+c.content.blocking.enabled = True
+c.content.blocking.method = 'both'
 c.content.blocking.adblock.lists = [ \
         "https://easylist.to/easylist/easylist.txt", \
         "https://easylist.to/easylist/easyprivacy.txt", \
@@ -20,15 +23,17 @@ c.content.blocking.adblock.lists = [ \
         "https://secure.fanboy.co.nz/fanboy-annoyance.txt", \
         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances.txt", \
         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2020.txt", \
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2021.txt", \
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2022.txt", \
         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt", \
         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/resource-abuse.txt", \
         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/privacy.txt", \
         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt" \
         ]
-
-c.content.blocking.enabled = True
-c.content.blocking.hosts.lists = ['https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts']
-c.content.blocking.method = 'both'
+c.content.blocking.hosts.lists = [ \
+        'https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts', \
+        'https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews/hosts' \
+        ]
 
 # Which cookies to accept. With QtWebEngine, this setting also controls
 # other features with tracking capabilities similar to those of cookies;
