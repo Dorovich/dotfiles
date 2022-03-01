@@ -7,10 +7,14 @@ config.set('content.javascript.enabled', True, 'chrome-devtools://*')
 config.set('content.javascript.enabled', True, 'devtools://*')
 config.set('content.javascript.enabled', True, 'chrome://*/*')
 config.set('content.javascript.enabled', True, 'qute://*/*')
-c.colors.webpage.darkmode.enabled = True
 c.content.canvas_reading = False
 c.content.webgl = False
 c.content.autoplay = False
+
+# Darkmode on websites
+c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
+c.colors.webpage.darkmode.policy.page = 'smart'
 
 # Content blocking
 # Use 'pip install adblock' to be able to use brave adblock ('both' method)
