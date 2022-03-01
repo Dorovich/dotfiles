@@ -13,6 +13,9 @@
 #   $ config push                <- sube los cambios
 alias config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
 
+# ignore upper and lowercase when TAB completion
+bind "set completion-ignore-case on"
+
 # variables globales
 export ALM="/media/vido25/Almacenamiento"
 
@@ -29,16 +32,13 @@ esac
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
 
-# append to the history file, don't overwrite it
-shopt -s histappend
+# SHOPT
+shopt -s histappend     # do not overwrite history
+shopt -s checkwinsize   # checks term size when bash regains control
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
-
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
