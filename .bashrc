@@ -14,7 +14,7 @@
 alias config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
 
 # ignore upper and lowercase when TAB completion
-bind "set completion-ignore-case on"
+set completion-ignore-case on
 
 # variables globales
 export ALM="/media/vido25/Almacenamiento"

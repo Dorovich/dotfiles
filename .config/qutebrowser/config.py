@@ -58,7 +58,7 @@ c.content.cookies.accept = "no-unknown-3rdparty"
 config.bind('xb', 'config-cycle statusbar.show always never')
 config.bind('xt', 'config-cycle tabs.show always never')
 config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
-config.bind(',m', 'hint links spawn mpv --force-window=immediate {hint-url}')
+config.bind(',m', 'hint links spawn mpv {hint-url}')
 
 # Setting default page for when opening new tabs/windows
 # c.url.default_page = 'file:///home/vido25/.config/qutebrowser/homepage.html'
