@@ -1,9 +1,9 @@
 " Configuraciones basicas de nvim
-set laststatus=2    " para no ver la barra de estado poner a 0
+set laststatus=2    " mostrar la barra de estado: 2=ver, 0=esconder
+set showtabline=2   " mostrar la barra de tabs/buffers: 2=ver, 0=esconder
 set number
 set expandtab
 set tabstop=4
-set showtabline=2   " mostrar la barra de tabs/buffers
 set shiftwidth=4
 set smarttab
 set smartindent
