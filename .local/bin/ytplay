@@ -1,0 +1,4 @@
+#!/bin/sh
+
+query=$(printf '%s' "$*" | tr ' ' '+')
+mpv "https://www.youtube.com/$(curl -s "https://www.youtube.com/results\?search_query=$query" | grep -Eo "watch\?v=.{11}" | head -n 1)"
