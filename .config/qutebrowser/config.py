@@ -61,7 +61,8 @@ config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.
 config.bind(',m', 'hint links spawn mpv {hint-url}')
 
 # Setting default page for when opening new tabs/windows
-# c.url.default_page = 'file:///home/vido25/.config/qutebrowser/homepage.html'
+c.url.start_pages = "file:///home/vido25/.config/qutebrowser/homepage/index.html"
+c.url.default_page = "file:///home/vido25/.config/qutebrowser/homepage/index.html"
 
 # Default search engine, and shortcuts to other. use after :open (-t/-w)
 c.url.searchengines = {
@@ -150,5 +151,5 @@ c.completion.quick = False
 # `{current_url}`: URL of the current web page.
 # `{protocol}`: Protocol (http/https/...) of the current web page.
 # `{audio}`: Indicator for audio/mute status.
-c.window.title_format = "{private}{perc}{current_title}{title_sep}qutebrowser"
-
+# c.window.title_format = "{private}{perc}{current_title}{title_sep}qutebrowser"
+c.window.title_format = "{private}{perc}qutebrowser"
