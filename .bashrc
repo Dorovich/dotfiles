@@ -156,4 +156,7 @@ alias vp="cd $PRO && nvim"
 
 ###   FI    ###
 
+#tonterias mias:
 # figlet -f smslant le terminal -t -c | lolcat
+# figlet -f slant pad it boy ! -t -c | lolcat
+# alias what='echo "" && echo "such wise words indeed"'
