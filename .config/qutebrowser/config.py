@@ -1,15 +1,22 @@
+# Whether qutebrowser should also read 'autoconfig.yaml'
 config.load_autoconfig(False)
+
+# Privacy config
 c.content.geolocation = False
 c.content.headers.user_agent = "Mozilla/5.0 ({os_info}; rv:84.0) Gecko/20100101 Firefox/84.0"
+c.content.canvas_reading = False
+c.content.webgl = False
+
+# Autoplay embed video
+c.content.autoplay = False
+
+# Images and Javascript permissions
 config.set('content.images', True, 'chrome-devtools://*')
 config.set('content.images', True, 'devtools://*')
 config.set('content.javascript.enabled', True, 'chrome-devtools://*')
 config.set('content.javascript.enabled', True, 'devtools://*')
 config.set('content.javascript.enabled', True, 'chrome://*/*')
 config.set('content.javascript.enabled', True, 'qute://*/*')
-c.content.canvas_reading = False
-c.content.webgl = False
-c.content.autoplay = False
 
 # Darkmode on websites
 c.colors.webpage.darkmode.enabled = True
