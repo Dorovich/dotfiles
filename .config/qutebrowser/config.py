@@ -59,6 +59,9 @@ config.bind('xb', 'config-cycle statusbar.show always never')
 config.bind('xt', 'config-cycle tabs.show always never')
 config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
 config.bind(',m', 'hint links spawn mpv {hint-url}')
+config.bind(',T', 'spawn --userscript translate')
+config.bind(',t', 'spawn --userscript translate --text')
+
 
 # Setting default page for when opening new tabs/windows
 c.url.start_pages = "file:///home/vido25/.config/qutebrowser/homepage/index.html"
