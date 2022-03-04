@@ -1,3 +1,7 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""             BASIC MAPPINGS              """""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " tecla lider es ESPACIO, se usa en modo normal
 let g:mapleader = ' '
 
@@ -42,6 +46,14 @@ nnoremap <M-l> :vertical resize +2<CR>
 " Insert a space after current character
 nnoremap <Space><Space> a<Space><ESC>h
 
+" tambien se pueden poner comandos con ';'
+map ; :
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""            PLUGIN MAPPINGS              """""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " abrir fzf: CONTROL-V para dividir verticalmente, CONTROL-X para dividir horizontalmente
 map <leader>f :Files<CR>
 
@@ -75,5 +87,3 @@ nmap <leader>rn <Plug>(coc-rename)
 " autocompletado con TAB
 inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
 
-" tambien se pueden poner comandos con ';'
-map ; :
