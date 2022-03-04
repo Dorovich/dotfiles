@@ -22,6 +22,7 @@ set nowritebackup
 set clipboard=unnamedplus
 set encoding=UTF-8
 set nocompatible
+set ttyfast
 filetype plugin on
 filetype plugin indent on
 syntax on

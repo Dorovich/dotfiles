@@ -23,6 +23,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}     "            Autocompletado
 Plug 'mengelbrecht/lightline-bufferline'            "            Barra de buffers superior
 Plug 'ryanoasis/vim-devicons'                       "            Iconos dentro de la terminal
 Plug 'mhinz/vim-startify'                           "            Pantalla de inicio
+Plug 'mangeshrex/everblush.vim'
 
 call plug#end()
 
