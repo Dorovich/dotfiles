@@ -77,9 +77,9 @@ c.url.default_page = "file:///home/vido25/.config/qutebrowser/homepage/index.htm
 # Default search engine, and shortcuts to other. use after :open (-t/-w)
 c.url.searchengines = {
     'DEFAULT': 'https://duckduckgo.com/?q={}',
-    'am': 'https://www.amazon.com/s?k={}',
+#   'am': 'https://www.amazon.com/s?k={}',
     'aw': 'https://wiki.archlinux.org/?search={}',
-    'ggl': 'https://www.google.com/search?q={}',
+#   'ggl': 'https://www.google.com/search?q={}',
     'rd': 'https://www.reddit.com/r/{}',
     'wiki': 'https://en.wikipedia.org/wiki/{}',
     'yt': 'https://www.youtube.com/results?search_query={}'
