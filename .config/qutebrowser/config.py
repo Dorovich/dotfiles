@@ -10,7 +10,7 @@ c.content.webgl = False
 # Autoplay embed video
 c.content.autoplay = False
 
-# Images and Javascript permissions
+# General permissions
 config.set('content.images', True, 'chrome-devtools://*')
 config.set('content.images', True, 'devtools://*')
 config.set('content.javascript.enabled', True, 'chrome-devtools://*')
@@ -69,6 +69,14 @@ config.bind(',m', 'hint links spawn mpv {hint-url}')
 config.bind(',T', 'spawn --userscript translate')
 config.bind(',t', 'spawn --userscript translate --text')
 
+config.bind("<Ctrl-h>", "fake-key <Backspace>", "insert")
+config.bind("<Ctrl-a>", "fake-key <Home>", "insert")
+config.bind("<Ctrl-e>", "fake-key <End>", "insert")
+config.bind("<Ctrl-d>", "fake-key <Delete>", "insert")
+config.bind("<Ctrl-w>", "fake-key <Ctrl-Backspace>", "insert")
+config.bind("<Ctrl-u>", "fake-key <Shift-Home><Delete>", "insert")
+config.bind("<Ctrl-k>", "fake-key <Shift-End><Delete>", "insert")
+
 
 # Setting default page for when opening new tabs/windows
 c.url.start_pages = "file:///home/vido25/.config/qutebrowser/homepage/index.html"
@@ -84,6 +92,9 @@ c.url.searchengines = {
     'wiki': 'https://en.wikipedia.org/wiki/{}',
     'yt': 'https://www.youtube.com/results?search_query={}'
     }
+
+# Allow pdf.js to view pdf in browser
+# c.content.pdfjs = True
 
 # Chars used for hint strings.
 c.hints.chars = "asdfghjklie"
@@ -166,7 +177,6 @@ c.window.title_format = "{private}{perc}qutebrowser"
 
 # Color themes
 # base16-qutebrowser (https://github.com/theova/base16-qutebrowser)
-
 base00 = "#151515"
 base01 = "#202020"
 base02 = "#303030"
@@ -183,8 +193,6 @@ base0C = "#75B5AA"
 base0D = "#6A9FB5"
 base0E = "#AA759F"
 base0F = "#8F5536"
-
-# set qutebrowser colors
 
 # Text color of the completion widget. May be a single color to use for
 # all columns or a list of three colors, one for each column.
