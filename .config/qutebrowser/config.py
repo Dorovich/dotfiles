@@ -113,7 +113,7 @@ c.url.searchengines = {
     }
 
 # Allow pdf.js to view pdf in browser
-# c.content.pdfjs = True
+c.content.pdfjs = True
 
 # Chars used for hint strings.
 c.hints.chars = "asdfghjklie"
