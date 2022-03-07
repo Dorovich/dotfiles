@@ -13,7 +13,7 @@ c.content.default_encoding = "utf-8"
 # ui
 config.source("colors.py")
 c.colors.webpage.prefers_color_scheme_dark = True
-c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.darkmode.enabled = False
 c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
 c.colors.webpage.darkmode.policy.page = 'smart'
 c.completion.show = "auto"
