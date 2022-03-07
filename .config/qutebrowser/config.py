@@ -66,7 +66,7 @@ c.content.blocking.hosts.lists = [ \
 # keys
 config.bind('xb', 'config-cycle statusbar.show always never')
 config.bind('xt', 'config-cycle tabs.show multiple never')
-config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
+config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.show multiple never')
 config.bind(',m', 'hint links spawn mpv {hint-url}')
 config.bind(',M', 'spawn mpv {url}')
 config.bind(',t', 'spawn --userscript translate --text')
