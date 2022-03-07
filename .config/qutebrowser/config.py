@@ -8,6 +8,7 @@ c.content.pdfjs = True
 c.hints.chars = "asdfghjklie"
 c.tabs.show = "multiple"
 c.tabs.last_close = "close"
+c.content.default_encoding = "utf-8"
 
 # ui
 config.source("colors.py")
@@ -34,7 +35,7 @@ c.content.geolocation = False
 c.content.headers.user_agent = "Mozilla/5.0 ({os_info}; rv:97.0) Gecko/20100101 Firefox/97.0"
 c.content.canvas_reading = False
 c.content.webgl = False
-c.content.cookies.accept = "no-unknown-3rdparty"
+c.content.cookies.accept = "no-3rdparty"
 c.content.blocking.enabled = True
 c.content.blocking.method = 'both'
 c.content.blocking.adblock.lists = [ \
@@ -69,7 +70,8 @@ config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.
 config.bind(',m', 'hint links spawn mpv {hint-url}')
 config.bind(',M', 'spawn mpv {url}')
 config.bind(',t', 'spawn --userscript translate --text')
-config.bind(',T', 'spawn --userscript translate', "normal")
+config.bind(',T', 'spawn --userscript translate')
+config.bind(",d", "download-open")
 config.bind("<Ctrl-Shift-J>", "tab-move +")
 config.bind("<Ctrl-Shift-K>", "tab-move -")
 config.bind("<Ctrl-h>", "fake-key <Backspace>", "insert")
@@ -83,15 +85,14 @@ config.bind("<Ctrl-k>", "fake-key <Shift-End><Delete>", "insert")
 # url
 c.url.searchengines = {
     'DEFAULT': 'https://duckduckgo.com/?q={}',
-#   'am': 'https://www.amazon.com/s?k={}',
+    'yt': 'https://www.youtube.com/results?search_query={}',
 #   'aw': 'https://wiki.archlinux.org/?search={}',
-    'ggl': 'https://www.google.com/search?q={}',
 #   'rd': 'https://www.reddit.com/r/{}',
+    'ggl': 'https://www.google.com/search?q={}',
     'wiki': 'https://en.wikipedia.org/wiki/{}',
-    'yt': 'https://www.youtube.com/results?search_query={}'
     }
-c.url.start_pages = "file:///home/vido25/.config/qutebrowser/homepage/index.html"
 c.url.default_page = "file:///home/vido25/.config/qutebrowser/homepage/index.html"
+c.url.start_pages = ["file:///home/vido25/.config/qutebrowser/homepage/index.html"]
 
 # per-domain settings
 config.set('content.images', True, 'chrome-devtools://*')
