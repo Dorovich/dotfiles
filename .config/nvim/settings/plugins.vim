@@ -78,3 +78,4 @@ let g:startify_bookmarks = [
     \ { 'g': '~/.bashrc'                   },
     \ { 'h': '~/.config/kitty/kitty.conf'  },
     \ ]
+
