@@ -25,7 +25,6 @@ Plug 'ryanoasis/vim-devicons'                       "            Iconos dentro d
 Plug 'mhinz/vim-startify'                           "            Pantalla de inicio
 Plug 'mangeshrex/everblush.vim'                     "            Paleta de colores
 Plug 'rafi/awesome-vim-colorschemes'
-Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 
 call plug#end()
 
@@ -81,37 +80,3 @@ let g:startify_bookmarks = [
     \ { 'h': '~/.config/kitty/kitty.conf'  },
     \ ]
     
-" catppuccin
-lua << EOF
-    local catppuccin = require("catppuccin")
-    transparent_background = true,
-    term_colors = false,
-    styles = {
-	    comments = "italic",
-	    functions = "italic",
-	    keywords = "italic",
-	    strings = "NONE",
-	    variables = "italic",
-    },
-    integrations = {
-	    native_lsp = {
-	    	enabled = true,
-    		virtual_text = {
-    			errors = "italic",
-    			hints = "italic",
-    			warnings = "italic",
-    			information = "italic",
-    		},
-    		underlines = {
-    			errors = "underline",
-    			hints = "underline",
-    			warnings = "underline",
-    			information = "underline",
-    		},
-    	},
-    	bufferline = true,
-    	markdown = true,
-    }
-    catppuccin.setup(<settings>)
-EOF
-
