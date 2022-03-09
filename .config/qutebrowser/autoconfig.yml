@@ -6,7 +6,7 @@
 
 config_version: 2
 settings:
-  statusbar.show:
-    global: always
-  tabs.show:
-    global: multiple
+  content.desktop_capture:
+    https://discord.com: true
+  content.media.audio_capture:
+    https://discord.com: true

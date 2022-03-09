@@ -7,9 +7,12 @@ let g:mapleader = ' '
 
 " CONTROL-S para guardar
 nnoremap <C-s> :w<CR>
+nnoremap <leader>s :w<CR>
+nnoremap <leader>w :w<CR>
 
 " CONTROL-Q para salir
 nnoremap <C-q> :q<CR>
+nnoremap <leader>q :q<CR>
 
 " CONTROL-H y CONTROL-L para moverse a principio/final de linea
 nnoremap <S-h> I<ESC>
