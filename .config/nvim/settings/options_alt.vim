@@ -1,7 +1,10 @@
 " Configuraciones basicas de nvim
 set laststatus=0    " mostrar la barra de estado: 2=ver, 0=esconder
 set showtabline=0   " mostrar la barra de tabs/buffers: 2=ver, 0=esconder
+set wildmenu
+set ruler
 set number
+set lazyredraw
 set expandtab
 set tabstop=4
 set shiftwidth=4
