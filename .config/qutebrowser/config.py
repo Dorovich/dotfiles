@@ -16,6 +16,7 @@ c.colors.webpage.prefers_color_scheme_dark = True
 c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
 c.colors.webpage.darkmode.policy.page = 'smart'
+c.colors.webpage.darkmode.policy.images = 'never'
 c.completion.show = "auto"
 c.completion.use_best_match = True
 c.scrolling.smooth = True
