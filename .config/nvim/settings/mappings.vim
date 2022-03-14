@@ -6,9 +6,9 @@
 let g:mapleader = ' '
 
 " CONTROL-S para guardar
-nnoremap <C-s> :w<CR>
-nnoremap <leader>s :w<CR>
-nnoremap <leader>w :w<CR>
+nnoremap <C-s> :w!<CR>
+nnoremap <leader>s :w!<CR>
+nnoremap <leader>w :w!<CR>
 
 " CONTROL-Q para salir
 nnoremap <C-q> :q<CR>
