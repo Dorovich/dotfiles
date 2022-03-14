@@ -64,6 +64,11 @@ c.content.blocking.hosts.lists = [ \
     ]
 
 # keys
+config.bind('h', 'run-with-count 2 :scroll left')
+config.bind('j', 'run-with-count 2 :scroll down')
+config.bind('k', 'run-with-count 2 :scroll up')
+config.bind('l', 'run-with-count 2 :scroll right')
+
 config.bind('xb', 'config-cycle statusbar.show always never')
 config.bind('xt', 'config-cycle tabs.show multiple never')
 config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.show multiple never')
@@ -72,6 +77,7 @@ config.bind(',M', 'spawn mpv {url}')
 config.bind(',t', 'spawn --userscript translate --text')
 config.bind(',T', 'spawn --userscript translate')
 config.bind(",d", "download-open")
+
 config.bind("<Ctrl-Shift-J>", "tab-move +")
 config.bind("<Ctrl-Shift-K>", "tab-move -")
 config.bind("<Ctrl-h>", "fake-key <Backspace>", "insert")
