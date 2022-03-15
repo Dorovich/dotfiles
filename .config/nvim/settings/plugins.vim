@@ -24,7 +24,6 @@ Plug 'mengelbrecht/lightline-bufferline'            "            Barra de buffer
 Plug 'ryanoasis/vim-devicons'                       "            Iconos dentro de la terminal
 Plug 'mhinz/vim-startify'                           "            Pantalla de inicio
 Plug 'mangeshrex/everblush.vim'                     "            Paleta de colores
-Plug 'rafi/awesome-vim-colorschemes'                "            Colores variados
 
 call plug#end()
 
