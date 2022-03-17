@@ -65,10 +65,10 @@ c.content.blocking.hosts.lists = [ \
     ]
 
 # keys
-config.bind('h', 'run-with-count 2 :scroll left')
-config.bind('j', 'run-with-count 2 :scroll down')
-config.bind('k', 'run-with-count 2 :scroll up')
-config.bind('l', 'run-with-count 2 :scroll right')
+#config.bind('h', 'run-with-count 2 :scroll left')
+#config.bind('j', 'run-with-count 2 :scroll down')
+#config.bind('k', 'run-with-count 2 :scroll up')
+#config.bind('l', 'run-with-count 2 :scroll right')
 
 config.bind('xb', 'config-cycle statusbar.show always never')
 config.bind('xt', 'config-cycle tabs.show multiple never')
