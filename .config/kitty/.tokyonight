@@ -1,0 +1,46 @@
+foreground               #b5e8e0
+background               #02131a
+# selection_foreground     #------
+# selection_background     #------
+
+# url_color                #------
+
+# cursor                   #------
+# cursor_text_color        #------
+
+# active_tab_foreground    #------
+# active_tab_background    #------
+# inactive_tab_foreground  #------
+# inactive_tab_background  #------
+
+# black
+color0   #1a1b26
+color8   #837d81
+
+# red
+color1   #653945
+color9   #653945
+
+# green
+color2   #3c4349
+color10  #3c4349
+
+# yellow
+color3   #4c4c53
+color11  #f6c177
+
+# blue
+color4   #695861
+color12  #9ccfd8
+
+# magenta
+color5   #88374a
+color13  #88374a
+
+# cyan
+color6   #985965
+color14  #985965
+
+# white
+color7   #bcb4b9
+color15  #bcb4b9
