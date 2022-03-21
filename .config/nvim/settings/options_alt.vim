@@ -30,4 +30,4 @@ filetype plugin indent on
 syntax on
 colorscheme pablo " koehler tambien esta bien
 hi clear CursorLine
-hi CursorLine ctermbg=235
+hi CursorLine ctermbg=black
