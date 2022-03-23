@@ -4,6 +4,5 @@
 " plugins: gestion y configuracion de plugins
 
 source $HOME/.config/nvim/settings/mappings.vim
-"source $HOME/.config/nvim/settings/options.vim
-source $HOME/.config/nvim/settings/options_alt.vim
+source $HOME/.config/nvim/settings/options.vim
 source $HOME/.config/nvim/settings/plugins.vim
