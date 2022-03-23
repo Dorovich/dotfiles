@@ -34,7 +34,7 @@ if !has('gui_running')
   set t_Co=256
 endif
 
-let g:lightline = { 'colorscheme': 'wombat' }
+let g:lightline = { 'colorscheme': 'one' }
 let g:lightline#bufferline#shorten_path = 0
 let g:lightline#bufferline#unnamed      = '[No Name]'
 let g:lightline#bufferline#modified = ' *'
