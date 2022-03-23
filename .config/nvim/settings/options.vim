@@ -31,6 +31,6 @@ filetype plugin indent on
 syntax on
 colorscheme pablo " koehler tambien esta bien
 hi clear CursorLine
-hi CursorLine ctermbg=black
+hi CursorLine ctermbg=234
 set foldenable
 set foldmethod=marker
