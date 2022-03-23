@@ -37,9 +37,11 @@ endif
 let g:lightline = { 'colorscheme': 'one' }
 let g:lightline#bufferline#shorten_path = 0
 let g:lightline#bufferline#unnamed      = '[No Name]'
+let g:lightline#bufferline#modified = ' *'
 let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
 let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
 let g:lightline.component_type   = {'buffers': 'tabsel'}
+let g:lightline#bufferline#enable_devicons = 1
       
 " coc
 let g:coc_global_extensions = [
