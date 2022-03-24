@@ -111,8 +111,8 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 
 # font
 monospace = "12px 'FiraCode NF'"
-c.fonts.hints = "bold 13px 'Ubuntu Mono'"
-c.fonts.default_family = "11px 'FiraCode NF'"
+c.fonts.hints = "bold 16px 'Ubuntu Mono'"
+c.fonts.default_family = "12px 'FiraCode NF'"
 c.fonts.completion.category = f"bold {monospace}"
 c.fonts.completion.entry = monospace
 c.fonts.debug_console = monospace
