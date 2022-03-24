@@ -65,6 +65,7 @@ fi
 ###########################################
 ###               ALIASES               ###
 ###########################################
+# {{{
 
 alias v="nvim"
 alias aptup="sudo apt update && sudo apt upgrade"
@@ -92,10 +93,12 @@ alias fullclean="clean && sudo bleachbit -c --preset"
 # alias x-u="sudo xbps-install -Su"
 
 ###   FI    ###
+# }}}
 
 ############################################
 ###           BASH PWD COMMAND           ###
 ############################################
+# {{{
 
 # usar esta otra alternativamente, pero no las dos a la vez:
 # source $HOME/.bashrc_extra
@@ -138,11 +141,12 @@ reset=$(tput sgr0)
 export PS1="\n\[$bold$color1\]@\[$reset\] \[$bold$color2\]\$NEW_PWD\[$reset\] > "
 
 ###   FI    ###
+# }}}
 
 ############################################
 ###              CONFIG UNI              ###
 ############################################
-
+# {{{
 # compilador de C++ para PRO1:
 alias p1++="g++ -ansi -O2 -DNDEBUG -D_GLIBCXX_DEBUG -Wall -Wextra -Werror -Wno-sign-compare -Wshadow"
 # compilador de C++ para PRO2:
@@ -155,8 +159,5 @@ export OBJ="$HOME/Documentos/UPC/PRO2/objects"
 alias vp="cd $PRO && nvim"
 
 ###   FI    ###
+# }}}
 
-#tonterias mias:
-# figlet -f smslant le terminal -t -c | lolcat
-# figlet -f slant pad it boy ! -t -c | lolcat
-# alias what='echo "" && echo "such wise words indeed"'
