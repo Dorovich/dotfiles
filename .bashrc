@@ -1,6 +1,5 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc) for examples
 
 # dotfiles:
 #   $ mkdir ~/dotfiles
@@ -85,6 +84,7 @@ alias whichgpu="lspci -k | grep -EA3 'VGA|3D|Display'"
 alias hamachi="sudo hamachi"
 alias clean="bleachbit -c --preset"
 alias fullclean="clean && sudo bleachbit -c --preset"
+alias search="tree -afR $HOME | fzf -e -i --layout=reverse-list --border=rounded --prompt='Buscar: '"
 
 #alias para void linux
 # alias x-i="sudo xbps-install -S"
