@@ -11,6 +11,7 @@
 #   $ config commit -m "mesaje"  <- envia los cambios
 #   $ config push                <- sube los cambios
 alias config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
+alias configc="config commit -a -m"
 
 # ignore upper and lowercase when TAB completion
 set completion-ignore-case on
