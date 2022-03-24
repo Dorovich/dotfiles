@@ -61,7 +61,8 @@ c.content.blocking.adblock.lists = [ \
 c.content.blocking.hosts.lists = [ \
     'https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts', \
     'https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews/hosts', \
-    'https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling/hosts' \
+    'https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling/hosts', \
+    'https://curbengh.github.io/malware-filter/urlhaus-filter-online.txt' \
     ]
 
 # keys
@@ -125,4 +126,16 @@ c.fonts.prompts = monospace
 c.fonts.statusbar = monospace
 c.fonts.tabs.selected = monospace
 c.fonts.tabs.unselected = monospace
+
+# adblock (yt)
+from qutebrowser.api import interceptor
+
+def filter_yt(info: interceptor.Request):
+	url = info.request_url
+	if (url.host() == 'www.youtube.com' and
+			url.path() == '/get_video_info' and
+			'&adformat=' in url.query()):
+		info.block()
+
+interceptor.register(filter_yt)
 
