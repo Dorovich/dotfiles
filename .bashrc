@@ -92,7 +92,6 @@ alias fullclean="clean && sudo bleachbit -c --preset"
 # alias x-r="sudo xbps-remove -o"
 # alias x-u="sudo xbps-install -Su"
 
-###   FI    ###
 # }}}
 
 ############################################
@@ -140,13 +139,13 @@ reset=$(tput sgr0)
 # https://askubuntu.com/questions/24358/how-do-i-get-long-command-lines-to-wrap-to-the-next-line
 export PS1="\n\[$bold$color1\]@\[$reset\] \[$bold$color2\]\$NEW_PWD\[$reset\] > "
 
-###   FI    ###
 # }}}
 
 ############################################
 ###              CONFIG UNI              ###
 ############################################
 # {{{
+
 # compilador de C++ para PRO1:
 alias p1++="g++ -ansi -O2 -DNDEBUG -D_GLIBCXX_DEBUG -Wall -Wextra -Werror -Wno-sign-compare -Wshadow"
 # compilador de C++ para PRO2:
@@ -158,6 +157,5 @@ export OBJ="$HOME/Documentos/UPC/PRO2/objects"
 
 alias vp="cd $PRO && nvim"
 
-###   FI    ###
 # }}}
 
