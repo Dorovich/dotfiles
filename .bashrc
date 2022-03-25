@@ -100,9 +100,6 @@ alias search="tree -afR $HOME | fzf -e -i --layout=reverse-list --border=rounded
 ############################################
 # {{{
 
-# usar esta otra alternativamente, pero no las dos a la vez:
-# source $HOME/.bashrc_extra
-
 bash_prompt_command() {
 	# How many characters of the $PWD should be kept
 	local pwdmaxlen=25

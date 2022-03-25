@@ -21,6 +21,9 @@ nnoremap <S-l> A<ESC>
 " w to go a word forward (default), shift-w to go a word backwards
 nnoremap <S-w> b
 
+" Copiar hasta final de liea
+nmap Y y$
+
 " I hate escape more than anything else
 inoremap jk <Esc>
 inoremap kj <Esc>
@@ -50,11 +53,16 @@ nnoremap <M-h> :vertical resize -2<CR>
 nnoremap <M-l> :vertical resize +2<CR>
 
 " Insert a space after current character
-nnoremap <Space><Space> a<Space><ESC>h
+"nnoremap <Space><Space> a<Space><ESC>h
+
+" Plegar/Desplegar texto
+nnoremap <Leader><Leader> za
 
 " tambien se pueden poner comandos con ';'
 map ; :
 
+" Buscador de archivos
+nnoremap <silent> <Leader>e :Lexplore 30<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""            PLUGIN MAPPINGS              """""""
