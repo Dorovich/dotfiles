@@ -10,6 +10,7 @@ c.tabs.show = "multiple"
 c.tabs.last_close = "close"
 c.content.default_encoding = "utf-8"
 # }}}
+
 # UI {{{
 config.source("colors.py")
 c.colors.webpage.prefers_color_scheme_dark = True
@@ -30,6 +31,7 @@ c.tabs.padding = {
     "bottom": 1,
 }
 # }}}
+
 # Privacy {{{
 c.content.webrtc_ip_handling_policy = "default-public-interface-only"
 c.content.geolocation = False
@@ -65,12 +67,8 @@ c.content.blocking.hosts.lists = [ \
     'https://curbengh.github.io/malware-filter/urlhaus-filter-online.txt' \
     ]
 # }}}
-# Keys {{{
-#config.bind('h', 'run-with-count 2 :scroll left')
-#config.bind('j', 'run-with-count 2 :scroll down')
-#config.bind('k', 'run-with-count 2 :scroll up')
-#config.bind('l', 'run-with-count 2 :scroll right')
 
+# Keys {{{
 config.bind('xb', 'config-cycle statusbar.show always never')
 config.bind('xt', 'config-cycle tabs.show multiple never')
 config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.show multiple never')
@@ -90,6 +88,7 @@ config.bind("<Ctrl-w>", "fake-key <Ctrl-Backspace>", "insert")
 config.bind("<Ctrl-u>", "fake-key <Shift-Home><Delete>", "insert")
 config.bind("<Ctrl-k>", "fake-key <Shift-End><Delete>", "insert")
 # }}}
+
 # URL {{{
 c.url.searchengines = {
     'DEFAULT': 'https://duckduckgo.com/?q={}',
@@ -102,6 +101,7 @@ c.url.searchengines = {
 c.url.default_page = "file:///home/vido25/.config/qutebrowser/homepage/index.html"
 c.url.start_pages = ["file:///home/vido25/.config/qutebrowser/homepage/index.html"]
 # }}}
+
 # Per-domain Settings {{{
 config.set('content.images', True, 'chrome-devtools://*')
 config.set('content.images', True, 'devtools://*')
@@ -110,6 +110,7 @@ config.set('content.javascript.enabled', True, 'devtools://*')
 config.set('content.javascript.enabled', True, 'chrome://*/*')
 config.set('content.javascript.enabled', True, 'qute://*/*')
 # }}}
+
 # Font {{{
 monospace = "12px 'FiraCode NF'"
 c.fonts.hints = "bold 16px 'Ubuntu Mono'"
