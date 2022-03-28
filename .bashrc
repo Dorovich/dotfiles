@@ -87,6 +87,8 @@ alias clean="bleachbit -c --preset"
 alias fullclean="clean && sudo bleachbit -c --preset"
 alias search="tree -afR $HOME | fzf -e -i --layout=reverse-list --border=rounded --prompt='Buscar: '"
 
+alias yt-best="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 "
+
 #alias para void linux
 # alias x-i="sudo xbps-install -S"
 # alias x-q="xbps-query -Rs"
