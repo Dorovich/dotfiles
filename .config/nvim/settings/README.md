@@ -1,11 +1,11 @@
-la configuracion vanilla, sin plugins ni nada raro se puede instalar tal que
+La configuracion vanilla, sin plugins ni nada raro, se puede instalar tal que
 
-para vim:
+para _vim_:
 ```sh
 curl https://raw.githubusercontent.com/Dorovich/dotfiles/main/.config/nvim/settings/vanilla_cfg.vim > ~/.vimrc
 ```
 
-para neovim:
+para _neovim_:
 ```sh
 curl https://raw.githubusercontent.com/Dorovich/dotfiles/main/.config/nvim/settings/vanilla_cfg.vim > ~/.config/nvim/init.vim
 ```
