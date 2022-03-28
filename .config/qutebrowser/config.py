@@ -1,4 +1,4 @@
-# general
+# General {{{
 config.load_autoconfig(False)
 c.downloads.location.prompt = False
 c.downloads.location.directory = "$HOME/Descargas"
@@ -9,8 +9,8 @@ c.hints.chars = "asdfghjklie"
 c.tabs.show = "multiple"
 c.tabs.last_close = "close"
 c.content.default_encoding = "utf-8"
-
-# ui
+# }}}
+# UI {{{
 config.source("colors.py")
 c.colors.webpage.prefers_color_scheme_dark = True
 c.colors.webpage.darkmode.enabled = True
@@ -29,8 +29,8 @@ c.tabs.padding = {
     "top": 1,
     "bottom": 1,
 }
-
-# privacy
+# }}}
+# Privacy {{{
 c.content.webrtc_ip_handling_policy = "default-public-interface-only"
 c.content.geolocation = False
 c.content.headers.user_agent = "Mozilla/5.0 ({os_info}; rv:97.0) Gecko/20100101 Firefox/97.0"
@@ -64,8 +64,8 @@ c.content.blocking.hosts.lists = [ \
     'https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling/hosts', \
     'https://curbengh.github.io/malware-filter/urlhaus-filter-online.txt' \
     ]
-
-# keys
+# }}}
+# Keys {{{
 #config.bind('h', 'run-with-count 2 :scroll left')
 #config.bind('j', 'run-with-count 2 :scroll down')
 #config.bind('k', 'run-with-count 2 :scroll up')
@@ -89,8 +89,8 @@ config.bind("<Ctrl-d>", "fake-key <Delete>", "insert")
 config.bind("<Ctrl-w>", "fake-key <Ctrl-Backspace>", "insert")
 config.bind("<Ctrl-u>", "fake-key <Shift-Home><Delete>", "insert")
 config.bind("<Ctrl-k>", "fake-key <Shift-End><Delete>", "insert")
-
-# url
+# }}}
+# URL {{{
 c.url.searchengines = {
     'DEFAULT': 'https://duckduckgo.com/?q={}',
     'yt': 'https://www.youtube.com/results?search_query={}',
@@ -101,16 +101,16 @@ c.url.searchengines = {
     }
 c.url.default_page = "file:///home/vido25/.config/qutebrowser/homepage/index.html"
 c.url.start_pages = ["file:///home/vido25/.config/qutebrowser/homepage/index.html"]
-
-# per-domain settings
+# }}}
+# Per-domain Settings {{{
 config.set('content.images', True, 'chrome-devtools://*')
 config.set('content.images', True, 'devtools://*')
 config.set('content.javascript.enabled', True, 'chrome-devtools://*')
 config.set('content.javascript.enabled', True, 'devtools://*')
 config.set('content.javascript.enabled', True, 'chrome://*/*')
 config.set('content.javascript.enabled', True, 'qute://*/*')
-
-# font
+# }}}
+# Font {{{
 monospace = "12px 'FiraCode NF'"
 c.fonts.hints = "bold 16px 'Ubuntu Mono'"
 c.fonts.default_family = "12px 'FiraCode NF'"
@@ -126,16 +126,4 @@ c.fonts.prompts = monospace
 c.fonts.statusbar = monospace
 c.fonts.tabs.selected = monospace
 c.fonts.tabs.unselected = monospace
-
-# adblock (yt)
-from qutebrowser.api import interceptor
-
-def filter_yt(info: interceptor.Request):
-	url = info.request_url
-	if (url.host() == 'www.youtube.com' and
-			url.path() == '/get_video_info' and
-			'&adformat=' in url.query()):
-		info.block()
-
-interceptor.register(filter_yt)
-
+# }}}
