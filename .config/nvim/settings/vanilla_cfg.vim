@@ -1,7 +1,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""             CONFIGS BASICAS             """""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+" (Espacio dos veces para desplegar) {{{
 set laststatus=0                " no mostrar la barra de estado
 set showtabline=0               " no mostrar la barra de pestañas
 set wildmenu                    " sugerencias de comandos
@@ -24,17 +24,20 @@ filetype plugin on
 filetype plugin indent on
 set tabstop=4                   " tabular inserta 4 espacios
 set shiftwidth=4                " esto tiene que ver tambien con el tabulado
-
+set so=7                        " lineas de margen al desplazarse
+set foldenable                  " activar el plegado de texto
+set foldmethod=marker           " plegar el texto rodeado con {{{ y }}}
+" }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""              CONFIGS TECLAS             """""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+" (Espacio dos veces para desplegar) {{{
 let g:mapleader = ' '           " lider = espacio
 nnoremap <C-s> :w!<CR>          " guardar con control+s
 nnoremap <C-q> :q<CR>           " salir con control-q
-nnoremap <leader>w :w!<CR>      " guardar con lider+w
-nnoremap <leader>q :q<CR>       " salir con lider-q
+nnoremap <Leader>w :w!<CR>      " guardar con lider+w
+nnoremap <Leader>q :q<CR>       " salir con lider-q
 nnoremap <S-h> I<ESC>           " shift-h te lleva a inicio de linea
 nnoremap <S-l> A<ESC>           " shift-l te lleva a final de linea
 inoremap jk <Esc>               " jk para salir de modo insertar
@@ -44,5 +47,8 @@ noremap <S-TAB> :bprevious<CR>  " shift-tab cicla al reves
 nnoremap <C-c> :bdelete!<CR>    " control-c cierra el buffer                            
 xnoremap < <gv                  " en modo visual, > tabula en area
 xnoremap > >gv                  " en modo visual, < destabula en area
+nmap <silent> U <C-r>           " shift-u para deshacer cambios
 map ; :                         " tambien se puede abrir comando con ;
-nnoremap <Space><Space> a<Space><ESC>h  " en modo normal, doble espacio añade uno
+nnoremap <Leader><Leader> za    " lider-lider abre o cierra texto plegado
+nnoremap <silent> <Leader>f :Lexplore 30<CR> " lider-e abre o cierra el menu de archivos
+" }}}

@@ -24,6 +24,9 @@ nnoremap <S-w> b
 " Copiar hasta final de liea
 nmap Y y$
 
+" Deshacer cambios con SHIFT-U
+nmap <silent> U <C-r>           " shift-u para deshacer cambios
+
 " I hate escape more than anything else
 inoremap jk <Esc>
 inoremap kj <Esc>
