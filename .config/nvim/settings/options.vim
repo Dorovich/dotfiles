@@ -8,6 +8,7 @@ set lazyredraw
 set expandtab
 set tabstop=4
 set so=7
+set noshowmode
 set shiftwidth=4
 set smarttab
 set smartindent
