@@ -72,6 +72,7 @@ c.content.blocking.hosts.lists = [ \
 config.bind('xb', 'config-cycle statusbar.show always never')
 config.bind('xt', 'config-cycle tabs.show multiple never')
 config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.show multiple never')
+
 config.bind(',m', 'hint links spawn mpv {hint-url}')
 config.bind(',M', 'spawn mpv {url}')
 config.bind(',t', 'spawn --userscript translate --text')
@@ -80,6 +81,7 @@ config.bind(",d", "download-open")
 
 config.bind("<Ctrl-Shift-J>", "tab-move +")
 config.bind("<Ctrl-Shift-K>", "tab-move -")
+
 config.bind("<Ctrl-h>", "fake-key <Backspace>", "insert")
 config.bind("<Ctrl-a>", "fake-key <Home>", "insert")
 config.bind("<Ctrl-e>", "fake-key <End>", "insert")
@@ -92,11 +94,14 @@ config.bind("<Ctrl-k>", "fake-key <Shift-End><Delete>", "insert")
 # URL {{{
 c.url.searchengines = {
     'DEFAULT': 'https://duckduckgo.com/?q={}',
+#   'ddg': 'https://duckduckgo.com/?q={}',
     'yt': 'https://www.youtube.com/results?search_query={}',
 #   'aw': 'https://wiki.archlinux.org/?search={}',
 #   'rd': 'https://www.reddit.com/r/{}',
     'ggl': 'https://www.google.com/search?q={}',
-    'wiki': 'https://en.wikipedia.org/wiki/{}',
+    'sx': 'https://paulgo.io/search?q={}',
+#   'yan': 'https://yandex.com/search/?text={}',
+    'wiki': 'https://en.wikipedia.org/wiki/{}'
     }
 c.url.default_page = "file:///home/vido25/.config/qutebrowser/homepage/index.html"
 c.url.start_pages = ["file:///home/vido25/.config/qutebrowser/homepage/index.html"]
