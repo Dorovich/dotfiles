@@ -37,4 +37,4 @@ colorscheme pablo " koehler tambien esta bien
 hi clear CursorLine
 hi CursorLine ctermbg=234
 set list
-set listchars=tab:\·\ 
+set listchars=tab:\ \ 
