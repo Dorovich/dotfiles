@@ -5,11 +5,12 @@ set wildmenu
 set ruler
 set number
 set lazyredraw
-set expandtab
-set tabstop=4
 set so=7
 set noshowmode
+set noexpandtab
+"set expandtab
 set shiftwidth=4
+set tabstop=4
 set smarttab
 set smartindent
 set autoindent
@@ -25,6 +26,8 @@ set nobackup
 set nowritebackup
 set clipboard=unnamedplus
 set encoding=UTF-8
+set foldenable
+set foldmethod=marker
 set nocompatible
 set ttyfast
 filetype plugin on
@@ -33,5 +36,5 @@ syntax on
 colorscheme pablo " koehler tambien esta bien
 hi clear CursorLine
 hi CursorLine ctermbg=234
-set foldenable
-set foldmethod=marker
+set list
+set listchars=tab:\·\ 
