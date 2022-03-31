@@ -82,6 +82,8 @@ config.bind(",d", "download-open")
 config.bind("<Ctrl-Shift-J>", "tab-move +")
 config.bind("<Ctrl-Shift-K>", "tab-move -")
 
+config.bind("<Ctrl-p>", "spawn --userscript ~/.config/qutebrowser/userscripts/password_fill")
+
 config.bind("<Ctrl-h>", "fake-key <Backspace>", "insert")
 config.bind("<Ctrl-a>", "fake-key <Home>", "insert")
 config.bind("<Ctrl-e>", "fake-key <End>", "insert")
