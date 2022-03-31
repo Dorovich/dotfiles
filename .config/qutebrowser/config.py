@@ -98,10 +98,11 @@ c.url.searchengines = {
     'DEFAULT': 'https://duckduckgo.com/?q={}',
 #   'ddg': 'https://duckduckgo.com/?q={}',
     'yt': 'https://www.youtube.com/results?search_query={}',
-#   'aw': 'https://wiki.archlinux.org/?search={}',
-#   'rd': 'https://www.reddit.com/r/{}',
+    'aw': 'https://wiki.archlinux.org/?search={}',
+    'rd': 'https://www.reddit.com/r/{}',
+    'wa': 'https://www.wolframalpha.com/input?i={}',
     'ggl': 'https://www.google.com/search?q={}',
-    'sx': 'https://paulgo.io/search?q={}',
+#   'sx': 'https://paulgo.io/search?q={}',
 #   'yan': 'https://yandex.com/search/?text={}',
     'wiki': 'https://en.wikipedia.org/wiki/{}'
     }
