@@ -7,7 +7,7 @@ c.content.autoplay = False
 c.content.pdfjs = True
 c.hints.chars = "asdfghjklie"
 c.tabs.show = "multiple"
-c.tabs.last_close = "close"
+c.tabs.last_close = "ignore"  # "close" alternativamente
 c.content.default_encoding = "utf-8"
 # }}}
 
