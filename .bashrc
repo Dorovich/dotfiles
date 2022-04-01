@@ -75,7 +75,7 @@ alias aptin="sudo apt install"
 alias aptrm="sudo apt remove"
 alias aptar="sudo apt autoremove"
 alias grep='grep --color=auto'
-alias ll='ls -AlF --color=auto'
+alias ll='ls -AlFh --color=auto'
 alias la='ls -A --color=auto'
 alias ls='ls -CF --color=auto'
 alias fetch="neofetch --config $HOME/.config/neofetch/config.conf"
@@ -86,14 +86,21 @@ alias hamachi="sudo hamachi"
 alias clean="bleachbit -c --preset"
 alias fullclean="clean && sudo bleachbit -c --preset"
 alias search="tree -afR $HOME | fzf -e -i --layout=reverse-list --border=rounded --prompt='Buscar: '"
+alias weather="curl https://wttr.in/"
 
 alias yt-best="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 "
+
+alias 0file='curl -F"file=@$1" https://envs.sh'
+alias 0pb='curl -F"file=@-;" https://envs.sh'
+alias 0url='curl -F"url=$1" https://envs.sh'
+alias 0short='curl -F"shorten=$1" https://envs.sh'
 
 #alias para void linux
 # alias x-i="sudo xbps-install -S"
 # alias x-q="xbps-query -Rs"
 # alias x-r="sudo xbps-remove -o"
 # alias x-u="sudo xbps-install -Su"
+# xi -Suy && xrm -oORy
 
 # }}}
 
