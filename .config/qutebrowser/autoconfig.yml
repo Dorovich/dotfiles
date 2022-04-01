@@ -6,7 +6,5 @@
 
 config_version: 2
 settings:
-  statusbar.show:
-    global: always
-  tabs.show:
-    global: never
+  colors.webpage.darkmode.algorithm:
+    global: lightness-hsl
