@@ -64,8 +64,8 @@ nnoremap <Leader><Leader> za
 " tambien se pueden poner comandos con ';'
 map ; :
 
-" Buscador de archivos
-nnoremap <silent> <Leader>e :Lexplore %:p:h<CR>
+" Buscador de archivos (netrw)
+nnoremap <silent> <Leader>e :Lex %:p:h<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""            PLUGIN MAPPINGS              """""""

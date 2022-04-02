@@ -27,9 +27,10 @@ set shiftwidth=4                " esto tiene que ver tambien con el tabulado
 set so=7                        " lineas de margen al desplazarse
 set foldenable                  " activar el plegado de texto
 set foldmethod=marker           " plegar el texto rodeado con {{{ y }}}
-let g:netrw_winsize = 30		" explorador de archivos ocupa el 30%
-let g:netrw_banner = 0			" no muestra el mensaje en el expll. de archivos
-let g:netrw_keepdir = 0			" buscar en el mismo directorio
+let g:netrw_winsize = 30		" netrw ocupa el 30% de la pantalla
+let g:netrw_banner = 0			" no muestra el mensaje en netrw
+let g:netrw_keepdir = 0			" netrw busca en el mismo directorio
+autocmd FileType netrw setl bufhidden=wipe " borra los buffers que crea netrw por alguna razon
 " }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -53,5 +54,5 @@ xnoremap > >gv                  " en modo visual, < destabula en area
 nmap <silent> U <C-r>           " shift-u para deshacer cambios
 map ; :                         " tambien se puede abrir comando con ;
 nnoremap <Leader><Leader> za    " lider-lider abre o cierra texto plegado
-nnoremap <silent> <Leader>f :Lex %:p:h<CR> " lider-f abre o cierra el menu de archivos
+nnoremap <silent> <Leader>f :Lex %:p:h<CR> " lider-f abre o cierra netrw
 " }}}
