@@ -38,3 +38,7 @@ hi clear CursorLine
 hi CursorLine ctermbg=234
 set list
 set listchars=tab:\ \ 
+
+let g:netrw_winsize = 30
+let g:netrw_banner = 0
+let g:netrw_keepdir = 0

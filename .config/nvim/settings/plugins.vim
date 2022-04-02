@@ -2,13 +2,14 @@
 " Para instalarlo en sitemas unix: 
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 "    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-" vim-plug se intala automaticamente si no lo esta:
+" ...o bien se intala automaticamente si no lo esta:
+" INSTALAR VIM-PLUG {{{
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+" }}}
 
 " Plugin setup
 call plug#begin()
@@ -27,8 +28,7 @@ Plug 'mangeshrex/everblush.vim'                     "            Paleta de color
 
 call plug#end()
 
-
-
+" CONFIGS {{{
 " lightline
 if !has('gui_running')
   set t_Co=256
@@ -80,4 +80,4 @@ let g:startify_bookmarks = [
     \ { 'g': '~/.bashrc'                   },
     \ { 'h': '~/.config/kitty/kitty.conf'  },
     \ ]
-
+" }}}

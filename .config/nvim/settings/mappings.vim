@@ -65,7 +65,7 @@ nnoremap <Leader><Leader> za
 map ; :
 
 " Buscador de archivos
-nnoremap <silent> <Leader>e :Lexplore 30<CR>
+nnoremap <silent> <Leader>e :Lexplore %:p:h<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""            PLUGIN MAPPINGS              """""""
