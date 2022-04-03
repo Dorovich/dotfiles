@@ -45,10 +45,11 @@ autocmd FileType netrw setl bufhidden=wipe " borra los buffers que crea netrw po
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " (Espacio dos veces para desplegar) {{{
 let g:mapleader = ' '           " lider = espacio
-nnoremap <C-s> :w!<CR>          " guardar con control+s
+nnoremap <C-s> :w!<CR>          " guardar con control-s
 nnoremap <C-q> :q<CR>           " salir con control-q
-nnoremap <Leader>w :w!<CR>      " guardar con lider+w
+nnoremap <Leader>w :w!<CR>      " guardar con lider-w
 nnoremap <Leader>q :q<CR>       " salir con lider-q
+nnoremap <leader><Esc> :q!<CR>  " lider-esc cierra sin guardar
 nnoremap <S-h> I<ESC>           " shift-h te lleva a inicio de linea
 nnoremap <S-l> A<ESC>           " shift-l te lleva a final de linea
 inoremap jk <Esc>               " jk para salir de modo insertar
@@ -62,4 +63,12 @@ nmap <silent> U <C-r>           " shift-u para deshacer cambios
 map ; :                         " tambien se puede abrir comando con ;
 nnoremap <Leader><Leader> za    " lider-lider abre o cierra texto plegado
 nnoremap <silent> <Leader>f :Lex %:p:h<CR> " lider-f abre o cierra netrw
+nnoremap <C-h> <C-w>h           " control-h para moverse a ventana de izquierda
+nnoremap <C-j> <C-w>j           " control-j para moverse a ventana de abajo
+nnoremap <C-k> <C-w>k           " control-k para moverse a ventana de arriba
+nnoremap <C-l> <C-w>l           " control-l para moverse a ventana de derecha
+nnoremap <M-j> :resize -2<CR>   " alt-j para encoger la ventana
+nnoremap <M-k> :resize +2<CR>   " alt-k para agrandar la ventana
+nnoremap <M-h> :vertical resize -2<CR> " alt-h para acortar la ventana
+nnoremap <M-l> :vertical resize +2<CR> " alt-l para ensanchar la ventana
 " }}}

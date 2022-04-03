@@ -14,6 +14,9 @@ nnoremap <leader>w :w!<CR>
 nnoremap <C-q> :q<CR>
 nnoremap <leader>q :q<CR>
 
+" LIDER-ESC para salir sin guardar
+nnoremap <leader><Esc> :q!<CR>
+
 " CONTROL-H y CONTROL-L para moverse a principio/final de linea
 nnoremap <S-h> I<ESC>
 nnoremap <S-l> A<ESC>
