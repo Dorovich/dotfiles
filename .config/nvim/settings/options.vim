@@ -39,7 +39,7 @@ hi clear CursorLine
 hi CursorLine ctermbg=234
 
 set list
-set listchars=tab:\·\ 
+set listchars=tab:\|\ 
 hi Whitespace ctermfg=8
 
 let g:netrw_winsize = 30
