@@ -49,21 +49,22 @@ autocmd FileType netrw setl bufhidden=wipe
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " (Espacio dos veces para desplegar) {{{
 let g:mapleader = ' '
-nnoremap <C-s> :w!<CR>
-nnoremap <C-q> :q<CR>
-nnoremap <Leader>w :w!<CR>
-nnoremap <Leader>q :q<CR>
-nnoremap <leader><S-q> :q!<CR>
-nnoremap <S-h> I<ESC>
-nnoremap <S-l> A<ESC>
+nnoremap <silent> <C-s> :w!<CR>
+nnoremap <silent> <C-q> :q<CR>
+nnoremap <silent> <Leader>w :w!<CR>
+nnoremap <silent> <Leader>q :q<CR>
+nnoremap <silent> <leader><S-q> :q!<CR>
+nnoremap <S-h> <Home>
+nnoremap <S-l> <End>
 inoremap jk <Esc>
 inoremap kj <Esc>
-nnoremap <TAB> :bnext<CR>
-noremap <S-TAB> :bprevious<CR>
-nnoremap <C-c> :bdelete!<CR>
+nnoremap <silent> <TAB> :bnext<CR>
+nnoremap <silent> <S-TAB> :bprevious<CR>
+nnoremap <silent> <C-c> :bdelete!<CR>
 xnoremap < <gv
 xnoremap > >gv
 nmap <silent> U <C-r>
+nmap <S-y> y$
 map ; :
 nnoremap <Leader><Leader> za
 nnoremap <silent> <Leader>f :Lex %:p:h<CR>
@@ -72,10 +73,10 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-nnoremap <M-j> :resize -2<CR>
-nnoremap <M-k> :resize +2<CR>
-nnoremap <M-h> :vertical resize -2<CR>
-nnoremap <M-l> :vertical resize +2<CR>
+nnoremap <silent> <M-j> :resize -2<CR>
+nnoremap <silent> <M-k> :resize +2<CR>
+nnoremap <silent> <M-h> :vertical resize -2<CR>
+nnoremap <silent> <M-l> :vertical resize +2<CR>
 nnoremap <Leader>p i(<Esc>ea)<Esc>
 nnoremap <Leader>l i{<Esc>ea}<Esc>
 " }}}

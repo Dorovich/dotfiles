@@ -1,6 +1,5 @@
-" Configuraciones basicas de nvim
-set laststatus=2    " mostrar la barra de estado: 2=ver, 0=esconder
-set showtabline=2   " mostrar la barra de tabs/buffers: 2=ver, 0=esconder
+set laststatus=2
+set showtabline=2
 set wildmenu
 set ruler
 set number
@@ -8,7 +7,6 @@ set lazyredraw
 set so=7
 set noshowmode
 set noexpandtab
-"set expandtab		" tabs = espacios
 set shiftwidth=4
 set tabstop=4
 set smarttab
@@ -33,7 +31,7 @@ set ttyfast
 filetype plugin on
 filetype plugin indent on
 syntax on
-colorscheme pablo " koehler tambien esta bien
+colorscheme pablo
 
 hi clear CursorLine
 hi CursorLine ctermbg=234
