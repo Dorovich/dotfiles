@@ -15,7 +15,7 @@ c.content.default_encoding = "utf-8"
 config.source("colors.py")
 c.colors.webpage.prefers_color_scheme_dark = True
 c.colors.webpage.darkmode.enabled = True
-c.colors.webpage.darkmode.algorithm = 'lightness-hsl'
+c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
 c.colors.webpage.darkmode.policy.page = 'smart'
 c.colors.webpage.darkmode.policy.images = 'smart'
 c.completion.show = "auto"
