@@ -10,9 +10,7 @@ set noexpandtab
 set shiftwidth=4
 set tabstop=4
 set smarttab
-set smartindent
 set autoindent
-set cursorline
 set noswapfile
 set hlsearch
 set incsearch
@@ -26,16 +24,14 @@ set clipboard=unnamedplus
 set encoding=UTF-8
 set foldenable
 set foldmethod=marker
-set nocompatible
-set ttyfast
 filetype plugin on
 filetype plugin indent on
 syntax on
 colorscheme pablo
 
+set cursorline
 hi clear CursorLine
 hi CursorLine ctermbg=234
-
 set list
 set listchars=tab:\|\ 
 hi Whitespace ctermfg=8
