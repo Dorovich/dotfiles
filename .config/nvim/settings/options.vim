@@ -24,6 +24,8 @@ set clipboard=unnamedplus
 set encoding=UTF-8
 set foldenable
 set foldmethod=marker
+set title
+set titlestring=NVIM\ %F\ %a%r%m titlelen=70
 filetype plugin on
 filetype plugin indent on
 syntax on
