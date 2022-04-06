@@ -9,7 +9,6 @@ c.hints.chars = "asdfghjklie"
 c.tabs.show = "multiple"
 c.tabs.last_close = "ignore"  # "close" alternativamente
 c.content.default_encoding = "utf-8"
-c.qt.force_software_rendering = "qt-quick"
 # }}}
 
 # UI {{{
