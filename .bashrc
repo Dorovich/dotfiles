@@ -95,6 +95,8 @@ alias 0pb='curl -F"file=@-;" https://envs.sh'
 alias 0url='curl -F"url=$1" https://envs.sh'
 alias 0short='curl -F"shorten=$1" https://envs.sh'
 
+alias qbmem='cat "/proc/$(pgrep -f 'bin/qutebrowser')/smaps_rollup"'
+
 #alias para void linux
 # alias x-i="sudo xbps-install -S"
 # alias x-q="xbps-query -Rs"

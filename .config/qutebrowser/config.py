@@ -9,6 +9,7 @@ c.hints.chars = "asdfghjklie"
 c.tabs.show = "multiple"
 c.tabs.last_close = "ignore"  # "close" alternativamente
 c.content.default_encoding = "utf-8"
+c.qt.force_software_rendering = "qt-quick"
 # }}}
 
 # UI {{{
@@ -101,6 +102,7 @@ c.url.searchengines = {
 #   'aw': 'https://wiki.archlinux.org/?search={}',
     'rd': 'https://www.reddit.com/r/{}',
     'wa': 'https://www.wolframalpha.com/input?i={}',
+    'gh': 'https://github.com/search?q={}',
     'ggl': 'https://www.google.com/search?q={}',
 #   'sx': 'https://paulgo.io/search?q={}',
 #   'yan': 'https://yandex.com/search/?text={}',
