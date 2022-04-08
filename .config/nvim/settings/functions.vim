@@ -11,8 +11,6 @@ function! ToggleFocusMode()
         hi FoldColumn ctermbg=none
         hi NonText ctermfg=0
     else
-        "set laststatus=2
-        "set showtabline=2
         set number
         set ruler
         set showmode
