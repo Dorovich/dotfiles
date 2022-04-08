@@ -36,6 +36,13 @@ nnoremap <Leader>l i{<Esc>ea}<Esc>
 " }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""           FUNCTION MAPPINGS             """""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" (Espacio dos veces para desplegar) {{{
+nnoremap <silent> <F1> :call ToggleFocusMode()<CR>
+" }}}
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""            PLUGIN MAPPINGS              """""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " (Espacio dos veces para desplegar) {{{
