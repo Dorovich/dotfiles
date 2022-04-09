@@ -1,4 +1,4 @@
-La configuracion vanilla, sin plugins ni nada raro, se puede instalar tal que
+La configuracion 'vanilla', sin plugins ni nada raro, se puede instalar tal que
 
 para _vim_:
 ```sh
