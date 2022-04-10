@@ -87,15 +87,13 @@ alias clean="bleachbit -c --preset"
 alias fullclean="clean && sudo bleachbit -c --preset"
 alias search="tree -afR $HOME | fzf -e -i --layout=reverse-list --border=rounded --prompt='Buscar: '"
 alias weather="curl https://wttr.in/"
-
 alias yt-best="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 "
-
-alias 0file='curl -F"file=@$1" https://envs.sh'
-alias 0pb='curl -F"file=@-;" https://envs.sh'
-alias 0url='curl -F"url=$1" https://envs.sh'
-alias 0short='curl -F"shorten=$1" https://envs.sh'
-
 alias qbmem='cat "/proc/$(pgrep -f 'bin/qutebrowser')/smaps_rollup"'
+
+0file() { curl -F"file=@$1" https://envs.sh ; }    # 0file "file.png"
+0pb() { curl -F"file=@-;" https://envs.sh ; }      # echo "text" | 0pb
+0url() { curl -F"url=$1" https://envs.sh ; }       # 0rl "https://url"
+0short() { curl -F"shorten=$1" https://envs.sh ; } # 0short "https://long-url"
 
 #alias para void linux
 # alias x-i="sudo xbps-install -S"
