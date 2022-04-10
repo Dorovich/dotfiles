@@ -27,3 +27,6 @@ function! ToggleFocusMode()
         hi ModeMsg ctermfg=6
     endif
 endfunc
+
+" LIMPIAR CMD
+autocmd CursorMoved * echon ''
