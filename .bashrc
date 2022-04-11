@@ -95,13 +95,6 @@ alias qbmem='cat "/proc/$(pgrep -f 'bin/qutebrowser')/smaps_rollup"'
 0url() { curl -F"url=$1" https://envs.sh ; }       # 0rl "https://url"
 0short() { curl -F"shorten=$1" https://envs.sh ; } # 0short "https://long-url"
 
-#alias para void linux
-# alias x-i="sudo xbps-install -S"
-# alias x-q="xbps-query -Rs"
-# alias x-r="sudo xbps-remove -o"
-# alias x-u="sudo xbps-install -Su"
-# xi -Suy && xrm -oORy
-
 # }}}
 
 ############################################
