@@ -5,13 +5,12 @@
 set laststatus=0
 set showtabline=0
 set wildmenu
-set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.exe,*.o,*.mp3,*.mp4 
+set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.exe,*.o,*.mp3,*.mp4,*.mov,*.mkv,*.ogg,*.dat
 set ruler
 set number
 set lazyredraw
 set showmode
 set smarttab
-set smartindent
 set autoindent
 set mouse=a
 set hidden
@@ -30,8 +29,9 @@ set pumheight=10
 set title
 set encoding=utf-8
 set expandtab
-set tabstop=4
+set tabstop=8
 set shiftwidth=4
+set softtabstop=4
 set so=7
 set foldenable
 set foldmethod=marker
@@ -84,33 +84,4 @@ nnoremap <silent> <M-l> :vertical resize +2<CR>
 nnoremap <Leader>p i(<Esc>ea)<Esc>
 nnoremap <Leader>l i{<Esc>ea}<Esc>
 nnoremap <silent> <F1> :call ToggleFocusMode()<CR>
-" }}}
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""                FUNCIONES                """""""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" (Espacio dos veces para desplegar) {{{
-" Modo concentracion (F1)
-function! ToggleFocusMode()
-    if (&foldcolumn != 12)
-        set nonumber
-        set noruler
-        set noshowmode
-        set foldcolumn=12
-        set numberwidth=10
-        hi FoldColumn ctermbg=none
-        hi NonText ctermfg=0
-    else
-        set number
-        set ruler
-        set showmode
-        set foldcolumn=0
-        set numberwidth=4
-        execute 'colorscheme ' . g:colors_name
-        hi ModeMsg ctermfg=6
-        hi NonText ctermfg=0
-        hi LineNr ctermfg=8
-        hi CursorLineNr ctermfg=6 cterm=bold
-    endif
-endfunc
 " }}}
