@@ -95,6 +95,9 @@ alias qbmem='cat "/proc/$(pgrep -f 'bin/qutebrowser')/smaps_rollup"'
 0url() { curl -F"url=$1" https://envs.sh ; }       # 0rl "https://url"
 0short() { curl -F"shorten=$1" https://envs.sh ; } # 0short "https://long-url"
 
+alias wacom-osu='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" Area 0 4600 7360 9200'
+alias wacom-reset='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" ResetArea'
+
 # }}}
 
 ############################################
