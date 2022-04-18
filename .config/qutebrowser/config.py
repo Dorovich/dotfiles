@@ -95,7 +95,7 @@ config.bind("<Ctrl-k>", "fake-key <Shift-End><Delete>", "insert")
 
 # URL {{{
 c.url.searchengines = {
-    'DEFAULT': 'https://duckduckgo.com/?q={}',
+    'DEFAULT': 'https://searx.envs.net/search?q={}',
 #   'ddg': 'https://duckduckgo.com/?q={}',
     'yt': 'https://www.youtube.com/results?search_query={}',
 #   'aw': 'https://wiki.archlinux.org/?search={}',
@@ -103,8 +103,8 @@ c.url.searchengines = {
 #   'wa': 'https://www.wolframalpha.com/input?i={}',
 #   'gh': 'https://github.com/search?q={}',
     'ggl': 'https://www.google.com/search?q={}',
-    'sx': 'https://searx.envs.net/search?q={}',
-#   'yan': 'https://yandex.com/search/?text={}',
+#   'sx': 'https://searx.envs.net/search?q={}',
+    'yan': 'https://yandex.com/search/?text={}',
     'wiki': 'https://en.wikipedia.org/wiki/{}',
     'trad': 'https://translate.google.com/?hl=es&sl=auto&tl=es&text={}&op=translate'
     }
