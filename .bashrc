@@ -75,9 +75,11 @@ alias aptin="sudo apt install"
 alias aptrm="sudo apt remove"
 alias aptar="sudo apt autoremove"
 alias grep='grep --color=auto'
-alias ll='ls -AlFh --color=auto'
-alias la='ls -A --color=auto'
-alias ls='ls -CF --color=auto'
+#alias ll='ls -AlFhG --color=auto --group-directories-first'
+#alias la='ls -A --color=auto'
+#alias ls='ls -CF --color=auto'
+alias ls='exa -l --icons --group-directories-first --no-time --no-user --color=auto -F'
+alias la='exa -la --icons --group-directories-first --no-time --no-user --color=auto -F'
 alias fetch="neofetch --config $HOME/.config/neofetch/config.conf"
 alias neofetch="neofetch --config none"
 alias xmas="~/.local/bin/christmas.sh"
@@ -89,6 +91,8 @@ alias search="tree -afR $HOME | fzf -e -i --layout=reverse-list --border=rounded
 alias weather="curl https://wttr.in/"
 alias yt-best="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 "
 alias qbmem='cat "/proc/$(pgrep -f 'bin/qutebrowser')/smaps_rollup"'
+alias please="sudo"
+alias die="exit"
 
 0file() { curl -F"file=@$1" https://envs.sh ; }    # 0file "file.png"
 0pb() { curl -F"file=@-;" https://envs.sh ; }      # echo "text" | 0pb
