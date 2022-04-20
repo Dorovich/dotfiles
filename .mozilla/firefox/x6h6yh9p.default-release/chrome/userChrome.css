@@ -1,1 +1,86 @@
 #webrtcIndicator { display: none; }
+
+/*----------------------------------------------------------------------------------*/
+
+/*
+ * Compact findbar at the top of the window
+ *
+ * Contributor(s): Madis0
+ */
+
+.browserContainer > findbar {
+  -moz-box-ordinal-group: 0;
+  position: fixed !important;
+  right: 1em;
+  border: 1px solid threedshadow !important;
+
+  /* Hide the "border" at the top by removing the box-shadow and background-image */
+  border-top: none !important;
+  box-shadow: none !important;
+  background-image: none !important;
+
+  /* Uncomment to add a transition from the top */
+  /*
+  transition: 400ms !important;
+  z-index: 0 !important;
+  */
+}
+
+/* Margin from top when hidden (necessary for the transition to work) */
+/*findbar[hidden]{ margin-top: -2em !important; }*/
+
+/* Aligns the close button to the center */
+.findbar-closebutton {
+  margin-inline-start: 0.5em !important;
+  vertical-align: middle !important;
+  margin-bottom: 0.25em !important;
+  height: inherit !important;
+}
+
+/*----------------------------------------------------------------------------------*/
+
+/*
+ * Reduces the padding/margins on the new (since Firefox 75) "breakout" navbar dropdown,
+ * so it looks less like a mobile layout
+ *
+ * Screenshot: https://github.com/Timvde/UserChrome-Tweaks/pull/170
+ *
+ * Contributor(s): udf
+ */
+
+/* Remove padding on urlbar results */
+.urlbarView-row {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+/* Remove padding on urlbar (icons on the right break without this) */
+#urlbar-input-container {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+/* Reduce "breakout" navbar height */
+#urlbar[breakout][breakout-extend] > #urlbar-input-container {
+  height: calc(var(--urlbar-toolbar-height) - 4px) !important;
+}
+
+/* Fix breakout positioning being too high after we decreased the height */
+#urlbar[breakout][breakout-extend] {
+  top: 2px !important;
+}
+
+/* Remove padding on search one offs div */
+.search-one-offs {
+  padding-block: 0px !important;
+}
+
+/* Fix padding left of the search one-off icons */
+.search-panel-one-offs {
+  padding-left: 7px !important;
+}
+
+/* Remove margins around the search one-off icons */
+.searchbar-engine-one-off-item {
+  margin: 0px !important;
+}
