@@ -90,6 +90,8 @@ alias fullclean="clean && sudo bleachbit -c --preset"
 alias search="tree -afR $HOME | fzf -e -i --layout=reverse-list --border=rounded --prompt='Buscar: '"
 alias weather="curl https://wttr.in/"
 alias yt-best="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 "
+alias yt-mp3="yt-dlp -x --audio-format mp3"
+alias yt-mp4="yt-dlp -f mp4"
 alias qbmem='cat "/proc/$(pgrep -f 'bin/qutebrowser')/smaps_rollup"'
 alias please="sudo"
 alias die="exit"
