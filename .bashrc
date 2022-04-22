@@ -101,7 +101,7 @@ alias die="exit"
 0url() { curl -F"url=$1" https://envs.sh ; }       # 0rl "https://url"
 0short() { curl -F"shorten=$1" https://envs.sh ; } # 0short "https://long-url"
 
-alias wacom-osu='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" Area 0 4600 7360 9200'
+alias wacom-osu='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" Area 1200 4600 7360 9200'
 alias wacom-reset='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" ResetArea'
 
 # }}}
@@ -112,28 +112,28 @@ alias wacom-reset='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" ResetArea'
 # {{{
 
 bash_prompt_command() {
-	# How many characters of the $PWD should be kept
-	local pwdmaxlen=25
+    # How many characters of the $PWD should be kept
+    local pwdmaxlen=25
 
-	# Indicate that there has been dir truncation
-	local trunc_symbol="..."
+    # Indicate that there has been dir truncation
+    local trunc_symbol="..."
 
-	# Store local dir
-	local dir=${PWD##*/}
+    # Store local dir
+    local dir=${PWD##*/}
 
-	# Which length to use
-	pwdmaxlen=$(( ( pwdmaxlen < ${#dir} ) ? ${#dir} : pwdmaxlen ))
+    # Which length to use
+    pwdmaxlen=$(( ( pwdmaxlen < ${#dir} ) ? ${#dir} : pwdmaxlen ))
 
-	NEW_PWD=${PWD/#$HOME/\~}
-	
-	local pwdoffset=$(( ${#NEW_PWD} - pwdmaxlen ))
+    NEW_PWD=${PWD/#$HOME/\~}
+    
+    local pwdoffset=$(( ${#NEW_PWD} - pwdmaxlen ))
 
-	# Generate name
-	if [ ${pwdoffset} -gt "0" ]
-	then
-		NEW_PWD=${NEW_PWD:$pwdoffset:$pwdmaxlen}
-		NEW_PWD=${trunc_symbol}/${NEW_PWD#*/}
-	fi
+    # Generate name
+    if [ ${pwdoffset} -gt "0" ]
+    then
+        NEW_PWD=${NEW_PWD:$pwdoffset:$pwdmaxlen}
+        NEW_PWD=${trunc_symbol}/${NEW_PWD#*/}
+    fi
 }
 
 PROMPT_COMMAND=bash_prompt_command
@@ -167,4 +167,3 @@ export OBJ="$HOME/Documentos/UPC/PRO2/objects"
 alias vp="cd $PRO && nvim"
 
 # }}}
-
