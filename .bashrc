@@ -78,7 +78,8 @@ alias grep='grep --color=auto'
 #alias ll='ls -AlFhG --color=auto --group-directories-first'
 #alias la='ls -A --color=auto'
 #alias ls='ls -CF --color=auto'
-alias ls='exa -l --icons --group-directories-first --no-time --no-user --color=auto -F'
+alias ls='exa --icons --group-directories-first --no-time --no-user --color=auto -F'
+alias ll='exa -l --icons --group-directories-first --no-time --no-user --color=auto -F'
 alias la='exa -la --icons --group-directories-first --no-time --no-user --color=auto -F'
 alias fetch="neofetch --config $HOME/.config/neofetch/config.conf"
 alias neofetch="neofetch --config none"
@@ -163,7 +164,5 @@ alias p2++="g++ -D_GLIBCXX_DEBUG -O2 -Wall -Wextra -Werror -Wno-sign-compare -st
 export PRO="$HOME/Documentos/UPC/PRO2"
 export INC="$HOME/Documentos/UPC/PRO2/include"
 export OBJ="$HOME/Documentos/UPC/PRO2/objects"
-
-alias vp="cd $PRO && nvim"
 
 # }}}
