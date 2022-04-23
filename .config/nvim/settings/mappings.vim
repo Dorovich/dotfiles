@@ -31,15 +31,16 @@ nnoremap <silent> <M-j> :resize -2<CR>
 nnoremap <silent> <M-k> :resize +2<CR>
 nnoremap <silent> <M-h> :vertical resize -2<CR>
 nnoremap <silent> <M-l> :vertical resize +2<CR>
-nnoremap <Leader>p i(<Esc>ea)<Esc>
-nnoremap <Leader>l i{<Esc>ea}<Esc>
+nnoremap <Leader>p ebi(<Esc>ea)<Esc>
+nnoremap <Leader>l ebi{<Esc>ea}<Esc>
+nnoremap <Leader>c ebi[<Esc>ea]<Esc>
 " }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""           FUNCTION MAPPINGS             """""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " (Espacio dos veces para desplegar) {{{
-nnoremap <silent> <F1> :call ToggleFocusMode()<CR>
+"nnoremap <silent> <F1> :call ToggleFocusMode()<CR>
 " }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""

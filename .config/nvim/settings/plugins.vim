@@ -67,28 +67,28 @@ let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="-"
 
 " startify
-let g:startify_custom_header = [
-    \ "                                                                     ",
-    \ "              ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗     ",
-    \ "              ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║     ",
-    \ "              ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║     ",
-    \ "              ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║     ",
-    \ "              ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║     ",
-    \ "              ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝     ",
-    \ "                                                                     ",
-    \ ]
-            
-let g:startify_change_to_dir = 1
-let g:startify_enable_special = 0
-let g:startify_files_number = 5
-let g:startify_lists = [
-    \ { 'type': 'files',     'header': ['   recent']             },
-    \ { 'type': 'dir',       'header': ['   files @ '. getcwd()] },
-    \ { 'type': 'bookmarks', 'header': ['   bookmarks']          },
-    \ ]
-let g:startify_bookmarks = [
-    \ { 'f': '~/.config/nvim/init.vim'     },
-    \ { 'g': '~/.bashrc'                   },
-    \ { 'h': '~/.config/kitty/kitty.conf'  },
-    \ ]
+"let g:startify_custom_header = [
+"    \ '                                                                     ',
+"    \ '              ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗     ',
+"    \ '              ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║     ',
+"    \ '              ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║     ',
+"    \ '              ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║     ',
+"    \ '              ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║     ',
+"    \ '              ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝     ',
+"    \ '                                                                     ',
+"    \ ]
+"            
+"let g:startify_change_to_dir = 1
+"let g:startify_enable_special = 0
+"let g:startify_files_number = 5
+"let g:startify_lists = [
+"    \ { 'type': 'files',     'header': ['   recent']             },
+"    \ { 'type': 'dir',       'header': ['   files @ '. getcwd()] },
+"    \ { 'type': 'bookmarks', 'header': ['   bookmarks']          },
+"    \ ]
+"let g:startify_bookmarks = [
+"    \ { 'f': '~/.config/nvim/init.vim'     },
+"    \ { 'g': '~/.bashrc'                   },
+"    \ { 'h': '~/.config/kitty/kitty.conf'  },
+"    \ ]
 " }}}
