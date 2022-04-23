@@ -4,7 +4,7 @@
 "   plugins: gestion y configuracion de plugins
 "   functions: funciones y autocomandos
 
-source settings/mappings.vim
-source settings/options.vim
-source settings/plugins.vim
-source settings/functions.vim
+source $HOME/.config/nvim/settings/mappings.vim
+source $HOME/.config/nvim/settings/options.vim
+source $HOME/.config/nvim/settings/plugins.vim
+source $HOME/.config/nvim/settings/functions.vim
