@@ -6,6 +6,6 @@
 - Terminal: `kitty`
 - Shell: `bash`
 - Editor: `neovim`
-- Buscador: `firefox`/`qutebrowser`
-- Fuente: `Fira Code NF`
-- Tema GTK: `Juno ocean`/`Matcha dark`
+- Buscador: `firefox`, `qutebrowser`
+- Fuente: `mononoki`, `Fira Code NF`
+- Tema GTK: `Juno ocean`
