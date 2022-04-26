@@ -1,17 +1,6 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc) for examples
 
-# dotfiles:
-#   $ mkdir ~/dotfiles
-#   $ git init --bare $HOME/dotfiles
-#   $ alias config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
-#   $ config config --local status.showUntrackedFiles no
-# uso:
-#   $ config add <file>          <- añade un archivo para seguirlo
-#   $ config commit -m "mesaje"  <- envia los cambios
-#   $ config push                <- sube los cambios
-alias config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
-alias configc="config commit -a -m"
 
 # ignore upper and lowercase when TAB completion
 set completion-ignore-case on
@@ -20,7 +9,7 @@ set completion-ignore-case on
 export ALM="/media/vido25/Almacenamiento"
 
 # binarios en ~/.local
-export PATH="${PATH}:${HOME}/.local/bin"
+export PATH="${PATH}:${HOME}/.local/bin:${HOME}/.emacs.d/bin"
 
 # If not running interactively, don't do anything
 case $- in
@@ -62,6 +51,27 @@ if ! shopt -oq posix; then
   fi
 fi
 
+export EDITOR="nvim"
+
+###########################################
+###              DOTFILES               ###
+###########################################
+# {{{
+
+# dotfiles:
+#   $ mkdir ~/dotfiles
+#   $ git init --bare $HOME/dotfiles
+#   $ alias config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
+#   $ config config --local status.showUntrackedFiles no
+# uso:
+#   $ config add <file>          <- añade un archivo para seguirlo
+#   $ config commit -m "mesaje"  <- envia los cambios
+#   $ config push                <- sube los cambios
+alias config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
+alias configc="config commit -a -m"
+
+# }}}
+
 ###########################################
 ###               ALIASES               ###
 ###########################################
@@ -90,12 +100,13 @@ alias clean="bleachbit -c --preset"
 alias fullclean="clean && sudo bleachbit -c --preset"
 alias search="tree -afR $HOME | fzf -e -i --layout=reverse-list --border=rounded --prompt='Buscar: '"
 alias weather="curl https://wttr.in/"
-alias yt-best="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 "
-alias yt-mp3="yt-dlp -x --audio-format mp3"
-alias yt-mp4="yt-dlp -f mp4"
 alias qbmem='cat "/proc/$(pgrep -f 'bin/qutebrowser')/smaps_rollup"'
-alias please="sudo"
-alias die="exit"
+alias remake='make clean && make'
+
+alias yt-mp3="yt-dlp --extract-audio --audio-format mp3 "
+alias yt-mp4="yt-dlp --format mp4 "
+alias yt-best="yt-dlp -f bestvideo+bestaudio "
+alias yt-xbest="yt-dlp --extract-audio --audio-format best "
 
 0file() { curl -F"file=@$1" https://envs.sh ; }    # 0file "file.png"
 0pb() { curl -F"file=@-;" https://envs.sh ; }      # echo "text" | 0pb
@@ -104,6 +115,9 @@ alias die="exit"
 
 alias wacom-osu='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" Area 1500 4600 7360 9200'
 alias wacom-reset='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" ResetArea'
+
+alias icat="kitty +kitten icat"
+alias diff="kitty +kitten diff"
 
 # }}}
 
