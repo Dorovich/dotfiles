@@ -6,7 +6,7 @@
 set completion-ignore-case on
 
 # variables globales
-export ALM="/media/vido25/Almacenamiento"
+export alm="/media/vido25/Almacenamiento"
 
 # binarios en ~/.local
 export PATH="${PATH}:${HOME}/.local/bin:${HOME}/.emacs.d/bin"
@@ -51,6 +51,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
+export VISUAL="emacs"
 export EDITOR="nvim"
 
 ###########################################
@@ -175,8 +176,9 @@ alias p1++="g++ -ansi -O2 -DNDEBUG -D_GLIBCXX_DEBUG -Wall -Wextra -Werror -Wno-s
 # compilador de C++ para PRO2:
 alias p2++="g++ -D_GLIBCXX_DEBUG -O2 -Wall -Wextra -Werror -Wno-sign-compare -std=c++11"
 
-export PRO="$HOME/Documentos/UPC/PRO2"
-export INC="$HOME/Documentos/UPC/PRO2/include"
-export OBJ="$HOME/Documentos/UPC/PRO2/objects"
+export pro="$HOME/Documentos/UPC/PRO2"
+export prac="$pro/practica"
+export inc="$HOME/Documentos/UPC/PRO2/include"
+export obj="$HOME/Documentos/UPC/PRO2/objects"
 
 # }}}
