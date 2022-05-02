@@ -103,15 +103,17 @@ alias search="tree -afR $HOME | fzf -e -i --layout=reverse-list --border=rounded
 alias weather="curl https://wttr.in/"
 alias qbmem='cat "/proc/$(pgrep -f 'bin/qutebrowser')/smaps_rollup"'
 alias remake='make clean && make'
+alias emacs="emacsclient -c -a 'emacs'"
 
 alias yt-mp3="yt-dlp --extract-audio --audio-format mp3 "
 alias yt-mp4="yt-dlp --format mp4 "
 alias yt-best="yt-dlp -f bestvideo+bestaudio "
 alias yt-xbest="yt-dlp --extract-audio --audio-format best "
 
+cdl() { cd $1 && ls ; }
 0file() { curl -F"file=@$1" https://envs.sh ; }    # 0file "file.png"
 0pb() { curl -F"file=@-;" https://envs.sh ; }      # echo "text" | 0pb
-0url() { curl -F"url=$1" https://envs.sh ; }       # 0rl "https://url"
+0url() { curl -F"url=$1" https://envs.sh ; }       # 0url "https://url"
 0short() { curl -F"shorten=$1" https://envs.sh ; } # 0short "https://long-url"
 
 alias wacom-osu='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" Area 1500 4600 7360 9200'
