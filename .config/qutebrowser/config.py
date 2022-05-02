@@ -13,7 +13,7 @@ c.content.default_encoding = "utf-8"
 
 # UI {{{
 config.source("colors.py")
-c.colors.webpage.prefers_color_scheme_dark = True
+c.colors.webpage.preferred_color_scheme = "dark"
 c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
 c.colors.webpage.darkmode.policy.page = 'smart'
@@ -97,14 +97,14 @@ config.bind("<Ctrl-k>", "fake-key <Shift-End><Delete>", "insert")
 c.url.searchengines = {
     'DEFAULT': 'https://searx.envs.net/search?q={}',
 #   'ddg': 'https://duckduckgo.com/?q={}',
-    'yt': 'https://www.youtube.com/results?search_query={}',
+#   'yt': 'https://www.youtube.com/results?search_query={}',
 #   'aw': 'https://wiki.archlinux.org/?search={}',
 #   'rd': 'https://www.reddit.com/r/{}',
-#   'wa': 'https://www.wolframalpha.com/input?i={}',
+    'wa': 'https://www.wolframalpha.com/input?i={}',
 #   'gh': 'https://github.com/search?q={}',
     'ggl': 'https://www.google.com/search?q={}',
-#   'sx': 'https://searx.envs.net/search?q={}',
-    'yan': 'https://yandex.com/search/?text={}',
+    'sx': 'https://searx.envs.net/search?q={}',
+#   'yan': 'https://yandex.com/search/?text={}',
     'wiki': 'https://en.wikipedia.org/wiki/{}',
     'trad': 'https://translate.google.com/?hl=es&sl=auto&tl=es&text={}&op=translate'
     }
