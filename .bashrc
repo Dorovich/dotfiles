@@ -51,7 +51,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export VISUAL="emacs"
+export VISUAL="emacsclient -c -a 'emacs'"
 export EDITOR="nvim"
 
 ###########################################
