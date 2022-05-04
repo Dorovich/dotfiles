@@ -1,6 +1,8 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc) for examples
 
+export VISUAL="emacsclient -c -a 'emacs'"
+export EDITOR="nvim"
 
 # ignore upper and lowercase when TAB completion
 set completion-ignore-case on
@@ -50,9 +52,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-export VISUAL="emacsclient -c -a 'emacs'"
-export EDITOR="nvim"
 
 gitstart () {
     echo '1. git init'
