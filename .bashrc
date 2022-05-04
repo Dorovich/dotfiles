@@ -54,6 +54,14 @@ fi
 export VISUAL="emacsclient -c -a 'emacs'"
 export EDITOR="nvim"
 
+gitstart () {
+    echo "1. git init"
+    echo "2. git remote add origin <link>"
+    echo "3. git branch -M main"
+    echo "4. git push -u origin main"
+    echo "recordar contraseña: git config credential.helper store"
+}
+
 ###########################################
 ###              DOTFILES               ###
 ###########################################
@@ -143,7 +151,7 @@ bash_prompt_command() {
     pwdmaxlen=$(( ( pwdmaxlen < ${#dir} ) ? ${#dir} : pwdmaxlen ))
 
     NEW_PWD=${PWD/#$HOME/\~}
-    
+
     local pwdoffset=$(( ${#NEW_PWD} - pwdmaxlen ))
 
     # Generate name
