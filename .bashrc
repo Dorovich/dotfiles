@@ -1,46 +1,21 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc) for examples
-
+### EXPORT
 export VISUAL="emacsclient -c -a 'emacs'"
 export EDITOR="nvim"
+export ALTERNATE_EDITOR="emacsclient -t -a ''"
+export HISTCONTROL=ignoreboth
+export alm="/media/vido25/Almacenamiento"
+export PATH="${PATH}:${HOME}/.local/bin:${HOME}/.emacs.d/bin"
 
 # ignore upper and lowercase when TAB completion
 set completion-ignore-case on
 
-# variables globales
-export alm="/media/vido25/Almacenamiento"
-
-# binarios en ~/.local
-export PATH="${PATH}:${HOME}/.local/bin:${HOME}/.emacs.d/bin"
-
-# If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
-
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-HISTCONTROL=ignoreboth
-
-# SHOPT
+### SHOPT
 shopt -s histappend     # do not overwrite history
 shopt -s checkwinsize   # checks term size when bash regains control
+shopt -s cdspell        # autocorrects cd misspellings
 
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
-
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-#shopt -s globstar
-
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -88,6 +63,7 @@ alias configc="config commit -a -m"
 # {{{
 
 alias v="nvim"
+alias em="emacsclient -t -a ''"
 alias aptup="sudo apt update && sudo apt upgrade"
 alias aptupd="sudo apt update"
 alias aptupg="sudo apt upgrade"
@@ -99,8 +75,8 @@ alias grep='grep --color=auto'
 #alias la='ls -A --color=auto'
 #alias ls='ls -CF --color=auto'
 alias ls='exa --icons --group-directories-first --no-time --no-user --color=auto -F'
+alias la='exa -a --icons --group-directories-first --no-time --no-user --color=auto -F'
 alias ll='exa -l --icons --group-directories-first --no-time --no-user --color=auto -F'
-alias la='exa -la --icons --group-directories-first --no-time --no-user --color=auto -F'
 alias fetch="neofetch --config $HOME/.config/neofetch/config.conf"
 alias neofetch="neofetch --config none"
 alias xmas="~/.local/bin/christmas.sh"
@@ -182,9 +158,9 @@ export PS1="\n\[$bold$color1\]@\[$reset\] \[$bold$color2\]\$NEW_PWD\[$reset\] > 
 ############################################
 # {{{
 
-# compilador de C++ para PRO1:
+# Compilador de C++ para PRO1:
 alias p1++="g++ -ansi -O2 -DNDEBUG -D_GLIBCXX_DEBUG -Wall -Wextra -Werror -Wno-sign-compare -Wshadow"
-# compilador de C++ para PRO2:
+# Compilador de C++ para PRO2:
 alias p2++="g++ -D_GLIBCXX_DEBUG -O2 -Wall -Wextra -Werror -Wno-sign-compare -std=c++11"
 
 export pro="$HOME/Documentos/UPC/PRO2"
