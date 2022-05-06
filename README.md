@@ -5,7 +5,7 @@
 - Distro: `Pop!_OS`
 - Terminal: `kitty`
 - Shell: `bash`
-- Editor: `neovim`
+- Editor: `emacs`, `neovim`
 - Buscador: `firefox`, `qutebrowser`
 - Fuente: `mononoki`, `Fira Code NF`
 - Tema GTK: `Juno ocean`
