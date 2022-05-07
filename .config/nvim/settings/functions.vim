@@ -44,6 +44,7 @@ function! MyHighlights() abort
     highlight CursorLine    cterm=NONE           ctermbg=234
     highlight CursorLineNr  cterm=bold ctermfg=6 ctermbg=234
     highlight NonText       cterm=NONE ctermfg=0
+    highlight Comment       cterm=NONE ctermfg=8
 endfunction
 
 augroup MyColors
@@ -51,4 +52,4 @@ augroup MyColors
     autocmd ColorScheme * call MyHighlights()
 augroup END
 
-colorscheme pablo
+colorscheme koehler
