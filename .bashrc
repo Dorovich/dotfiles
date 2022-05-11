@@ -38,6 +38,16 @@ gitstart () {
     echo 'recordar contraseña: git config credential.helper store'
 }
 
+run() {
+    if [ -f ./run ];
+    then
+        ./run
+    else
+        echo 'File "run" not detected in current directory'
+        echo 'Make sure it is marked as executable!'
+    fi
+}
+
 ###########################################
 ###              DOTFILES               ###
 ###########################################
@@ -106,6 +116,11 @@ alias wacom-reset='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" ResetArea'
 
 alias icat="kitty +kitten icat"
 alias diff="kitty +kitten diff"
+
+alias ga="git add"
+alias gc="git commit -a -m"
+alias gs="git status"
+alias gp="git push"
 
 # }}}
 
