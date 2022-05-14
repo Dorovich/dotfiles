@@ -90,6 +90,7 @@ alias weather="curl https://wttr.in/"
 alias qbmem='cat "/proc/$(pgrep -f 'bin/qutebrowser')/smaps_rollup"'
 alias remake='make clean && make'
 alias emacs="emacsclient -c -a 'emacs'"
+alias mp="ncmpcpp"
 
 alias yt-mp3="yt-dlp --extract-audio --audio-format mp3 "
 alias yt-mp4="yt-dlp --format mp4 "
