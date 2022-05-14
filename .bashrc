@@ -28,16 +28,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-gitstart () {
-    echo '1. git init'
-    echo '2. git remote add origin <link>'
-    echo '3. git branch -M main'
-    echo '4. git add <archivos>'
-    echo '5. git commit -a -m "mensaje"'
-    echo '6. git push -u origin main'
-    echo 'recordar contraseña: git config credential.helper store'
-}
-
+# run file
 run() {
     if [ -f ./run ];
     then
@@ -117,11 +108,6 @@ alias wacom-reset='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" ResetArea'
 alias icat="kitty +kitten icat"
 alias diff="kitty +kitten diff"
 
-alias ga="git add"
-alias gc="git commit -a -m"
-alias gs="git status"
-alias gp="git push"
-
 # }}}
 
 ############################################
@@ -182,5 +168,32 @@ export pro="$HOME/Documentos/UPC/PRO2"
 export prac="$pro/practica"
 export inc="$HOME/Documentos/UPC/PRO2/include"
 export obj="$HOME/Documentos/UPC/PRO2/objects"
+
+# }}}
+
+############################################
+###                  GIT                 ###
+############################################
+# {{{
+
+alias ga="git add"
+alias gd="git diff"
+alias gs="git status"
+alias gp="git push"
+alias gcl="git clone"
+alias gr="git rm -r"
+gc() {
+    git commit -a -m "$*"
+}
+
+gitstart () {
+    echo '1. git init'
+    echo '2. git remote add origin <link>'
+    echo '3. git branch -M main'
+    echo '4. git add <archivos>'
+    echo '5. git commit -a -m "mensaje"'
+    echo '6. git push -u origin main'
+    echo 'recordar contraseña: git config credential.helper store'
+}
 
 # }}}
