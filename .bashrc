@@ -182,6 +182,7 @@ alias gd="git diff"
 alias gs="git status"
 alias gp="git push"
 alias gcl="git clone"
+alias gpl="git pull"
 alias gr="git rm -r"
 gc() {
     git commit -a -m "$*"
