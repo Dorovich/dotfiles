@@ -40,25 +40,6 @@ run() {
 }
 
 ###########################################
-###              DOTFILES               ###
-###########################################
-# {{{
-
-# dotfiles:
-#   $ mkdir ~/dotfiles
-#   $ git init --bare $HOME/dotfiles
-#   $ alias config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
-#   $ config config --local status.showUntrackedFiles no
-# uso:
-#   $ config add <file>          <- añade un archivo para seguirlo
-#   $ config commit -m "mesaje"  <- envia los cambios
-#   $ config push                <- sube los cambios
-alias config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
-alias configc="config commit -a -m"
-
-# }}}
-
-###########################################
 ###               ALIASES               ###
 ###########################################
 # {{{
@@ -184,11 +165,13 @@ alias gp="git push"
 alias gcl="git clone"
 alias gpl="git pull"
 alias gr="git rm -r"
+alias gl='git log --pretty=format:"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]" --abbrev-commit -30'
+
 gc() {
     git commit -a -m "$*"
 }
 
-gitstart () {
+gitstart() {
     echo '1. git init'
     echo '2. git remote add origin <link>'
     echo '3. git branch -M main'
@@ -196,6 +179,29 @@ gitstart () {
     echo '5. git commit -a -m "mensaje"'
     echo '6. git push -u origin main'
     echo 'recordar contraseña: git config credential.helper store'
+}
+
+### DOTFILES ==>
+
+alias config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
+alias configa="config add"
+alias configd="config diff"
+alias configs="config status"
+alias configp="config push"
+alias configpl="config pull"
+alias configr="config rm -r"
+alias configl='config log --pretty=format:"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]" --abbrev-commit -30'
+
+configc() {
+    config commit -a -m "$*"
+}
+
+configstart() {
+    echo '1. mkdir ~/dotfiles'
+    echo '2. git init --bare $HOME/dotfiles'
+    echo '3. alias config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"'
+    echo '4. config config --local status.showUntrackedFiles no'
+    echo 'ver comando "gitstart" para mas info de git'
 }
 
 # }}}

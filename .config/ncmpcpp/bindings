@@ -549,14 +549,27 @@
 #def_key "q"
 #  quit
 #
+
+def_key "ctrl-h"
+   previous
+
 def_key "ctrl-j"
    move_selected_items_down
 
 def_key "ctrl-k"
    move_selected_items_up
 
+def_key "ctrl-l"
+   next
+
+def_key "h"
+  volume_down
+
 def_key "j"
   scroll_down
 
 def_key "k"
   scroll_up
+
+def_key "l"
+  volume_up
