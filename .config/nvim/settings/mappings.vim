@@ -10,16 +10,18 @@ nnoremap <silent> <Leader>q :q<CR>
 nnoremap <silent> <leader><S-q> :q!<CR>
 nnoremap <S-h> <Home>
 nnoremap <S-l> <End>
-inoremap jk <Esc>
-inoremap kj <Esc>
+imap jk <Esc>
+imap kj <Esc>
+vmap q <Esc>
 nnoremap <silent> <TAB> :bnext<CR>
 nnoremap <silent> <S-TAB> :bprevious<CR>
-nnoremap <silent> <C-c> :bdelete!<CR>
+nnoremap <silent> <C-c> :bdelete<CR>
 xnoremap < <gv
 xnoremap > >gv
 nmap <silent> U <C-r>
 nmap <S-y> y$
 map ; :
+map ñ :
 nnoremap <Leader><Leader> za
 nnoremap <silent> <Leader>f :Lex %:p:h<CR>
 nnoremap <silent> <Leader>e :Lex %:p:h<CR>

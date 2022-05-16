@@ -18,6 +18,7 @@ set hlsearch
 set incsearch
 set mouse=a
 set pumheight=10
+set timeoutlen=500
 set hidden
 set nowrap
 set nobackup
