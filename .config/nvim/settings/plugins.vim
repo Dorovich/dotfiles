@@ -27,21 +27,6 @@ Plug 'bfrg/vim-cpp-modern'                      " Mejores colores para C/C++
 call plug#end()
 
 " CONFIGS {{{
-" lightline
-" (inactivo) {{{
-"   if !has('gui_running')
-"     set t_Co=256
-"   endif
-
-"   let g:lightline = { 'colorscheme': 'one' }
-"   let g:lightline#bufferline#shorten_path = 0
-"   let g:lightline#bufferline#unnamed      = '[No Name]'
-"   let g:lightline#bufferline#modified = ' *'
-"   let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
-"   let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
-"   let g:lightline.component_type   = {'buffers': 'tabsel'}
-"   let g:lightline#bufferline#enable_devicons = 1
-"   }}}
       
 " bufferline
 let g:bufferline_echo = 1
@@ -49,6 +34,7 @@ let g:bufferline_active_buffer_left = '['
 let g:bufferline_active_buffer_right = ']'
 let g:bufferline_show_bufnr = 0
 let g:bufferline_pathshorten = 1
+let g:bufferline_modified = '+'
 
 " coc
 let g:coc_global_extensions = [
@@ -60,32 +46,7 @@ let g:coc_global_extensions = [
   \ ]
   
 " nerdtree
-let g:NERDTreeDirArrowExpandable="+"
-let g:NERDTreeDirArrowCollapsible="-"
+let g:NERDTreeDirArrowExpandable="►"
+let g:NERDTreeDirArrowCollapsible="▼"
 
-" startify
-"let g:startify_custom_header = [
-"    \ '                                                                     ',
-"    \ '              ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗     ',
-"    \ '              ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║     ',
-"    \ '              ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║     ',
-"    \ '              ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║     ',
-"    \ '              ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║     ',
-"    \ '              ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝     ',
-"    \ '                                                                     ',
-"    \ ]
-"            
-"let g:startify_change_to_dir = 1
-"let g:startify_enable_special = 0
-"let g:startify_files_number = 5
-"let g:startify_lists = [
-"    \ { 'type': 'files',     'header': ['   recent']             },
-"    \ { 'type': 'dir',       'header': ['   files @ '. getcwd()] },
-"    \ { 'type': 'bookmarks', 'header': ['   bookmarks']          },
-"    \ ]
-"let g:startify_bookmarks = [
-"    \ { 'f': '~/.config/nvim/init.vim'     },
-"    \ { 'g': '~/.bashrc'                   },
-"    \ { 'h': '~/.config/kitty/kitty.conf'  },
-"    \ ]
 " }}}

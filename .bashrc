@@ -28,14 +28,67 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# run file
-run() {
-    if [ -f ./run ];
-    then
-        ./run
+# run c/c++ file
+crun() {
+    if [ -f crun ]; then
+        ./crun
     else
-        echo 'File "run" not detected in current directory'
-        echo 'Make sure it is marked as executable!'
+
+        __error=$(tput setaf 1)
+        __noerror=$(tput setaf 2)
+        __info=$(tput setaf 3)
+        __advice=$(tput dim)
+        __bold=$(tput bold)
+        __reset=$(tput sgr0)
+#       __data="real time: \t%E \nuser time: \t%U \nsystem time: \t%S \npage faults: \tmajor: %F, minor: %R \nmemory (kb): \t%K"
+
+        echo "${__advice}make sure program is named 'program.exe' and input (if needed) 'inp.txt'...${__reset}"
+
+        if [ -f program.exe ]; then
+            # check for makefile
+            echo "${__bold}${__info}searching makefile...${__reset}"
+            if [ -f Makefile ]; then
+                echo "${__bold}${__noerror}file found!${__reset} ${__bold}${__info}comparing modifications...${__reset}"
+                make
+            else
+                echo "${__bold}${__error}file not found!${__reset} ${__bold}${__info}resuming...${__reset}"
+            fi
+
+            # check for input file
+            echo "${__bold}${__info}searching input file...${__reset}"
+            if [ -f inp.txt ]; then 
+                echo "${__bold}${__noerror}file found!${__reset} ${__bold}${__info}executing program...${__reset}"
+                touch out.txt
+#               time -f "${__data}" ./program.exe < inp.txt > out.txt
+                ./program.exe < inp.txt > out.txt
+                echo "${__bold}${__info}comparing results...${__reset}"
+                if [ -f sample_out.txt ]; then
+                    meld out.txt sample_out.txt
+                else
+                    echo "${__bold}${__error}sample output not found!${__reset} ${__bold}${__info}displaying output...${__reset}"
+                    cat out.txt
+                fi
+            else
+                echo "${__bold}${__error}file not found!${__reset} ${__bold}${__info}executing program manually...${__reset}"
+                ./program.exe
+            fi
+        else
+            # check for makefile
+            echo "${__bold}${__error}program not found!${__reset} ${__bold}${__info}searching makefile...${__reset}"
+            if [ -f Makefile ]; then
+                # check if program compiled
+                echo "${__bold}${__noerror}file found!${__reset} ${__bold}${__info}compiling program...${__reset}"
+                make
+                if [ -f program.exe ]; then
+                    crun
+                else
+                    echo "${__bold}${__error}program did not compile!${__reset} ${__bold}${__info}cannot resume, critical files missing...${__reset}"
+                fi
+            else
+                echo "${__bold}${__error}file not found!${__reset} ${__bold}${__info}cannot resume, critical files missing...${__reset}"
+            fi
+        fi
+
     fi
 }
 
