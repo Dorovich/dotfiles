@@ -15,7 +15,7 @@ imap kj <Esc>
 vmap q <Esc>
 nnoremap <silent> <TAB> :bnext<CR>
 nnoremap <silent> <S-TAB> :bprevious<CR>
-nnoremap <silent> <C-c> :bdelete<CR>
+nnoremap <silent> <C-c> :bdelete!<CR>
 xnoremap < <gv
 xnoremap > >gv
 nmap <silent> U <C-r>

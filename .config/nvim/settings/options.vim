@@ -1,6 +1,7 @@
 set laststatus=0
 set showtabline=0
 set showmode
+set path+=**
 set wildmenu
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.exe,*.o,*.mp3,*.mp4,*.mov,*.mkv,*.ogg,*.dat
 set ruler

@@ -38,13 +38,28 @@ autocmd FileType netrw setl bufhidden=wipe
 
 " COLORES
 function! MyHighlights() abort
+    "DT's:
+    highlight Normal       cterm=none ctermfg=15   ctermbg=none
+    highlight VertSplit    cterm=none ctermfg=0    ctermbg=8
+    highlight Statement    cterm=none ctermfg=3    ctermbg=none
+    highlight Directory    cterm=none ctermfg=4    ctermbg=none
+    highlight Constant     cterm=none ctermfg=3    ctermbg=none
+    highlight Special      cterm=none ctermfg=4    ctermbg=none
+    highlight Identifier   cterm=none ctermfg=6    ctermbg=none
+    highlight PreProc      cterm=none ctermfg=5    ctermbg=none
+    highlight String       cterm=none ctermfg=12   ctermbg=none
+    highlight Number       cterm=none ctermfg=1    ctermbg=none
+    highlight Function     cterm=none ctermfg=1    ctermbg=none
+    highlight Visual       cterm=none ctermfg=234  ctermbg=8
+
+    " PERSONAL:
     highlight clear CursorLine
-    highlight ModeMsg       cterm=NONE ctermfg=6
-    highlight LineNr        cterm=NONE ctermfg=8
-    highlight CursorLine    cterm=NONE           ctermbg=234
-    highlight CursorLineNr  cterm=bold ctermfg=6 ctermbg=234
-    highlight NonText       cterm=NONE ctermfg=0
-    highlight Comment       cterm=NONE ctermfg=8
+    highlight ModeMsg      cterm=none ctermfg=6    ctermbg=none
+    highlight LineNr       cterm=none ctermfg=8    ctermbg=none
+    highlight CursorLine   cterm=none ctermfg=none ctermbg=234
+    highlight CursorLineNr cterm=bold ctermfg=6    ctermbg=234
+    highlight NonText      cterm=none ctermfg=0    ctermbg=none
+    highlight Comment      cterm=none ctermfg=8    ctermbg=none
 endfunction
 
 augroup MyColors

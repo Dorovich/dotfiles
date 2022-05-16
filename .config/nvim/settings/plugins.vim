@@ -14,18 +14,15 @@ endif
 " Plugin setup
 call plug#begin()
 
-Plug 'junegunn/fzf'                                 " [leader-f] Buscador de archivos visual
-Plug 'junegunn/fzf.vim'                             "            Lo mismo de arriba
-Plug 'scrooloose/nerdTree'                          " [leader-o] Menu lateral de archivos
-Plug 'tpope/vim-surround'                           "            Cierra parentesis automaticamente
-"Plug 'itchyny/lightline.vim'                        "            Barra de estado inferior
-Plug 'terryma/vim-multiple-cursors'                 " [leader-n] Editar multiples instancias
-Plug 'neoclide/coc.nvim', {'branch': 'release'}     "            Autocompletado
-"Plug 'mengelbrecht/lightline-bufferline'            "            Barra de buffers superior
-Plug 'ryanoasis/vim-devicons'                       "            Iconos dentro de la terminal
-"Plug 'mhinz/vim-startify'                           "            Pantalla de inicio
-"Plug 'mangeshrex/everblush.vim'                     "            Paleta de colores
-Plug 'bling/vim-bufferline'
+Plug 'junegunn/fzf'                             " Buscador de archivos visual
+Plug 'junegunn/fzf.vim'                         " Lo mismo de arriba
+Plug 'scrooloose/nerdTree'                      " Menu lateral de archivos
+Plug 'tpope/vim-surround'                       " Cierra parentesis automaticamente
+Plug 'terryma/vim-multiple-cursors'             " Editar multiples instancias
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocompletado
+Plug 'ryanoasis/vim-devicons'                   " Iconos dentro de la terminal
+Plug 'bling/vim-bufferline'                     " Lista de buffers inferior
+Plug 'bfrg/vim-cpp-modern'                      " Mejores colores para C/C++
 
 call plug#end()
 
