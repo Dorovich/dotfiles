@@ -6,6 +6,7 @@ set wildmenu
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.exe,*.o,*.mp3,*.mp4,*.mov,*.mkv,*.ogg,*.dat
 set ruler
 set number
+set relativenumber
 set lazyredraw
 set so=7
 set expandtab
@@ -24,13 +25,14 @@ set hidden
 set nowrap
 set nobackup
 set nowritebackup
+set gdefault
 set clipboard=unnamedplus
 set encoding=UTF-8
 set foldenable
 set foldmethod=marker
 set cursorline
 set title
-set titlestring=%f\ %a\ %m titlelen=70
+set titlestring=%t\ %m titlelen=70
 filetype plugin on
 filetype plugin indent on
 syntax on

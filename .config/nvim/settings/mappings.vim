@@ -7,7 +7,7 @@ nnoremap <silent> <C-s> :w!<CR>
 nnoremap <silent> <C-q> :q<CR>
 nnoremap <silent> <Leader>w :w!<CR>
 nnoremap <silent> <Leader>q :q<CR>
-nnoremap <silent> <leader><S-q> :q!<CR>
+nnoremap <silent> <Leader><S-q> :q!<CR>
 nnoremap <S-h> <Home>
 nnoremap <S-l> <End>
 imap jk <Esc>
@@ -33,9 +33,13 @@ nnoremap <silent> <M-j> :resize -2<CR>
 nnoremap <silent> <M-k> :resize +2<CR>
 nnoremap <silent> <M-h> :vertical resize -2<CR>
 nnoremap <silent> <M-l> :vertical resize +2<CR>
-nnoremap <Leader>p ebi(<Esc>ea)<Esc>
-nnoremap <Leader>l ebi{<Esc>ea}<Esc>
-nnoremap <Leader>c ebi[<Esc>ea]<Esc>
+nnoremap <Leader>pp bi(<Esc>ea)<Esc>
+nnoremap <Leader>ll bi{<Esc>ea}<Esc>
+nnoremap <Leader>cc bi[<Esc>ea]<Esc>
+nnoremap / /\v
+vnoremap / /\v
+nnoremap <Leader>h :noh<cr>
+nnoremap <Leader>v V`]
 " }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
