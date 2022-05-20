@@ -10,8 +10,8 @@ nnoremap <silent> <Leader>q :q<CR>
 nnoremap <silent> <Leader><S-q> :q!<CR>
 nnoremap <S-h> <Home>
 nnoremap <S-l> <End>
-imap jk <Esc>
-imap kj <Esc>
+imap jk <Esc>l
+imap kj <Esc>l
 vmap q <Esc>
 nnoremap <silent> <TAB> :bnext<CR>
 nnoremap <silent> <S-TAB> :bprevious<CR>
