@@ -58,6 +58,7 @@ alias fullclean="clean && sudo bleachbit -c --preset"
 alias search="tree -afR $HOME | fzf -e -i --layout=reverse-list --border=rounded --prompt='Buscar: '"
 alias weather="curl https://wttr.in/"
 alias qbmem='cat "/proc/$(pgrep -f 'bin/qutebrowser')/smaps_rollup"'
+alias myip="ip -c a"
 alias remake='make clean && make'
 alias emacs="emacsclient -c -a 'emacs'"
 alias mp="ncmpcpp"

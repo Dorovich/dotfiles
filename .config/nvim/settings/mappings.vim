@@ -44,7 +44,7 @@ nnoremap <Leader>v V`]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""           FUNCTION MAPPINGS             """""""
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " (Espacio dos veces para desplegar) {{{
 "nnoremap <silent> <F1> :call ToggleFocusMode()<CR>
 " }}}

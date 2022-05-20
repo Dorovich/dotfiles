@@ -10,6 +10,7 @@ set ruler
 set number
 set lazyredraw
 set showmode
+set path+=**
 set smarttab
 set autoindent
 set mouse=a
@@ -25,6 +26,7 @@ set incsearch
 filetype plugin on
 filetype plugin indent on
 set pumheight=10
+set timeoutlen=500
 set title
 set encoding=utf-8
 set expandtab
@@ -53,11 +55,12 @@ nnoremap <silent> <C-s> :w!<CR>
 nnoremap <silent> <C-q> :q<CR>
 nnoremap <silent> <Leader>w :w!<CR>
 nnoremap <silent> <Leader>q :q<CR>
-nnoremap <silent> <leader><S-q> :q!<CR>
+nnoremap <silent> <Leader><S-q> :q!<CR>
 nnoremap <S-h> <Home>
 nnoremap <S-l> <End>
-inoremap jk <Esc>
-inoremap kj <Esc>
+imap jk <Esc>
+imap kj <Esc>
+vmap q <Esc>
 nnoremap <silent> <TAB> :bnext<CR>
 nnoremap <silent> <S-TAB> :bprevious<CR>
 nnoremap <silent> <C-c> :bdelete!<CR>
@@ -66,6 +69,7 @@ xnoremap > >gv
 nmap <silent> U <C-r>
 nmap <S-y> y$
 map ; :
+map ñ :
 nnoremap <Leader><Leader> za
 nnoremap <silent> <Leader>f :Lex %:p:h<CR>
 nnoremap <silent> <Leader>e :Lex %:p:h<CR>
@@ -77,9 +81,13 @@ nnoremap <silent> <M-j> :resize -2<CR>
 nnoremap <silent> <M-k> :resize +2<CR>
 nnoremap <silent> <M-h> :vertical resize -2<CR>
 nnoremap <silent> <M-l> :vertical resize +2<CR>
-nnoremap <Leader>p ebi(<Esc>ea)<Esc>
-nnoremap <Leader>l ebi{<Esc>ea}<Esc>
-nnoremap <Leader>c ebi[<Esc>ea]<Esc>
+nnoremap <Leader>pp bi(<Esc>ea)<Esc>
+nnoremap <Leader>ll bi{<Esc>ea}<Esc>
+nnoremap <Leader>cc bi[<Esc>ea]<Esc>
+nnoremap / /\v
+vnoremap / /\v
+nnoremap <Leader>h :noh<cr>
+nnoremap <Leader>v V`]
 " }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -87,12 +95,28 @@ nnoremap <Leader>c ebi[<Esc>ea]<Esc>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " (Espacio dos veces para desplegar) {{{
 function! MyHighlights() abort
+    "DT's
+    highlight Normal       cterm=none ctermfg=15   ctermbg=none
+    highlight VertSplit    cterm=none ctermfg=0    ctermbg=8
+    highlight Statement    cterm=none ctermfg=3    ctermbg=none
+    highlight Directory    cterm=none ctermfg=4    ctermbg=none
+    highlight Constant     cterm=none ctermfg=3    ctermbg=none
+    highlight Special      cterm=none ctermfg=4    ctermbg=none
+    highlight Identifier   cterm=none ctermfg=6    ctermbg=none
+    highlight PreProc      cterm=none ctermfg=5    ctermbg=none
+    highlight String       cterm=none ctermfg=12   ctermbg=none
+    highlight Number       cterm=none ctermfg=1    ctermbg=none
+    highlight Function     cterm=none ctermfg=1    ctermbg=none
+    highlight Visual       cterm=none ctermfg=234  ctermbg=8
+
+    "PERSONAL
     highlight clear CursorLine
-    highlight ModeMsg       cterm=NONE ctermfg=6
-    highlight LineNr        cterm=NONE ctermfg=8
-    highlight CursorLine    cterm=NONE           ctermbg=234
-    highlight CursorLineNr  cterm=bold ctermfg=6 ctermbg=234
-    highlight NonText       cterm=NONE ctermfg=0
+    highlight ModeMsg      cterm=none ctermfg=6    ctermbg=none
+    highlight LineNr       cterm=none ctermfg=8    ctermbg=none
+    highlight CursorLine   cterm=none ctermfg=none ctermbg=234
+    highlight CursorLineNr cterm=bold ctermfg=6    ctermbg=234
+    highlight NonText      cterm=none ctermfg=0    ctermbg=none
+    highlight Comment      cterm=none ctermfg=8    ctermbg=none
 endfunction
 
 augroup MyColors

@@ -29,7 +29,8 @@ call plug#end()
 " CONFIGS {{{
       
 " bufferline
-let g:bufferline_echo = 1
+" poner a 1 para activar el plugin
+let g:bufferline_echo = 0
 let g:bufferline_active_buffer_left = '['
 let g:bufferline_active_buffer_right = ']'
 let g:bufferline_show_bufnr = 0

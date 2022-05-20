@@ -38,7 +38,7 @@ autocmd FileType netrw setl bufhidden=wipe
 
 " COLORES
 function! MyHighlights() abort
-    "DT's:
+    "DT's
     highlight Normal       cterm=none ctermfg=15   ctermbg=none
     highlight VertSplit    cterm=none ctermfg=0    ctermbg=8
     highlight Statement    cterm=none ctermfg=3    ctermbg=none
@@ -52,7 +52,7 @@ function! MyHighlights() abort
     highlight Function     cterm=none ctermfg=1    ctermbg=none
     highlight Visual       cterm=none ctermfg=234  ctermbg=8
 
-    " PERSONAL:
+    "PERSONAL
     highlight clear CursorLine
     highlight ModeMsg      cterm=none ctermfg=6    ctermbg=none
     highlight LineNr       cterm=none ctermfg=8    ctermbg=none
