@@ -28,20 +28,19 @@ user_interface        = classic
 volume_color          = "white"
 
 # window
-song_window_title_format = "music"
+song_window_title_format = "{%a} - {%t}"
 statusbar_visibility     = "no"
 header_visibility        = "no"
 titles_visibility        = "no"
 
 # progress bar
-progressbar_look          = "---"
+progressbar_look          = "▃▃▃"
 progressbar_color         = "black"
-progressbar_elapsed_color = "yellow"
+progressbar_elapsed_color = "white"
 
 # song list
 song_status_format       = "$5%t$9"
 song_list_format         = "$(254)%t$R  $(256)$5  %l$8$9"
-#song_columns_list_format = "(53)[blue]{tr} (45)[blue]{a}"
 song_columns_list_format = "(53)[blue]{tr} (45)[blue]{a}"
 
 current_item_prefix      = "$b$2| "
@@ -50,11 +49,10 @@ current_item_suffix      = "$/b$9"
 now_playing_prefix       = "$b$5 "
 now_playing_suffix       = "$/b$9"
 
-song_library_format = {{%a - %t} (%b)}|{%f}
+song_library_format      = {{%a - %t} (%b)}|{%f}
 
 # colors
-main_window_color = "white"
-
+main_window_color        = "white"
 
 current_item_inactive_column_prefix = red
 current_item_inactive_column_suffix = red
