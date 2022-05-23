@@ -34,7 +34,7 @@ set expandtab
 set tabstop=8
 set shiftwidth=4
 set softtabstop=4
-set so=7
+set scrolloff=7
 set foldenable
 set foldmethod=marker
 set title

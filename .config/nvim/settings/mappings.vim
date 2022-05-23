@@ -38,7 +38,7 @@ nnoremap <Leader>ll bi{<Esc>ea}<Esc>
 nnoremap <Leader>cc bi[<Esc>ea]<Esc>
 nnoremap / /\v
 vnoremap / /\v
-nnoremap <Leader>h :noh<cr>
+nnoremap <silent> <Leader>h :noh<cr>
 nnoremap <Leader>v V`]
 " }}}
 
@@ -53,10 +53,10 @@ nnoremap <Leader>v V`]
 """""""            PLUGIN MAPPINGS              """""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " (Espacio dos veces para desplegar) {{{
-map <leader>f :Files<CR>
+map <silent> <leader>f :Files<CR>
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
-map <leader>n :NERDTreeToggle<CR>
+map <silent> <leader>n :NERDTreeToggle<CR>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)

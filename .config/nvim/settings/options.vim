@@ -8,7 +8,7 @@ set ruler
 set number
 set relativenumber
 set lazyredraw
-set so=7
+set scrolloff=7
 set expandtab
 set tabstop=8
 set shiftwidth=4
