@@ -10,8 +10,8 @@ autocenter_mode                  = "yes"
 centered_cursor                  = "yes"
 ignore_leading_the               = "yes"
 allow_for_physical_item_deletion = "no"
-lines_scrolled = "1"
-follow_now_playing_lyrics = "yes"
+lines_scrolled                   = "1"
+follow_now_playing_lyrics        = "yes"
 
 # visualizer
 visualizer_data_source = /tmp/mpd.fifo
@@ -19,6 +19,7 @@ visualizer_output_name = "mpd_visualizer"
 visualizer_type        = "ellipse"
 visualizer_look        = ●● 
 visualizer_color       = "46, 10, 5"
+visualizer_spectrum_gain = 20
 
 # appearance
 colors_enabled        = "yes"
@@ -33,24 +34,30 @@ header_visibility        = "no"
 titles_visibility        = "no"
 
 # progress bar
-progressbar_look          = "   "
+progressbar_look          = "---"
 progressbar_color         = "black"
 progressbar_elapsed_color = "yellow"
 
 # song list
-song_status_format       = "$5%t"
-song_list_format         = "$(254)%t$R  $(256)$5  %l$8"
+song_status_format       = "$5%t$9"
+song_list_format         = "$(254)%t$R  $(256)$5  %l$8$9"
+#song_columns_list_format = "(53)[blue]{tr} (45)[blue]{a}"
 song_columns_list_format = "(53)[blue]{tr} (45)[blue]{a}"
 
 current_item_prefix      = "$b$2| "
-current_item_suffix      = "$/b$5"
+current_item_suffix      = "$/b$9"
 
-now_playing_prefix       = "$b$5 | "
-now_playing_suffix       = "$/b$5"
+now_playing_prefix       = "$b$5 "
+now_playing_suffix       = "$/b$9"
 
 song_library_format = {{%a - %t} (%b)}|{%f}
 
 # colors
 main_window_color = "white"
+
+
+current_item_inactive_column_prefix = red
+current_item_inactive_column_suffix = red
+
 color1 = "white"
 color2 = "blue"

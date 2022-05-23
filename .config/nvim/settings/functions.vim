@@ -54,6 +54,7 @@ function! MyHighlights() abort
 
     "PERSONAL
     highlight clear CursorLine
+    "highlight clear StatusLine
     highlight ModeMsg      cterm=none ctermfg=6    ctermbg=none
     highlight LineNr       cterm=none ctermfg=8    ctermbg=none
     highlight CursorLine   cterm=none ctermfg=none ctermbg=234
