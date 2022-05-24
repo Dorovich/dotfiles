@@ -21,14 +21,10 @@ set nowritebackup
 set noswapfile
 set nowrap
 set clipboard=unnamedplus
-syntax on
 set hlsearch
 set incsearch
-filetype plugin on
-filetype plugin indent on
 set pumheight=10
 set timeoutlen=500
-set title
 set encoding=utf-8
 set expandtab
 set tabstop=8
@@ -40,6 +36,10 @@ set foldmethod=marker
 set title
 set cursorline
 set titlestring=%f\ %a\ %m titlelen=70
+set statusline=\ 
+syntax on
+filetype plugin on
+filetype plugin indent on
 let g:netrw_winsize = 30
 let g:netrw_banner = 0
 let g:netrw_keepdir = 0
@@ -88,7 +88,6 @@ nnoremap <Leader>cc bi[<Esc>ea]<Esc>
 nnoremap / /\v
 vnoremap / /\v
 nnoremap <Leader>h :noh<cr>
-nnoremap <Leader>v V`]
 " }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -118,6 +117,7 @@ function! MyHighlights() abort
     highlight CursorLineNr cterm=bold ctermfg=6    ctermbg=234
     highlight NonText      cterm=none ctermfg=0    ctermbg=none
     highlight Comment      cterm=none ctermfg=8    ctermbg=none
+    highlight StatusLine   cterm=none ctermfg=none ctermbg=none
 endfunction
 
 augroup MyColors

@@ -54,13 +54,13 @@ function! MyHighlights() abort
 
     "PERSONAL
     highlight clear CursorLine
-    "highlight clear StatusLine
     highlight ModeMsg      cterm=none ctermfg=6    ctermbg=none
     highlight LineNr       cterm=none ctermfg=8    ctermbg=none
     highlight CursorLine   cterm=none ctermfg=none ctermbg=234
     highlight CursorLineNr cterm=bold ctermfg=6    ctermbg=234
     highlight NonText      cterm=none ctermfg=0    ctermbg=none
     highlight Comment      cterm=none ctermfg=8    ctermbg=none
+    highlight StatusLine   cterm=none ctermfg=none ctermbg=none
 endfunction
 
 augroup MyColors

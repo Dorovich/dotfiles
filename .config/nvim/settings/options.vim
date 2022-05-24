@@ -33,6 +33,7 @@ set foldmethod=marker
 set cursorline
 set title
 set titlestring=%t\ %m titlelen=70
+set statusline=\ 
 filetype plugin on
 filetype plugin indent on
 syntax on
