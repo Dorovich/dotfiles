@@ -1,9 +1,9 @@
 sw_volume: 37
 audio_device_state:1:pulse audio
 audio_device_state:1:my_fifo
-state: pause
+state: play
 current: 1
-time: 75.039000
+time: 86.696000
 random: 0
 repeat: 0
 single: 0
@@ -12,12 +12,27 @@ crossfade: 0
 mixrampdb: 0.000000
 mixrampdelay: -1.000000
 playlist_begin
-0:Deleted File Recovery/Six Leaves Left - Somewhere Else [1466159910].mp3
-1:Deleted File Recovery/Six Leaves Left - Black Sand [3288306907].mp3
-2:Deleted File Recovery/Six Leaves Left - Deleted File Recovery [2933030974].mp3
-3:Deleted File Recovery/Six Leaves Left - Empty Fields (feat. Dimi Kaye) [3011604755].mp3
-4:Deleted File Recovery/Six Leaves Left - Wildest Dreams [1145938538].mp3
-5:Deleted File Recovery/Six Leaves Left - I Don't Care Anymore (feat. Fran Santocono) [3976021344].mp3
-6:Deleted File Recovery/Six Leaves Left - Everything We Left Behind [1098782558].mp3
-7:Deleted File Recovery/Six Leaves Left - One Last Dance [4254594538].mp3
+0:Touhou Remixes/[Touhou] Brown Sugar (原曲 -上海紅茶館).mp3
+1:Touhou Remixes/[Touhou] Sunshine Shrine (原曲 -少女綺想曲) [Remix].mp3
+2:Touhou Remixes/[Touhou] 千年幻想郷　- Moonshine Step - [Remix]-vzn-xSg0KLw.mp3
+3:Touhou Remixes/[Touhou] 明日ハレの日、ケの昨日 [Remix].mp3
+4:Touhou Remixes/[Touhou] 月の宴  - Full Version (原曲 -千年幻想郷) [Remix].mp3
+5:Touhou Remixes/[東方] - Native Faith.mp3
+6:Touhou Remixes/【Touhou Beatstream】Help me, ERINNNNNN!!【東方Mesopota x COOL&CREATE】English Subs-wEv7YzFfTFE.mp3
+7:Touhou Remixes/【公式】【東方Vocal】幽閉サテライト _ 幻想症候群（原曲：紅楼 ～ Eastern Dream... _ U.N.オーエンは彼女なのか）【FullMV】-0jEDUM3p9Ow.mp3
+8:Touhou Remixes/【東方】Bad Apple!! ＰＶ【影絵】-FtutLA63Cp8.m4a
+9:Touhou Remixes/【東方Orchestral】 Eastern Memory of Forgathering Dream 「Melodic Taste」 [JRj1EfwRnQI].mp3
+10:Touhou Remixes/【東方Vocal／J-Pop】 Rain Love 「R-Note」-au2h5hj.mp3
+11:Touhou Remixes/【東方ヴォーカルPV】「Mischievous sensation」【森羅万象公式】-aaa.mp3
+12:Touhou Remixes/【東方ヴォーカルPV】TOP SECRET -My Red World-【暁Records公式】 [_Q5_Sesq7xs]-a.mp3
+13:Touhou Remixes/【東方ヴォーカルPV】こ～んさるたん！【暁Records公式】 [RypOHapqCeQ]-aaa.mp3
+14:Touhou Remixes/【東方ヴォーカルPV】少女救世論【暁Records公式】 [BWunTlg83lc]-aaa.mp3
+15:Touhou Remixes/【東方ヴォーカルPV】酔生夢死 -Hedonism-【暁Records公式】 [YVIUmIuRUtY].mp3
+16:Touhou Remixes/【睡眠BGM】どこか懐かしく泣ける東方BGM【東方アレンジメドレー】#2.mp3
+17:Touhou Remixes/Best Touhou Relaxing Music For Stress Relief And Studying.mp3
+18:Touhou Remixes/Best Touhou Relaxing Music.mp3
+19:Touhou Remixes/IOSYS - Perfect Math Class[Punk Ver].mp3
+20:Touhou Remixes/Lunar Dreams.mp3
+21:Touhou Remixes/Reach for the Moon ~ Immortal Smoke.mp3
+22:Touhou Remixes/Touhou Relaxing Music [HbL-9yRB_dw].mp3
 playlist_end
