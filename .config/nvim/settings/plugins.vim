@@ -24,12 +24,12 @@ Plug 'bling/vim-bufferline'                     " Lista de buffers inferior
 Plug 'bfrg/vim-cpp-modern'                      " Mejores colores para C/C++
 
 Plug 'neovim/nvim-lspconfig'                    " Cofiguraciones para LSP
-Plug 'hrsh7th/nvim-cmp'                         " Autocomopletado de texto
-Plug 'hrsh7th/cmp-nvim-lsp'                     " 
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'L3MON4D3/LuaSnip'
-Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'hrsh7th/nvim-cmp'                         " Autocomopletado de texto y tal
+Plug 'hrsh7th/cmp-nvim-lsp'                     " Lo mismo de arriba
+Plug 'hrsh7th/cmp-buffer'                       " Para datos del búfer
+Plug 'hrsh7th/cmp-path'                         " Para rutas del sistema
+Plug 'L3MON4D3/LuaSnip'                         " Sugerencias de palabras
+Plug 'saadparwaiz1/cmp_luasnip'                 " LuaSnip + nvim-cmp
 
 call plug#end()
 
