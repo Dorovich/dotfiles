@@ -19,10 +19,17 @@ Plug 'junegunn/fzf.vim'                         " Lo mismo de arriba
 Plug 'scrooloose/nerdTree'                      " Menu lateral de archivos
 Plug 'tpope/vim-surround'                       " Cierra parentesis automaticamente
 Plug 'terryma/vim-multiple-cursors'             " Editar multiples instancias
-Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocompletado
 Plug 'ryanoasis/vim-devicons'                   " Iconos dentro de la terminal
 Plug 'bling/vim-bufferline'                     " Lista de buffers inferior
 Plug 'bfrg/vim-cpp-modern'                      " Mejores colores para C/C++
+
+Plug 'neovim/nvim-lspconfig'                    " Cofiguraciones para LSP
+Plug 'hrsh7th/nvim-cmp'                         " Autocomopletado de texto
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 
 call plug#end()
 
@@ -37,17 +44,69 @@ let g:bufferline_show_bufnr = 0
 let g:bufferline_pathshorten = 1
 let g:bufferline_modified = '+'
 
-" coc
-let g:coc_global_extensions = [
-  \ 'coc-snippets',
-  \ 'coc-pairs',
-  \ 'coc-prettier', 
-  \ 'coc-clangd',
-  \ 'coc-lua',
-  \ ]
-  
 " nerdtree
 let g:NERDTreeDirArrowExpandable="►"
 let g:NERDTreeDirArrowCollapsible="▼"
+
+" nvim-cmp
+lua <<EOF
+-- Add additional capabilities supported by nvim-cmp
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
+local lspconfig = require('lspconfig')
+
+-- Enable some language servers with the additional completion capabilities offered by nvim-cmp
+local servers = { 'clangd' }
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup { capabilities = capabilities, }
+end
+
+-- luasnip setup
+local luasnip = require 'luasnip'
+
+-- nvim-cmp setup
+local cmp = require 'cmp'
+cmp.setup {
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end,
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<CR>'] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    },
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+  }),
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+    { name = 'path' },
+    { name = 'buffer' },
+  },
+}
+EOF
 
 " }}}

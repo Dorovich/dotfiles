@@ -63,6 +63,8 @@ function! MyHighlights() abort
     highlight StatusLine   cterm=none   ctermfg=none ctermbg=none
     highlight MatchParen   cterm=none   ctermfg=none ctermbg=238
     highlight Folded       cterm=italic ctermfg=8    ctermbg=none
+    highlight Pmenu        cterm=none   ctermfg=7    ctermbg=237
+    highlight PmenuSel     cterm=none   ctermfg=237  ctermbg=7
 endfunction
 
 augroup MyColors
