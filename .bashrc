@@ -80,6 +80,15 @@ alias wacom-reset='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" ResetArea'
 alias icat="kitty +kitten icat"
 alias diff="kitty +kitten diff"
 
+default-fm() {
+    if [ $1 ]; then
+    xdg-mime default $1.desktop inode/directory application/x-gnome-saved-search
+    else
+        echo "Specify file manager name"
+        echo "eg. pcmanfm, nemo"
+    fi
+}
+
 # }}}
 
 ############################################
