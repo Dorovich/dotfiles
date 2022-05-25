@@ -50,7 +50,6 @@ alias la='exa -a --icons --group-directories-first --no-time --no-user --color=a
 alias ll='exa -l --icons --group-directories-first --no-time --no-user --color=auto -F'
 alias fetch="neofetch --config $HOME/.config/neofetch/config.conf"
 alias neofetch="neofetch --config none"
-alias xmas="~/.local/bin/christmas.sh"
 alias whichgpu="lspci -k | grep -EA3 'VGA|3D|Display'"
 alias hamachi="sudo hamachi"
 alias clean="bleachbit -c --preset"

@@ -39,28 +39,30 @@ autocmd FileType netrw setl bufhidden=wipe
 " COLORES
 function! MyHighlights() abort
     "DT's
-    highlight Normal       cterm=none ctermfg=15   ctermbg=none
-    highlight VertSplit    cterm=none ctermfg=0    ctermbg=8
-    highlight Statement    cterm=none ctermfg=3    ctermbg=none
-    highlight Directory    cterm=none ctermfg=4    ctermbg=none
-    highlight Constant     cterm=none ctermfg=3    ctermbg=none
-    highlight Special      cterm=none ctermfg=4    ctermbg=none
-    highlight Identifier   cterm=none ctermfg=6    ctermbg=none
-    highlight PreProc      cterm=none ctermfg=5    ctermbg=none
-    highlight String       cterm=none ctermfg=12   ctermbg=none
-    highlight Number       cterm=none ctermfg=1    ctermbg=none
-    highlight Function     cterm=none ctermfg=1    ctermbg=none
-    highlight Visual       cterm=none ctermfg=234  ctermbg=8
+    highlight Normal       cterm=none   ctermfg=15   ctermbg=none
+    highlight VertSplit    cterm=none   ctermfg=0    ctermbg=8
+    highlight Statement    cterm=none   ctermfg=3    ctermbg=none
+    highlight Directory    cterm=none   ctermfg=4    ctermbg=none
+    highlight Constant     cterm=none   ctermfg=3    ctermbg=none
+    highlight Special      cterm=none   ctermfg=4    ctermbg=none
+    highlight Identifier   cterm=none   ctermfg=6    ctermbg=none
+    highlight PreProc      cterm=none   ctermfg=5    ctermbg=none
+    highlight String       cterm=none   ctermfg=12   ctermbg=none
+    highlight Number       cterm=none   ctermfg=1    ctermbg=none
+    highlight Function     cterm=none   ctermfg=1    ctermbg=none
+    highlight Visual       cterm=none   ctermfg=234  ctermbg=8
 
     "PERSONAL
     highlight clear CursorLine
-    highlight ModeMsg      cterm=none ctermfg=6    ctermbg=none
-    highlight LineNr       cterm=none ctermfg=8    ctermbg=none
-    highlight CursorLine   cterm=none ctermfg=none ctermbg=234
-    highlight CursorLineNr cterm=bold ctermfg=6    ctermbg=234
-    highlight NonText      cterm=none ctermfg=0    ctermbg=none
-    highlight Comment      cterm=none ctermfg=8    ctermbg=none
-    highlight StatusLine   cterm=none ctermfg=none ctermbg=none
+    highlight ModeMsg      cterm=none   ctermfg=6    ctermbg=none
+    highlight LineNr       cterm=none   ctermfg=8    ctermbg=none
+    highlight CursorLine   cterm=none   ctermfg=none ctermbg=234
+    highlight CursorLineNr cterm=bold   ctermfg=6    ctermbg=234
+    highlight NonText      cterm=none   ctermfg=0    ctermbg=none
+    highlight Comment      cterm=none   ctermfg=8    ctermbg=none
+    highlight StatusLine   cterm=none   ctermfg=none ctermbg=none
+    highlight MatchParen   cterm=none   ctermfg=none ctermbg=238
+    highlight Folded       cterm=italic ctermfg=8    ctermbg=none
 endfunction
 
 augroup MyColors

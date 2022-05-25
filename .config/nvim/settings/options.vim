@@ -28,6 +28,8 @@ set nowritebackup
 set gdefault
 set clipboard=unnamedplus
 set encoding=UTF-8
+set shortmess+=a
+set autoread
 set foldenable
 set foldmethod=marker
 set cursorline
