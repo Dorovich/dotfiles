@@ -1,4 +1,4 @@
-# TEMPLATE {{{
+# RULES {{{
 ##############################################################
 ## This is the example bindings file. Copy it to            ##
 ## $XDG_CONFIG_HOME/ncmpcpp/bindings or ~/.ncmpcpp/bindings ##
@@ -153,7 +153,8 @@
 ##
 ##  - set_volume
 ##  - load
-##
+## }}}
+# DEFAULTS {{{
 #
 #def_key "mouse"
 #  mouse_event
@@ -551,29 +552,114 @@
 #  quit
 # }}}
 
+### REPRODUCCION ### {{{
+
+def_key "p"
+  pause
+
+def_key "P"
+  stop
+
+def_key "space"
+  play_item
+
 def_key "ctrl-l"
    show_lyrics
 
-def_key "ctrl-h"
+def_key "ctrl-r"
+   refetch_lyrics
+
+def_key "S"
+  shuffle
+
+# }}}
+### GESTIONAR COLA ### {{{
+
+def_key "H"
    previous
 
-def_key "ctrl-j"
+def_key "J"
    move_selected_items_down
 
-def_key "ctrl-k"
+def_key "K"
    move_selected_items_up
 
-def_key "ctrl-l"
+def_key "L"
    next
 
-def_key "h"
-  volume_down
+def_key "a"
+  add_item_to_playlist
+
+def_key "d"
+  delete_playlist_items
+
+def_key "D"
+  clear_playlist
+
+def_key "ctrl-d"
+  crop_playlist
+
+def_key "D"
+  clear_main_playlist
+
+def_key "ctrl-d"
+  crop_main_playlist
+
+# }}}
+### GESTIONAR LISTAS ### {{{
+
+def_key "ctrl-a"
+   add_item_to_playlist
+
+# }}}
+### SELECCIONES ### {{{
+
+def_key "v"
+   select_item
+
+def_key "V"
+   remove_selection
+
+def_key "ctrl-v"
+   reverse_selection
+
+# }}}
+### DESPLAZARSE ### {{{
+
+def_key "h" 
+   previous_column
 
 def_key "j"
-  scroll_down
+   scroll_down
 
 def_key "k"
-  scroll_up
+   scroll_up
+
+def_key "l" 
+   next_column
+
+def_key "h"
+  jump_to_parent_directory
 
 def_key "l"
-  volume_up
+  enter_directory
+
+def_key "g"
+  move_home
+
+def_key "G"
+  move_end
+
+def_key "ctrl-g"
+   jump_to_playing_song
+
+# }}}
+### VOLUMEN ### {{{
+
+def_key "+" 
+   volume_up
+
+def_key "-" 
+   volume_down
+
+# }}}
