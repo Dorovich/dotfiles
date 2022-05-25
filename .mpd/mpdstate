@@ -1,9 +1,9 @@
-sw_volume: 62
+sw_volume: 42
 audio_device_state:1:pulse audio
 audio_device_state:1:my_fifo
 state: play
-current: 0
-time: 100.542000
+current: 2
+time: 120.126000
 random: 0
 repeat: 0
 single: 0
@@ -12,6 +12,10 @@ crossfade: 0
 mixrampdb: 0.000000
 mixrampdelay: -1.000000
 playlist_begin
-0:Droid Bishop - Into The Abstract/Droid Bishop - Into The Abstract - 07 Silver Screen.mp3
-1:Droid Bishop - Into The Abstract/Droid Bishop - Into The Abstract - 03 Dancing in the Darkness.mp3
+0:Протон-4 - Навстречу Небу/Протон-4 - Навстречу Небу - 01 Свет Звезд.mp3
+1:Протон-4 - Навстречу Небу/Протон-4 - Навстречу Небу - 02 Полет Во Сне.mp3
+2:Протон-4 - Навстречу Небу/Протон-4 - Навстречу Небу - 03 Покоряя Галактику.mp3
+3:Протон-4 - Навстречу Небу/Протон-4 - Навстречу Небу - 04 Ветер Весны.mp3
+4:Протон-4 - Навстречу Небу/Протон-4 - Навстречу Небу - 05 На Крыльях Мечты.mp3
+5:Протон-4 - Навстречу Небу/Протон-4 - Навстречу Небу - 06 Навстречу Небу.mp3
 playlist_end

@@ -663,3 +663,9 @@ def_key "-"
    volume_down
 
 # }}}
+### OTROS ### {{{
+
+def_key "space"
+  toggle_visualization_type
+
+# }}}
