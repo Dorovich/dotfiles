@@ -1,3 +1,4 @@
+# TEMPLATE {{{
 ##############################################################
 ## This is the example bindings file. Copy it to            ##
 ## $XDG_CONFIG_HOME/ncmpcpp/bindings or ~/.ncmpcpp/bindings ##
@@ -548,7 +549,10 @@
 #
 #def_key "q"
 #  quit
-#
+# }}}
+
+def_key "ctrl-l"
+   show_lyrics
 
 def_key "ctrl-h"
    previous
