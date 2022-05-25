@@ -41,6 +41,7 @@ nnoremap <Leader>cc bi[<Esc>ea]<Esc>
 nnoremap / /\v
 vnoremap / /\v
 nnoremap <silent> <Leader>h :noh<cr>
+nnoremap <C-r> :%s//gI<Left><Left><Left>
 " }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""

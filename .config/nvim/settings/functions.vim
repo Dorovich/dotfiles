@@ -73,3 +73,6 @@ augroup MyColors
 augroup END
 
 colorscheme pablo
+
+" AUTOCENTRAR
+autocmd InsertEnter * norm zz
