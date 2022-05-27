@@ -563,14 +563,17 @@ def_key "P"
 def_key "space"
   play_item
 
-def_key "ctrl-l"
-   show_lyrics
-
-def_key "ctrl-r"
-   refetch_lyrics
-
 def_key "S"
   shuffle
+
+def_key "r"
+  toggle_repeat
+
+def_key "R"
+  toggle_random
+
+def_key "x"
+  toggle_consume
 
 # }}}
 ### GESTIONAR COLA ### {{{
@@ -667,5 +670,14 @@ def_key "-"
 
 def_key "space"
   toggle_visualization_type
+
+def_key "ctrl-l"
+   show_lyrics
+
+def_key "ctrl-r"
+   refetch_lyrics
+
+def_key "ctrl-t"
+  toggle_lyrics_fetcher
 
 # }}}
