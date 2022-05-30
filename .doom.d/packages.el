@@ -50,3 +50,4 @@
 ;(unpin! t)
 
 (package! mips-mode)
+(package! evil-tutor)

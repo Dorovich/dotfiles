@@ -2,7 +2,7 @@
  '(org-agenda-files '("~/Documentos/org/agenda.org")))
 (custom-set-faces)
 
-(setq fancy-splash-image "~/.doom.d/hmmm_cut.png")
+(setq fancy-splash-image "~/.doom.d/banner_bun.png")
 
 (evil-define-key 'normal 'global (kbd "ñ") 'evil-ex)
 (evil-define-key 'normal 'global (kbd "U") 'evil-redo)
