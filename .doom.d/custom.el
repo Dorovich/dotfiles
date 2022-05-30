@@ -10,3 +10,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(setq fancy-splash-image "/media/vido25/Almacenamiento/c o o l/hmmm_cut.png")
+
+(evil-define-key 'normal 'global (kbd "ñ") 'evil-ex)
+(evil-define-key 'normal 'global (kbd "U") 'evil-redo)
+(evil-define-key 'normal 'global (kbd "<C-+>") 'text-scale-adjust)
+(evil-define-key 'normal 'global (kbd "<C-=>") 'text-scale-increase)

@@ -1,7 +1,7 @@
 # general
 background               #151515
 foreground               #abb2bf
-cursor                   #cccccc
+cursor                   #dbc49b
 cursor_text_color        #111111
 selection_background     #fffacd
 selection_foreground     #000000
