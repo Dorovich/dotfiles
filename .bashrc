@@ -36,7 +36,7 @@ fi
 # {{{
 
 alias v="nvim"
-alias em="emacsclient -t -a ''"
+alias em="emacsclient -t"
 alias aptup="sudo apt update && sudo apt upgrade"
 alias aptupd="sudo apt update"
 alias aptupg="sudo apt upgrade"

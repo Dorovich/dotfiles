@@ -6,5 +6,5 @@
 
 (evil-define-key 'normal 'global (kbd "ñ") 'evil-ex)
 (evil-define-key 'normal 'global (kbd "U") 'evil-redo)
-(evil-define-key 'normal 'global (kbd "<C-+>") 'text-scale-adjust)
-(evil-define-key 'normal 'global (kbd "<C-=>") 'text-scale-increase)
+(evil-define-key 'normal 'global (kbd "<C-=>") 'text-scale-adjust)
+(evil-define-key 'normal 'global (kbd "<C-+>") 'text-scale-increase)
