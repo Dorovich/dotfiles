@@ -1,3 +1,7 @@
+// https://addons.mozilla.org/es/firefox/addon/shortkeys/
+// Copiar el código en la seccion de "Import" de la página de
+// configuración de la extensión
+
 [
   {
     "key": "alt+k",
