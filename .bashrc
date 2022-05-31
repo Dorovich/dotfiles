@@ -19,7 +19,6 @@ shopt -s cdspell        # autocorrects cd misspellings
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
