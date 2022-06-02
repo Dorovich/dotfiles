@@ -75,6 +75,7 @@ nmap <silent> U <C-r>
 nmap <S-y> y$
 map ; :
 map ñ :
+map Q gq
 nnoremap <Leader><Leader> za
 nnoremap <silent> <Leader>f :Lex %:p:h<CR>
 nnoremap <silent> <Leader>e :Lex %:p:h<CR>
