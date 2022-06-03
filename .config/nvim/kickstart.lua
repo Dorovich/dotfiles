@@ -69,6 +69,11 @@ vim.cmd [[colorscheme pablo]]
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
+-- Cosas mias
+vim.g.encoding = "utf8"
+vim.opt.shortmess = "a"
+vim.opt.timeoutlength = 200
+
 --Set statusbar
 require('lualine').setup {
   options = {
