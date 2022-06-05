@@ -1,0 +1,8 @@
+configuration {
+    modi: "drun,run,window";
+    font: "mononoki 12";
+    prompt-font: "mononoki 12";
+    display-run: "Run";
+    display-drun: "Launch";
+}
+@theme "~/.config/rofi/themes/dt-dmenu.rasi"

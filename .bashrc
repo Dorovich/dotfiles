@@ -3,7 +3,7 @@ export VISUAL="emacsclient -c -a 'emacs'"
 export EDITOR="nvim"
 export ALTERNATE_EDITOR="emacsclient -t -a ''"
 export HISTCONTROL=ignoreboth
-export PATH="${PATH}:${HOME}/.local/bin:${HOME}/.emacs.d/bin"
+export PATH="${PATH}:${HOME}/.local/bin:${HOME}/.emacs.d/bin:${HOME}/Applications"
 export MYVIMRC="$HOME/.config/nvim/init.vim"
 export alm="/media/vido25/Almacenamiento"
 
