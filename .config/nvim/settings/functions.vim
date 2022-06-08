@@ -69,6 +69,7 @@ function! MyHighlights() abort
     highlight PmenuThumb   cterm=none   ctermfg=none ctermbg=238
     highlight Todo         cterm=bold   ctermfg=0    ctermbg=2
     highlight Error        cterm=bold   ctermfg=0    ctermbg=1
+    highlight ErrorMsg     cterm=bold   ctermfg=0    ctermbg=1
     " LSP ==>
     "highlight DiagnosticUnderlineError cterm=bold ctermfg=0 ctermbg=1
     highlight DiagnosticUnderlineError cterm=underline ctermfg=none ctermbg=none
