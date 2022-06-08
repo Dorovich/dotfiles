@@ -20,8 +20,8 @@ nnoremap <silent> <S-TAB> :bprevious<CR>
 nnoremap <silent> <C-c> :bdelete!<CR>
 xnoremap < <gv
 xnoremap > >gv
-nmap <silent> U <C-r>
-nmap <S-y> y$
+nnoremap <silent> U <C-r>
+nnoremap <S-y> y$
 map ; :
 map ñ :
 map Q gq

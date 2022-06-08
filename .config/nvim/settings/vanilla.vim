@@ -24,7 +24,7 @@ set clipboard=unnamedplus
 set hlsearch
 set incsearch
 set pumheight=10
-set timeoutlen=500
+set timeoutlen=300
 set encoding=utf-8
 set expandtab
 set tabstop=8
@@ -71,7 +71,7 @@ nnoremap <silent> <S-TAB> :bprevious<CR>
 nnoremap <silent> <C-c> :bdelete!<CR>
 xnoremap < <gv
 xnoremap > >gv
-nmap <silent> U <C-r>
+nnoremap <silent> U <C-r>
 nmap <S-y> y$
 map ; :
 map ñ :
@@ -93,6 +93,7 @@ nnoremap <Leader>cc bi[<Esc>ea]<Esc>
 nnoremap / /\v
 vnoremap / /\v
 nnoremap <Leader>h :noh<cr>
+nnoremap <C-r> :%s//gI<Left><Left><Left>
 " }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -100,9 +101,10 @@ nnoremap <Leader>h :noh<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " (Espacio dos veces para desplegar) {{{
 function! MyHighlights() abort
-    "DT's
+    highlight clear CursorLine
+    "         object       effect       foreground   background
     highlight Normal       cterm=none   ctermfg=15   ctermbg=none
-    highlight VertSplit    cterm=none   ctermfg=0    ctermbg=8
+    highlight VertSplit    cterm=none   ctermfg=0    ctermbg=0
     highlight Statement    cterm=none   ctermfg=3    ctermbg=none
     highlight Directory    cterm=none   ctermfg=4    ctermbg=none
     highlight Constant     cterm=none   ctermfg=3    ctermbg=none
@@ -112,10 +114,8 @@ function! MyHighlights() abort
     highlight String       cterm=none   ctermfg=12   ctermbg=none
     highlight Number       cterm=none   ctermfg=1    ctermbg=none
     highlight Function     cterm=none   ctermfg=1    ctermbg=none
-    highlight Visual       cterm=none   ctermfg=234  ctermbg=8
-
-    "PERSONAL
-    highlight clear CursorLine
+    highlight Visual       cterm=none   ctermfg=none ctermbg=238
+    highlight Character    cterm=none   ctermfg=12   ctermbg=none
     highlight ModeMsg      cterm=none   ctermfg=6    ctermbg=none
     highlight LineNr       cterm=none   ctermfg=8    ctermbg=none
     highlight CursorLine   cterm=none   ctermfg=none ctermbg=234
@@ -125,6 +125,13 @@ function! MyHighlights() abort
     highlight StatusLine   cterm=none   ctermfg=none ctermbg=none
     highlight MatchParen   cterm=none   ctermfg=none ctermbg=238
     highlight Folded       cterm=italic ctermfg=8    ctermbg=none
+    highlight SignColumn   cterm=none   ctermfg=none ctermbg=none
+    highlight Pmenu        cterm=none   ctermfg=7    ctermbg=236
+    highlight PmenuSel     cterm=none   ctermfg=236  ctermbg=180
+    highlight PmenuSbar    cterm=none   ctermfg=none ctermbg=236
+    highlight PmenuThumb   cterm=none   ctermfg=none ctermbg=238
+    highlight Todo         cterm=bold   ctermfg=0    ctermbg=2
+    highlight Error        cterm=bold   ctermfg=0    ctermbg=1
 endfunction
 
 augroup MyColors
