@@ -70,10 +70,15 @@ function! MyHighlights() abort
     highlight Todo         cterm=bold   ctermfg=0    ctermbg=2
     highlight Error        cterm=bold   ctermfg=0    ctermbg=1
     highlight ErrorMsg     cterm=bold   ctermfg=0    ctermbg=1
-    " LSP ==>
-    "highlight DiagnosticUnderlineError cterm=bold ctermfg=0 ctermbg=1
-    highlight DiagnosticUnderlineError cterm=underline ctermfg=none ctermbg=none
-    highlight DiagnosticError          cterm=italic    ctermfg=1    ctermbg=none
+    "  LSP object               effect          foreground   background   visual
+    hi DiagnosticUnderlineError cterm=underline ctermfg=none ctermbg=none guisp=#e06c75
+    hi DiagnosticError          cterm=italic    ctermfg=1    ctermbg=none
+    hi DiagnosticUnderlineHint  cterm=underline ctermfg=none ctermbg=none guisp=#98c379
+    hi DiagnosticHint           cterm=italic    ctermfg=2    ctermbg=none
+    hi DiagnosticUnderlineWarn  cterm=underline ctermfg=none ctermbg=none guisp=#d19a66
+    hi DiagnosticWarn           cterm=italic    ctermfg=3    ctermbg=none
+    hi DiagnosticUnderlineInfo  cterm=underline ctermfg=none ctermbg=none guisp=#61afef
+    hi DiagnosticInfo           cterm=italic    ctermfg=4    ctermbg=none
 endfunction
 
 augroup MyColors
