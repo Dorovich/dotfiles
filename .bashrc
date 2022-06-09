@@ -3,7 +3,7 @@ export VISUAL="emacsclient -c -a 'emacs'"
 export EDITOR="nvim"
 export ALTERNATE_EDITOR="emacsclient -t -a ''"
 export HISTCONTROL=ignoreboth
-export PATH="${PATH}:${HOME}/.local/bin:${HOME}/.emacs.d/bin:${HOME}/Applications"
+export PATH="${PATH}:${HOME}/.local/bin:${HOME}/.emacs.d/bin:${HOME}/Applications:${HOME}/local/share/flatpak/exports/bin"
 export MYVIMRC="$HOME/.config/nvim/init.vim"
 export alm="/media/vido25/Almacenamiento"
 
@@ -27,6 +27,12 @@ if ! shopt -oq posix; then
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
   fi
+fi
+
+### BASH INSULTER
+# https://gitlab.com/dwt1/bash-insulter
+if [ -f /etc/bash.command-not-found ]; then
+    . /etc/bash.command-not-found
 fi
 
 ###########################################

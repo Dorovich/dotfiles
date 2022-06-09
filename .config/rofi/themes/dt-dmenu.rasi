@@ -9,10 +9,10 @@
     background-color:           #151515;
     border-color:               #151515;
     text-color:                 #abb2bf;
-    height:                     26px;
-    prompt-background:          #455945;
+    height:                     18px;
+    prompt-background:          #d19a66;
     prompt-foreground:          #151515;
-    prompt-padding:             4px;
+    prompt-padding:             2px;
     selected-normal-background: #d19a66;
     selected-normal-foreground: #151515;
 }
@@ -38,12 +38,12 @@
     lines: 100;
 }
 #entry {
-    padding: 2px;
+    padding: 1px;
     expand: false;
     width: 10em;
 }
 #element {
-    padding: 2px 8px;
+    padding: 1px 8px;
 }
 #element selected {
     background-color: @selected-normal-background;
