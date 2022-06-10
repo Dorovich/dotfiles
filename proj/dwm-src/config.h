@@ -69,6 +69,7 @@ static const char *emacscmd[]   = { "emacsclient", "-c", NULL };
 static const char *pscrcmd[]    = { "scrot", "/home/vido25/Imágenes/Capturas de pantalla/%Y-%m-%d-%s.jpg", NULL };
 static const char *pwincmd[]    = { "scrot", "-u", "/home/vido25/Imágenes/Capturas de pantalla/%Y-%m-%d-%s.jpg", NULL };
 static const char *roficmd[]    = { "rofi", "-show", "drun", NULL };
+static const char *lockcmd[]    = { "slock", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -110,6 +111,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|SHIFT,                 XK_q,      quit,           {0} },
+	{ MODKEY,                       XK_Escape, spawn,          {.v = lockcmd} },
         { MODKEY,                       ImprPant,  spawn,          {.v = pscrcmd} },
         { MODKEY|ALT,                   ImprPant,  spawn,          {.v = pwincmd} },
 };
