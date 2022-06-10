@@ -49,12 +49,16 @@ static const Layout layouts[] = {
 #define MODKEY Mod4Mask
 #define SHIFT ShiftMask
 #define ALT Mod1Mask
-#define ImprPant 0x0000ff61
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+/* teclas raras */
+#define ImprPant         0x0000ff61
+#define AudioRaiseVolume 0x1008FF13
+#define AudioLowerVolume 0x1008FF11
+#define AudioMute        0x1008FF12
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -70,6 +74,10 @@ static const char *pscrcmd[]    = { "scrot", "/home/vido25/Imágenes/Capturas de
 static const char *pwincmd[]    = { "scrot", "-u", "/home/vido25/Imágenes/Capturas de pantalla/%Y-%m-%d-%s.jpg", NULL };
 static const char *roficmd[]    = { "rofi", "-show", "drun", NULL };
 static const char *lockcmd[]    = { "slock", NULL };
+
+//static const char *volupcmd[]   = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%", NULL };
+//static const char *voldwncmd[]  = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL };
+//static const char *muteoutcmd[] = { "pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -114,6 +122,12 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Escape, spawn,          {.v = lockcmd} },
         { MODKEY,                       ImprPant,  spawn,          {.v = pscrcmd} },
         { MODKEY|ALT,                   ImprPant,  spawn,          {.v = pwincmd} },
+/*      { AudioRaiseVolume,             0,         spawn,          {.v = volupcmd} },  */
+/*      { AudioLowerVolume,             0,         spawn,          {.v = voldwncmd} },  */
+/*      { AudioMute,                    0,         spawn,          {.v = muteoutcmd} }, */
+        { 0, AudioRaiseVolume,                     spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
+        { 0, AudioLowerVolume,                     spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },
+        { 0, AudioMute,                            spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
 };
 
 /* button definitions */
