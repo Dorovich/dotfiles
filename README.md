@@ -9,3 +9,5 @@
 - Buscador: `firefox`, `qutebrowser`
 - Fuente: `mononoki`, `Fira Code`
 - Tema GTK: `Juno ocean`
+- WM: `dwm`
+- Notificaciones: `dunst`
