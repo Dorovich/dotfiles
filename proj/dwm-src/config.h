@@ -54,6 +54,7 @@ static const Layout layouts[] = {
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+
 /* teclas raras */
 #define ImprPant         0x0000ff61
 #define AudioRaiseVolume 0x1008FF13
@@ -70,8 +71,8 @@ static const char *termcmd[]    = { "kitty", NULL };
 static const char *browsercmd[] = { "firefox", NULL };
 static const char *filescmd[]   = { "nautilus", NULL };
 static const char *emacscmd[]   = { "emacsclient", "-c", NULL };
-static const char *pscrcmd[]    = { "scrot", "/home/vido25/Imágenes/Capturas de pantalla/%Y-%m-%d-%s.jpg", NULL };
-static const char *pwincmd[]    = { "scrot", "-u", "/home/vido25/Imágenes/Capturas de pantalla/%Y-%m-%d-%s.jpg", NULL };
+static const char *pscrcmd[]    = { "scrot", "-q", "100", "/home/vido25/Imágenes/Capturas de pantalla/%Y-%m-%d-%s.jpg", NULL };
+static const char *pwincmd[]    = { "scrot", "-q", "100", "-u", "/home/vido25/Imágenes/Capturas de pantalla/%Y-%m-%d-%s.jpg", NULL };
 static const char *roficmd[]    = { "rofi", "-show", "drun", NULL };
 static const char *lockcmd[]    = { "slock", NULL };
 
@@ -122,9 +123,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Escape, spawn,          {.v = lockcmd} },
         { MODKEY,                       ImprPant,  spawn,          {.v = pscrcmd} },
         { MODKEY|ALT,                   ImprPant,  spawn,          {.v = pwincmd} },
-/*      { AudioRaiseVolume,             0,         spawn,          {.v = volupcmd} },  */
-/*      { AudioLowerVolume,             0,         spawn,          {.v = voldwncmd} },  */
-/*      { AudioMute,                    0,         spawn,          {.v = muteoutcmd} }, */
+/*      { 0, AudioRaiseVolume,                     spawn,          {.v = volupcmd} },   */
+/*      { 0, AudioLowerVolume,                     spawn,          {.v = voldwncmd} },  */
+/*      { 0, AudioMute,                            spawn,          {.v = muteoutcmd} }, */
         { 0, AudioRaiseVolume,                     spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
         { 0, AudioLowerVolume,                     spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },
         { 0, AudioMute,                            spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },

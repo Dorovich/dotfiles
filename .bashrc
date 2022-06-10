@@ -42,12 +42,12 @@ fi
 
 alias v="nvim"
 alias em="emacsclient -t"
-alias aptup="sudo apt update && sudo apt upgrade"
-alias aptupd="sudo apt update"
-alias aptupg="sudo apt upgrade"
-alias aptin="sudo apt install"
-alias aptrm="sudo apt remove"
-alias aptar="sudo apt autoremove"
+alias aptup="sudo apt update && sudo apt upgrade && notify-send -u normal 'Finished the upgrade!' '> aptup'"
+alias aptupd="sudo apt update && notify-send -u normal 'Finished updating!' '> aptupd'"
+alias aptupg="sudo apt upgrade && notify-send -u normal 'Finished upgrading!' '> aptupg'"
+alias aptin="sudo apt install && notify-send -u normal 'Finished installation!' '> aptin'"
+alias aptrm="sudo apt remove && notify-send -u normal 'Finished removal!' '> aptrm'"
+alias aptar="sudo apt autoremove && notify-send -u normal 'Finished autoremoval!' '> aptar'"
 alias grep='grep --color=auto'
 #alias ll='ls -AlFhG --color=auto --group-directories-first'
 #alias la='ls -A --color=auto'
@@ -59,8 +59,8 @@ alias fetch="neofetch --config $HOME/.config/neofetch/config.conf"
 alias neofetch="neofetch --config none"
 alias whichgpu="lspci -k | grep -EA3 'VGA|3D|Display'"
 alias hamachi="sudo hamachi"
-alias clean="bleachbit -c --preset"
-alias fullclean="clean && sudo bleachbit -c --preset"
+alias clean="bleachbit -c --preset && notify-send -u low 'Finished cleaning!' '> clean'"
+alias fullclean="clean && sudo bleachbit -c --preset && notify-send -u low 'Finished cleaning!' '> fullclean'"
 alias search="tree -afR $HOME | fzf -e -i --layout=reverse-list --border=rounded --prompt='Buscar: '"
 alias weather="curl https://wttr.in/"
 alias qbmem='cat "/proc/$(pgrep -f 'bin/qutebrowser')/smaps_rollup"'
