@@ -8,8 +8,8 @@
 - Terminal: `kitty`
 - Shell: `bash`
 - Editor: `neovim`, `emacs`
-- Buscador: `firefox`, `qutebrowser`
+- Navegador: `firefox`, `qutebrowser`
 - Fuente: `mononoki`, `Fira Code`
-- Tema GTK: `Juno ocean`
+- Tema GTK: `Everforest Dark`, `Juno ocean`
 - WM: `dwm`
 - Notificaciones: `dunst`
