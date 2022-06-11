@@ -45,8 +45,8 @@ alias em="emacsclient -t"
 alias aptup="sudo apt update && sudo apt upgrade && notify-send -u normal 'Finished the upgrade!' '> aptup'"
 alias aptupd="sudo apt update && notify-send -u normal 'Finished updating!' '> aptupd'"
 alias aptupg="sudo apt upgrade && notify-send -u normal 'Finished upgrading!' '> aptupg'"
-alias aptin="sudo apt install $3 && notify-send -u normal 'Finished installation!' '> aptin'"
-alias aptrm="sudo apt remove $3 && notify-send -u normal 'Finished removal!' '> aptrm'"
+aptin() { sudo apt install $3 && notify-send -u normal 'Finished installation!' '> aptin' ; }
+aptrm() { sudo apt remove $3 && notify-send -u normal 'Finished removal!' '> aptrm' ; }
 alias aptar="sudo apt autoremove && notify-send -u normal 'Finished autoremoval!' '> aptar'"
 alias grep='grep --color=auto'
 #alias ll='ls -AlFhG --color=auto --group-directories-first'

@@ -19,6 +19,17 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_gray1, col_yellow,  col_green  },
 };
 
+static const char *const autostart[] = {
+	"mpd", NULL,
+        "sh", "-c", "/usr/bin/nvidia-settings --load-config-only", NULL,
+        "redshift", "-l", "41.39:2.16", "-m", "randr", "-t", "5500:5000", NULL,
+        "/usr/bin/emacs", "--daemon", NULL,
+        "nitrogen", "--restore", NULL,
+        "picom", NULL,
+        "dwm-status", NULL,
+	NULL /* terminate */
+};
+
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
