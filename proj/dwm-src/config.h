@@ -68,13 +68,15 @@ static const Layout layouts[] = {
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* teclas raras */
-#define ImprPant         0x0000ff61
-#define AudioRaiseVolume 0x1008FF13
-#define AudioLowerVolume 0x1008FF11
-#define AudioMute        0x1008FF12
+#define ImprPant 0x0000ff61
+#define RaiseVol 0x1008FF13
+#define LowerVol 0x1008FF11
+#define Mute     0x1008FF12
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
+/* standart command helper */
+#define CMD(cmd) { .v = (const char*[]){ cmd, NULL } }
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
@@ -88,12 +90,14 @@ static const char *lockcmd[]    = { "slock", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY|SHIFT,                 XK_Return, spawn,          {.v = dmenucmd} },
+	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd} },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd} },
 	{ MODKEY,                       XK_r,      spawn,          {.v = roficmd} },
         { MODKEY|ALT,                   XK_b,      spawn,          {.v = browsercmd} },
         { MODKEY|ALT,                   XK_f,      spawn,          {.v = filescmd} },
         { MODKEY|ALT,                   XK_v,      spawn,          {.v = emacscmd} },
+	{ MODKEY,                       XK_Escape, spawn,          {.v = lockcmd} },
+        { MODKEY|ALT,                   XK_p,      spawn,          SHCMD("passmenu") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -126,13 +130,11 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|SHIFT,                 XK_q,      quit,           {0} },
-	{ MODKEY,                       XK_Escape, spawn,          {.v = lockcmd} },
         { MODKEY,                       ImprPant,  spawn,          SHCMD("scrot -q 100 /home/vido25/Imágenes/Capturas de pantalla/%Y-%m-%d-%s.jpg") },
         { MODKEY|ALT,                   ImprPant,  spawn,          SHCMD("scrot -q 100 -u /home/vido25/Imágenes/Capturas de pantalla/%Y-%m-%d-%s.jpg") },
-        { 0, AudioRaiseVolume,                     spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
-        { 0, AudioLowerVolume,                     spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },
-        { 0, AudioMute,                            spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
-        { MODKEY,                       XK_p,      spawn,          SHCMD("passmenu") }
+        { 0,                            RaiseVol,  spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
+        { 0,                            LowerVol,  spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },
+        { 0,                            Mute,      spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
 };
 
 /* button definitions */
@@ -142,7 +144,7 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd} },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
