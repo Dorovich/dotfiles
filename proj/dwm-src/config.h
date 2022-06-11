@@ -83,18 +83,12 @@ static const char *termcmd[]    = { "kitty", NULL };
 static const char *browsercmd[] = { "firefox", NULL };
 static const char *filescmd[]   = { "nautilus", NULL };
 static const char *emacscmd[]   = { "emacsclient", "-c", NULL };
-static const char *pscrcmd[]    = { "scrot", "-q", "100", "/home/vido25/Imágenes/Capturas de pantalla/%Y-%m-%d-%s.jpg", NULL };
-static const char *pwincmd[]    = { "scrot", "-q", "100", "-u", "/home/vido25/Imágenes/Capturas de pantalla/%Y-%m-%d-%s.jpg", NULL };
 static const char *roficmd[]    = { "rofi", "-show", "drun", NULL };
 static const char *lockcmd[]    = { "slock", NULL };
 
-//static const char *volupcmd[]   = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%", NULL };
-//static const char *voldwncmd[]  = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL };
-//static const char *muteoutcmd[] = { "pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL };
-
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd} },
+	{ MODKEY|SHIFT,                 XK_Return, spawn,          {.v = dmenucmd} },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd} },
 	{ MODKEY,                       XK_r,      spawn,          {.v = roficmd} },
         { MODKEY|ALT,                   XK_b,      spawn,          {.v = browsercmd} },
@@ -133,14 +127,12 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|SHIFT,                 XK_q,      quit,           {0} },
 	{ MODKEY,                       XK_Escape, spawn,          {.v = lockcmd} },
-        { MODKEY,                       ImprPant,  spawn,          {.v = pscrcmd} },
-        { MODKEY|ALT,                   ImprPant,  spawn,          {.v = pwincmd} },
-/*      { 0, AudioRaiseVolume,                     spawn,          {.v = volupcmd} },   */
-/*      { 0, AudioLowerVolume,                     spawn,          {.v = voldwncmd} },  */
-/*      { 0, AudioMute,                            spawn,          {.v = muteoutcmd} }, */
+        { MODKEY,                       ImprPant,  spawn,          SHCMD("scrot -q 100 /home/vido25/Imágenes/Capturas de pantalla/%Y-%m-%d-%s.jpg") },
+        { MODKEY|ALT,                   ImprPant,  spawn,          SHCMD("scrot -q 100 -u /home/vido25/Imágenes/Capturas de pantalla/%Y-%m-%d-%s.jpg") },
         { 0, AudioRaiseVolume,                     spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
         { 0, AudioLowerVolume,                     spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },
         { 0, AudioMute,                            spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
+        { MODKEY,                       XK_p,      spawn,          SHCMD("passmenu") }
 };
 
 /* button definitions */
