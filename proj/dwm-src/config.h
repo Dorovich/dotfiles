@@ -130,8 +130,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|SHIFT,                 XK_q,      quit,           {0} },
-        { MODKEY,                       ImprPant,  spawn,          SHCMD("scrot -q 100 /home/vido25/Imágenes/Capturas de pantalla/%Y-%m-%d-%s.jpg") },
-        { MODKEY|ALT,                   ImprPant,  spawn,          SHCMD("scrot -q 100 -u /home/vido25/Imágenes/Capturas de pantalla/%Y-%m-%d-%s.jpg") },
+        { MODKEY,                       ImprPant,  spawn,          SHCMD("scrot -q 100 /home/vido25/Imágenes/%Y-%m-%d-%s.jpg") },
+        { MODKEY|ALT,                   ImprPant,  spawn,          SHCMD("scrot -q 100 -u /home/vido25/Imágenes/%Y-%m-%d-%s.jpg") },
         { 0,                            RaiseVol,  spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
         { 0,                            LowerVol,  spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },
         { 0,                            Mute,      spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
