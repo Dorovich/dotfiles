@@ -1,6 +1,6 @@
 #!/bin/sh
 
-choice=$(echo "play/pause\nartist\ntrack\nplaylist\njump\nalbum\ntoggle" | dmenu)
+choice=$(echo "play/pause\njump\nartist\nalbum\ntrack\nload\ntoggle" | dmenu)
 
 case $choice in
     play/pause)
@@ -12,7 +12,7 @@ case $choice in
     track)
         dm-mpd -t
         ;;
-    playlist)
+    load)
         dm-mpd -p
         ;;
     jump)
