@@ -108,7 +108,7 @@ case $1 in
 				fi
 
 				while true; do
-					DEC=$(echo -e "add after current and play\nadd after current\nreplace\nadd at the end" | $DMENU -p options:);
+					DEC=$(echo -e "add at the end\nadd after current\nadd after current and play\nreplace" | $DMENU -p options:);
 					case $DEC in 
 
 						"")
@@ -194,7 +194,7 @@ case $1 in
 			fi
 
 			while true; do
-				DEC=$(echo -e "add after current and play\nadd after current\nreplace\nadd at the end" | $DMENU -p options:);
+                                DEC=$(echo -e "add at the end\nadd after current\nadd after current and play\nreplace" | $DMENU -p options:);
 				case $DEC in 
 
 					"")
