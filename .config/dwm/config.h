@@ -125,8 +125,8 @@ static Key keys[] = {
      /* Scripts de dmenu */
         { MODKEY|CONTROL,               XK_r,      spawn,          SHCMD("dm-pass") },
         { MODKEY|CONTROL,               XK_m,      spawn,          SHCMD("dm-mpd-select") },
-        { MODKEY|CONTROL,               XK_Plus,   spawn,          SHCMD("mpc volume +5") },
-        { MODKEY|CONTROL,               XK_Minus,  spawn,          SHCMD("mpc volume -5") },
+        { MODKEY|CONTROL,               XK_plus,   spawn,          SHCMD("mpc volume +5") },
+        { MODKEY|CONTROL,               XK_minus,  spawn,          SHCMD("mpc volume -5") },
 
      /* Capturar pantalla o ventana activa */
         { MODKEY,                       ImprPant,  spawn,          SHCMD("scrot -q 100 /home/vido25/Imágenes/%Y-%m-%d-%s.jpg") },
