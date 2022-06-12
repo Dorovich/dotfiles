@@ -60,7 +60,7 @@ alias neofetch="neofetch --config none"
 alias whichgpu="lspci -k | grep -EA3 'VGA|3D|Display'"
 alias hamachi="sudo hamachi"
 alias clean="bleachbit -c --preset && notify-send -u low 'Finished cleaning!' '> clean'"
-alias fullclean="clean && sudo bleachbit -c --preset && notify-send -u low 'Finished cleaning!' '> fullclean'"
+alias fullclean="bleachbit -c --preset && sudo bleachbit -c --preset && notify-send -u low 'Finished cleaning!' '> fullclean'"
 alias search="tree -afR $HOME | fzf -e -i --layout=reverse-list --border=rounded --prompt='Buscar: '"
 alias weather="curl https://wttr.in/"
 alias qbmem='cat "/proc/$(pgrep -f 'bin/qutebrowser')/smaps_rollup"'
