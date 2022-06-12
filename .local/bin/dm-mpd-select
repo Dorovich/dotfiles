@@ -1,0 +1,41 @@
+#!/bin/sh
+
+choice=$(echo "play/pause\nartist\ntrack\nplaylist\njump\nalbum\ntoggle" | dmenu)
+
+case $choice in
+    play/pause)
+        mpc toggle
+        ;;
+    artist)
+        dm-mpd -a
+        ;;
+    track)
+        dm-mpd -t
+        ;;
+    playlist)
+        dm-mpd -p
+        ;;
+    jump)
+        dm-mpd -j
+        ;;
+    album)
+        dm-mpd -l
+        ;;
+    clear)
+        mpc clear
+        ;;
+    toggle)
+        option=$(echo "random\nconsume\nrepeat" | dmenu)
+        case $option in
+            random)
+                mpc random
+                ;;
+            consume)
+                mpc consume
+                ;;
+            repeat)
+                mpc repeat
+                ;;
+        esac
+        ;;
+esac
