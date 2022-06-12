@@ -1,6 +1,16 @@
 #!/bin/sh
 
-choice=$(echo "play/pause\njump\nartist\nalbum\ntrack\nload\nclear\ntoggle" | dmenu)
+song=$(mpc current -f "%title%")
+
+mpc status | grep "playing" 2> /dev/null
+if [ $? -eq 0 ];
+    then playing=">"
+    else playing="-"
+fi
+
+status="[$playing]"
+
+choice=$(echo "play/pause\njump\nartist\nalbum\ntrack\nload\nclear\ntoggle" | dmenu -p "$status $song")
 
 case $choice in
     play/pause)
@@ -25,7 +35,27 @@ case $choice in
         mpc clear
         ;;
     toggle)
-        option=$(echo "random\nconsume\nrepeat" | dmenu)
+        mpc status | grep "repeat: on" 2> /dev/null
+        if [ $? -eq 0 ];
+            then repeat="@"
+            else repeat="-"
+        fi
+
+        mpc status | grep "random: on" 2> /dev/null
+        if [ $? -eq 0 ];
+            then random="?"
+            else random="-"
+        fi
+
+        mpc status | grep "consume: on" 2> /dev/null
+        if [ $? -eq 0 ];
+            then consume="X"
+            else consume="-"
+        fi
+
+        status="[$random$consume$repeat]"
+        option=$(echo "random\nconsume\nrepeat" | dmenu -p $status)
+
         case $option in
             random)
                 mpc random
