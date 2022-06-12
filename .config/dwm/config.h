@@ -123,7 +123,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 
      /* Scripts de dmenu */
-        { MODKEY|CONTROL,               XK_r,      spawn,          SHCMD("dm-pass") },
+        { MODKEY|CONTROL,               XK_p,      spawn,          SHCMD("dm-pass") },
         { MODKEY|CONTROL,               XK_m,      spawn,          SHCMD("dm-mpd-select") },
         { MODKEY|CONTROL,               XK_plus,   spawn,          SHCMD("mpc volume +5") },
         { MODKEY|CONTROL,               XK_minus,  spawn,          SHCMD("mpc volume -5") },
