@@ -83,13 +83,6 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]   = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_yellow, "-sf", col_gray1, NULL };
 static const char *termcmd[]    = { "kitty", NULL };
-/*
-static const char *browsercmd[] = { "firefox", NULL };
-static const char *filescmd[]   = { "nautilus", NULL };
-static const char *emacscmd[]   = { "emacsclient", "-c", NULL };
-static const char *roficmd[]    = { "rofi", "-show", "drun", NULL };
-static const char *lockcmd[]    = { "slock", NULL };
-*/
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -118,9 +111,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Escape, spawn,          SHCMD("slock") },
 
      /* Cambiar a disposiciones especificas */
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} }, /* master & stack */
+	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} }, /* floating */
+	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} }, /* monocle */
 
      /* Scripts de dmenu */
         { MODKEY|CONTROL,               XK_p,      spawn,          SHCMD("dm-pass") },
