@@ -1,25 +1,25 @@
 #!/bin/sh
 
-choice=$(echo "play/pause\njump\nartist\nalbum\ntrack\nload\ntoggle" | dmenu)
+choice=$(echo "play/pause\njump\nartist\nalbum\ntrack\nload\nclear\ntoggle" | dmenu)
 
 case $choice in
     play/pause)
         mpc toggle
         ;;
+    jump)
+        dm-mpd -j
+        ;;
     artist)
         dm-mpd -a
+        ;;
+    album)
+        dm-mpd -l
         ;;
     track)
         dm-mpd -t
         ;;
     load)
         dm-mpd -p
-        ;;
-    jump)
-        dm-mpd -j
-        ;;
-    album)
-        dm-mpd -l
         ;;
     clear)
         mpc clear
