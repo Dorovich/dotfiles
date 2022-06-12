@@ -98,6 +98,7 @@ static Key keys[] = {
         { MODKEY|ALT,                   XK_v,      spawn,          {.v = emacscmd} },
 	{ MODKEY,                       XK_Escape, spawn,          {.v = lockcmd} },
         { MODKEY|ALT,                   XK_p,      spawn,          SHCMD("passmenu") },
+        { MODKEY|ALT,                   XK_m,      spawn,          SHCMD("mpdmenu") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
