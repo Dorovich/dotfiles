@@ -123,8 +123,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 
      /* Scripts de dmenu */
-        { MODKEY|CONTROL,               XK_p,      spawn,          SHCMD("dm-pass") },
-        { MODKEY|CONTROL,               XK_m,      spawn,          SHCMD("dm-mpd") },
+        { MODKEY|CONTROL,               XK_r,      spawn,          SHCMD("dm-pass") },
+        { MODKEY|CONTROL,               XK_m,      spawn,          SHCMD("dm-mpd-select") },
 
      /* Capturar pantalla o ventana activa */
         { MODKEY,                       ImprPant,  spawn,          SHCMD("scrot -q 100 /home/vido25/Imágenes/%Y-%m-%d-%s.jpg") },
