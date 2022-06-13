@@ -76,39 +76,40 @@ static const Layout layouts[] = {
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
-/* macro comando generico */
-#define CMD(cmd) { .v = (const char*[]){ cmd, NULL } }
+#define CMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[]   = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_yellow, "-sf", col_gray1, NULL };
-static const char *termcmd[]    = { "kitty", NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_yellow, "-sf", col_gray1, NULL };
+static const char *termcmd[] = { "kitty", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd} },
-	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd} },
+	{ MODKEY,                       XK_Return, spawn,          {.v = dmenucmd} },
+	{ MODKEY|SHIFT,                 XK_Return, spawn,          {.v = termcmd} },
+
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
+
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY|SHIFT,                 XK_space,  setlayout,      {0} },
+	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_space,  togglefloating, {0} },
 	{ MODKEY|SHIFT,                 XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_z,      zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
+	{ MODKEY|SHIFT,                 XK_Tab,    setlayout,      {0} },
 	{ MODKEY,                       XK_c,      killclient,     {0} },
 	{ MODKEY|SHIFT,                 XK_q,      quit,           {0} },
 
      /* Otros programas */
-	{ MODKEY|ALT,                   XK_p,      spawn,          SHCMD("rofi -show drun") },
-        { MODKEY|ALT,                   XK_b,      spawn,          SHCMD("firefox") },
-        { MODKEY|ALT,                   XK_f,      spawn,          SHCMD("nautilus") },
-        { MODKEY|ALT,                   XK_v,      spawn,          SHCMD("emacsclient -c") },
-	{ MODKEY,                       XK_Escape, spawn,          SHCMD("slock") },
+	{ MODKEY|ALT,                   XK_r,      spawn,          CMD("rofi -show drun") },
+        { MODKEY|ALT,                   XK_b,      spawn,          CMD("firefox") },
+        { MODKEY|ALT,                   XK_f,      spawn,          CMD("nautilus") },
+        { MODKEY|ALT,                   XK_v,      spawn,          CMD("emacsclient -c") },
+	{ MODKEY,                       XK_Escape, spawn,          CMD("slock") },
 
      /* Cambiar a disposiciones especificas */
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} }, /* master & stack */
@@ -116,19 +117,26 @@ static Key keys[] = {
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} }, /* monocle */
 
      /* Scripts de dmenu */
-        { MODKEY|CONTROL,               XK_p,      spawn,          SHCMD("dm-pass") },
-        { MODKEY|CONTROL,               XK_m,      spawn,          SHCMD("dm-mpd-select") },
-        { MODKEY|CONTROL,               XK_plus,   spawn,          SHCMD("mpc volume +5") },
-        { MODKEY|CONTROL,               XK_minus,  spawn,          SHCMD("mpc volume -5") },
+        { MODKEY|CONTROL,               XK_p,      spawn,          CMD("~/.config/dmenu/scripts/dm-pass") },
+        { MODKEY|CONTROL,               XK_m,      spawn,          CMD("~/.config/dmenu/scripts/dm-mpd-select") },
 
      /* Capturar pantalla o ventana activa */
-        { MODKEY,                       ImprPant,  spawn,          SHCMD("scrot -q 100 /home/vido25/Imágenes/%Y-%m-%d-%s.jpg") },
-        { MODKEY|ALT,                   ImprPant,  spawn,          SHCMD("scrot -q 100 -u /home/vido25/Imágenes/%Y-%m-%d-%s.jpg") },
+        { MODKEY,                       XK_y,      spawn,          CMD("scrot -q 100 /home/vido25/Imágenes/%Y-%m-%d-%s.jpg") },
+        { MODKEY|ALT,                   XK_y,      spawn,          CMD("scrot -q 100 -u /home/vido25/Imágenes/%Y-%m-%d-%s.jpg") },
+        { MODKEY,                       ImprPant,  spawn,          CMD("scrot -q 100 /home/vido25/Imágenes/%Y-%m-%d-%s.jpg") },
+        { MODKEY|ALT,                   ImprPant,  spawn,          CMD("scrot -q 100 -u /home/vido25/Imágenes/%Y-%m-%d-%s.jpg") },
 
      /* Control del volumen global */
-        { 0,                            RaiseVol,  spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
-        { 0,                            LowerVol,  spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },
-        { 0,                            Mute,      spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
+        { MODKEY,                       XK_plus,   spawn,          CMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
+        { MODKEY,                       XK_minus,  spawn,          CMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },
+        { MODKEY,                       XK_Delete, spawn,          CMD("pactl set-sink-mute @DEFAULT_SINK@ toggle" },
+
+        { MODKEY|CONTROL,               XK_plus,   spawn,          CMD("mpc volume +5") },
+        { MODKEY|CONTROL,               XK_minus,  spawn,          CMD("mpc volume -5") },
+
+        { 0,                            RaiseVol,  spawn,          CMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
+        { 0,                            LowerVol,  spawn,          CMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },
+        { 0,                            Mute,      spawn,          CMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
 
      /* Cambiar entre monitores */
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },

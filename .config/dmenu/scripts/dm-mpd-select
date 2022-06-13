@@ -1,32 +1,32 @@
 #!/bin/sh
 
-song=$(mpc current -f "%title%")
-
 mpc status | grep "playing" 2> /dev/null
 if [ $? -eq 0 ]; then playing=">"; else playing="-"; fi
 
-status="[$playing]"
+status="[$playing] $(mpc current -f "%title%")"
 
-choice=$(echo "play/pause\njump\nartist\nalbum\ntrack\nload\nclear\ntoggle" | dmenu -p "$status $song")
+choice=$(echo "play/pause\njump\nartist\nalbum\ntrack\nload\nclear\ntoggle" | dmenu -p "$status")
+
+dir="${HOME}/.config/dmenu/scripts/"
 
 case $choice in
     play/pause)
         mpc toggle
         ;;
     jump)
-        dm-mpd -j
+        $dir/dm-mpd -j
         ;;
     artist)
-        dm-mpd -a
+        $dir/dm-mpd -a
         ;;
     album)
-        dm-mpd -l
+        $dir/dm-mpd -l
         ;;
     track)
-        dm-mpd -t
+        $dir/dm-mpd -t
         ;;
     load)
-        dm-mpd -p
+        $dir/dm-mpd -p
         ;;
     clear)
         mpc clear

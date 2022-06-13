@@ -1,0 +1,7 @@
+#!/bin/sh
+
+result="Enter expression:"
+while true; do
+    expr="$(dmenu -p $result)"
+    result="$(echo "$expr" | bc)"
+done
