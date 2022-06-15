@@ -39,9 +39,11 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	/* class             instance    title       tags mask     isfloating   monitor */
+	{ "Gimp",            NULL,       NULL,       0,            1,           -1 },
+	{ "Firefox",         NULL,       NULL,       0,            0,           -1 },
+	{ "Lista de amigos", NULL,       NULL,       0,            1,           -1 },
+	{ "eog",             NULL,       NULL,       0,            1,           -1 },
 };
 
 /* layout(s) */
@@ -87,6 +89,7 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_Return, spawn,          {.v = dmenucmd} },
 	{ MODKEY|SHIFT,                 XK_Return, spawn,          {.v = termcmd} },
+	{ MODKEY,                    XK_BackSpace, spawn,          {.v = termcmd} },
 
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -121,19 +124,17 @@ static Key keys[] = {
         { MODKEY|CONTROL,               XK_m,      spawn,          CMD("~/.config/dmenu/scripts/dm-mpd-select") },
 
      /* Capturar pantalla o ventana activa */
-        { MODKEY,                       XK_y,      spawn,          CMD("scrot -q 100 /home/vido25/Imágenes/%Y-%m-%d-%s.jpg") },
-        { MODKEY|ALT,                   XK_y,      spawn,          CMD("scrot -q 100 -u /home/vido25/Imágenes/%Y-%m-%d-%s.jpg") },
+        //{ MODKEY,                       XK_y,      spawn,          CMD("scrot -q 100 /home/vido25/Imágenes/%Y-%m-%d-%s.jpg") },
+        //{ MODKEY|ALT,                   XK_y,      spawn,          CMD("scrot -q 100 -u /home/vido25/Imágenes/%Y-%m-%d-%s.jpg") },
         { MODKEY,                       ImprPant,  spawn,          CMD("scrot -q 100 /home/vido25/Imágenes/%Y-%m-%d-%s.jpg") },
         { MODKEY|ALT,                   ImprPant,  spawn,          CMD("scrot -q 100 -u /home/vido25/Imágenes/%Y-%m-%d-%s.jpg") },
 
      /* Control del volumen global */
-        { MODKEY,                       XK_plus,   spawn,          CMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
-        { MODKEY,                       XK_minus,  spawn,          CMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },
-        { MODKEY,                       XK_Delete, spawn,          CMD("pactl set-sink-mute @DEFAULT_SINK@ toggle" },
-
+        //{ MODKEY,                       XK_plus,   spawn,          CMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
+        //{ MODKEY,                       XK_minus,  spawn,          CMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },
+        //{ MODKEY,                       XK_Delete, spawn,          CMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
         { MODKEY|CONTROL,               XK_plus,   spawn,          CMD("mpc volume +5") },
         { MODKEY|CONTROL,               XK_minus,  spawn,          CMD("mpc volume -5") },
-
         { 0,                            RaiseVol,  spawn,          CMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
         { 0,                            LowerVol,  spawn,          CMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },
         { 0,                            Mute,      spawn,          CMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
