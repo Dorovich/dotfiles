@@ -108,11 +108,13 @@ static Key keys[] = {
 	{ MODKEY|SHIFT,                 XK_q,      quit,           {0} },
 
      /* Otros programas */
-	{ MODKEY|ALT,                   XK_r,      spawn,          CMD("rofi -show drun") },
-        { MODKEY|ALT,                   XK_b,      spawn,          CMD("firefox") },
-        { MODKEY|ALT,                   XK_f,      spawn,          CMD("nautilus") },
-        { MODKEY|ALT,                   XK_v,      spawn,          CMD("emacsclient -c") },
-	{ MODKEY,                       XK_Escape, spawn,          CMD("slock") },
+	{ MODKEY|ALT,                   XK_r,      spawn,          CMD("rofi -show drun") },   /* other run menu */
+        { MODKEY|ALT,                   XK_b,      spawn,          CMD("firefox") },           /* main web browser */
+        { MODKEY|ALT,                   XK_s,      spawn,          CMD("tabbed -c vimb -e") }, /* quick search web browser */
+        { MODKEY|ALT,                   XK_f,      spawn,          CMD("nautilus") },          /* file manager */
+        { MODKEY|ALT,                   XK_v,      spawn,          CMD("emacsclient -c") },    /* visual text editor */
+        { MODKEY|ALT,                   XK_e,      spawn,          CMD("thunderbird") },       /* email client */
+	{ MODKEY,                       XK_Escape, spawn,          CMD("slock") },             /* screen locker */
 
      /* Cambiar a disposiciones especificas */
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} }, /* master & stack */
