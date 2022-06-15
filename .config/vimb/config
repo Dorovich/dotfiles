@@ -61,8 +61,14 @@ shortcut-add s=https://www.startpage.com/do/dsearch?query=$0
 # shortcut is given and the string to open is not an URI.
 shortcut-default ddg
 
-# global dark mode
+# tema oscuro para paginas web
 set dark-mode=true
+
+# tamaño del historial
+set history-max-items=100
+
+# desactivar geolocalizacion
+set geolocation=never
 
 # Map page zoom in normal mode to keys commonly used across applications
 # + (zoom in), - (zoom out), = (zoom reset)
