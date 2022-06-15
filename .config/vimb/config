@@ -1,4 +1,5 @@
 # Homepage that vimb opens if started without a URI.
+#set home-page=file:///home/vido25/.config/vimb/startpage.html
 set home-page=Dorovich.github.io
 
 # Path to the default download directory. If no download directory is set,
@@ -52,10 +53,8 @@ set default-zoom=100
 # Shortcuts allow the opening of an URI built up from a named template with
 # additional parameters.
 shortcut-add ddg=https://duckduckgo.com/?q=$0
-shortcut-add dict=http://dict.cc/?s=$0
 shortcut-add ggl=https://encrypted.google.com/search?q=$0
 shortcut-add yt=http://www.youtube.com/results?search_query=$0
-shortcut-add s=https://www.startpage.com/do/dsearch?query=$0
 
 # Set the shortcut as the default, that is the shortcut to be used if no
 # shortcut is given and the string to open is not an URI.
@@ -83,5 +82,5 @@ set completion-selected-css=color:#151515;background-color:#d19a66;font:11pt mon
 set input-css=color:#abb2bf;background-color:#151515;font:11pt mononoki NF;
 set input-error-css=color:#abb2bf;background-color:#151515;font:11pt mononoki NF;
 set status-css=color:#abb2bf;background-color:#151515;font:11pt mononoki NF;
-set status-ssl-css=color:#abb2bf;background-color:#151515;font:11pt mononoki NF;
+set status-ssl-css=color:#525252;background-color:#151515;font:11pt mononoki NF;
 set status-ssl-invalid-css=color:#abb2bf;background-color:#151515;font:11pt mononoki NF;
