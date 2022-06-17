@@ -31,7 +31,7 @@ set noswapfile
 set nobackup nowritebackup
 set foldenable foldmethod=marker
 set title titlestring=%t\ %m titlelen=70
-set statusline=\ 
+set statusline=>\ %f
 filetype plugin on
 filetype plugin indent on
 syntax on

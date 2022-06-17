@@ -15,8 +15,8 @@ imap kj <Esc>l
 cmap jk <Esc>
 cmap kj <Esc>
 vmap q <Esc>
-nnoremap <silent> <TAB> :bnext<CR>
-nnoremap <silent> <S-TAB> :bprevious<CR>
+nnoremap <silent> <TAB> :bnext<CR>:file<CR>
+nnoremap <silent> <S-TAB> :bprevious<CR>:file<CR>
 nnoremap <silent> <C-c> :bdelete!<CR>
 xnoremap < <gv
 xnoremap > >gv
@@ -46,13 +46,6 @@ nnoremap <C-r> :%s//gI<Left><Left><Left>
 " }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""           FUNCTION MAPPINGS             """""""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" (Espacio dos veces para desplegar) {{{
-"nnoremap <silent> <F1> :call ToggleFocusMode()<CR>
-" }}}
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""            PLUGIN MAPPINGS              """""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " (Espacio dos veces para desplegar) {{{
@@ -63,7 +56,7 @@ nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> <C-?> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> <C-<> <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> <C->> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 " }}}

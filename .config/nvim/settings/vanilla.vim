@@ -38,7 +38,7 @@ set foldmethod=marker
 set title
 set cursorline
 set titlestring=%f\ %a\ %m titlelen=70
-set statusline=\ 
+set statusline=>\ %f
 syntax on
 filetype plugin on
 filetype plugin indent on
@@ -123,6 +123,7 @@ function! MyHighlights() abort
     highlight NonText      cterm=none   ctermfg=0    ctermbg=none
     highlight Comment      cterm=none   ctermfg=8    ctermbg=none
     highlight StatusLine   cterm=none   ctermfg=none ctermbg=none
+    highlight StatusLineNC cterm=none   ctermfg=none ctermbg=none
     highlight MatchParen   cterm=none   ctermfg=none ctermbg=238
     highlight Folded       cterm=italic ctermfg=8    ctermbg=none
     highlight SignColumn   cterm=none   ctermfg=none ctermbg=none
