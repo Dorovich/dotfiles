@@ -21,7 +21,7 @@ function! MyHighlights() abort
     highlight Function     cterm=none   ctermfg=1    ctermbg=none
     highlight Visual       cterm=none   ctermfg=none ctermbg=238
     highlight Character    cterm=none   ctermfg=12   ctermbg=none
-    highlight ModeMsg      cterm=none   ctermfg=6    ctermbg=none
+    highlight ModeMsg      cterm=bold   ctermfg=1    ctermbg=none
     highlight LineNr       cterm=none   ctermfg=8    ctermbg=none
     highlight CursorLine   cterm=none   ctermfg=none ctermbg=234
     highlight CursorLineNr cterm=bold   ctermfg=6    ctermbg=234
@@ -39,6 +39,7 @@ function! MyHighlights() abort
     highlight Todo         cterm=bold   ctermfg=0    ctermbg=2
     highlight Error        cterm=bold   ctermfg=0    ctermbg=1
     highlight ErrorMsg     cterm=bold   ctermfg=0    ctermbg=1
+    highlight MsgArea      cterm=italic ctermfg=7    ctermbg=none
     "  LSP object               effect          foreground   background   visual
     hi DiagnosticUnderlineError cterm=underline ctermfg=none ctermbg=none guisp=#e06c75
     hi DiagnosticError          cterm=italic    ctermfg=1    ctermbg=none
@@ -56,6 +57,3 @@ augroup MyColors
 augroup END
 
 colorscheme pablo
-
-" AUTOCENTRAR
-"autocmd InsertEnter * norm zz
