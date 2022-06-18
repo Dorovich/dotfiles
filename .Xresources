@@ -1,4 +1,4 @@
-*.font:     unscii:pixelsize=20:antialias=true:autohint=true
+*.font:     mononoki NF:pixelsize=18:antialias=true:autohint=true
 *.alpha:    0.96
 
 *.color0:   #1e2127

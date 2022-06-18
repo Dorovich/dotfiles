@@ -1,6 +1,6 @@
 configuration {
     modi: "drun,run";
-    font: "mononoki 12";
+    font: "Roboto Mono 12";
     display-run: "Run";
     display-drun: "Launch";
 }

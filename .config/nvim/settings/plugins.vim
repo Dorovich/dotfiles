@@ -14,22 +14,19 @@ endif
 " Plugin setup
 call plug#begin()
 
-Plug 'junegunn/fzf'                             " Buscador de archivos visual
-Plug 'junegunn/fzf.vim'                         " Lo mismo de arriba
-Plug 'scrooloose/nerdTree'                      " Menu lateral de archivos
-Plug 'tpope/vim-surround'                       " Cierra parentesis automaticamente
-Plug 'terryma/vim-multiple-cursors'             " Editar multiples instancias
-Plug 'ryanoasis/vim-devicons'                   " Iconos dentro de la terminal
-Plug 'bling/vim-bufferline'                     " Lista de buffers inferior
-Plug 'bfrg/vim-cpp-modern'                      " Mejores colores para C/C++
+Plug 'scrooloose/nerdTree'                          " Menu lateral de archivos
+Plug 'tpope/vim-surround'                           " Cierra parentesis automaticamente
+Plug 'mg979/vim-visual-multi', {'branch': 'master'} " Editar multiples instancias
+Plug 'ryanoasis/vim-devicons'                       " Iconos dentro de la terminal
+Plug 'bfrg/vim-cpp-modern'                          " Mejores colores para C/C++
 
-Plug 'neovim/nvim-lspconfig'                    " Cofiguraciones para LSP
-Plug 'hrsh7th/nvim-cmp'                         " Autocomopletado de texto y tal
-Plug 'hrsh7th/cmp-nvim-lsp'                     " Lo mismo de arriba
-Plug 'hrsh7th/cmp-buffer'                       " Para datos del búfer
-Plug 'hrsh7th/cmp-path'                         " Para rutas del sistema
-Plug 'L3MON4D3/LuaSnip'                         " Sugerencias de palabras
-Plug 'saadparwaiz1/cmp_luasnip'                 " LuaSnip + nvim-cmp
+Plug 'neovim/nvim-lspconfig'                        " Cofiguraciones para LSP
+Plug 'hrsh7th/nvim-cmp'                             " Autocomopletado de texto y tal
+Plug 'hrsh7th/cmp-nvim-lsp'                         " Lo mismo de arriba
+Plug 'hrsh7th/cmp-buffer'                           " Para datos del búfer
+Plug 'hrsh7th/cmp-path'                             " Para rutas del sistema
+Plug 'L3MON4D3/LuaSnip'                             " Sugerencias de palabras
+Plug 'saadparwaiz1/cmp_luasnip'                     " LuaSnip + nvim-cmp
 
 call plug#end()
 
