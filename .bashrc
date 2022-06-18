@@ -6,6 +6,7 @@ export HISTCONTROL=ignoreboth
 export PATH="${PATH}:${HOME}/.local/bin:${HOME}/.emacs.d/bin:${HOME}/Applications:${HOME}/local/share/flatpak/exports/bin"
 export MYVIMRC="$HOME/.config/nvim/init.vim"
 export alm="/media/vido25/Almacenamiento"
+export mus="$alm/Musica/"
 
 # ignore upper and lowercase when TAB completion
 set completion-ignore-case on
@@ -133,11 +134,13 @@ PROMPT_COMMAND=bash_prompt_command
 # https://wiki.bash-hackers.org/scripting/terminalcodes
 color1=$(tput setaf 2)
 color2=$(tput setaf 1)
+color3=$(tput setaf 3)
 bold=$(tput bold)
 reset=$(tput sgr0)
 
 # https://askubuntu.com/questions/24358/how-do-i-get-long-command-lines-to-wrap-to-the-next-line
-export PS1="\n\[$bold$color1\]@\[$reset\] \[$bold$color2\]\$NEW_PWD\[$reset\] > "
+#export PS1="\n\[$bold$color1\]@\[$reset\] \[$bold$color2\]\$NEW_PWD\[$reset\] > "
+export PS1="\n\[$bold$color3\]\W\[$reset\] "
 
 # }}}
 
