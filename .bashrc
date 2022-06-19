@@ -42,6 +42,7 @@ fi
 # {{{
 
 alias v="nvim"
+alias vt="/usr/bin/vim.tiny"
 alias em="emacsclient -t"
 alias aptup="sudo apt update && sudo apt upgrade && notify-send -u normal 'Finished the upgrade!' '> aptup'"
 alias aptupd="sudo apt update && notify-send -u normal 'Finished updating!' '> aptupd'"
