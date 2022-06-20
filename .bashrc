@@ -100,48 +100,53 @@ default-fm() {
 # }}}
 
 ############################################
-###           BASH PWD COMMAND           ###
+###                PROMPT                ###
 ############################################
 # {{{
 
-bash_prompt_command() {
-    # How many characters of the $PWD should be kept
-    local pwdmaxlen=25
-
-    # Indicate that there has been dir truncation
-    local trunc_symbol="..."
-
-    # Store local dir
-    local dir=${PWD##*/}
-
-    # Which length to use
-    pwdmaxlen=$(( ( pwdmaxlen < ${#dir} ) ? ${#dir} : pwdmaxlen ))
-
-    NEW_PWD=${PWD/#$HOME/\~}
-
-    local pwdoffset=$(( ${#NEW_PWD} - pwdmaxlen ))
-
-    # Generate name
-    if [ ${pwdoffset} -gt "0" ]
-    then
-        NEW_PWD=${NEW_PWD:$pwdoffset:$pwdmaxlen}
-        NEW_PWD=${trunc_symbol}/${NEW_PWD#*/}
-    fi
-}
-
-PROMPT_COMMAND=bash_prompt_command
+# PWD COMMAND {{{
+# bash_prompt_command() {
+#     # How many characters of the $PWD should be kept
+#     local pwdmaxlen=25
+# 
+#     # Indicate that there has been dir truncation
+#     local trunc_symbol="..."
+# 
+#     # Store local dir
+#     local dir=${PWD##*/}
+# 
+#     # Which length to use
+#     pwdmaxlen=$(( ( pwdmaxlen < ${#dir} ) ? ${#dir} : pwdmaxlen ))
+# 
+#     NEW_PWD=${PWD/#$HOME/\~}
+# 
+#     local pwdoffset=$(( ${#NEW_PWD} - pwdmaxlen ))
+# 
+#     # Generate name
+#     if [ ${pwdoffset} -gt "0" ]
+#     then
+#         NEW_PWD=${NEW_PWD:$pwdoffset:$pwdmaxlen}
+#         NEW_PWD=${trunc_symbol}/${NEW_PWD#*/}
+#     fi
+# }
+# 
+# 
+# PROMPT_COMMAND=bash_prompt_command
+# 
+# color1=$(tput setaf 2)
+# color2=$(tput setaf 1)
+# export PS1="\n\[$bold$color1\]@\[$reset\] \[$bold$color2\]\$NEW_PWD\[$reset\] > "
+# }}}
 
 # black=0, red=1, green=2, yellow=3, blue=4, magenta=5, cyan=6, white=7
 # https://wiki.bash-hackers.org/scripting/terminalcodes
-color1=$(tput setaf 2)
-color2=$(tput setaf 1)
-color3=$(tput setaf 3)
+color1=$(tput setaf 3)
+color2=$(tput setaf 8)
 bold=$(tput bold)
 reset=$(tput sgr0)
 
-# https://askubuntu.com/questions/24358/how-do-i-get-long-command-lines-to-wrap-to-the-next-line
-#export PS1="\n\[$bold$color1\]@\[$reset\] \[$bold$color2\]\$NEW_PWD\[$reset\] > "
-export PS1="\n\[$bold$color3\]\W\[$reset\] "
+export PS1="\n\[$bold$color1\]\W\[$reset\] "
+export PS2="\[$bold$color2\]>\[$reset\] "
 
 # }}}
 

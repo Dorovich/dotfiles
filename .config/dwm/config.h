@@ -104,7 +104,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY|SHIFT,                 XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_space,  togglefloating, {0} },
-	{ MODKEY|SHIFT,                 XK_f,      togglefullscr,  {0} },
+	{ MODKEY|SHIFT,                 XK_space,  togglefullscr,  {0} },
 	{ MODKEY,                       XK_z,      zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|SHIFT,                 XK_Tab,    setlayout,      {0} },

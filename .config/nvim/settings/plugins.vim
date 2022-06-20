@@ -105,7 +105,7 @@ cmp.setup {
   },
 }
 
-require'lspconfig'.rust_analyzer.setup{}
+--require'lspconfig'.rust_analyzer.setup{}
 
 require'lspconfig'.sumneko_lua.setup {
   settings = {
