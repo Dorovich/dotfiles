@@ -128,6 +128,8 @@ static Key keys[] = {
      /* Scripts de dmenu */
         { MODKEY|CONTROL,               XK_p,      spawn,          CMD("~/.config/dmenu/scripts/dm-pass") },
         { MODKEY|CONTROL,               XK_m,      spawn,          CMD("~/.config/dmenu/scripts/dm-mpd-select") },
+        { MODKEY|CONTROL,               XK_s,      spawn,          CMD("~/.config/dmenu/scripts/dm-soundout") },
+        { MODKEY|CONTROL,               XK_k,      spawn,          CMD("~/.config/dmenu/scripts/dm-kill") },
 
      /* Capturar pantalla o ventana activa */
         { MODKEY,                       ImprPant,  spawn,          CMD("scrot -q 100 /home/vido25/Imágenes/%Y-%m-%d-%s.jpg") },
