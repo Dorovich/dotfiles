@@ -95,8 +95,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 
-	{ MODKEY,                       XK_Up,     focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_Down,   focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_Down,   focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_Up,     focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_Left,   setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_Right,  setmfact,       {.f = +0.05} },
 
@@ -111,13 +111,13 @@ static Key keys[] = {
 	{ MODKEY,                       XK_c,      killclient,     {0} },
 	{ MODKEY|SHIFT,                 XK_q,      quit,           {0} },
 
-     /* Otros programas */
+     /* Otros programas genericos */
 	{ MODKEY,                       XK_r,      spawn,          CMD("rofi -show drun") },   /* other run menu */
         { MODKEY,                       XK_b,      spawn,          CMD("firefox") },           /* main web browser */
-        { MODKEY,                       XK_s,      spawn,          CMD("tabbed -c vimb -e") }, /* quick search web browser */
+        { MODKEY,                       XK_s,      spawn,          CMD("tabbed -c vimb -e") }, /* other web browser */
         { MODKEY,                       XK_f,      spawn,          CMD("nautilus") },          /* file manager */
         { MODKEY,                       XK_v,      spawn,          CMD("emacsclient -c") },    /* visual text editor */
-        { MODKEY,                       XK_e,      spawn,          CMD("thunderbird") },       /* email client */
+        { MODKEY,                       XK_e,      spawn,          CMD("thunderbird") },       /* e-mail client */
 	{ MODKEY,                       XK_Escape, spawn,          CMD("slock") },             /* screen locker */
 
      /* Cambiar a disposiciones especificas */
@@ -128,12 +128,14 @@ static Key keys[] = {
      /* Scripts de dmenu */
         { MODKEY|CONTROL,               XK_p,      spawn,          CMD("~/.config/dmenu/scripts/dm-pass") },
         { MODKEY|CONTROL,               XK_m,      spawn,          CMD("~/.config/dmenu/scripts/dm-mpd-select") },
-        { MODKEY|CONTROL,               XK_s,      spawn,          CMD("~/.config/dmenu/scripts/dm-soundout") },
+        { MODKEY|CONTROL,               XK_o,      spawn,          CMD("~/.config/dmenu/scripts/dm-soundout") },
         { MODKEY|CONTROL,               XK_k,      spawn,          CMD("~/.config/dmenu/scripts/dm-kill") },
 
-     /* Capturar pantalla o ventana activa */
-        { MODKEY,                       ImprPant,  spawn,          CMD("scrot -q 100 /home/vido25/Imágenes/%Y-%m-%d-%s.jpg") },
-        { MODKEY|ALT,                   ImprPant,  spawn,          CMD("scrot -q 100 -u /home/vido25/Imágenes/%Y-%m-%d-%s.jpg") },
+     /* Capturar pantalla, ventana activa o seccion */
+        { MODKEY,                       ImprPant,  spawn,          CMD("maim ~/Imágenes/Capturas/captura_$(date +%s).png") },
+        { MODKEY|ALT,                   ImprPant,  spawn,          CMD("maim -i $(xdotool getactivewindow) ~/Imágenes/Capturas/captura_$(date +%s).png") },
+        { MODKEY|SHIFT,                 ImprPant,  spawn,          CMD("maim -s ~/Imágenes/Capturas/captura_$(date +%s).png") },
+        { MODKEY|CONTROL,               ImprPant,  spawn,          CMD("maim -s | xclip -selection clipboard -t image/png") }, /* guarda la captura en el portapapeles */
 
      /* Control del volumen global */
         { MODKEY|CONTROL,               XK_plus,   spawn,          CMD("mpc volume +5") },
