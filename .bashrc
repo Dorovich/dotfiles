@@ -5,8 +5,10 @@ export ALTERNATE_EDITOR="emacsclient -t -a ''"
 export HISTCONTROL=ignoreboth
 export PATH="${PATH}:${HOME}/.local/bin:${HOME}/.emacs.d/bin"
 export MYVIMRC="$HOME/.config/nvim/init.vim"
+
 export alm="/media/vido25/Almacenamiento"
 export mus="$alm/Musica/"
+export wpp="$alm/wpp/"
 
 # ignore upper and lowercase when TAB completion
 set completion-ignore-case on
