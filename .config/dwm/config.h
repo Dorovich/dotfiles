@@ -132,8 +132,8 @@ static Key keys[] = {
 
      /* Capturar pantalla, ventana activa o seccion */
         { MODKEY,                       ImprPant,  spawn,          CMD("maim ~/Imágenes/Capturas/captura_$(date +%s).png") },
-        { MODKEY|ALT,                   ImprPant,  spawn,          CMD("maim -i $(xdotool getactivewindow) ~/Imágenes/Capturas/captura_$(date +%s).png") },
-        { MODKEY|SHIFT,                 ImprPant,  spawn,          CMD("maim -s ~/Imágenes/Capturas/captura_$(date +%s).png") },
+        { MODKEY|ALT,                   ImprPant,  spawn,          CMD("maim -i $(xdotool getactivewindow) ~/Imágenes/Capturas/ventana_$(date +%s).png") },
+        { MODKEY|SHIFT,                 ImprPant,  spawn,          CMD("maim -s ~/Imágenes/Capturas/recorte_$(date +%s).png") },
         { MODKEY|CONTROL,               ImprPant,  spawn,          CMD("maim -s | xclip -selection clipboard -t image/png") }, /* guarda la captura en el portapapeles */
 
      /* Control del volumen global */

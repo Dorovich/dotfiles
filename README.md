@@ -1,7 +1,7 @@
 # ~ .dotfiles ~
 *Archivos de configuración de mi sistema y otros cosos de interés*
 
-![](showcase.jpg)
+![](showcase.png)
 
 ## Información
 - Distro: `Pop!_OS`
