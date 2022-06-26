@@ -9,7 +9,7 @@
 - Shell: `bash`
 - Editor: `neovim`, `emacs`
 - Navegador: `firefox`, `qutebrowser`, `vimb`
-- Fuente: `mononoki`, `Fira Code`
-- Tema GTK: `Everforest Dark`, `Juno ocean`
-- WM: `dwm`
+- Fuente: `mononoki (Nerd Font)`
+- Tema GTK: `Juno ocean`
+- DE/WM: `dwm`
 - Notificaciones: `dunst`
