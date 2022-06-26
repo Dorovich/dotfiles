@@ -164,7 +164,7 @@ case $1 in
 	
         while true; do
             CUR_PLAYLIST=$(mpc playlist)
-            CHOICE=$(echo -e "\nnext\nprev\n--------------------------\n$CUR_PLAYLIST" | $DMENU -p jump:);
+            CHOICE=$(echo -e "next\nprev\n--------------------------\n$CUR_PLAYLIST" | $DMENU -p jump:);
             case $CHOICE in
                 "")
                     break
@@ -181,16 +181,6 @@ case $1 in
                     ;;
             esac
         done
-       #if [ "$CHOICE" = "" ]; then exit;
-       #elif [ "$CHOICE" = "next" ]; then
-       #    mpc next
-       #    exit
-       #elif [ "$CHOICE" = "prev" ]; then
-       #    mpc prev
-       #    exit
-       #fi
-       #POS=$(mpc playlist | grep -xn "$CHOICE" | awk -F: '{print $1}')
-       #mpc play $POS;
 	;;
 
 	-l|--longplayer)
