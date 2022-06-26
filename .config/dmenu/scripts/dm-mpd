@@ -162,10 +162,35 @@ case $1 in
 
 	-j|--jump)
 	
-	TITLE=$(mpc playlist | $DMENU -p jump:);
-	if [ "$TITLE" = "" ]; then exit; fi
-	POS=$(mpc playlist | grep -xn "$TITLE" | awk -F: '{print $1}')
-	mpc play $POS;
+        while true; do
+            CUR_PLAYLIST=$(mpc playlist)
+            CHOICE=$(echo -e "\nnext\nprev\n--------------------------\n$CUR_PLAYLIST" | $DMENU -p jump:);
+            case $CHOICE in
+                "")
+                    break
+                    ;;
+                next)
+                    mpc next
+                    ;;
+                prev)
+                    mpc prev
+                    ;;
+                *)
+                    POS=$(mpc playlist | grep -xn "$CHOICE" | awk -F: '{print $1}')
+                    mpc play $POS;
+                    ;;
+            esac
+        done
+       #if [ "$CHOICE" = "" ]; then exit;
+       #elif [ "$CHOICE" = "next" ]; then
+       #    mpc next
+       #    exit
+       #elif [ "$CHOICE" = "prev" ]; then
+       #    mpc prev
+       #    exit
+       #fi
+       #POS=$(mpc playlist | grep -xn "$CHOICE" | awk -F: '{print $1}')
+       #mpc play $POS;
 	;;
 
 	-l|--longplayer)
