@@ -84,7 +84,7 @@ cdl() { cd $1 && ls ; }
 0url() { curl -F"url=$1" https://envs.sh ; }       # 0url "https://url"
 0short() { curl -F"shorten=$1" https://envs.sh ; } # 0short "https://long-url"
 
-alias wacom-osu='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" Area 1500 4600 7360 9200'
+alias wacom-osu='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" Area 5167 3167 9133 6333'
 alias wacom-reset='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" ResetArea'
 
 alias icat="kitty +kitten icat"
