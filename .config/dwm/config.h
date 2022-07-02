@@ -21,13 +21,13 @@ static const char *colors[][3]      = {
 };
 
 static const char *const autostart[] = {
-	"mpd", NULL,
         "sh", "-c", "/usr/bin/nvidia-settings --load-config-only", NULL,
-        "redshift", "-l", "41.39:2.16", "-m", "randr", "-t", "5500:5000", NULL,
-        "/usr/bin/emacs", "--daemon", NULL,
         "nitrogen", "--restore", NULL,
         "picom", NULL,
         "dwm-status", NULL,
+	"mpd", NULL,
+        "redshift", "-l", "41.39:2.16", "-m", "randr", "-t", "5500:5000", NULL,
+        "/usr/bin/emacs", "--daemon", NULL,
 	NULL /* terminate */
 };
 
