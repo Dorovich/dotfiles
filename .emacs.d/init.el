@@ -5,7 +5,7 @@
 (scroll-bar-mode -1)        ; Disable visible scrollbar
 (tool-bar-mode -1)          ; Disable the toolbar
 (tooltip-mode -1)           ; Disable tooltips
-(set-fringe-mode 10)        ; Give some breathing room
+(set-fringe-mode 1)        ; Give some breathing room
 
 (menu-bar-mode -1)          ; Disable the menu bar
 
@@ -29,8 +29,6 @@
 (set-face-attribute 'default nil :font "mononoki NF" :height efs/default-font-size)
 (set-face-attribute 'fixed-pitch nil :font "mononoki NF" :height efs/default-font-size)
 (set-face-attribute 'variable-pitch nil :font "mononoki NF" :height efs/default-variable-font-size)
-
-(load-theme 'wombat)
 
 ;;Setup Package.el To Work With MELPA
 (require 'package)
@@ -64,7 +62,7 @@
   (key-chord-mode 1))
 
 (use-package all-the-icons)
-
+(use-package warm-night-theme)
 (use-package nano-modeline
   :init (nano-modeline-mode))
 
@@ -75,6 +73,8 @@
 ;; Setting garbage collection threshold
 (setq gc-cons-threshold 402653184
       gc-cons-percentage 0.6)
+
+(load-theme 'wombat)
 
 ;; Profile emacs startup
 (add-hook 'emacs-startup-hook
@@ -92,6 +92,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("5111a41453244802afd93eed1a434e612a8afbdf19c52384dffab129258bab6e" default))
  '(package-selected-packages '(gcmh evil-collection evil use-package cmake-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
