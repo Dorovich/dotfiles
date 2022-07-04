@@ -112,6 +112,7 @@ static Key keys[] = {
 
      /* Otros programas genericos */
 	{ MODKEY|SHIFT,                 XK_Return, spawn,          CMD("rofi -show drun") },   /* other run menu */
+	//{ ALT,                          XK_Return, spawn,          CMD("rofi -show drun") },
         { MODKEY|ALT,                   XK_b,      spawn,          CMD("firefox") },           /* main web browser */
         { MODKEY|ALT,                   XK_s,      spawn,          CMD("tabbed -c vimb -e") }, /* other web browser */
         { MODKEY|ALT,                   XK_f,      spawn,          CMD("nautilus") },          /* file manager */
