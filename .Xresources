@@ -1,7 +1,10 @@
 *.font:     mononoki NF:pixelsize=18:antialias=true:autohint=true
 *.alpha:    0.96
 
-*.color0:   #1e2127
+*.background:   #151515
+*.foreground:   #abb2bf
+*.cursorColor:  #dbc49b
+
 *.color8:   #5c6370
 *.color1:   #e06c75
 *.color9:   #e06c75

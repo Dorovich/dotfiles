@@ -3,6 +3,7 @@ export VISUAL="emacsclient -c -a 'emacs'"
 export EDITOR="nvim"
 export ALTERNATE_EDITOR="emacsclient -t -a ''"
 export HISTCONTROL=ignoreboth
+export HISTSIZE=2000
 export PATH="${PATH}:${HOME}/.local/bin:${HOME}/.emacs.d/bin:${HOME}/Applications"
 export MYVIMRC="$HOME/.config/nvim/init.vim"
 

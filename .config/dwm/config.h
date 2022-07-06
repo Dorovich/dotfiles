@@ -82,7 +82,8 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_yellow, "-sf", col_gray1, NULL };
-static const char *termcmd[] = { "kitty", NULL };
+//static const char *termcmd[] = { "kitty", NULL };
+static const char *termcmd[] = { "st", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -111,15 +112,14 @@ static Key keys[] = {
 	{ MODKEY|SHIFT,                 XK_q,      quit,           {0} },
 
      /* Otros programas genericos */
-	{ MODKEY|SHIFT,                 XK_Return, spawn,          CMD("rofi -show drun") },   /* other run menu */
-	//{ ALT,                          XK_Return, spawn,          CMD("rofi -show drun") },
-        { MODKEY|ALT,                   XK_b,      spawn,          CMD("firefox") },            /* browser */
-        { MODKEY|ALT,                   XK_f,      spawn,          CMD("nautilus") },           /* file manager */
-        { MODKEY|ALT,                   XK_m,      spawn,          CMD("thunderbird") },        /* mail client */
-        { MODKEY|ALT,                   XK_v,      spawn,          CMD("tabbed -c vimb -e") },  /* vimb */
-        { MODKEY|ALT,                   XK_e,      spawn,          CMD("emacsclient -c") },     /* emacs */
-        { MODKEY|ALT,                   XK_p,      spawn,          CMD("pcmanfm") },            /* pcmanfm */
-	{ MODKEY,                       XK_Escape, spawn,          CMD("slock") },              /* lock screen */
+	{ MODKEY|SHIFT,                 XK_Return, spawn,          CMD("rofi -show drun") },
+        { MODKEY|ALT,                   XK_b,      spawn,          CMD("firefox") },
+        { MODKEY|ALT,                   XK_f,      spawn,          CMD("nautilus") },
+        { MODKEY|ALT,                   XK_m,      spawn,          CMD("thunderbird") },
+        { MODKEY|ALT,                   XK_v,      spawn,          CMD("tabbed -c vimb -e") },
+        { MODKEY|ALT,                   XK_e,      spawn,          CMD("emacsclient -c -a 'emacs'") },
+        { MODKEY|ALT,                   XK_p,      spawn,          CMD("pcmanfm") },
+	{ MODKEY,                       XK_Escape, spawn,          CMD("slock") },
 
      /* Cambiar a disposiciones especificas */
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} }, /* master & stack */
