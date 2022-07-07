@@ -6,6 +6,8 @@
  */
 
 * {
+    width:                       500;
+    lines:                       8;
     background-color:            #151515;
     border-color:                #151515;
     text-color:                  #abb2bf;

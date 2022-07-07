@@ -3,5 +3,8 @@ configuration {
     font: "mononoki NF 12";
     display-run: "Run";
     display-drun: "Launch";
+    matching: "normal";
+    drun-match-fields: "name";
+    drun-display-format: "{name}";
 }
 @theme "~/.config/rofi/themes/dt-center.rasi"
