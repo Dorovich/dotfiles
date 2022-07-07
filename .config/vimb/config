@@ -10,7 +10,7 @@ set download-path=~/Descargas/
 # Command with placeholder '%s' called if form field is opened with $EDITOR to
 # spawn the editor-like `x-terminal-emulator -e vim %s'. To use Gvim as the
 # editor, it's necessary to call it with `-f' to run it in the foreground.
-set editor-command=kitty -e "nvim %s"
+set editor-command=st -e nvim %s
 
 # If enabled the inputbox will be hidden whenever it contains no text.
 set input-autohide=true
@@ -53,14 +53,20 @@ set default-zoom=100
 # Shortcuts allow the opening of an URI built up from a named template with
 # additional parameters.
 shortcut-add ddg=https://duckduckgo.com/?q=$0
-shortcut-add ddgl=https://lite.duckduckgo.com/lite/?q=$0
 shortcut-add ggl=https://encrypted.google.com/search?q=$0
 shortcut-add yt=http://www.youtube.com/results?search_query=$0
 shortcut-add sx=https://searx.tiekoetter.com/search?q=$0
+shortcut-add gh=https://github.com/search?q=$0
+shortcut-add wa=http://www.wolframalpha.com/input/?i=$0
+shortcut-add map=https://maps.google.com/maps?saddr=$0&daddr=$1
 
 # Set the shortcut as the default, that is the shortcut to be used if no
 # shortcut is given and the string to open is not an URI.
 shortcut-default sx
+
+# Handlers allow passing link types to an external command. The command can
+# contain the placeholder %s that will be filled by the URI
+handler-add magnet=xdg-open %s
 
 # tema oscuro para paginas web
 set dark-mode=true
@@ -77,6 +83,12 @@ nmap + zI
 nmap - zO
 nmap = zz
 
+# Mappings
+nnoremap ñ :
+nnoremap d :quit<CR>
+nnoremap D :quit!<CR>
+cnoremap jk <Esc>
+
 # GUI color settings
 set completion-css=color:#abb2bf;background-color:#151515;font:11pt mononoki NF;
 set completion-hover-css=color:#abb2bf;background-color:#262626;font:11pt mononoki NF;
@@ -88,6 +100,9 @@ set status-ssl-css=color:#525252;background-color:#151515;font:11pt mononoki NF;
 set status-ssl-invalid-css=color:#abb2bf;background-color:#151515;font:11pt mononoki NF;
 
 # Otros
+set timeoutlen=200
 set accelerated-2d-canvas=ondemand
 set cookie-accept=origin
 set hint-keys=asdfghjklei
+set status-bar=false
+set webinspector=true
