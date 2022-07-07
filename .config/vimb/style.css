@@ -1,27 +1,21 @@
 /*
 *,div,pre,textarea,body,input,td,tr,p {
-    background-color: #303030 !important;
+    background-color: #151515 !important;
     background-image: none !important;
-    color: #bbbbbb !important;
+    color: #abb2bf !important;
 }
 h1,h2,h3,h4 {
-    background-color: #303030 !important;
-    color: #b8ddea !important;
+    background-color: #151515 !important;
+    color: #abb2bf !important;
 }
 a {
-    color: #70e070 !important;
+    color: #d19a66 !important;
 }
 a:hover,a:focus {
-    color: #7070e0 !important;
+    color: #e4b88e !important;
 }
 a:visited {
-    color: #e07070 !important;
-}
-img {
-    opacity: .5;
-}
-img:hover {
-    opacity: 1;
+    color: #1e4d3d !important;
 }
 */
 
