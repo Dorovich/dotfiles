@@ -53,12 +53,14 @@ set default-zoom=100
 # Shortcuts allow the opening of an URI built up from a named template with
 # additional parameters.
 shortcut-add ddg=https://duckduckgo.com/?q=$0
+shortcut-add ddgl=https://lite.duckduckgo.com/lite/?q=$0
 shortcut-add ggl=https://encrypted.google.com/search?q=$0
 shortcut-add yt=http://www.youtube.com/results?search_query=$0
+shortcut-add sx=https://searx.tiekoetter.com/search?q=$0
 
 # Set the shortcut as the default, that is the shortcut to be used if no
 # shortcut is given and the string to open is not an URI.
-shortcut-default ddg
+shortcut-default sx
 
 # tema oscuro para paginas web
 set dark-mode=true
@@ -84,3 +86,8 @@ set input-error-css=color:#abb2bf;background-color:#151515;font:11pt mononoki NF
 set status-css=color:#abb2bf;background-color:#151515;font:11pt mononoki NF;
 set status-ssl-css=color:#525252;background-color:#151515;font:11pt mononoki NF;
 set status-ssl-invalid-css=color:#abb2bf;background-color:#151515;font:11pt mononoki NF;
+
+# Otros
+set accelerated-2d-canvas=ondemand
+set cookie-accept=origin
+set hint-keys=asdfghjklei
