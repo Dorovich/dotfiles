@@ -81,88 +81,89 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_yellow, "-sf", col_gray1, NULL };
-//static const char *termcmd[] = { "kitty", NULL };
-static const char *termcmd[] = { "st", NULL };
+static const char *dmenucmd[]   = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_yellow, "-sf", col_gray1, NULL };
+static const char *termcmd[]    = { "st", NULL };
+static const char *launchcmd[]  = { "rofi", "-show", "drun", NULL };
 
 static Key keys[] = {
-	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_Return, spawn,          {.v = dmenucmd} },
-	{ MODKEY,                    XK_BackSpace, spawn,          {.v = termcmd} },
+	/* modifier                     key           function        argument */
+	{ MODKEY,                       XK_BackSpace, spawn,          {.v = termcmd} },
+	{ MODKEY,                       XK_Return,    spawn,          {.v = dmenucmd} },
+	{ MODKEY|SHIFT,                 XK_Return,    spawn,          {.v = launchcmd} },
 
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	{ MODKEY,                       XK_j,         focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_k,         focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_h,         setmfact,       {.f = -0.05} },
+	{ MODKEY,                       XK_l,         setmfact,       {.f = +0.05} },
 
-	{ MODKEY,                       XK_Down,   focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_Up,     focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_Left,   setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_Right,  setmfact,       {.f = +0.05} },
+	{ MODKEY,                       XK_Down,      focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_Up,        focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_Left,      setmfact,       {.f = -0.05} },
+	{ MODKEY,                       XK_Right,     setmfact,       {.f = +0.05} },
 
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_space,  togglefloating, {0} },
-	{ MODKEY|SHIFT,                 XK_space,  togglefullscr,  {0} },
-	{ MODKEY,                       XK_z,      zoom,           {0} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY|SHIFT,                 XK_Tab,    setlayout,      {0} },
-	{ MODKEY,                       XK_c,      killclient,     {0} },
-	{ MODKEY|SHIFT,                 XK_q,      quit,           {0} },
+	{ MODKEY,                       XK_i,         incnmaster,     {.i = +1 } },
+	{ MODKEY,                       XK_d,         incnmaster,     {.i = -1 } },
+	{ MODKEY|SHIFT,                 XK_b,         togglebar,      {0} },
+	{ MODKEY|SHIFT,                 XK_space,     togglefullscr,  {0} },
+	{ MODKEY,                       XK_space,     togglefloating, {0} },
+	{ MODKEY,                       XK_z,         zoom,           {0} },
+	{ MODKEY,                       XK_Tab,       view,           {0} },
+	{ MODKEY|SHIFT,                 XK_Tab,       setlayout,      {0} },
+	{ MODKEY,                       XK_c,         killclient,     {0} },
+	{ MODKEY|SHIFT,                 XK_q,         quit,           {0} },
 
      /* Otros programas genericos */
-	{ MODKEY|SHIFT,                 XK_Return, spawn,          CMD("rofi -show drun") },
-        { MODKEY|ALT,                   XK_b,      spawn,          CMD("firefox") },
-        { MODKEY|ALT,                   XK_f,      spawn,          CMD("nautilus") },
-        { MODKEY|ALT,                   XK_m,      spawn,          CMD("thunderbird") },
-        { MODKEY|ALT,                   XK_v,      spawn,          CMD("tabbed -c vimb -e") },
-        { MODKEY|ALT,                   XK_e,      spawn,          CMD("emacsclient -c -a 'emacs'") },
-        { MODKEY|ALT,                   XK_p,      spawn,          CMD("pcmanfm") },
-	{ MODKEY,                       XK_Escape, spawn,          CMD("slock") },
+        { MODKEY,                       XK_b,         spawn,          CMD("firefox") },
+        { MODKEY,                       XK_v,         spawn,          CMD("tabbed -c vimb -e") },
+        { MODKEY,                       XK_f,         spawn,          CMD("nautilus") },
+        { MODKEY,                       XK_p,         spawn,          CMD("pcmanfm") },
+        { MODKEY,                       XK_m,         spawn,          CMD("thunderbird") },
+        { MODKEY,                       XK_e,         spawn,          CMD("emacsclient -c -a 'emacs'") },
+	{ MODKEY,                       XK_Escape,    spawn,          CMD("slock") },
 
      /* Cambiar a disposiciones especificas */
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} }, /* master & stack */
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} }, /* floating */
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} }, /* monocle */
+	{ MODKEY|SHIFT,                 XK_t,         setlayout,      {.v = &layouts[0]} }, /* master & stack */
+	{ MODKEY|SHIFT,                 XK_f,         setlayout,      {.v = &layouts[1]} }, /* floating */
+	{ MODKEY|SHIFT,                 XK_m,         setlayout,      {.v = &layouts[2]} }, /* monocle */
 
      /* Scripts de dmenu */
-        { MODKEY|CONTROL,               XK_p,      spawn,          CMD("~/.config/dmenu/scripts/dm-pass") },
-        { MODKEY|CONTROL,               XK_m,      spawn,          CMD("~/.config/dmenu/scripts/dm-mpd-select") },
-        { MODKEY|CONTROL,               XK_o,      spawn,          CMD("~/.config/dmenu/scripts/dm-soundout") },
-        { MODKEY|CONTROL,               XK_k,      spawn,          CMD("~/.config/dmenu/scripts/dm-kill") },
+        { MODKEY|CONTROL,               XK_p,         spawn,          CMD("~/.config/dmenu/scripts/dm-pass") },
+        { MODKEY|CONTROL,               XK_m,         spawn,          CMD("~/.config/dmenu/scripts/dm-mpd-ctl") },
+        { MODKEY|CONTROL,               XK_o,         spawn,          CMD("~/.config/dmenu/scripts/dm-soundout") },
+        { MODKEY|CONTROL,               XK_k,         spawn,          CMD("~/.config/dmenu/scripts/dm-kill") },
+        //{ MODKEY|CONTROL,               XK_w,         spawn,          CMD("~/.config/dmenu/scripts/dm-wifi") },
 
      /* Capturar pantalla, ventana activa o seccion */
-        { MODKEY,                       ImprPant,  spawn,          CMD("maim ~/Imágenes/Capturas/captura_$(date +%s).png") },
-        { MODKEY|ALT,                   ImprPant,  spawn,          CMD("maim -i $(xdotool getactivewindow) ~/Imágenes/Capturas/ventana_$(date +%s).png") },
-        { MODKEY|SHIFT,                 ImprPant,  spawn,          CMD("maim -s ~/Imágenes/Capturas/recorte_$(date +%s).png") },
-        { MODKEY|CONTROL,               ImprPant,  spawn,          CMD("maim -s | xclip -selection clipboard -t image/png") }, /* guarda la captura en el portapapeles */
+        { MODKEY,                       ImprPant,     spawn,          CMD("maim ~/Imágenes/Capturas/captura_$(date +%s).png") },
+        { MODKEY|ALT,                   ImprPant,     spawn,          CMD("maim -i $(xdotool getactivewindow) ~/Imágenes/Capturas/ventana_$(date +%s).png") },
+        { MODKEY|SHIFT,                 ImprPant,     spawn,          CMD("maim -s ~/Imágenes/Capturas/recorte_$(date +%s).png") },
+        { MODKEY|CONTROL,               ImprPant,     spawn,          CMD("maim -s | xclip -selection clipboard -t image/png") }, /* guarda la captura en el portapapeles */
 
      /* Control del volumen global */
-        { MODKEY|CONTROL,               XK_plus,   spawn,          CMD("mpc volume +5") },
-        { MODKEY|CONTROL,               XK_minus,  spawn,          CMD("mpc volume -5") },
-        { 0,                            RaiseVol,  spawn,          CMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
-        { 0,                            LowerVol,  spawn,          CMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },
-        { 0,                            Mute,      spawn,          CMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
+        { MODKEY|CONTROL,               XK_plus,      spawn,          CMD("mpc volume +5") },
+        { MODKEY|CONTROL,               XK_minus,     spawn,          CMD("mpc volume -5") },
+        { 0,                            RaiseVol,     spawn,          CMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
+        { 0,                            LowerVol,     spawn,          CMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },
+        { 0,                            Mute,         spawn,          CMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
 
      /* Cambiar entre monitores */
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|SHIFT,                 XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|SHIFT,                 XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_comma,     focusmon,       {.i = -1 } },
+	{ MODKEY,                       XK_period,    focusmon,       {.i = +1 } },
+	{ MODKEY|SHIFT,                 XK_comma,     tagmon,         {.i = -1 } },
+	{ MODKEY|SHIFT,                 XK_period,    tagmon,         {.i = +1 } },
 
      /* Gestionar tags */
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|SHIFT,                 XK_0,      tag,            {.ui = ~0 } },
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
+	{ MODKEY,                       XK_0,         view,           {.ui = ~0 } },
+	{ MODKEY|SHIFT,                 XK_0,         tag,            {.ui = ~0 } },
+	TAGKEYS(                        XK_1,                         0)
+	TAGKEYS(                        XK_2,                         1)
+	TAGKEYS(                        XK_3,                         2)
+	TAGKEYS(                        XK_4,                         3)
+	TAGKEYS(                        XK_5,                         4)
+	TAGKEYS(                        XK_6,                         5)
+	TAGKEYS(                        XK_7,                         6)
+	TAGKEYS(                        XK_8,                         7)
+	TAGKEYS(                        XK_9,                         8)
 };
 
 /* button definitions */
