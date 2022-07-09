@@ -5,11 +5,11 @@
 
 ## Información
 - Distro: `Pop!_OS`
-- Terminal: `kitty`
+- Terminal: `st`
 - Shell: `bash`
 - Editor: `neovim`, `emacs`
 - Navegador: `firefox`, `vimb`
 - Fuente: `mononoki (Nerd Font)`, `Roboto Mono`
-- Tema GTK: `Juno ocean`
 - DE/WM: `dwm`
+- Tema GTK: `Juno ocean`
 - Notificaciones: `dunst`
