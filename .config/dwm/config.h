@@ -119,6 +119,7 @@ static Key keys[] = {
         { MODKEY,                       XK_p,         spawn,          CMD("pcmanfm") },
         { MODKEY,                       XK_m,         spawn,          CMD("thunderbird") },
         { MODKEY,                       XK_e,         spawn,          CMD("emacsclient -c -a 'emacs'") },
+        { MODKEY,                       XK_n,         spawn,          CMD("st -e nnn -H") },
 	{ MODKEY,                       XK_Escape,    spawn,          CMD("slock") },
 
      /* Cambiar a disposiciones especificas */
