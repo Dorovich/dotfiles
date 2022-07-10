@@ -63,6 +63,8 @@ shortcut-add wa=http://www.wolframalpha.com/input/?i=$0
 shortcut-add map=https://maps.google.com/maps?saddr=$0&daddr=$1
 shortcut-add trad=https://translate.google.com/?hl=es&sl=auto&tl=es&text=$0&op=translate
 shortcut-add wiki=https://en.wikipedia.org/wiki/$0
+shortcut-add img=https://duckduckgo.com/?q=$0&t=h_&iax=images&ia=images
+shortcut-add inv=https://yewtu.be/search?q=$0
 
 # Set the shortcut as the default, that is the shortcut to be used if no
 # shortcut is given and the string to open is not an URI.
