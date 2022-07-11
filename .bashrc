@@ -14,7 +14,7 @@ export NNN_BMS='a:/media/vido25/Almacenamiento;d:/home/vido25/Descargas'
 export NNN_COLORS='#03040102;3412'
 export NNN_FCOLORS='c1e2040a006033f7c6d6ab01'
 export NNN_TMPFILE='/tmp/.lastd'
-export NNN_OPTS='HR'
+export NNN_OPTS='R'
 
 export alm="/media/vido25/Almacenamiento"
 export mus="$alm/Musica/"

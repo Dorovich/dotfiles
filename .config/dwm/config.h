@@ -84,6 +84,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[]   = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_yellow, "-sf", col_gray1, NULL };
 static const char *termcmd[]    = { "st", NULL };
 static const char *launchcmd[]  = { "rofi", "-show", "drun", NULL };
+static const char *filescmd[]  = { "st", "-e", "bash", "-ilc", "nnn", NULL };
 
 static Key keys[] = {
 	/* modifier                     key           function        argument */
@@ -113,13 +114,13 @@ static Key keys[] = {
 	{ MODKEY|SHIFT,                 XK_q,         quit,           {0} },
 
      /* Otros programas genericos */
+        { MODKEY,                       XK_n,         spawn,          {.v = filescmd} },
         { MODKEY,                       XK_b,         spawn,          CMD("firefox") },
         { MODKEY,                       XK_v,         spawn,          CMD("tabbed -c vimb -e") },
         { MODKEY,                       XK_f,         spawn,          CMD("nautilus") },
         { MODKEY,                       XK_p,         spawn,          CMD("pcmanfm") },
         { MODKEY,                       XK_m,         spawn,          CMD("thunderbird") },
         { MODKEY,                       XK_e,         spawn,          CMD("emacsclient -c -a 'emacs'") },
-        { MODKEY,                       XK_n,         spawn,          CMD("st -e nnn -H") },
 	{ MODKEY,                       XK_Escape,    spawn,          CMD("slock") },
 
      /* Cambiar a disposiciones especificas */
