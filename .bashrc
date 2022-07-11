@@ -1,4 +1,4 @@
-### EXPORT
+### GLOBAL VARS
 export VISUAL="emacsclient -c -a 'emacs'"
 export EDITOR="nvim"
 export ALTERNATE_EDITOR="emacsclient -t -a ''"
@@ -10,6 +10,11 @@ export MYVIMRC="$HOME/.config/nvim/init.vim"
 export NNN_PLUG='d:dragdrop;i:imgur;n:nuke;p:preview-tabbed'
 export NNN_FIFO='/tmp/nnn.fifo'
 export NNN_OPENER='/home/vido25/.config/nnn/plugins/nuke'
+export NNN_BMS='a:/media/vido25/Almacenamiento;d:/home/vido25/Descargas'
+export NNN_COLORS='#03040102;3412'
+export NNN_FCOLORS='c1e2040a006033f7c6d6ab01'
+export NNN_TMPFILE='/tmp/.lastd'
+export NNN_OPTS='HR'
 
 export alm="/media/vido25/Almacenamiento"
 export mus="$alm/Musica/"
