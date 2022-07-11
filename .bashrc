@@ -6,7 +6,10 @@ export HISTCONTROL=ignoreboth
 export HISTSIZE=2000
 export PATH="${PATH}:${HOME}/.local/bin:${HOME}/.emacs.d/bin:${HOME}/Applications"
 export MYVIMRC="$HOME/.config/nvim/init.vim"
-export NNN_PLUG='v:imgview'
+
+export NNN_PLUG='d:dragdrop;i:imgur;n:nuke;p:preview-tabbed'
+export NNN_FIFO='/tmp/nnn.fifo'
+export NNN_OPENER='/home/vido25/.config/nnn/plugins/nuke'
 
 export alm="/media/vido25/Almacenamiento"
 export mus="$alm/Musica/"
