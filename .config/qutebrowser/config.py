@@ -7,7 +7,7 @@ c.content.autoplay = False
 c.content.pdfjs = True
 c.hints.chars = "asdfghjklie"
 c.tabs.show = "switching"
-c.statusbar.show = "never"
+c.statusbar.show = "in-mode"
 c.tabs.last_close = "ignore"  # "close" alternativamente
 c.content.default_encoding = "utf-8"
 c.content.fullscreen.overlay_timeout = 500
@@ -77,11 +77,12 @@ config.bind('O', 'set-cmd-text :open {url}')
 config.bind('t', 'set-cmd-text -s :open -t')
 config.bind('T', 'set-cmd-text :open -t {url}')
 config.bind('cm', 'clear-messages')
+config.bind('cs', 'config-source')
 config.bind('jk', 'mode-leave', 'command')
 
-config.bind('xb', 'config-cycle statusbar.show always never')
+config.bind('xb', 'config-cycle statusbar.show never in-mode')
 config.bind('xt', 'config-cycle tabs.show multiple switching')
-config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.show multiple never')
+config.bind('xx', 'config-cycle statusbar.show in-mode never;; config-cycle tabs.show multiple switching')
 
 config.bind(',m', 'hint links spawn mpv {hint-url}')
 config.bind(',M', 'spawn mpv {url}')
