@@ -6,9 +6,12 @@ c.confirm_quit = ["downloads"]
 c.content.autoplay = False
 c.content.pdfjs = True
 c.hints.chars = "asdfghjklie"
-c.tabs.show = "multiple"
+c.tabs.show = "switching"
+c.statusbar.show = "never"
 c.tabs.last_close = "ignore"  # "close" alternativamente
 c.content.default_encoding = "utf-8"
+c.content.fullscreen.overlay_timeout = 500
+c.input.partial_timeout = 500
 # }}}
 
 # UI {{{
@@ -17,7 +20,7 @@ c.colors.webpage.preferred_color_scheme = "dark"
 c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
 c.colors.webpage.darkmode.policy.page = 'smart'
-c.colors.webpage.darkmode.policy.images = 'smart'
+c.colors.webpage.darkmode.policy.images = 'never'
 c.completion.show = "auto"
 c.completion.use_best_match = True
 c.scrolling.smooth = True
@@ -69,47 +72,56 @@ c.content.blocking.hosts.lists = [ \
 # }}}
 
 # Keys {{{
+config.bind('ñ', 'set-cmd-text :')
+config.bind('O', 'set-cmd-text :open {url}')
+config.bind('t', 'set-cmd-text -s :open -t')
+config.bind('T', 'set-cmd-text :open -t {url}')
+config.bind('cm', 'clear-messages')
+config.bind('jk', 'mode-leave', 'command')
+
 config.bind('xb', 'config-cycle statusbar.show always never')
-config.bind('xt', 'config-cycle tabs.show multiple never')
+config.bind('xt', 'config-cycle tabs.show multiple switching')
 config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.show multiple never')
 
 config.bind(',m', 'hint links spawn mpv {hint-url}')
 config.bind(',M', 'spawn mpv {url}')
 config.bind(',t', 'spawn --userscript translate --text')
 config.bind(',T', 'spawn --userscript translate')
-config.bind(",d", "download-open")
+config.bind(',d', 'download-open')
 
-config.bind("<Ctrl-Shift-J>", "tab-move +")
-config.bind("<Ctrl-Shift-K>", "tab-move -")
+config.bind('<Ctrl-j>', 'tab-move +')
+config.bind('<Ctrl-k>', 'tab-move -')
 
-config.bind("<Ctrl-p>", "spawn --userscript ~/.config/qutebrowser/userscripts/password_fill")
+config.bind('<Ctrl-p>', 'spawn --userscript password_fill')
 
-config.bind("<Ctrl-h>", "fake-key <Backspace>", "insert")
-config.bind("<Ctrl-a>", "fake-key <Home>", "insert")
-config.bind("<Ctrl-e>", "fake-key <End>", "insert")
-config.bind("<Ctrl-d>", "fake-key <Delete>", "insert")
-config.bind("<Ctrl-w>", "fake-key <Ctrl-Backspace>", "insert")
-config.bind("<Ctrl-u>", "fake-key <Shift-Home><Delete>", "insert")
-config.bind("<Ctrl-k>", "fake-key <Shift-End><Delete>", "insert")
+config.bind('<Ctrl-h>', 'fake-key <Backspace>', 'insert')
+config.bind('<Ctrl-a>', 'fake-key <Home>', 'insert')
+config.bind('<Ctrl-e>', 'fake-key <End>', 'insert')
+config.bind('<Ctrl-d>', 'fake-key <Delete>', 'insert')
+config.bind('<Ctrl-w>', 'fake-key <Ctrl-Backspace>', 'insert')
+config.bind('<Ctrl-u>', 'fake-key <Shift-Home><Delete>', 'insert')
+config.bind('<Ctrl-k>', 'fake-key <Shift-End><Delete>', 'insert')
 # }}}
 
 # URL {{{
 c.url.searchengines = {
-    'DEFAULT': 'https://searx.envs.net/search?q={}',
-#   'ddg': 'https://duckduckgo.com/?q={}',
-#   'yt': 'https://www.youtube.com/results?search_query={}',
-#   'aw': 'https://wiki.archlinux.org/?search={}',
-#   'rd': 'https://www.reddit.com/r/{}',
+    'DEFAULT': 'https://searx.tiekoetter.com/search?q={}',
+    'ddg': 'https://duckduckgo.com/?q={}',
+    'ggl': 'https://encrypted.google.com/search?q={}',
+    'sx': 'https://searx.tiekoetter.net/search?q={}',
+    'yt': 'https://www.youtube.com/results?search_query={}',
+    'aw': 'https://wiki.archlinux.org/?search={}',
+    'rd': 'https://www.reddit.com/r/{}',
+    'gh': 'https://github.com/search?q={}',
     'wa': 'https://www.wolframalpha.com/input?i={}',
-#   'gh': 'https://github.com/search?q={}',
-    'ggl': 'https://www.google.com/search?q={}',
-    'sx': 'https://searx.envs.net/search?q={}',
-#   'yan': 'https://yandex.com/search/?text={}',
+    'map': 'https://maps.google.com/maps?saddr={}',
+    'trad': 'https://translate.google.com/?hl=es&sl=auto&tl=es&text={}&op=translate',
     'wiki': 'https://en.wikipedia.org/wiki/{}',
-    'trad': 'https://translate.google.com/?hl=es&sl=auto&tl=es&text={}&op=translate'
+    'img': 'https://duckduckgo.com/?q={}&t=h_&iax=images&ia=images',
+    'inv': 'https://yewtu.be/search?q={}'
     }
-c.url.default_page = "file:///home/vido25/.config/qutebrowser/homepage/index.html"
-c.url.start_pages = ["file:///home/vido25/.config/qutebrowser/homepage/index.html"]
+c.url.default_page = "dorovich.github.io"
+c.url.start_pages = ["dorovich.github.io"]
 # }}}
 
 # Per-domain Settings {{{
@@ -122,9 +134,9 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 # }}}
 
 # Font {{{
-monospace = "12px 'FiraCode NF'"
+monospace = "14px 'mononoki NF'"
 c.fonts.hints = "bold 16px 'Ubuntu Mono'"
-c.fonts.default_family = "12px 'FiraCode NF'"
+c.fonts.default_family = "14px 'mononoki NF'"
 c.fonts.completion.category = f"bold {monospace}"
 c.fonts.completion.entry = monospace
 c.fonts.debug_console = monospace
