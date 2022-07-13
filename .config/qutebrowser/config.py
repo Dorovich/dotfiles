@@ -18,7 +18,7 @@ c.editor.command = ['st', '-e', 'nvim', '{}']
 # UI {{{
 config.source("colors.py")
 c.colors.webpage.preferred_color_scheme = "dark"
-c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.darkmode.enabled = False
 c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
 c.colors.webpage.darkmode.policy.page = 'smart'
 c.colors.webpage.darkmode.policy.images = 'never'
@@ -93,6 +93,8 @@ config.bind(',d', 'download-open')
 
 config.bind('<Ctrl-j>', 'tab-move +')
 config.bind('<Ctrl-k>', 'tab-move -')
+config.bind('<Ctrl-i>', 'forward')
+config.bind('<Ctrl-o>', 'back')
 
 config.bind('<Ctrl-p>', 'spawn --userscript password_fill')
 
