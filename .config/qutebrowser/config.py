@@ -152,7 +152,7 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 # }}}
 
 # Font {{{
-monospace = "16px 'mononoki NF'"
+monospace = "14px 'mononoki NF'"
 c.fonts.hints = f"bold {monospace}"
 c.fonts.default_family = monospace
 c.fonts.completion.category = f"bold {monospace}"
