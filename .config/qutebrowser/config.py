@@ -121,7 +121,7 @@ config.bind('<Ctrl-k>', 'fake-key <Shift-End><Delete>', 'insert')
 
 # URL {{{
 c.url.searchengines = {
-    'DEFAULT': 'https://searx.tiekoetter.com/search?q={}',
+    'DEFAULT': 'https://duckduckgo.com/?q={}',
     'ddg': 'https://duckduckgo.com/?q={}',
     'ggl': 'https://encrypted.google.com/search?q={}',
     'sx': 'https://searx.tiekoetter.net/search?q={}',
@@ -153,7 +153,7 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 
 # Font {{{
 monospace = "16px 'mononoki NF'"
-c.fonts.hints = "bold 16px 'Ubuntu Mono'"
+c.fonts.hints = f"bold {monospace}"
 c.fonts.default_family = monospace
 c.fonts.completion.category = f"bold {monospace}"
 c.fonts.completion.entry = monospace
@@ -165,6 +165,7 @@ c.fonts.messages.info = monospace
 c.fonts.messages.warning = monospace
 c.fonts.prompts = monospace
 c.fonts.statusbar = monospace
-c.fonts.tabs.selected = f"bold {monospace}"
+#c.fonts.tabs.selected = f"bold {monospace}"
+c.fonts.tabs.selected = monospace
 c.fonts.tabs.unselected = monospace
 # }}}
