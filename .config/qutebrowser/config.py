@@ -6,13 +6,15 @@ c.confirm_quit = ["downloads"]
 c.content.autoplay = False
 c.content.pdfjs = True
 c.hints.chars = "asdfghjklie"
-c.tabs.show = "switching"
+c.tabs.show = "multiple" # 'switching' alternativamente
 c.statusbar.show = "in-mode"
 c.tabs.last_close = "ignore"  # "close" alternativamente
 c.content.default_encoding = "utf-8"
 c.content.fullscreen.overlay_timeout = 500
 c.input.partial_timeout = 500
 c.editor.command = ['st', '-e', 'nvim', '{}']
+c.tabs.select_on_remove = "prev"
+c.tabs.background = False
 # }}}
 
 # UI {{{
@@ -85,6 +87,10 @@ config.bind('P', 'open -t {clipboard}')
 config.bind('cm', 'clear-messages')
 config.bind('cs', 'config-source')
 config.bind('jk', 'mode-leave', 'command')
+config.unbind('<ctrl+tab>')
+config.bind('<ctrl+tab>', 'tab-next')
+config.bind('<ctrl+shift+tab>', 'tab-prev')
+config.bind('<ctrl+shift+p>', 'open -p')
 
 config.bind('xb', 'config-cycle statusbar.show never in-mode')
 config.bind('xt', 'config-cycle tabs.show multiple switching')
@@ -128,7 +134,9 @@ c.url.searchengines = {
     'trad': 'https://translate.google.com/?hl=es&sl=auto&tl=es&text={}&op=translate',
     'wiki': 'https://en.wikipedia.org/wiki/{}',
     'img': 'https://duckduckgo.com/?q={}&t=h_&iax=images&ia=images',
-    'inv': 'https://yewtu.be/search?q={}'
+    'mal': 'https://myanimelist.net/search/all?q={}',
+    'inv': 'https://yewtu.be/search?q={}',
+    'fc': 'https://4chan.org/{}/'
     }
 c.url.default_page = "dorovich.github.io"
 c.url.start_pages = ["dorovich.github.io"]

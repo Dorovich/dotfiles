@@ -6,5 +6,7 @@
 
 config_version: 2
 settings:
-  content.headers.accept_language:
-    global: en-US,en,es;q=0.9
+  statusbar.show:
+    global: always
+  tabs.show:
+    global: always
