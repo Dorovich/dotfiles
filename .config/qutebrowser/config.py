@@ -144,9 +144,9 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 # }}}
 
 # Font {{{
-monospace = "14px 'mononoki NF'"
+monospace = "16px 'mononoki NF'"
 c.fonts.hints = "bold 16px 'Ubuntu Mono'"
-c.fonts.default_family = "14px 'mononoki NF'"
+c.fonts.default_family = monospace
 c.fonts.completion.category = f"bold {monospace}"
 c.fonts.completion.entry = monospace
 c.fonts.debug_console = monospace
@@ -157,6 +157,6 @@ c.fonts.messages.info = monospace
 c.fonts.messages.warning = monospace
 c.fonts.prompts = monospace
 c.fonts.statusbar = monospace
-c.fonts.tabs.selected = monospace
+c.fonts.tabs.selected = f"bold {monospace}"
 c.fonts.tabs.unselected = monospace
 # }}}
