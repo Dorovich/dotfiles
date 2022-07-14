@@ -73,10 +73,15 @@ c.content.blocking.hosts.lists = [ \
 # }}}
 
 # Keys {{{
-config.bind('ñ', 'set-cmd-text :')
-config.bind('O', 'set-cmd-text :open {url}')
-config.bind('t', 'set-cmd-text -s :open -t')
-config.bind('T', 'set-cmd-text :open -t {url}')
+config.bind('ñ', 'clear-messages ;; set-cmd-text :')
+config.bind('o', 'clear-messages ;; set-cmd-text -s :open')
+config.bind('O', 'clear-messages ;; set-cmd-text :open {url}')
+config.bind('t', 'clear-messages ;; set-cmd-text -s :open -t')
+config.bind('T', 'clear-messages ;; set-cmd-text :open -t {url}')
+config.bind('y', 'yank selection')
+config.bind('Y', 'yank pretty-url')
+config.bind('p', 'open {clipboard}')
+config.bind('P', 'open -t {clipboard}')
 config.bind('cm', 'clear-messages')
 config.bind('cs', 'config-source')
 config.bind('jk', 'mode-leave', 'command')
@@ -97,6 +102,7 @@ config.bind('<Ctrl-i>', 'forward')
 config.bind('<Ctrl-o>', 'back')
 
 config.bind('<Ctrl-p>', 'spawn --userscript password_fill')
+config.bind('<Ctrl-p>', 'spawn --userscript password_fill', 'insert')
 
 config.bind('<Ctrl-h>', 'fake-key <Backspace>', 'insert')
 config.bind('<Ctrl-a>', 'fake-key <Home>', 'insert')

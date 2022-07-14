@@ -68,7 +68,7 @@ shortcut-add inv=https://yewtu.be/search?q=$0
 
 # Set the shortcut as the default, that is the shortcut to be used if no
 # shortcut is given and the string to open is not an URI.
-shortcut-default sx
+shortcut-default ggl
 
 # Handlers allow passing link types to an external command. The command can
 # contain the placeholder %s that will be filled by the URI

@@ -6,5 +6,5 @@
 
 config_version: 2
 settings:
-  content.notifications.enabled:
-    https://euw.op.gg: false
+  content.headers.accept_language:
+    global: en-US,en,es;q=0.9
