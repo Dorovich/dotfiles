@@ -120,5 +120,6 @@ aug Cookies
     au LoadCommitted http{s,}://discord.com/* set cookie-accept=origin
     au LoadCommitted http{s,}://*.wikipedia.org/* set cookie-accept=origin
     au LoadCommitted http{s,}://yewtu.be/* set cookie-accept=origin
+    au LoadCommitted http{s,}://mega.nz/* set cookie-accept=origin
 aug end
 # }}}
