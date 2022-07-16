@@ -1,6 +1,6 @@
 # Homepage that vimb opens if started without a URI.
 #set home-page=file:///home/vido25/.config/vimb/startpage.html
-set home-page=Dorovich.github.io
+set home-page=Dorovich.github.io/b
 
 # Path to the default download directory. If no download directory is set,
 # download will be written into current directory. The following pattern will
@@ -17,10 +17,7 @@ set input-autohide=true
 
 # Enable or disable the spell checking feature.
 set spell-checking=true
-
-# Set comma separated list of spell checking languages to be used for
-# spell checking.
-set spell-checking-languages=en,es
+set spell-checking-languages=en,es_ES
 
 # Enable or disable support for WebGL on pages.
 set webgl=true
@@ -28,23 +25,12 @@ set webgl=true
 # While typing a search command, show where the pattern typed so far matches.
 set incsearch=true
 
-# The font family to use as the default for content that does not specify a
-# font.
+# Font configuration
 set default-font=mononoki
-
-# The font family used as the default for content using monospace font.
 set monospace-font=mononoki
-
-# The font family used as the default for content using sans-serif font.
 set sans-serif-font=DejaVu Sans
-
-# The font family used as the default for content using serif font.
 set serif-font=DejaVu Serif
-
-# The default font size used to display text.
 set font-size=16
-
-# Default font size for the monospace font.
 set monospace-font-size=13
 
 # Default Full-Content zoom level in percent. Default is 100.
@@ -68,7 +54,7 @@ shortcut-add inv=https://yewtu.be/search?q=$0
 
 # Set the shortcut as the default, that is the shortcut to be used if no
 # shortcut is given and the string to open is not an URI.
-shortcut-default ggl
+shortcut-default ddg
 
 # Handlers allow passing link types to an external command. The command can
 # contain the placeholder %s that will be filled by the URI
@@ -78,22 +64,25 @@ handler-add magnet=xdg-open %s
 set dark-mode=true
 
 # tamaño del historial
-set history-max-items=100
+set history-max-items=50
 
 # desactivar geolocalizacion
 set geolocation=never
 
-# Map page zoom in normal mode to keys commonly used across applications
-# + (zoom in), - (zoom out), = (zoom reset)
+# Mappings
 nmap + zI
 nmap - zO
 nmap = zz
-
-# Mappings
 nnoremap ñ :
 nnoremap d :quit<CR>
 nnoremap D :quit!<CR>
 cnoremap jk <Esc>
+nmap H <C-o>
+nmap L <C-i>
+nmap M '
+nnoremap b :open !
+nnoremap B :tabopen !
+nnoremap c <Esc>
 
 # GUI color settings
 set completion-css=color:#abb2bf;background-color:#151515;font:11pt mononoki NF;
@@ -105,10 +94,18 @@ set status-css=color:#abb2bf;background-color:#151515;font:11pt mononoki NF;
 set status-ssl-css=color:#525252;background-color:#151515;font:11pt mononoki NF;
 set status-ssl-invalid-css=color:#abb2bf;background-color:#151515;font:11pt mononoki NF;
 
-# Otros
-set timeoutlen=200
-set accelerated-2d-canvas=ondemand
+# Privacy
+set geolocation=never
 set cookie-accept=origin
-set hint-keys=asdfghjklei
+set header=DNT=1,User-Agent,Cookie='name=value'
+set user-agent=Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0
+
+# Otros
 set status-bar=false
+set timeoutlen=200
+set hint-keys=asdfghjklei
+set images=true
+set scripts=true
+set accelerated-2d-canvas=ondemand
 set webinspector=true
+set smooth-scrolling=true

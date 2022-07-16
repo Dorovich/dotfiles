@@ -138,8 +138,8 @@ c.url.searchengines = {
     'inv': 'https://yewtu.be/search?q={}',
     'fc': 'https://4chan.org/{}/'
     }
-c.url.default_page = "dorovich.github.io"
-c.url.start_pages = ["dorovich.github.io"]
+c.url.default_page = "dorovich.github.io/b"
+c.url.start_pages = ["dorovich.github.io/b"]
 # }}}
 
 # Per-domain Settings {{{
