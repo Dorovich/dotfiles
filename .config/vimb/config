@@ -1,75 +1,25 @@
-# Homepage that vimb opens if started without a URI.
-#set home-page=file:///home/vido25/.config/vimb/startpage.html
-set home-page=Dorovich.github.io/b
+#        _       __
+#  _  __(_)_ _  / /
+# | |/ / /  ' \/ _ \
+# |___/_/_/_/_/_.__/
+#
+# https://fanglingsu.github.io/vimb/man.html
 
-# Path to the default download directory. If no download directory is set,
-# download will be written into current directory. The following pattern will
-# be expanded if the download is started '~/', '~user', '$VAR' and '${VAR}'.
-set download-path=~/Descargas/
+set home-page=https://dorovich.github.io/b
 
-# Command with placeholder '%s' called if form field is opened with $EDITOR to
-# spawn the editor-like `x-terminal-emulator -e vim %s'. To use Gvim as the
-# editor, it's necessary to call it with `-f' to run it in the foreground.
-set editor-command=st -e nvim %s
-
-# If enabled the inputbox will be hidden whenever it contains no text.
+# UI {{{
 set input-autohide=true
-
-# Enable or disable the spell checking feature.
-set spell-checking=true
-set spell-checking-languages=en,es_ES
-
-# Enable or disable support for WebGL on pages.
-set webgl=true
-
-# While typing a search command, show where the pattern typed so far matches.
-set incsearch=true
-
-# Font configuration
-set default-font=mononoki
-set monospace-font=mononoki
-set sans-serif-font=DejaVu Sans
-set serif-font=DejaVu Serif
-set font-size=16
-set monospace-font-size=13
-
-# Default Full-Content zoom level in percent. Default is 100.
-set default-zoom=100
-
-# Shortcuts allow the opening of an URI built up from a named template with
-# additional parameters.
-shortcut-add ddg=https://duckduckgo.com/?q=$0
-shortcut-add ggl=https://encrypted.google.com/search?q=$0
-shortcut-add sx=https://searx.tiekoetter.com/search?q=$0
-shortcut-add yt=http://www.youtube.com/results?search_query=$0
-shortcut-add aw=https://wiki.archlinux.org/?search=$0
-shortcut-add rd=https://www.reddit.com/r/$0
-shortcut-add gh=https://github.com/search?q=$0
-shortcut-add wa=http://www.wolframalpha.com/input/?i=$0
-shortcut-add map=https://maps.google.com/maps?saddr=$0&daddr=$1
-shortcut-add trad=https://translate.google.com/?hl=es&sl=auto&tl=es&text=$0&op=translate
-shortcut-add wiki=https://en.wikipedia.org/wiki/$0
-shortcut-add img=https://duckduckgo.com/?q=$0&t=h_&iax=images&ia=images
-shortcut-add inv=https://yewtu.be/search?q=$0
-
-# Set the shortcut as the default, that is the shortcut to be used if no
-# shortcut is given and the string to open is not an URI.
-shortcut-default ddg
-
-# Handlers allow passing link types to an external command. The command can
-# contain the placeholder %s that will be filled by the URI
-handler-add magnet=xdg-open %s
-
-# tema oscuro para paginas web
+set status-bar=false
 set dark-mode=true
+set hint-keys=asdfghjklei
+set smooth-scrolling=true
+set default-zoom=100
+set incsearch=true
+# }}}
 
-# tamaño del historial
-set history-max-items=50
+# Mappings {{{
+set timeoutlen=200
 
-# desactivar geolocalizacion
-set geolocation=never
-
-# Mappings
 nmap + zI
 nmap - zO
 nmap = zz
@@ -83,29 +33,92 @@ nmap M '
 nnoremap b :open !
 nnoremap B :tabopen !
 nnoremap c <Esc>
+# }}}
 
-# GUI color settings
-set completion-css=color:#abb2bf;background-color:#151515;font:11pt mononoki NF;
-set completion-hover-css=color:#abb2bf;background-color:#262626;font:11pt mononoki NF;
-set completion-selected-css=color:#151515;background-color:#d19a66;font:11pt mononoki NF;
-set input-css=color:#abb2bf;background-color:#151515;font:11pt mononoki NF;
-set input-error-css=color:#abb2bf;background-color:#151515;font:11pt mononoki NF;
-set status-css=color:#abb2bf;background-color:#151515;font:11pt mononoki NF;
-set status-ssl-css=color:#525252;background-color:#151515;font:11pt mononoki NF;
-set status-ssl-invalid-css=color:#abb2bf;background-color:#151515;font:11pt mononoki NF;
+# Shortcuts {{{
+shortcut-default ddg
 
-# Privacy
-set geolocation=never
-set cookie-accept=origin
-set header=DNT=1,User-Agent,Cookie='name=value'
-set user-agent=Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0
+shortcut-add ddg=https://duckduckgo.com/?q=$0
+shortcut-add ggl=https://encrypted.google.com/search?q=$0
+shortcut-add sx=https://searx.tiekoetter.com/search?q=$0
+shortcut-add yt=http://www.youtube.com/results?search_query=$0
+shortcut-add aw=https://wiki.archlinux.org/?search=$0
+shortcut-add rd=https://www.reddit.com/r/$0
+shortcut-add gh=https://github.com/search?q=$0
+shortcut-add wa=http://www.wolframalpha.com/input/?i=$0
+shortcut-add map=https://maps.google.com/maps?saddr=$0&daddr=$1
+shortcut-add trad=https://translate.google.com/?hl=es&sl=auto&tl=es&text=$0&op=translate
+shortcut-add wiki=https://es.wikipedia.org/wiki/$0
+shortcut-add img=https://duckduckgo.com/?q=$0&t=h_&iax=images&ia=images
+shortcut-add inv=https://yewtu.be/search?q=$0
+shortcut-add mal=https://myanimelist.net/search/all?q=$0
+shortcut-add fc=https://4chan.org/$0/
+# }}}
 
-# Otros
-set status-bar=false
-set timeoutlen=200
-set hint-keys=asdfghjklei
+# Handlers and Editor {{{
+handler-add magnet=xdg-open %s
+handler-add mailto=thunderbird %s
+
+set editor-command=st -e nvim %s
+# }}}
+
+# Web content {{{
+set download-path=~/Descargas/
 set images=true
 set scripts=true
+set webgl=true
+set geolocation=never
 set accelerated-2d-canvas=ondemand
+set history-max-items=50
 set webinspector=true
-set smooth-scrolling=true
+set header=DNT=1,User-Agent,Cookie='name=value'
+set user-agent=Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0
+# }}}
+
+# Fonts {{{
+set font-size=16
+set monospace-font-size=13
+set default-font=mononoki NF
+set monospace-font=mononoki NF
+set sans-serif-font=DejaVu Sans
+set serif-font=DejaVu Serif
+# }}}
+
+# Spell checking {{{
+set spell-checking=true
+set spell-checking-languages=en,es_ES
+# }}}
+
+# Colors {{{
+set completion-css=color:#e0def4;background-color:#191724;font:12pt mononoki;
+set completion-hover-css=color:#e0def4;background-color:#262626;font:12pt mononoki;
+set completion-selected-css=color:#191724;background-color:#eb6f92;font:12pt mononoki;
+set input-css=color:#e0def4;background-color:#191724;font:12pt mononoki;
+set input-error-css=color:#e0def4;background-color:#191724;font:12pt mononoki;
+set status-css=color:#6f6c7c;background-color:#191724;font:12pt mononoki;
+set status-ssl-css=color:#e0def4;background-color:#191724;font:12pt mononoki;
+set status-ssl-invalid-css=color:#e0def4;background-color:#191724;font:12pt mononoki;
+# }}}
+
+# Autocommands {{{
+aug Downloads
+    au DownloadFinished * sh notify-send 'Download finished!'
+    au DownloadFailed * sh notify-send 'Could not download files.'
+aug end
+
+aug Cookies
+    au LoadCommitted * set cookie-accept=never
+    au LoadCommitted http{s,}://github.com/* set cookie-accept=origin
+    au LoadCommitted http{s,}://itch.io/* set cookie-accept=origin
+    au LoadCommitted http{s,}://google.com/* set cookie-accept=origin
+    au LoadCommitted http{s,}://accounts.google.com/* set cookie-accept=origin
+    au LoadCommitted http{s,}://soundcloud.com/* set cookie-accept=origin
+    au LoadCommitted http{s,}://duckduckgo.com/* set cookie-accept=origin
+    au LoadCommitted http{s,}://www.reddit.com/* set cookie-accept=origin
+    au LoadCommitted http{s,}://raco.fib.upc.edu/* set cookie-accept=origin
+    au LoadCommitted http{s,}://voidlinux.org/* set cookie-accept=origin
+    au LoadCommitted http{s,}://discord.com/* set cookie-accept=origin
+    au LoadCommitted http{s,}://*.wikipedia.org/* set cookie-accept=origin
+    au LoadCommitted http{s,}://yewtu.be/* set cookie-accept=origin
+aug end
+# }}}
