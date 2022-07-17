@@ -191,6 +191,7 @@ alias gp="git push"
 alias gcl="git clone"
 alias gpl="git pull"
 alias gr="git rm -r"
+alias grs="git reset --hard HEAD"
 alias gl='git log --pretty=format:"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]" --abbrev-commit -30'
 
 gc() {

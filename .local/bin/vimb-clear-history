@@ -1,0 +1,8 @@
+#!/bin/sh
+
+storage=/home/vido25/.local/share/vimb/
+
+if [ -f "$storage/closed" ]; then rm "$storage/closed"; fi
+if [ -f "$storage/command" ]; then rm "$storage/command"; fi
+if [ -f "$storage/history" ]; then rm "$storage/history"; fi
+if [ -f "$storage/search" ]; then rm "$storage/search"; fi
