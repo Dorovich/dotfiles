@@ -33,6 +33,7 @@ nmap M '
 nnoremap b :open !
 nnoremap B :tabopen !
 nnoremap c <Esc>
+nnoremap <C-e> :sh! st -e nvim ~/.config/vimb/config<CR>
 # }}}
 
 # Shortcuts {{{
@@ -104,8 +105,8 @@ set status-ssl-invalid-css=color:#abb2bf;background-color:#151515;font:11pt mono
 
 # Autocommands {{{
 aug Downloads
-    au DownloadFinished * sh notify-send 'Download finished!'
-    au DownloadFailed * sh notify-send 'Could not download files.'
+    au DownloadFinished * sh notify-send --urgency=normal 'Download finished!'
+    au DownloadFailed * sh notify-send --urgency=normal 'Could not download files.'
 aug end
 
 aug Cookies
