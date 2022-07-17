@@ -53,6 +53,8 @@ shortcut-add img=https://duckduckgo.com/?q=$0&t=h_&iax=images&ia=images
 shortcut-add inv=https://yewtu.be/search?q=$0
 shortcut-add mal=https://myanimelist.net/search/all?q=$0
 shortcut-add fc=https://4chan.org/$0/
+
+# bookmarks: ~/.local/share/vimb/bookmark
 # }}}
 
 # Handlers and Editor {{{
@@ -108,6 +110,10 @@ aug end
 
 aug Cookies
     au LoadCommitted * set cookie-accept=never
+    au LoadCommitted http{s,}://atenea.upc.edu/* set cookie-accept=origin
+    au LoadCommitted http{s,}://raco.fib.upc.edu/* set cookie-accept=origin
+    au LoadCommitted http{s,}://discos.fib.upc.edu/* set cookie-accept=origin
+    au LoadCommitted http{s,}://jutge.org/* set cookie-accept=origin
     au LoadCommitted http{s,}://github.com/* set cookie-accept=origin
     au LoadCommitted http{s,}://itch.io/* set cookie-accept=origin
     au LoadCommitted http{s,}://google.com/* set cookie-accept=origin
@@ -115,7 +121,6 @@ aug Cookies
     au LoadCommitted http{s,}://soundcloud.com/* set cookie-accept=origin
     au LoadCommitted http{s,}://duckduckgo.com/* set cookie-accept=origin
     au LoadCommitted http{s,}://www.reddit.com/* set cookie-accept=origin
-    au LoadCommitted http{s,}://raco.fib.upc.edu/* set cookie-accept=origin
     au LoadCommitted http{s,}://voidlinux.org/* set cookie-accept=origin
     au LoadCommitted http{s,}://discord.com/* set cookie-accept=origin
     au LoadCommitted http{s,}://*.wikipedia.org/* set cookie-accept=origin
@@ -123,5 +128,9 @@ aug Cookies
     au LoadCommitted http{s,}://mega.nz/* set cookie-accept=origin
     au LoadCommitted http{s,}://store.steampowered.com/* set cookie-accept=origin
     au LoadCommitted http{s,}://steamcommunity.com/* set cookie-accept=origin
+    au LoadCommitted http{s,}://mangadex.org/* set cookie-accept=origin
+    au LoadCommitted http{s,}://www.twitch.tv/* set cookie-accept=origin
+    au LoadCommitted http{s,}://es.wallapop.com/* set cookie-accept=origin
+    au LoadCommitted http{s,}://5e.tools/* set cookie-accept=origin
 aug end
 # }}}
