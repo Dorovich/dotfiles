@@ -11,9 +11,7 @@ nnoremap <silent> <Leader><S-q> :q!<CR>
 nnoremap <S-h> <Home>
 nnoremap <S-l> <End>
 imap jk <Esc>l
-imap kj <Esc>l
 cmap jk <Esc>
-cmap kj <Esc>
 vmap q <Esc>
 nnoremap <silent> <TAB> :bnext<CR>:file<CR>
 nnoremap <silent> <S-TAB> :bprevious<CR>:file<CR>
@@ -39,8 +37,6 @@ nnoremap <silent> <M-l> :vertical resize +2<CR>
 nnoremap <Leader>pp bi(<Esc>ea)<Esc>
 nnoremap <Leader>ll bi{<Esc>ea}<Esc>
 nnoremap <Leader>cc bi[<Esc>ea]<Esc>
-nnoremap / /\v
-vnoremap / /\v
 nnoremap <silent> <Leader>h :noh<cr>
 nnoremap <C-r> :%s//gI<Left><Left><Left>
 " }}}
