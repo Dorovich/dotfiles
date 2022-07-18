@@ -89547,10 +89547,10 @@ $csp=child-src 'none'; frame-src *; worker-src 'none',domain=skyback.ru|szukajka
 ! 
 @@|http://r.i.ua/s?*&p*&l$image,domain=swordmaster.org
 [Adblock Plus 2.0]
-! Checksum: hzh+k0z65Xrdt2X1vV2l4g
-! Version: 202207181400
+! Checksum: 72RWLk7pdmXVhzTtH9zmPQ
+! Version: 202207181500
 ! Title: Fanboy's Annoyance List
-! Last modified: 2022-07-18 14:00 UTC
+! Last modified: 2022-07-18 15:00 UTC
 ! Expires: 9 days (update frequency)
 ! Homepage: https://easylist.to/
 ! License: http://creativecommons.org/licenses/by/3.0/

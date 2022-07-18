@@ -23,16 +23,23 @@ set timeoutlen=200
 nmap + zI
 nmap - zO
 nmap = zz
+
+nmap J <C-d>
+nmap K <C-u>
+nmap <C-j> <C-f>
+nmap <C-k> <C-b>
+
 nnoremap ñ :
 nnoremap d :quit<CR>
 nnoremap D :quit!<CR>
-cnoremap jk <Esc>
+nnoremap b :open !
+nnoremap B :tabopen !
 nmap H <C-o>
 nmap L <C-i>
 nmap M '
-nnoremap b :open !
-nnoremap B :tabopen !
 nnoremap c <Esc>
+cnoremap jk <Esc>
+
 nnoremap <C-e> :sh! st -e nvim ~/.config/vimb/config<CR>
 nnoremap <C-c> :sh! ~/.local/bin/vimb-clear-history<CR>
 nnoremap <C-a> :sh! ~/.local/bin/vimb-adblock-update<CR>
