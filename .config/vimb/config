@@ -34,6 +34,8 @@ nnoremap b :open !
 nnoremap B :tabopen !
 nnoremap c <Esc>
 nnoremap <C-e> :sh! st -e nvim ~/.config/vimb/config<CR>
+nnoremap <C-c> :sh! ~/.local/bin/vimb-clear-history<CR>
+nnoremap <C-a> :sh! ~/.local/bin/vimb-adblock-update<CR>
 # }}}
 
 # Shortcuts {{{
