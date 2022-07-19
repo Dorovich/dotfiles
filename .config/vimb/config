@@ -41,7 +41,7 @@ nmap L <C-i>
 nmap M '
 nnoremap c <Esc>
 cnoremap jk <Esc>
-inoremap <C-d> <Esc>
+imap <C-d> <Esc>
 
 nnoremap <C-e> :sh! st -e nvim ~/.config/vimb/config<CR>
 nnoremap <C-b> :e! ytblock();<CR>
@@ -136,7 +136,7 @@ aug Cookies
     au LoadCommitted http{s,}://jutge.org/* set cookie-accept=origin
     au LoadCommitted http{s,}://github.com/* set cookie-accept=origin
     au LoadCommitted http{s,}://itch.io/* set cookie-accept=origin
-    au LoadCommitted http{s,}://google.com/* set cookie-accept=origin
+    au LoadCommitted http{s,}://www.google.com/* set cookie-accept=origin
     au LoadCommitted http{s,}://accounts.google.com/* set cookie-accept=origin
     au LoadCommitted http{s,}://www.youtube.com/* set cookie-accept=origin
     au LoadCommitted http{s,}://soundcloud.com/* set cookie-accept=origin
