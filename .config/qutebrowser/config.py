@@ -7,7 +7,7 @@ c.content.autoplay = False
 c.content.pdfjs = True
 c.hints.chars = "asdfghjklie"
 c.tabs.show = "multiple" # 'switching' alternativamente
-c.statusbar.show = "in-mode"
+c.statusbar.show = "never" # 'in-mode' alternativamente
 c.tabs.last_close = "ignore"  # "close" alternativamente
 c.content.default_encoding = "utf-8"
 c.content.fullscreen.overlay_timeout = 500
@@ -45,6 +45,7 @@ c.content.headers.user_agent = "Mozilla/5.0 ({os_info}; rv:102.0) Gecko/20100101
 c.content.canvas_reading = False
 c.content.webgl = True
 c.content.cookies.accept = "no-3rdparty"
+#c.content.cookies.accept = "never"
 c.content.blocking.enabled = True
 c.content.blocking.method = 'both'
 c.content.blocking.adblock.lists = [ \
@@ -84,8 +85,7 @@ config.bind('y', 'yank selection')
 config.bind('Y', 'yank pretty-url')
 config.bind('p', 'open {clipboard}')
 config.bind('P', 'open -t {clipboard}')
-config.bind('cm', 'clear-messages')
-config.bind('cs', 'config-source')
+config.bind('c', 'clear-messages')
 config.bind('jk', 'mode-leave', 'command')
 config.unbind('<ctrl+tab>')
 config.bind('<ctrl+tab>', 'tab-next')
@@ -149,10 +149,33 @@ config.set('content.javascript.enabled', True, 'chrome-devtools://*')
 config.set('content.javascript.enabled', True, 'devtools://*')
 config.set('content.javascript.enabled', True, 'chrome://*/*')
 config.set('content.javascript.enabled', True, 'qute://*/*')
+
+#config.set('content.cookies.accept', 'no-3rdparty', 'https://atenea.upc.edu/*')
+#config.set('content.cookies.accept', 'no-3rdparty', 'https://raco.fib.upc.edu/*')
+#config.set('content.cookies.accept', 'no-3rdparty', 'https://discos.fib.upc.edu/*')
+#config.set('content.cookies.accept', 'no-3rdparty', 'https://jutge.org/*')
+#config.set('content.cookies.accept', 'no-3rdparty', 'https://github.com/*')
+#config.set('content.cookies.accept', 'no-3rdparty', 'https://itch.io/*')
+#config.set('content.cookies.accept', 'no-3rdparty', 'https://google.com/*')
+#config.set('content.cookies.accept', 'no-3rdparty', 'https://accounts.google.com/*')
+#config.set('content.cookies.accept', 'no-3rdparty', 'https://soundcloud.com/*')
+#config.set('content.cookies.accept', 'no-3rdparty', 'https://duckduckgo.com/*')
+#config.set('content.cookies.accept', 'no-3rdparty', 'https://www.reddit.com/*')
+#config.set('content.cookies.accept', 'no-3rdparty', 'https://voidlinux.org/*')
+#config.set('content.cookies.accept', 'no-3rdparty', 'https://discord.com/*')
+#config.set('content.cookies.accept', 'no-3rdparty', 'https://*.wikipedia.org/*')
+#config.set('content.cookies.accept', 'no-3rdparty', 'https://yewtu.be/*')
+#config.set('content.cookies.accept', 'no-3rdparty', 'https://mega.nz/*')
+#config.set('content.cookies.accept', 'no-3rdparty', 'https://store.steampowered.com/*')
+#config.set('content.cookies.accept', 'no-3rdparty', 'https://steamcommunity.com/*')
+#config.set('content.cookies.accept', 'no-3rdparty', 'https://mangadex.org/*')
+#config.set('content.cookies.accept', 'no-3rdparty', 'https://www.twitch.tv/*')
+#config.set('content.cookies.accept', 'no-3rdparty', 'https://es.wallapop.com/*')
+#config.set('content.cookies.accept', 'no-3rdparty', 'https://5e.tools/*')
 # }}}
 
 # Font {{{
-monospace = "14px 'mononoki NF'"
+monospace = "16px 'mononoki NF'"
 c.fonts.hints = f"bold {monospace}"
 c.fonts.default_family = monospace
 c.fonts.completion.category = f"bold {monospace}"
