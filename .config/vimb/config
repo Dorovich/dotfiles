@@ -34,18 +34,19 @@ nnoremap d :quit<CR>
 nnoremap D :quit!<CR>
 nnoremap b :open !
 nnoremap B :tabopen !
-nnoremap s :sh<Space>
-nnoremap S :sh!<Space>
+#nnoremap s :sh<Space>
+#nnoremap S :sh!<Space>
 nmap H <C-o>
 nmap L <C-i>
 nmap M '
 nnoremap c <Esc>
 cnoremap jk <Esc>
+inoremap <C-d> <Esc>
 
 nnoremap <C-e> :sh! st -e nvim ~/.config/vimb/config<CR>
 nnoremap <C-b> :e! ytblock();<CR>
-nnoremap <C-c> :sh! ~/.local/bin/vimb-clear-history<CR>
-nnoremap <C-a> :sh! ~/.local/bin/vimb-adblock-update<CR>
+#nnoremap <C-c> :sh! ~/.local/bin/vimb-clear-history<CR>
+#nnoremap <C-a> :sh! ~/.local/bin/vimb-adblock-update<CR>
 # }}}
 
 # Shortcuts {{{
@@ -67,7 +68,6 @@ shortcut-add img=https://duckduckgo.com/?q=$0&t=h_&iax=images&ia=images
 shortcut-add inv=https://yewtu.be/search?q=$0
 shortcut-add mal=https://myanimelist.net/search/all?q=$0
 shortcut-add fc=https://4chan.org/$0/
-
 
 # bookmarks: ~/.local/share/vimb/bookmark
 # }}}
@@ -94,9 +94,10 @@ set user-agent=Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/
 
 # Fonts {{{
 set font-size=16
-set monospace-font-size=13
+set monospace-font-size=14
 set default-font=mononoki NF
 set monospace-font=mononoki NF
+#set monospace-font=Roboto Mono
 set sans-serif-font=DejaVu Sans
 set serif-font=DejaVu Serif
 # }}}
