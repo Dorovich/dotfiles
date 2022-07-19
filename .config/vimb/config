@@ -43,6 +43,7 @@ nnoremap c <Esc>
 cnoremap jk <Esc>
 
 nnoremap <C-e> :sh! st -e nvim ~/.config/vimb/config<CR>
+nnoremap <C-b> :e! ytblock();<CR>
 nnoremap <C-c> :sh! ~/.local/bin/vimb-clear-history<CR>
 nnoremap <C-a> :sh! ~/.local/bin/vimb-adblock-update<CR>
 # }}}
@@ -120,6 +121,10 @@ aug Downloads
     au DownloadFailed * sh notify-send --urgency=normal 'Could not download files.'
 aug end
 
+aug YtBlock
+    au LoadFinished http{s,}://www.youtube.com/watch?v=* e! ytblock();
+aug end
+
 aug Cookies
     au LoadCommitted * set cookie-accept=never
     au LoadCommitted http{s,}://atenea.upc.edu/* set cookie-accept=origin
@@ -130,6 +135,7 @@ aug Cookies
     au LoadCommitted http{s,}://itch.io/* set cookie-accept=origin
     au LoadCommitted http{s,}://google.com/* set cookie-accept=origin
     au LoadCommitted http{s,}://accounts.google.com/* set cookie-accept=origin
+    au LoadCommitted http{s,}://www.youtube.com/* set cookie-accept=origin
     au LoadCommitted http{s,}://soundcloud.com/* set cookie-accept=origin
     au LoadCommitted http{s,}://duckduckgo.com/* set cookie-accept=origin
     au LoadCommitted http{s,}://www.reddit.com/* set cookie-accept=origin
