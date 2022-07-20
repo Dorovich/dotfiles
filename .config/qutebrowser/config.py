@@ -41,37 +41,95 @@ c.tabs.padding = {
 # Mappings {{{
 c.input.partial_timeout = 500
 
+# Unbinds {{{
+config.unbind('<ctrl+tab>')
+config.unbind('co')
+config.unbind('gJ')
+config.unbind('gK')
+config.unbind('xo')
+config.unbind('xO')
+config.unbind('go')
+config.unbind('gO')
+config.unbind('wo')
+config.unbind('wO')
+config.unbind('ga')
+config.unbind('gm')
+config.unbind('tl')
+config.unbind('wl')
+config.unbind('yy')
+config.unbind('yY')
+config.unbind('yt')
+config.unbind('yT')
+config.unbind('yd')
+config.unbind('yD')
+config.unbind('yp')
+config.unbind('yP')
+config.unbind('ym')
+config.unbind('yM')
+config.unbind('pp')
+config.unbind('pP')
+config.unbind('Pp')
+config.unbind('PP')
+config.unbind('wp')
+config.unbind('wP')
+config.unbind('ZZ')
+config.unbind('ZQ')
+
+config.unbind('tsh')
+config.unbind('tSh')
+config.unbind('tsH')
+config.unbind('tSH')
+config.unbind('tsu')
+config.unbind('tSu')
+config.unbind('tph')
+config.unbind('tPh')
+config.unbind('tpH')
+config.unbind('tpH')
+config.unbind('tih')
+config.unbind('tIh')
+config.unbind('tiH')
+config.unbind('tIH')
+config.unbind('tiu')
+config.unbind('tIu')
+config.unbind('tch')
+config.unbind('tCh')
+config.unbind('tcH')
+config.unbind('tCH')
+config.unbind('tcu')
+config.unbind('tCu')
+# }}}
+
 config.bind('ñ', 'clear-messages ;; set-cmd-text :')
 config.bind('o', 'clear-messages ;; set-cmd-text -s :open')
 config.bind('O', 'clear-messages ;; set-cmd-text :open {url}')
 config.bind('t', 'clear-messages ;; set-cmd-text -s :open -t')
 config.bind('T', 'clear-messages ;; set-cmd-text :open -t {url}')
+config.bind('b', 'clear-messages ;; set-cmd-text -s :quickmark-load')
+config.bind('B', 'clear-messages ;; set-cmd-text -s :quickmark-load -t')
 config.bind('y', 'yank selection')
 config.bind('Y', 'yank pretty-url')
 config.bind('p', 'open {clipboard}')
 config.bind('P', 'open -t {clipboard}')
-config.bind('c', 'clear-messages')
+config.bind('c', 'download-clear;; clear-messages')
+config.bind('D', 'quit')
 config.bind('jk', 'mode-leave', 'command')
-
+config.bind('gh', 'home')
+config.bind('<Ctrl-j>', 'tab-move +')
+config.bind('<Ctrl-k>', 'tab-move -')
+config.bind('<Ctrl-i>', 'forward')
+config.bind('<Ctrl-o>', 'back')
+config.bind('<Ctrl-e>', 'config-edit')
+config.bind('<ctrl+tab>', 'tab-next')
+config.bind('<ctrl+shift+tab>', 'tab-prev')
+config.bind('<ctrl+shift+p>', 'open -p')
 config.bind('xb', 'config-cycle statusbar.show never in-mode')
 config.bind('xt', 'config-cycle tabs.show multiple switching')
-config.bind('xx', 'config-cycle statusbar.show in-mode never;; config-cycle tabs.show multiple switching')
 
 config.bind(',m', 'hint links spawn mpv {hint-url}')
 config.bind(',M', 'spawn mpv {url}')
 config.bind(',t', 'spawn --userscript translate --text')
 config.bind(',T', 'spawn --userscript translate')
 config.bind(',d', 'download-open')
-
-config.bind('<Ctrl-j>', 'tab-move +')
-config.bind('<Ctrl-k>', 'tab-move -')
-config.bind('<Ctrl-i>', 'forward')
-config.bind('<Ctrl-o>', 'back')
-config.bind('<Ctrl-e>', 'config-edit')
-config.unbind('<ctrl+tab>')
-config.bind('<ctrl+tab>', 'tab-next')
-config.bind('<ctrl+shift+tab>', 'tab-prev')
-config.bind('<ctrl+shift+p>', 'open -p')
 config.bind('<Ctrl-p>', 'spawn --userscript password_fill')
 config.bind('<Ctrl-p>', 'spawn --userscript password_fill', 'insert')
 
@@ -82,7 +140,8 @@ config.bind('<Ctrl-b>', 'fake-key <Delete>', 'insert')
 config.bind('<Ctrl-w>', 'fake-key <Ctrl-Backspace>', 'insert')
 config.bind('<Ctrl-u>', 'fake-key <Shift-Home><Delete>', 'insert')
 config.bind('<Ctrl-k>', 'fake-key <Shift-End><Delete>', 'insert')
-config.bind('<Ctrl-d>', 'fake-key -g <Esc>', 'insert')
+#config.bind('<Ctrl-d>', 'fake-key -g <Esc>', 'insert')
+config.bind('<Ctrl-d>', 'mode-leave', 'insert')
 # }}}
 
 # Shortcuts {{{
@@ -109,18 +168,18 @@ c.url.searchengines = {
 # Web content {{{
 c.editor.command = ['st', '-e', 'nvim', '{}']
 c.downloads.location.directory = "$HOME/Descargas"
-c.downloads.location.prompt = False
 c.confirm_quit = ["downloads"]
+c.downloads.location.prompt = False
 c.content.autoplay = False
 c.content.pdfjs = True
-c.content.default_encoding = "utf-8"
-c.content.webrtc_ip_handling_policy = "default-public-interface-only"
 c.content.geolocation = False
-c.content.headers.user_agent = "Mozilla/5.0 ({os_info}; rv:102.0) Gecko/20100101 Firefox/102.0"
 c.content.canvas_reading = False
 c.content.webgl = True
+c.content.default_encoding = "utf-8"
+c.content.webrtc_ip_handling_policy = "default-public-interface-only"
+c.content.headers.user_agent = "Mozilla/5.0 ({os_info}; rv:102.0) Gecko/20100101 Firefox/102.0"
 c.content.cookies.accept = "no-3rdparty"
-#c.content.cookies.accept = "never"
+
 c.content.blocking.enabled = True
 c.content.blocking.method = 'both'
 c.content.blocking.adblock.lists = [ \
@@ -176,27 +235,4 @@ config.set('content.javascript.enabled', True, 'chrome-devtools://*')
 config.set('content.javascript.enabled', True, 'devtools://*')
 config.set('content.javascript.enabled', True, 'chrome://*/*')
 config.set('content.javascript.enabled', True, 'qute://*/*')
-
-#config.set('content.cookies.accept', 'no-3rdparty', 'https://atenea.upc.edu/*')
-#config.set('content.cookies.accept', 'no-3rdparty', 'https://raco.fib.upc.edu/*')
-#config.set('content.cookies.accept', 'no-3rdparty', 'https://discos.fib.upc.edu/*')
-#config.set('content.cookies.accept', 'no-3rdparty', 'https://jutge.org/*')
-#config.set('content.cookies.accept', 'no-3rdparty', 'https://github.com/*')
-#config.set('content.cookies.accept', 'no-3rdparty', 'https://itch.io/*')
-#config.set('content.cookies.accept', 'no-3rdparty', 'https://google.com/*')
-#config.set('content.cookies.accept', 'no-3rdparty', 'https://accounts.google.com/*')
-#config.set('content.cookies.accept', 'no-3rdparty', 'https://soundcloud.com/*')
-#config.set('content.cookies.accept', 'no-3rdparty', 'https://duckduckgo.com/*')
-#config.set('content.cookies.accept', 'no-3rdparty', 'https://www.reddit.com/*')
-#config.set('content.cookies.accept', 'no-3rdparty', 'https://voidlinux.org/*')
-#config.set('content.cookies.accept', 'no-3rdparty', 'https://discord.com/*')
-#config.set('content.cookies.accept', 'no-3rdparty', 'https://*.wikipedia.org/*')
-#config.set('content.cookies.accept', 'no-3rdparty', 'https://yewtu.be/*')
-#config.set('content.cookies.accept', 'no-3rdparty', 'https://mega.nz/*')
-#config.set('content.cookies.accept', 'no-3rdparty', 'https://store.steampowered.com/*')
-#config.set('content.cookies.accept', 'no-3rdparty', 'https://steamcommunity.com/*')
-#config.set('content.cookies.accept', 'no-3rdparty', 'https://mangadex.org/*')
-#config.set('content.cookies.accept', 'no-3rdparty', 'https://www.twitch.tv/*')
-#config.set('content.cookies.accept', 'no-3rdparty', 'https://es.wallapop.com/*')
-#config.set('content.cookies.accept', 'no-3rdparty', 'https://5e.tools/*')
 # }}}
