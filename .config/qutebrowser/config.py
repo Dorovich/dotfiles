@@ -43,6 +43,7 @@ c.input.partial_timeout = 500
 
 # Unbinds {{{
 config.unbind('co')
+config.unbind('cd')
 config.unbind('gJ')
 config.unbind('gK')
 config.unbind('xo')
@@ -111,7 +112,7 @@ config.bind('Y', 'yank pretty-url')
 config.bind('p', 'open {clipboard}')
 config.bind('P', 'open -t {clipboard}')
 config.bind('c', 'download-clear;; clear-messages')
-config.bind('D', 'quit')
+config.bind('D', 'close')
 config.bind('jk', 'mode-leave', 'command')
 config.bind('gh', 'home')
 config.bind('xb', 'config-cycle statusbar.show never in-mode')
