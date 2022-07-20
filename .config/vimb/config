@@ -9,7 +9,7 @@ set home-page=https://dorovich.github.io/b
 
 # UI {{{
 set input-autohide=true
-set status-bar=false
+set status-bar=true
 set dark-mode=true
 set hint-keys=asdfghjklei
 set smooth-scrolling=true
@@ -114,7 +114,7 @@ set completion-selected-css=color:#151515;background-color:#d19a66;font:11pt mon
 set input-css=color:#abb2bf;background-color:#151515;font:11pt mononoki NF;
 set input-error-css=color:#abb2bf;background-color:#151515;font:11pt mononoki NF;
 set status-css=color:#abb2bf;background-color:#151515;font:11pt mononoki NF;
-set status-ssl-css=color:#525252;background-color:#151515;font:11pt mononoki NF;
+set status-ssl-css=color:#757575;background-color:#151515;font:11pt mononoki NF;
 set status-ssl-invalid-css=color:#abb2bf;background-color:#151515;font:11pt mononoki NF;
 # }}}
 
