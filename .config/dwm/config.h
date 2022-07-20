@@ -85,7 +85,7 @@ static const char *dmenucmd[]  = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont
 static const char *termcmd[]   = { "st", NULL };
 static const char *launchcmd[] = { "rofi", "-show", "drun", NULL };
 static const char *filescmd[]  = { "st", "-e", "bash", "-ilc", "nnn", NULL };
-static const char *browsrcmd[] = { "qutebrowser", NULL };
+static const char *browsrcmd[] = { "qutebrowser.sh", NULL };
 static const char *mailcmd[]   = { "thunderbird", NULL };
 static const char *lockcmd[]   = { "slock", NULL };
 

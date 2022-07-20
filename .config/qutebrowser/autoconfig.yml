@@ -8,5 +8,3 @@ config_version: 2
 settings:
   content.media.audio_capture:
     https://discord.com: true
-  tabs.show:
-    global: multiple
