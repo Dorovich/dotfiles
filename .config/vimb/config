@@ -153,5 +153,6 @@ aug Cookies
     au LoadCommitted http{s,}://www.twitch.tv/* set cookie-accept=origin
     au LoadCommitted http{s,}://es.wallapop.com/* set cookie-accept=origin
     au LoadCommitted http{s,}://5e.tools/* set cookie-accept=origin
+    au LoadCommitted http{s,}://www3.animeflv.net/* set cookie-accept=origin
 aug end
 # }}}
