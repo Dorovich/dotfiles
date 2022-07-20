@@ -42,7 +42,6 @@ c.tabs.padding = {
 c.input.partial_timeout = 500
 
 # Unbinds {{{
-config.unbind('<ctrl+tab>')
 config.unbind('co')
 config.unbind('gJ')
 config.unbind('gK')
@@ -74,7 +73,6 @@ config.unbind('wp')
 config.unbind('wP')
 config.unbind('ZZ')
 config.unbind('ZQ')
-
 config.unbind('tsh')
 config.unbind('tSh')
 config.unbind('tsH')
@@ -99,6 +97,8 @@ config.unbind('tcu')
 config.unbind('tCu')
 # }}}
 
+config.bind('K', 'fake-key <PgUp>')
+config.bind('J', 'fake-key <PgDown>')
 config.bind('ñ', 'clear-messages ;; set-cmd-text :')
 config.bind('o', 'clear-messages ;; set-cmd-text -s :open')
 config.bind('O', 'clear-messages ;; set-cmd-text :open {url}')
@@ -114,16 +114,16 @@ config.bind('c', 'download-clear;; clear-messages')
 config.bind('D', 'quit')
 config.bind('jk', 'mode-leave', 'command')
 config.bind('gh', 'home')
+config.bind('xb', 'config-cycle statusbar.show never in-mode')
+config.bind('xt', 'config-cycle tabs.show multiple switching')
 config.bind('<Ctrl-j>', 'tab-move +')
 config.bind('<Ctrl-k>', 'tab-move -')
+config.bind('<Ctrl-h>', 'tab-prev')
+config.bind('<Ctrl-l>', 'tab-next')
 config.bind('<Ctrl-i>', 'forward')
 config.bind('<Ctrl-o>', 'back')
 config.bind('<Ctrl-e>', 'config-edit')
-config.bind('<ctrl+tab>', 'tab-next')
-config.bind('<ctrl+shift+tab>', 'tab-prev')
 config.bind('<ctrl+shift+p>', 'open -p')
-config.bind('xb', 'config-cycle statusbar.show never in-mode')
-config.bind('xt', 'config-cycle tabs.show multiple switching')
 
 config.bind(',m', 'hint links spawn mpv {hint-url}')
 config.bind(',M', 'spawn mpv {url}')
@@ -133,6 +133,7 @@ config.bind(',d', 'download-open')
 config.bind('<Ctrl-p>', 'spawn --userscript password_fill')
 config.bind('<Ctrl-p>', 'spawn --userscript password_fill', 'insert')
 
+config.bind('<Ctrl-d>', 'mode-leave', 'insert')
 config.bind('<Ctrl-h>', 'fake-key <Backspace>', 'insert')
 config.bind('<Ctrl-a>', 'fake-key <Home>', 'insert')
 config.bind('<Ctrl-e>', 'fake-key <End>', 'insert')
@@ -140,8 +141,6 @@ config.bind('<Ctrl-b>', 'fake-key <Delete>', 'insert')
 config.bind('<Ctrl-w>', 'fake-key <Ctrl-Backspace>', 'insert')
 config.bind('<Ctrl-u>', 'fake-key <Shift-Home><Delete>', 'insert')
 config.bind('<Ctrl-k>', 'fake-key <Shift-End><Delete>', 'insert')
-#config.bind('<Ctrl-d>', 'fake-key -g <Esc>', 'insert')
-config.bind('<Ctrl-d>', 'mode-leave', 'insert')
 # }}}
 
 # Shortcuts {{{

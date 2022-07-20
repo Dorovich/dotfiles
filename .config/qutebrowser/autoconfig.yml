@@ -6,5 +6,102 @@
 
 config_version: 2
 settings:
-  content.media.audio_capture:
-    https://discord.com: true
+  bindings.commands:
+    global:
+      command:
+        jk: mode-leave
+      insert:
+        <Ctrl+a>: fake-key <Home>
+        <Ctrl+b>: fake-key <Delete>
+        <Ctrl+d>: mode-leave
+        <Ctrl+e>: fake-key <End>
+        <Ctrl+h>: fake-key <Backspace>
+        <Ctrl+k>: fake-key <Shift-End><Delete>
+        <Ctrl+p>: spawn --userscript password_fill
+        <Ctrl+u>: fake-key <Shift-Home><Delete>
+        <Ctrl+w>: fake-key <Ctrl-Backspace>
+      normal:
+        ',M': spawn mpv {url}
+        ',T': spawn --userscript translate
+        ',d': download-open
+        ',m': hint links spawn mpv {hint-url}
+        ',t': spawn --userscript translate --text
+        <Ctrl+Shift+Tab>: tab-prev
+        <Ctrl+Shift+p>: open -p
+        <Ctrl+Tab>: tab-next
+        <Ctrl+e>: config-edit
+        <Ctrl+h>: tab-prev
+        <Ctrl+i>: forward
+        <Ctrl+j>: tab-move +
+        <Ctrl+k>: tab-move -
+        <Ctrl+l>: tab-next
+        <Ctrl+o>: back
+        <Ctrl+p>: spawn --userscript password_fill
+        B: clear-messages ;; set-cmd-text -s :quickmark-load -t
+        D: quit
+        O: clear-messages ;; set-cmd-text :open {url}
+        P: open -t {clipboard}
+        PP: null
+        Pp: null
+        T: clear-messages ;; set-cmd-text :open -t {url}
+        Y: yank pretty-url
+        ZQ: null
+        ZZ: null
+        b: clear-messages ;; set-cmd-text -s :quickmark-load
+        c: download-clear;; clear-messages
+        co: null
+        gJ: null
+        gK: null
+        gO: null
+        ga: null
+        gh: home
+        gm: null
+        go: null
+        o: clear-messages ;; set-cmd-text -s :open
+        p: open {clipboard}
+        pP: null
+        pp: null
+        t: clear-messages ;; set-cmd-text -s :open -t
+        tCH: null
+        tCh: null
+        tCu: null
+        tIH: null
+        tIh: null
+        tIu: null
+        tPh: null
+        tSH: null
+        tSh: null
+        tSu: null
+        tcH: null
+        tch: null
+        tcu: null
+        tiH: null
+        tih: null
+        tiu: null
+        tl: null
+        tpH: null
+        tph: null
+        tsH: null
+        tsh: null
+        tsu: null
+        wO: null
+        wP: null
+        wl: null
+        wo: null
+        wp: null
+        xO: null
+        xb: config-cycle statusbar.show never in-mode
+        xo: null
+        xt: config-cycle tabs.show multiple switching
+        y: yank selection
+        yD: null
+        yM: null
+        yP: null
+        yT: null
+        yY: null
+        yd: null
+        ym: null
+        yp: null
+        yt: null
+        yy: null
+        ñ: 'clear-messages ;; set-cmd-text :'
