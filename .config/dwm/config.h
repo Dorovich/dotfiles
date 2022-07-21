@@ -121,7 +121,7 @@ static Key keys[] = {
         { MODKEY,                       XK_f,         spawn,          {.v = filescmd} },
         { MODKEY,                       XK_b,         spawn,          {.v = browsrcmd} },
         { MODKEY,                       XK_m,         spawn,          {.v = mailcmd} },
-        { MODKEY,                       XK_p,         spawn,          CMD("read -r X Y W H < <(slop -t 0 -c 0,0,0,0 -r crosshair -f '%x %y %w %h'); maim -g 1x1+"$((X + W))"+"$((Y + H))" | convert - -depth 8 txt:- | grep -om1 '#\w\+' | head -c7 | xclip -selection clipboard") },
+        { MODKEY,                       XK_p,         spawn,          CMD("colpick") },
         { MODKEY,                       XK_v,         spawn,          CMD("tabbed -c vimb -e") },
         //{ MODKEY,                       XK_e,         spawn,          CMD("emacsclient -c -a 'emacs'") },
         //{ MODKEY,                       XK_b,         spawn,          CMD("firefox") },
