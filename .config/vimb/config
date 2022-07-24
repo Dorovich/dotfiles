@@ -166,5 +166,7 @@ aug Cookies
     au LoadCommitted http{s,}://5e.tools/* set cookie-accept=origin
     au LoadCommitted http{s,}://www3.animeflv.net/* set cookie-accept=origin
     au LoadCommitted http{s,}://www.epicgames.com/* set cookie-accept=origin
+    au LoadCommitted http{s,}://element.envs.net/* set cookie-accept=origin
+    au LoadCommitted http{s,}://bandcamp.com/* set cookie-accept=origin
 aug end
 # }}}
