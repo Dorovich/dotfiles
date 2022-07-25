@@ -50,6 +50,7 @@ nnoremap xc :sh! ~/.local/bin/vimb-clear-history<CR>
 nnoremap xu :sh! ~/.local/bin/vimb-adblock-update<CR>
 nnoremap xm :sh! mpv $VIMB_URI<CR>
 nnoremap xb :e! ytblock();<CR>
+nnoremap xt Y:tabopen trad <C-r>"<CR>
 # }}}
 
 # Shortcuts {{{
