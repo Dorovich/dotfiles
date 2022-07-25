@@ -13,7 +13,7 @@ c.url.start_pages = ["dorovich.github.io/b"]
 # UI {{{
 config.source("colors.py")
 c.hints.chars = "asdfghjklie"
-c.statusbar.show = "never" # 'in-mode' alternativamente
+c.statusbar.show = "always"
 c.colors.webpage.preferred_color_scheme = "dark"
 c.colors.webpage.darkmode.enabled = False
 c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
@@ -22,12 +22,12 @@ c.colors.webpage.darkmode.policy.images = 'never'
 c.completion.show = "auto"
 c.completion.use_best_match = True
 c.scrolling.smooth = True
-c.completion.height = "20%"
+c.completion.height = "15%"
 c.completion.quick = False
 c.window.title_format = "{private}{perc}qutebrowser"
 c.content.fullscreen.overlay_timeout = 500
-c.tabs.last_close = "ignore"  # "close" alternativamente
-c.tabs.show = "multiple" # 'switching' alternativamente
+c.tabs.last_close = "ignore"
+c.tabs.show = "multiple"
 c.tabs.select_on_remove = "prev"
 c.tabs.background = True
 c.tabs.padding = {
@@ -107,13 +107,14 @@ config.bind('t', 'clear-messages ;; set-cmd-text -s :open -t')
 config.bind('T', 'clear-messages ;; set-cmd-text :open -t {url}')
 config.bind('b', 'clear-messages ;; set-cmd-text -s :quickmark-load')
 config.bind('B', 'clear-messages ;; set-cmd-text -s :quickmark-load -t')
-config.bind('y', 'yank selection')
-config.bind('Y', 'yank pretty-url')
+config.bind('y', 'yank pretty-url')
+config.bind('Y', 'yank selection')
 config.bind('p', 'open {clipboard}')
 config.bind('P', 'open -t {clipboard}')
 config.bind('c', 'download-clear;; clear-messages')
 config.bind('D', 'close')
-config.bind('jk', 'mode-leave', 'command')
+#config.bind('jk', 'mode-leave', 'command')
+config.bind('<Ctrl-c>', 'mode-leave', 'command')
 config.bind('gh', 'home')
 config.bind('xb', 'config-cycle statusbar.show never in-mode')
 config.bind('xt', 'config-cycle tabs.show multiple switching')
@@ -179,6 +180,7 @@ c.content.default_encoding = "utf-8"
 c.content.webrtc_ip_handling_policy = "default-public-interface-only"
 c.content.headers.user_agent = "Mozilla/5.0 ({os_info}; rv:102.0) Gecko/20100101 Firefox/102.0"
 c.content.cookies.accept = "no-3rdparty"
+c.completion.open_categories= [ "history" ]
 
 c.content.blocking.enabled = True
 c.content.blocking.method = 'both'
@@ -210,7 +212,7 @@ c.content.blocking.hosts.lists = [ \
 # }}}
 
 # Fonts {{{
-monospace = "16px 'mononoki NF'"
+monospace = "14px 'mononoki NF'"
 c.fonts.hints = f"bold {monospace}"
 c.fonts.default_family = monospace
 c.fonts.completion.category = f"bold {monospace}"
