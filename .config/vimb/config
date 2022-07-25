@@ -169,6 +169,5 @@ aug Cookies
     au LoadCommitted http{s,}://www.epicgames.com/* set cookie-accept=origin
     au LoadCommitted http{s,}://element.envs.net/* set cookie-accept=origin
     au LoadCommitted http{s,}://bandcamp.com/* set cookie-accept=origin
-    au LoadCommitted http{s,}://e621.net/* set cookie-accept=origin
 aug end
 # }}}
