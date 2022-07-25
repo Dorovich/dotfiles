@@ -14,6 +14,7 @@ set input-autohide=true
 set status-bar=true
 set dark-mode=true
 set hint-keys=asdfghjklei
+set hint-keys-same-length=true
 set smooth-scrolling=true
 set default-zoom=100
 set incsearch=true

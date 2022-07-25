@@ -31,8 +31,8 @@ c.tabs.show = "multiple"
 c.tabs.select_on_remove = "prev"
 c.tabs.background = True
 c.tabs.padding = {
-    "left": 5,
-    "right": 5,
+    "left": 0,
+    "right": 0,
     "top": 1,
     "bottom": 1,
 }
@@ -188,11 +188,8 @@ c.content.blocking.adblock.lists = [ \
     "https://easylist.to/easylist/easylist.txt", \
     "https://easylist.to/easylist/easyprivacy.txt", \
     "https://secure.fanboy.co.nz/fanboy-cookiemonster.txt", \
-    "https://easylist.to/easylist/fanboy-annoyance.txt", \
     "https://secure.fanboy.co.nz/fanboy-annoyance.txt", \
-    "https://easylist-downloads.adblockplus.org/abp-filters-anti-cv.txt", \
     "https://raw.githubusercontent.com/piperun/iploggerfilter/master/filterlist", \
-    "https://raw.githubusercontent.com/gwarser/filter-lists/master/lan-block.txt", \
     "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances.txt", \
     "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2020.txt", \
     "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2021.txt", \
