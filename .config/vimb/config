@@ -44,7 +44,7 @@ cnoremap <C-d> <Esc>
 cnoremap <C-c> <Esc>
 imap <C-d> <Esc>
 
-nnoremap xd :sh! st -e nnn ~/Descargas<CR>
+nnoremap xd :sh! st -e bash -ilc 'nnn ~/Descargas'<CR>
 nnoremap xe :sh! st -e nvim ~/.config/vimb/config<CR>
 nnoremap xc :sh! ~/.local/bin/vimb-clear-history<CR>
 nnoremap xu :sh! ~/.local/bin/vimb-adblock-update<CR>
@@ -76,6 +76,7 @@ shortcut-add inv=https://yewtu.be/search?q=$0
 shortcut-add mal=https://myanimelist.net/search/all?q=$0
 shortcut-add fc=https://4chan.org/$0/
 shortcut-add ny=https://nyaa.si/?q=$0
+shortcut-add af=https://www3.animeflv.net/browse?q=$0
 
 # bookmarks: ~/.local/share/vimb/bookmark
 # }}}
@@ -172,5 +173,7 @@ aug Cookies
     au LoadCommitted http{s,}://www.epicgames.com/* set cookie-accept=origin
     au LoadCommitted http{s,}://element.envs.net/* set cookie-accept=origin
     au LoadCommitted http{s,}://bandcamp.com/* set cookie-accept=origin
+    au LoadCommitted http{s,}://www.pixiv.net/* set cookie-accept=origin
+    au LoadCommitted http{s,}://accounts.pixiv.net/* set cookie-accept=origin
 aug end
 # }}}

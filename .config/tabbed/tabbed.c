@@ -273,6 +273,7 @@ configurerequest(const XEvent *e)
 	XWindowChanges wc;
 	int c;
 
+        resize(sel, ww, wh - bh);
 	if ((c = getclient(ev->window)) > -1) {
 		wc.x = 0;
 		wc.y = bh;
