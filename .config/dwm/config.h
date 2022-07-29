@@ -85,7 +85,8 @@ static const char *dmenucmd[]  = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont
 static const char *termcmd[]   = { "st", NULL };
 static const char *launchcmd[] = { "rofi", "-show", "drun", NULL };
 static const char *filescmd[]  = { "st", "-e", "bash", "-ilc", "nnn", NULL };
-static const char *browsrcmd[] = { "qutebrowser.sh", NULL };
+static const char *browsrcmd[] = { "firefox", NULL };
+static const char *vimbcmd[]   = { "tabbed", "-c", "vimb", "-e", NULL };
 static const char *mailcmd[]   = { "thunderbird", NULL };
 static const char *lockcmd[]   = { "slock", NULL };
 
@@ -121,8 +122,8 @@ static Key keys[] = {
         { MODKEY,                       XK_f,         spawn,          {.v = filescmd} },
         { MODKEY,                       XK_b,         spawn,          {.v = browsrcmd} },
         { MODKEY,                       XK_m,         spawn,          {.v = mailcmd} },
+        { MODKEY,                       XK_v,         spawn,          {.v = vimbcmd} },
         { MODKEY,                       XK_p,         spawn,          CMD("colpick") },
-        { MODKEY,                       XK_v,         spawn,          CMD("tabbed -c vimb -e") },
         //{ MODKEY,                       XK_e,         spawn,          CMD("emacsclient -c -a 'emacs'") },
         //{ MODKEY,                       XK_b,         spawn,          CMD("firefox") },
         //{ MODKEY,                       XK_f,         spawn,          CMD("nautilus") },

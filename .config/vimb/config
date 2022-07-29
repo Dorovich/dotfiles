@@ -33,25 +33,29 @@ nmap <C-k> <C-b>
 nmap H <C-o>
 nmap L <C-i>
 nmap M '
-nnoremap ñ :
-nnoremap d :quit<CR>
-nnoremap D :quit!<CR>
-nnoremap b :open !
-nnoremap B :tabopen !
-nnoremap c <Esc>
-cnoremap <C-j> <CR>
-cnoremap <C-d> <Esc>
-cnoremap <C-c> <Esc>
+nmap ñ :
+nmap d :quit<CR>
+nmap D :quit!<CR>
+nmap b :open !
+nmap B :tabopen !
+nmap c <Esc>
+cmap <C-j> <CR>
+cmap <C-d> <Esc>
+cmap <C-c> <Esc>
 imap <C-d> <Esc>
 
+nmap <C-m> :sh! mpv $VIMB_URI<CR> 
+nmap <C-e> :sh! st -e nvim ~/.config/vimb/config<CR>
+nmap <C-t> Y:tabopen trad <C-r>"<CR>
+nmap <C-y> :sh vimb-pass $VIMB_URI<CR>
+#nnoremap xm :sh! mpv $VIMB_URI<CR>
+#nnoremap xe :sh! st -e nvim ~/.config/vimb/config<CR>
+#nnoremap xt Y:tabopen trad <C-r>"<CR>
+#nnoremap xp :sh vimb-pass $VIMB_URI<CR>
 nnoremap xd :sh! st -e bash -ilc 'nnn ~/Descargas'<CR>
-nnoremap xe :sh! st -e nvim ~/.config/vimb/config<CR>
 nnoremap xc :sh! ~/.local/bin/vimb-clear-history<CR>
 nnoremap xu :sh! ~/.local/bin/vimb-adblock-update<CR>
-nnoremap xm :sh! mpv $VIMB_URI<CR>
-nnoremap xp :sh vimb-pass $VIMB_URI<CR>
 nnoremap xb :e! ytblock();<CR>
-nnoremap xt Y:tabopen trad <C-r>"<CR>
 # }}}
 
 # Shortcuts {{{
@@ -77,6 +81,7 @@ shortcut-add mal=https://myanimelist.net/search/all?q=$0
 shortcut-add fc=https://4chan.org/$0/
 shortcut-add ny=https://nyaa.si/?q=$0
 shortcut-add af=https://www3.animeflv.net/browse?q=$0
+shortcut-add lol=https://euw.op.gg/champions/$0
 
 # bookmarks: ~/.local/share/vimb/bookmark
 # }}}
@@ -135,9 +140,11 @@ aug end
 
 aug Styles
     au LoadCommitted * set stylesheet=false
+    au LoadCommitted about:blank set stylesheet=true
     au LoadCommitted http{s,}://lite.duckduckgo.com/* set stylesheet=true
     au LoadCommitted http{s,}://fanglingsu.github.io/* set stylesheet=true
     au LoadCommitted http{s,}://www.frogfind.com/* set stylesheet=true
+    au LoadCommitted http{s,}://*.wikipedia.org/* set stylesheet=true
     au LoadCommitted http{s,}://sm-idk.me/* set stylesheet=true
 aug end
 
