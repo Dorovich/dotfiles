@@ -29,7 +29,7 @@ set completion-ignore-case on
 shopt -s histappend     # do not overwrite history
 shopt -s checkwinsize   # checks term size when bash regains control
 shopt -s cdspell        # autocorrects cd misspellings
-set -o vi               # vi keybinds
+#set -o vi               # vi keybinds
 
 bind '"jk":vi-movement-mode'
 
