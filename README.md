@@ -3,11 +3,11 @@
 
 ![](showcase.png)
 
-## Información
+## Información+
 - Distro: `Pop!_OS`
 - Terminal: `st`
 - Shell: `bash`
-- Editor: `neovim`, `emacs`
+- Editor: `neovim`
 - Navegador: `firefox`, `vimb`
 - Fuente: `mononoki (Nerd Font)`
 - DE/WM: `dwm`
