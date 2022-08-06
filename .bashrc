@@ -30,8 +30,7 @@ shopt -s histappend     # do not overwrite history
 shopt -s checkwinsize   # checks term size when bash regains control
 shopt -s cdspell        # autocorrects cd misspellings
 #set -o vi               # vi keybinds
-
-bind '"jk":vi-movement-mode'
+#bind '"jk":vi-movement-mode' # salir con jk del modo insertar (activar SOLO SI SE ACTIVA EL MODO VI)
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -100,6 +99,7 @@ cdl() { cd $1 && ls ; }
 
 alias wacom-osu='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" Area 5167 3167 9133 6333'
 alias wacom-reset='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" ResetArea'
+alias wacom-osu-fast='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" Area 5667 3667 8633 5833'
 
 alias icat="kitty +kitten icat"
 alias diff="kitty +kitten diff"
