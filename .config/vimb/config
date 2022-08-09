@@ -4,8 +4,6 @@
 # |___/_/_/_/_/_.__/
 #
 # https://fanglingsu.github.io/vimb/man.html
-# TODO:
-#   · pass integration
 
 set home-page=https://dorovich.github.io/b
 
@@ -45,11 +43,10 @@ cmap <C-c> <Esc>
 imap <C-d> <Esc>
 
 nmap <C-m> :sh! mpv $VIMB_URI<CR> 
-nmap <C-e> :sh! st -e nvim ~/.config/vimb/config<CR>
 nmap <C-t> Y:tabopen trad <C-r>"<CR>
-nmap <C-y> :sh! xdotool key ctrl+super+p<CR>
 #nmap <C-y> :sh vimb-pass $VIMB_URI<CR>
-nnoremap xd :sh! st -e bash -ilc 'nnn ~/Descargas'<CR>
+nmap gc :sh! st -e nvim ~/.config/vimb/config<CR>
+nmap gd :sh! st -e bash -ilc 'nnn ~/Descargas'<CR>
 nnoremap xc :sh! ~/.local/bin/vimb-clear-history<CR>
 nnoremap xu :sh! ~/.local/bin/vimb-adblock-update<CR>
 #nnoremap xb :e! ytblock();<CR>
@@ -83,10 +80,9 @@ shortcut-add lol=https://euw.op.gg/champions/$0
 # bookmarks: ~/.local/share/vimb/bookmark
 # }}}
 
-# Handlers and Editor {{{
+# External programs {{{
 handler-add magnet=xdg-open %s
 handler-add mailto=thunderbird %s
-
 set editor-command=st -e nvim %s
 # }}}
 
@@ -180,5 +176,7 @@ aug Cookies
     au LoadCommitted http{s,}://bandcamp.com/* set cookie-accept=origin
     au LoadCommitted http{s,}://www.pixiv.net/* set cookie-accept=origin
     au LoadCommitted http{s,}://accounts.pixiv.net/* set cookie-accept=origin
+    au LoadCommitted http{s,}://roll20.net/* set cookie-accept=origin
+    au LoadCommitted http{s,}://app.roll20.net/* set cookie-accept=origin
 aug end
 # }}}
