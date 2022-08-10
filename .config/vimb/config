@@ -68,9 +68,12 @@ shortcut-add rd=https://www.reddit.com/r/$0
 shortcut-add gh=https://github.com/search?q=$0
 shortcut-add ghd=https://github.com/$0/$1
 shortcut-add wa=https://www.wolframalpha.com/input/?i=$0
-shortcut-add map=https://maps.google.com/maps?saddr=$0&daddr=$1
-shortcut-add trad=https://translate.google.com/?hl=es&sl=auto&tl=es&text=$0&op=translate
-shortcut-add wiki=https://es.wikipedia.org/wiki/$0
+shortcut-add map=https://www.openstreetmap.org/search?query=$0
+#shortcut-add map=https://maps.google.com/maps?saddr=$0&daddr=$1
+shortcut-add trad=https://translate.tiekoetter.com/?engine=google&text=$0&sl=auto&tl=en
+#shortcut-add trad=https://translate.google.com/?hl=es&sl=auto&tl=es&text=$0&op=translate
+shortcut-add wiki=https://wikiless.tiekoetter.com/w/index.php?search=$0
+#shortcut-add wiki=https://es.wikipedia.org/wiki/$0
 shortcut-add img=https://duckduckgo.com/?q=$0&t=h_&iax=images&ia=images
 shortcut-add inv=https://yewtu.be/search?q=$0
 shortcut-add mal=https://myanimelist.net/search/all?q=$0
