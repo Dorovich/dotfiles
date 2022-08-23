@@ -5,7 +5,7 @@
 #
 # https://fanglingsu.github.io/vimb/man.html
 
-set home-page=https://dorovich.github.io/b
+set home-page=https://dorovich.github.io/d
 
 # UI {{{
 set input-autohide=true
@@ -138,7 +138,6 @@ aug Styles
     au LoadCommitted about:blank set stylesheet=true
     au LoadCommitted http{s,}://lite.duckduckgo.com/* set stylesheet=true
     au LoadCommitted http{s,}://fanglingsu.github.io/* set stylesheet=true
-    au LoadCommitted http{s,}://www.frogfind.com/* set stylesheet=true
     au LoadCommitted http{s,}://*.wikipedia.org/* set stylesheet=true
     au LoadCommitted http{s,}://sm-idk.me/* set stylesheet=true
 aug end
