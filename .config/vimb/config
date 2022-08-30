@@ -174,7 +174,6 @@ aug Cookies
     au LoadCommitted http{s,}://mangadex.org/* set cookie-accept=origin
     au LoadCommitted http{s,}://www.twitch.tv/* set cookie-accept=origin
     au LoadCommitted http{s,}://es.wallapop.com/* set cookie-accept=origin
-    au LoadCommitted http{s,}://5e.tools/* set cookie-accept=origin
     au LoadCommitted http{s,}://www3.animeflv.net/* set cookie-accept=origin
     au LoadCommitted http{s,}://www.epicgames.com/* set cookie-accept=origin
     au LoadCommitted http{s,}://element.envs.net/* set cookie-accept=origin
@@ -183,5 +182,7 @@ aug Cookies
     au LoadCommitted http{s,}://accounts.pixiv.net/* set cookie-accept=origin
     au LoadCommitted http{s,}://roll20.net/* set cookie-accept=origin
     au LoadCommitted http{s,}://app.roll20.net/* set cookie-accept=origin
+    au LoadCommitted http{s,}://4chan.org/* set cookie-accept=origin
+    au LoadCommitted http{s,}://boards.4channel.org/* set cookie-accept=origin
 aug end
 # }}}
