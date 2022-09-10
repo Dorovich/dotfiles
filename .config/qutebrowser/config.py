@@ -15,7 +15,7 @@ config.source("colors.py")
 c.hints.chars = "asdfghjklie"
 c.statusbar.show = "always"
 c.colors.webpage.preferred_color_scheme = "dark"
-c.colors.webpage.darkmode.enabled = False
+c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
 c.colors.webpage.darkmode.policy.page = 'smart'
 c.colors.webpage.darkmode.policy.images = 'never'
@@ -116,6 +116,7 @@ config.bind('D', 'close')
 #config.bind('jk', 'mode-leave', 'command')
 config.bind('<Ctrl-c>', 'mode-leave', 'command')
 config.bind('gh', 'home')
+config.bind('gc', 'config-edit')
 config.bind('xb', 'config-cycle statusbar.show never in-mode')
 config.bind('xt', 'config-cycle tabs.show multiple switching')
 config.bind('<Ctrl-j>', 'tab-move +')

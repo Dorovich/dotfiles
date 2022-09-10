@@ -6,5 +6,5 @@
 
 config_version: 2
 settings:
-  content.notifications.enabled:
-    https://www.op.gg: false
+  colors.webpage.darkmode.enabled:
+    global: true

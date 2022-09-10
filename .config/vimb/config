@@ -152,6 +152,7 @@ aug end
 
 aug Cookies
     au LoadCommitted * set cookie-accept=never
+    au LoadCommitted http{s,}://sso.upc.edu/* set cookie-accept=origin
     au LoadCommitted http{s,}://atenea.upc.edu/* set cookie-accept=origin
     au LoadCommitted http{s,}://raco.fib.upc.edu/* set cookie-accept=origin
     au LoadCommitted http{s,}://discos.fib.upc.edu/* set cookie-accept=origin
