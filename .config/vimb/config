@@ -55,30 +55,30 @@ nnoremap xu :sh! ~/.local/bin/vimb-adblock-update<CR>
 # }}}
 
 # Shortcuts {{{
-shortcut-default ddg
+shortcut-default sx
 
-shortcut-add ddg=https://duckduckgo.com/?q=$0
-shortcut-add ddl=https://lite.duckduckgo.com/lite/?q=$0
-shortcut-add ggl=https://encrypted.google.com/search?q=$0
+shortcut-add dd=https://duckduckgo.com/?q=$0
+shortcut-add gg=https://encrypted.google.com/search?q=$0&pccc=1
 shortcut-add sx=https://searx.tiekoetter.com/search?q=$0
-shortcut-add gh=https://github.com/search?q=$0
-shortcut-add ghd=https://github.com/$0/$1
-shortcut-add yt=https://www.youtube.com/results?search_query=$0
-shortcut-add iv=https://yewtu.be/search?q=$0
-shortcut-add rd=https://www.reddit.com/r/$0
-shortcut-add fc=https://4chan.org/$0/
+shortcut-add map=https://www.openstreetmap.org/search?query=$0
+shortcut-add wiki=https://farside.link/wikiless/$0
+shortcut-add trad=https://farside.link/lingva/auto/$0/$1
+shortcut-add gh=https://github.com/$0/$1
 shortcut-add aw=https://wiki.archlinux.org/?search=$0
 shortcut-add wa=https://www.wolframalpha.com/input/?i=$0
+shortcut-add fc=https://boards.4channel.org/$0/catalog
 shortcut-add lol=https://euw.op.gg/champions/$0
-shortcut-add map=https://www.openstreetmap.org/search?query=$0
-shortcut-add trad=https://lingva.ml/auto/$0/$1
-shortcut-add wiki=https://wikiless.tiekoetter.com/w/index.php?search=$0
+shortcut-add yt=https://www.youtube.com/results?search_query=$0
+shortcut-add rd=https://www.reddit.com/r/$0
+shortcut-add iv=https://farside.link/invidious/$0
+shortcut-add nt=https://farside.link/nitter/$0
+shortcut-add td=https://farside.link/teddit/r/$0
 
+#shortcut-add iv=https://yewtu.be/search?q=$0
 #shortcut-add map=https://maps.google.com/maps?saddr=$0&daddr=$1
+#shortcut-add wiki=https://es.wikipedia.org/wiki/$0
 #shortcut-add trad=https://translate.google.com/?hl=es&sl=auto&tl=es&text=$0&op=translate
 #shortcut-add trad=https://translate.tiekoetter.com/?engine=google&text=$0&sl=auto&tl=en
-#shortcut-add wiki=https://es.wikipedia.org/wiki/$0
-#shortcut-add img=https://duckduckgo.com/?q=$0&t=h_&iax=images&ia=images
 #shortcut-add ny=https://nyaa.si/?q=$0
 #shortcut-add af=https://www3.animeflv.net/browse?q=$0
 
@@ -185,5 +185,7 @@ aug Cookies
     au LoadCommitted http{s,}://app.roll20.net/* set cookie-accept=origin
     au LoadCommitted http{s,}://4chan.org/* set cookie-accept=origin
     au LoadCommitted http{s,}://boards.4channel.org/* set cookie-accept=origin
+    au LoadCommitted http{s,}://nitter.net/* set cookie-accept=origin
+    au LoadCommitted http{s,}://teddit.net/* set cookie-accept=origin
 aug end
 # }}}
