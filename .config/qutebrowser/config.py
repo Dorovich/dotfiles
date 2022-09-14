@@ -149,21 +149,22 @@ config.bind('<Ctrl-k>', 'fake-key <Shift-End><Delete>', 'insert')
 # Shortcuts {{{
 c.url.searchengines = {
     'DEFAULT': 'https://duckduckgo.com/?q={}',
-    'ddg': 'https://duckduckgo.com/?q={}',
-    'ggl': 'https://encrypted.google.com/search?q={}',
-    'sx': 'https://searx.tiekoetter.net/search?q={}',
-    'yt': 'https://www.youtube.com/results?search_query={}',
-    'aw': 'https://wiki.archlinux.org/?search={}',
-    'rd': 'https://www.reddit.com/r/{}',
+    'dd': 'https://duckduckgo.com/?q={}',
+    'gg': 'https://encrypted.google.com/search?q={}&pccc=1',
+    'sx': 'https://searx.tiekoetter.com/search?q={}',
+    'map': 'https://www.openstreetmap.org/search?query={}',
+    'wiki': 'https://farside.link/wikiless/{}',
+    'trad': 'https://farside.link/lingva/auto/es/{}',
     'gh': 'https://github.com/search?q={}',
-    'wa': 'https://www.wolframalpha.com/input?i={}',
-    'map': 'https://maps.google.com/maps?saddr={}',
-    'trad': 'https://translate.google.com/?hl=es&sl=auto&tl=es&text={}&op=translate',
-    'wiki': 'https://en.wikipedia.org/wiki/{}',
-    'img': 'https://duckduckgo.com/?q={}&t=h_&iax=images&ia=images',
-    'mal': 'https://myanimelist.net/search/all?q={}',
-    'inv': 'https://yewtu.be/search?q={}',
-    'fc': 'https://4chan.org/{}/'
+    'aw': 'https://wiki.archlinux.org/?search={}',
+    'wa': 'https://www.wolframalpha.com/input/?i={}',
+    'fc': 'https://boards.4channel.org/{}/catalog',
+    'lol': 'https://euw.op.gg/champions/{}',
+    'yt': 'https://www.youtube.com/results?search_query={}',
+    'rd': 'https://www.reddit.com/r/{}',
+    'iv': 'https://farside.link/invidious/{}',
+    'nt': 'https://farside.link/nitter/{}',
+    'td': 'https://farside.link/teddit/r/{}'
     }
 # }}}
 
