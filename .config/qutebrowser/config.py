@@ -7,8 +7,8 @@
 # qute://help/index.html
 
 config.load_autoconfig(False)
-c.url.default_page = "dorovich.github.io/b"
-c.url.start_pages = ["dorovich.github.io/b"]
+c.url.default_page = "dorovich.github.io/f"
+c.url.start_pages = ["dorovich.github.io/f"]
 
 # UI {{{
 config.source("colors.py")

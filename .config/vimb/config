@@ -44,6 +44,7 @@ cmap <C-d> <Esc>
 cmap <C-c> <Esc>
 imap <C-d> <Esc>
 
+nmap <C-s> :set scripts!|no r<CR>
 nmap <C-m> :sh! mpv $VIMB_URI<CR> 
 nmap <C-t> Y:tabopen trad <C-r>"<CR>
 #nmap <C-y> :sh vimb-pass $VIMB_URI<CR>
@@ -74,6 +75,9 @@ shortcut-add iv=https://farside.link/invidious/$0
 shortcut-add nt=https://farside.link/nitter/$0
 shortcut-add td=https://farside.link/teddit/r/$0
 
+shortcut-add ghs=https://github.com/search?q=$0&ref=simplesearch
+shortcut-add img=https://searx.tiekoetter.com/search?q=$0&category_images=on
+
 #shortcut-add iv=https://yewtu.be/search?q=$0
 #shortcut-add map=https://maps.google.com/maps?saddr=$0&daddr=$1
 #shortcut-add wiki=https://es.wikipedia.org/wiki/$0
@@ -94,7 +98,7 @@ set editor-command=st -e nvim %s
 # Web content {{{
 set download-path=~/Descargas/
 set images=true
-set scripts=true
+set scripts=false
 set webgl=true
 set geolocation=never
 set user-scripts=true
