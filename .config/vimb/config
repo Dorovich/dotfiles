@@ -98,7 +98,7 @@ set editor-command=st -e nvim %s
 # Web content {{{
 set download-path=~/Descargas/
 set images=true
-set scripts=false
+set scripts=true
 set webgl=true
 set geolocation=never
 set user-scripts=true
@@ -147,6 +147,7 @@ aug Styles
     au LoadCommitted http{s,}://fanglingsu.github.io/* set stylesheet=true
     au LoadCommitted http{s,}://*.wikipedia.org/* set stylesheet=true
     au LoadCommitted http{s,}://sm-idk.me/* set stylesheet=true
+    au LoadCommitted http{s,}://envs.net/~smidk/* set stylesheet=true
     au LoadCommitted http{s,}://farside.link/* set stylesheet=true
 aug end
 
@@ -154,6 +155,7 @@ aug YtBlock
     au LoadFinished http{s,}://www.youtube.com/watch?v=* e! ytblock();
 aug end
 
+# Cookies {{{
 aug Cookies
     au LoadCommitted * set cookie-accept=never
     au LoadCommitted http{s,}://sso.upc.edu/* set cookie-accept=origin
@@ -190,4 +192,5 @@ aug Cookies
     au LoadCommitted http{s,}://4chan.org/* set cookie-accept=origin
     au LoadCommitted http{s,}://boards.4channel.org/* set cookie-accept=origin
 aug end
+# }}}
 # }}}
