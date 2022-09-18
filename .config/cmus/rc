@@ -28,20 +28,20 @@ set color_separator=darkgray
 
 set color_win_cur_attr=default
 set color_win_cur=yellow
-set color_win_cur_sel_attr=default
+set color_win_cur_sel_attr=reverse|bold
 set color_win_cur_sel_bg=default
-set color_win_cur_sel_fg=lightyellow
+set color_win_cur_sel_fg=yellow
 set color_win_inactive_sel_attr=bold
 set color_win_inactive_sel_bg=default
 set color_win_inactive_sel_fg=default
-set color_win_inactive_cur_sel_attr=bold
+set color_win_inactive_cur_sel_attr=default
 set color_win_inactive_cur_sel_bg=default
-set color_win_inactive_cur_sel_fg=darkgray
+set color_win_inactive_cur_sel_fg=yellow
 
 set color_win_dir=default
 
 set color_error=red
-set color_info=cyan
+set color_info=blue
 
 set status_display_program=cmusfm
 
