@@ -56,7 +56,7 @@ nnoremap xu :sh! ~/.local/bin/vimb-adblock-update<CR>
 # }}}
 
 # Shortcuts {{{
-shortcut-default sx
+shortcut-default sxng
 
 shortcut-add dd=https://duckduckgo.com/?q=$0
 shortcut-add gg=https://encrypted.google.com/search?q=$0&pccc=1
@@ -75,6 +75,7 @@ shortcut-add iv=https://farside.link/invidious/$0
 shortcut-add nt=https://farside.link/nitter/$0
 shortcut-add td=https://farside.link/teddit/r/$0
 
+shortcut-add sxng=https://searx.be/?q=$0
 shortcut-add ghs=https://github.com/search?q=$0&ref=simplesearch
 shortcut-add img=https://searx.tiekoetter.com/search?q=$0&category_images=on
 
@@ -191,6 +192,7 @@ aug Cookies
     au LoadCommitted http{s,}://app.roll20.net/* set cookie-accept=origin
     au LoadCommitted http{s,}://4chan.org/* set cookie-accept=origin
     au LoadCommitted http{s,}://boards.4channel.org/* set cookie-accept=origin
+    au LoadCommitted http{s,}://searx.be/* set cookie-accept=origin
 aug end
 # }}}
 # }}}

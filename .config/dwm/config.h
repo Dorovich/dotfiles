@@ -123,7 +123,7 @@ static Key keys[] = {
         { MODKEY,                       XK_b,         spawn,          {.v = browsrcmd} },
         { MODKEY,                       XK_m,         spawn,          {.v = mailcmd} },
         { MODKEY,                       XK_v,         spawn,          {.v = vimbcmd} },
-        { MODKEY,                       XK_p,         spawn,          CMD("colpick") },
+        { MODKEY,                       XK_p,         spawn,          CMD("grabc | tr -d '\n' | xclip -selection clipboard") },
         //{ MODKEY,                       XK_e,         spawn,          CMD("emacsclient -c -a 'emacs'") },
         //{ MODKEY,                       XK_b,         spawn,          CMD("firefox") },
         //{ MODKEY,                       XK_f,         spawn,          CMD("nautilus") },
