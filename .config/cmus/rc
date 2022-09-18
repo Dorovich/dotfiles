@@ -45,4 +45,9 @@ set color_info=blue
 
 set status_display_program=cmusfm
 
-bind -f common q shell screen -d cmus
+#bind -f common q shell screen -d cmus
+bind -f common q quit -i
+bind -f common [ vol +5%
+bind -f common ] vol -5%
+bind -f common { vol +1%
+bind -f common } vol -1%
