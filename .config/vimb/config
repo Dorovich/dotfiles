@@ -157,42 +157,43 @@ aug YtBlock
 aug end
 
 # Cookies {{{
-aug Cookies
-    au LoadCommitted * set cookie-accept=never
-    au LoadCommitted http{s,}://sso.upc.edu/* set cookie-accept=origin
-    au LoadCommitted http{s,}://atenea.upc.edu/* set cookie-accept=origin
-    au LoadCommitted http{s,}://raco.fib.upc.edu/* set cookie-accept=origin
-    au LoadCommitted http{s,}://discos.fib.upc.edu/* set cookie-accept=origin
-    au LoadCommitted http{s,}://jutge.org/* set cookie-accept=origin
-    au LoadCommitted http{s,}://github.com/* set cookie-accept=origin
-    au LoadCommitted http{s,}://itch.io/* set cookie-accept=origin
-    au LoadCommitted http{s,}://www.google.com/* set cookie-accept=origin
-    au LoadCommitted http{s,}://accounts.google.com/* set cookie-accept=origin
-    au LoadCommitted http{s,}://www.youtube.com/* set cookie-accept=origin
-    au LoadCommitted http{s,}://soundcloud.com/* set cookie-accept=origin
-    au LoadCommitted http{s,}://duckduckgo.com/* set cookie-accept=origin
-    au LoadCommitted http{s,}://www.reddit.com/* set cookie-accept=origin
-    au LoadCommitted http{s,}://voidlinux.org/* set cookie-accept=origin
-    au LoadCommitted http{s,}://discord.com/* set cookie-accept=origin
-    au LoadCommitted http{s,}://*.wikipedia.org/* set cookie-accept=origin
-    au LoadCommitted http{s,}://yewtu.be/* set cookie-accept=origin
-    au LoadCommitted http{s,}://mega.nz/* set cookie-accept=origin
-    au LoadCommitted http{s,}://store.steampowered.com/* set cookie-accept=origin
-    au LoadCommitted http{s,}://steamcommunity.com/* set cookie-accept=origin
-    au LoadCommitted http{s,}://mangadex.org/* set cookie-accept=origin
-    au LoadCommitted http{s,}://www.twitch.tv/* set cookie-accept=origin
-    au LoadCommitted http{s,}://es.wallapop.com/* set cookie-accept=origin
-    au LoadCommitted http{s,}://www3.animeflv.net/* set cookie-accept=origin
-    au LoadCommitted http{s,}://www.epicgames.com/* set cookie-accept=origin
-    au LoadCommitted http{s,}://element.envs.net/* set cookie-accept=origin
-    au LoadCommitted http{s,}://bandcamp.com/* set cookie-accept=origin
-    au LoadCommitted http{s,}://www.pixiv.net/* set cookie-accept=origin
-    au LoadCommitted http{s,}://accounts.pixiv.net/* set cookie-accept=origin
-    au LoadCommitted http{s,}://roll20.net/* set cookie-accept=origin
-    au LoadCommitted http{s,}://app.roll20.net/* set cookie-accept=origin
-    au LoadCommitted http{s,}://4chan.org/* set cookie-accept=origin
-    au LoadCommitted http{s,}://boards.4channel.org/* set cookie-accept=origin
-    au LoadCommitted http{s,}://searx.be/* set cookie-accept=origin
-aug end
+set cookie-accept=origin
+#aug Cookies
+#    au LoadCommitted * set cookie-accept=never
+#    au LoadCommitted http{s,}://sso.upc.edu/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://atenea.upc.edu/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://raco.fib.upc.edu/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://discos.fib.upc.edu/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://jutge.org/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://github.com/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://itch.io/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://www.google.com/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://accounts.google.com/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://www.youtube.com/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://soundcloud.com/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://duckduckgo.com/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://www.reddit.com/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://voidlinux.org/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://discord.com/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://*.wikipedia.org/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://yewtu.be/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://mega.nz/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://store.steampowered.com/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://steamcommunity.com/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://mangadex.org/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://www.twitch.tv/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://es.wallapop.com/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://www3.animeflv.net/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://www.epicgames.com/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://element.envs.net/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://bandcamp.com/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://www.pixiv.net/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://accounts.pixiv.net/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://roll20.net/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://app.roll20.net/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://4chan.org/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://boards.4channel.org/* set cookie-accept=origin
+#    au LoadCommitted http{s,}://searx.be/* set cookie-accept=origin
+#aug end
 # }}}
 # }}}

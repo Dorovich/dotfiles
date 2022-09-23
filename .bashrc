@@ -1,4 +1,5 @@
 ### GLOBAL VARS
+export TERMINAL="st"
 export VISUAL="emacsclient -c -a 'emacs'"
 export EDITOR="nvim"
 export ALTERNATE_EDITOR="emacsclient -t -a ''"
