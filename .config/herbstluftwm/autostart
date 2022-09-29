@@ -24,6 +24,7 @@ hc keybind $Mod-Shift-r reload
 hc keybind $Mod-c close
 hc keybind $Mod-Escape spawn slock
 hc keybind $Mod-Return spawn dmenu_run
+hc keybind $Mod-Shift-Return spawn rofi -modi drun,run -show drun
 hc keybind $Mod-BackSpace spawn "${TERMINAL:-xterm}" # use your $TERMINAL with xterm as fallback
 hc keybind $Mod-b spawn "${BROWSER:-firefox}"
 hc keybind $Mod-v spawn tabbed -c vimb -e
@@ -75,10 +76,14 @@ hc keybind $Mod-Mod1-o spawn $scriptsdir/dm-soundout
 hc keybind $Mod-Mod1-k spawn $scriptsdir/dm-kill
 
 #screenshot commands
-hc keybind $Mod-Print           spawn maim ~/Imágenes/Capturas/captura_$(date +%s).png
-hc keybind $Mod-Mod1-Print      spawn maim -i $(xdotool getactivewindow) ~/Imágenes/Capturas/ventana_$(date +%s).png
-hc keybind $Mod-Shift-Print     spawn maim -s ~/Imágenes/Capturas/recorte_$(date +%s).png
-hc keybind $Mod-Control-Print   spawn maim -s | xclip -selection clipboard -t image/png
+hc keybind $Mod-Print            spawn print-full
+hc keybind $Mod-Mod1-Print       spawn print-win
+hc keybind $Mod-Shift-Print      spawn print-sel
+hc keybind $Mod-Control-Print    spawn print-cpsel
+#hc keybind $Mod-Print           spawn maim ~/Imágenes/Capturas/captura_$(date +%s).png
+#hc keybind $Mod-Mod1-Print      spawn maim -i $(xdotool getactivewindow) ~/Imágenes/Capturas/ventana_$(date +%s).png
+#hc keybind $Mod-Shift-Print     spawn maim -s ~/Imágenes/Capturas/recorte_$(date +%s).png
+#hc keybind $Mod-Control-Print   spawn maim -s | xclip -selection clipboard -t image/png
 
 # tags
 tag_names=( {1..9} )
@@ -184,7 +189,7 @@ hc rule floatplacement=center
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH|POPUP_MENU)' floating=on
 hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
-hc rule class~'.*-prompter' floating=on
+hc rule class~'.*-prompter|[Dd]ragon|[Ss]xiv' floating=on
 hc rule class='mpv' floating=on
 
 hc set tree_style '╾│ ├└╼─┐'
