@@ -11,6 +11,6 @@
 - Editor: `neovim`
 - Navegador: `librewolf`, `firefox`, `qutebrowser`, `vimb`
 - Fuente: `mononoki (Nerd Font)`
-- Musica: `spotify`, `cmus`
+- Msica: `spotify`, `cmus`
 - Notificaciones: `dunst`
 - Tema GTK: `Juno ocean`
