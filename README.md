@@ -8,8 +8,8 @@
 - Terminal: `st`
 - Shell: `bash`
 - Editor: `neovim`
-- Navegador: `firefox`, `vimb`
+- Navegador: `librewolf`, `firefox`, `qutebrowser`, `vimb`
 - Fuente: `mononoki (Nerd Font)`
-- DE/WM: `dwm`
+- DE/WM: `herbstluftwm`
 - Tema GTK: `Juno ocean`
 - Notificaciones: `dunst`
