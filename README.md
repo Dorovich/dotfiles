@@ -5,11 +5,12 @@
 
 ## Información+
 - Distro: `Pop!_OS`
+- DE/WM: `herbstluftwm`
 - Terminal: `st`
 - Shell: `bash`
 - Editor: `neovim`
 - Navegador: `librewolf`, `firefox`, `qutebrowser`, `vimb`
 - Fuente: `mononoki (Nerd Font)`
-- DE/WM: `herbstluftwm`
-- Tema GTK: `Juno ocean`
+- Musica: `spotify`, `cmus`
 - Notificaciones: `dunst`
+- Tema GTK: `Juno ocean`
