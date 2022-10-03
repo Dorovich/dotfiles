@@ -148,14 +148,16 @@ config.bind('<Ctrl-k>', 'fake-key <Shift-End><Delete>', 'insert')
 
 # Shortcuts {{{
 c.url.searchengines = {
-    'DEFAULT': 'https://duckduckgo.com/?q={}',
+    'DEFAULT': 'https://searx.be/?q={}',
     'dd': 'https://duckduckgo.com/?q={}',
     'gg': 'https://encrypted.google.com/search?q={}&pccc=1',
     'sx': 'https://searx.tiekoetter.com/search?q={}',
+    'sxng': 'https://searx.be/?q={}',
     'map': 'https://www.openstreetmap.org/search?query={}',
     'wiki': 'https://farside.link/wikiless/{}',
     'trad': 'https://farside.link/lingva/auto/es/{}',
     'gh': 'https://github.com/search?q={}',
+    'ghs': 'https://github.com/search?q={}&ref=simplesearch',
     'aw': 'https://wiki.archlinux.org/?search={}',
     'wa': 'https://www.wolframalpha.com/input/?i={}',
     'fc': 'https://boards.4channel.org/{}/catalog',

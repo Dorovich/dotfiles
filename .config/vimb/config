@@ -61,10 +61,12 @@ shortcut-default sxng
 shortcut-add dd=https://duckduckgo.com/?q=$0
 shortcut-add gg=https://encrypted.google.com/search?q=$0&pccc=1
 shortcut-add sx=https://searx.tiekoetter.com/search?q=$0
+shortcut-add sxng=https://searx.be/?q=$0
 shortcut-add map=https://www.openstreetmap.org/search?query=$0
 shortcut-add wiki=https://farside.link/wikiless/$0
 shortcut-add trad=https://farside.link/lingva/auto/$0/$1
 shortcut-add gh=https://github.com/$0/$1
+shortcut-add ghs=https://github.com/search?q=$0&ref=simplesearch
 shortcut-add aw=https://wiki.archlinux.org/?search=$0
 shortcut-add wa=https://www.wolframalpha.com/input/?i=$0
 shortcut-add fc=https://boards.4channel.org/$0/catalog
@@ -74,10 +76,6 @@ shortcut-add rd=https://www.reddit.com/r/$0
 shortcut-add iv=https://farside.link/invidious/$0
 shortcut-add nt=https://farside.link/nitter/$0
 shortcut-add td=https://farside.link/teddit/r/$0
-
-shortcut-add sxng=https://searx.be/?q=$0
-shortcut-add ghs=https://github.com/search?q=$0&ref=simplesearch
-shortcut-add img=https://searx.tiekoetter.com/search?q=$0&category_images=on
 
 #shortcut-add iv=https://yewtu.be/search?q=$0
 #shortcut-add map=https://maps.google.com/maps?saddr=$0&daddr=$1
@@ -101,6 +99,7 @@ set download-path=~/Descargas/
 set images=true
 set scripts=true
 set webgl=true
+set cookie-accept=origin
 set geolocation=never
 set user-scripts=true
 set accelerated-2d-canvas=ondemand
@@ -156,8 +155,11 @@ aug YtBlock
     au LoadFinished http{s,}://www.youtube.com/watch?v=* e! ytblock();
 aug end
 
+aug SearxEsc
+    au LoadFinished https://searx.be/search?q=* no <Esc>
+aug end
+
 # Cookies {{{
-set cookie-accept=origin
 #aug Cookies
 #    au LoadCommitted * set cookie-accept=never
 #    au LoadCommitted http{s,}://sso.upc.edu/* set cookie-accept=origin

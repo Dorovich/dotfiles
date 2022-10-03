@@ -177,10 +177,10 @@ alias p1++="g++ -ansi -O2 -DNDEBUG -D_GLIBCXX_DEBUG -Wall -Wextra -Werror -Wno-s
 # Compilador de C++ para PRO2:
 alias p2++="g++ -D_GLIBCXX_DEBUG -O2 -Wall -Wextra -Werror -Wno-sign-compare -std=c++11"
 
-export pro="$HOME/Documentos/UPC/PRO2"
-export prac="$pro/practica"
-export inc="$HOME/Documentos/UPC/PRO2/include"
-export obj="$HOME/Documentos/UPC/PRO2/objects"
+#export pro="$HOME/Documentos/UPC/PRO2"
+#export prac="$pro/practica"
+#export inc="$HOME/Documentos/UPC/PRO2/include"
+#export obj="$HOME/Documentos/UPC/PRO2/objects"
 
 # }}}
 
@@ -199,9 +199,7 @@ alias gr="git rm -r"
 alias grs="git reset --hard HEAD"
 alias gl='git log --pretty=format:"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]" --abbrev-commit -30'
 
-gc() {
-    git commit -a -m "$*"
-}
+gc() { git commit -a -m "$*" }
 
 gitstart() {
     echo '1. git init'
@@ -224,9 +222,7 @@ alias configpl="config pull"
 alias configr="config rm -r"
 alias configl='config log --pretty=format:"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]" --abbrev-commit -30'
 
-configc() {
-    config commit -a -m "$*"
-}
+configc() { config commit -a -m "$*" }
 
 configstart() {
     echo '1. mkdir ~/dotfiles'
