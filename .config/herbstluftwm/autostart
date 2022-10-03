@@ -28,6 +28,7 @@ hc keybind $Mod-Shift-Return spawn rofi -modi drun,run -show drun
 hc keybind $Mod-BackSpace spawn "${TERMINAL:-xterm}" # use your $TERMINAL with xterm as fallback
 hc keybind $Mod-b spawn "${BROWSER:-firefox}"
 hc keybind $Mod-v spawn tabbed -c vimb -e
+hc keybind $Mod-t spawn ${HOME}/.config/herbstluftwm/scratchpad.sh
 
 # basic movement in tiling and floating mode
 # focusing clients
@@ -189,7 +190,7 @@ hc rule floatplacement=center
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH|POPUP_MENU)' floating=on
 hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
-hc rule class~'.*-prompter|.*\.exe|[Dd]ragon|[Ss]xiv|[Ss]team|[Mm]pv' floating=on
+hc rule class~'.*-prompter|.*\.exe|scratchpad|[Dd]ragon|[Ss]xiv|[Ss]team|[Mm]pv' floating=on
 
 hc set tree_style '╾│ ├└╼─┐'
 
