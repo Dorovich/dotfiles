@@ -199,7 +199,9 @@ alias gr="git rm -r"
 alias grs="git reset --hard HEAD"
 alias gl='git log --pretty=format:"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]" --abbrev-commit -30'
 
-gc() { git commit -a -m "$*" }
+gc() {
+    git commit -a -m "$*"
+}
 
 gitstart() {
     echo '1. git init'
@@ -222,7 +224,9 @@ alias configpl="config pull"
 alias configr="config rm -r"
 alias configl='config log --pretty=format:"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]" --abbrev-commit -30'
 
-configc() { config commit -a -m "$*" }
+configc() {
+    config commit -a -m "$*" 
+}
 
 configstart() {
     echo '1. mkdir ~/dotfiles'
