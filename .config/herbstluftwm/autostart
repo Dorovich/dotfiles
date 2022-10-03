@@ -28,7 +28,7 @@ hc keybind $Mod-Shift-Return spawn rofi -modi drun,run -show drun
 hc keybind $Mod-BackSpace spawn "${TERMINAL:-xterm}" # use your $TERMINAL with xterm as fallback
 hc keybind $Mod-b spawn "${BROWSER:-firefox}"
 hc keybind $Mod-v spawn tabbed -c vimb -e
-hc keybind $Mod-t spawn ${HOME}/.config/herbstluftwm/scratchpad.sh
+hc keybind $Mod-p spawn ${HOME}/.config/herbstluftwm/scratchpad.sh # scratchpad!
 
 # basic movement in tiling and floating mode
 # focusing clients
@@ -111,7 +111,7 @@ hc keybind $Mod-f fullscreen toggle
 hc keybind $Mod-Shift-f set_attr clients.focus.floating toggle
 hc keybind $Mod-Shift-m set_attr clients.focus.minimized true
 hc keybind $Mod-Control-m jumpto last-minimized
-hc keybind $Mod-p pseudotile toggle
+hc keybind $Mod-t pseudotile toggle
 # The following cycles through the available layouts within a frame, but skips
 # layouts, if the layout change wouldn't affect the actual window positions.
 # I.e. if there are two windows within a frame, the grid layout is skipped.
