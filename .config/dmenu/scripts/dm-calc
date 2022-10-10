@@ -1,7 +1,14 @@
 #!/bin/sh
 
-result="Enter expression:"
+result="<result>"
 while true; do
-    expr="$(dmenu -p $result)"
-    result="$(echo "$expr" | bc)"
+    expr="$(echo "$result" | dmenu -p "Enter expression:")"
+    case $expr in
+        ""|"exit")
+            exit
+            ;;
+        *)
+            result="$(echo "$expr" | bc)"
+            ;;
+    esac
 done

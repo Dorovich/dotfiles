@@ -75,6 +75,7 @@ hc keybind $Mod-Mod1-p spawn $scriptsdir/dm-pass
 hc keybind $Mod-Mod1-m spawn $scriptsdir/dm-mpd-ctl
 hc keybind $Mod-Mod1-o spawn $scriptsdir/dm-soundout
 hc keybind $Mod-Mod1-k spawn $scriptsdir/dm-kill
+hc keybind $Mod-Mod1-c spawn $scriptsdir/dm-editcfg
 
 #screenshot commands
 hc keybind $Mod-Print            spawn print-full
