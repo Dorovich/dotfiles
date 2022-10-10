@@ -1,27 +1,29 @@
 ### GLOBAL VARS
 export TERMINAL="st"
-export VISUAL="emacsclient -c -a 'emacs'"
 export EDITOR="nvim"
+export VISUAL="emacsclient -c -a 'emacs'"
 export ALTERNATE_EDITOR="emacsclient -t -a ''"
 export HISTCONTROL=ignoreboth
 export HISTSIZE=2000
 export PATH="${PATH}:${HOME}/.local/bin:${HOME}/.emacs.d/bin:${HOME}/Applications:${HOME}/.spicetify"
 export MYVIMRC="$HOME/.config/nvim/init.vim"
+
+export alm="/media/vido25/Almacenamiento"
+export mus="$alm/Musica/"
+
+# VIMB config
 export JavaScriptCoreUseJIT="0"
 export WEBKIT_DISABLE_COMPOSITING_MODE=1
 
-export NNN_PLUG='d:dragdrop;i:imgur;n:nuke;p:preview-tabbed'
+# NNN config
+export NNN_PLUG='d:dragdrop;i:imgur;p:preview-tabbed;n:nuke'
 export NNN_FIFO='/tmp/nnn.fifo'
 export NNN_OPENER='/home/vido25/.config/nnn/plugins/nuke'
-export NNN_BMS='h:/home/vido25;a:/media/vido25/Almacenamiento;d:/home/vido25/Descargas;m:/media/vido25/Almacenamiento/Musica;c:/home/vido25/.config'
+export NNN_BMS='h:/home/vido25;a:/media/vido25/Almacenamiento;d:/home/vido25/Descargas;i:/home/vido25/Imágenes;m:/media/vido25/Almacenamiento/Musica;c:/home/vido25/.config;l:/home/vido25/.local'
 export NNN_COLORS='#03040102;3412'
 export NNN_FCOLORS='c1e2040a006033f7c6d6ab01'
 export NNN_TMPFILE='/tmp/.lastd'
 export NNN_OPTS='R'
-
-export alm="/media/vido25/Almacenamiento"
-export mus="$alm/Musica/"
-export wpp="$alm/wpp/"
 
 # ignore upper and lowercase when TAB completion
 set completion-ignore-case on
