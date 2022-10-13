@@ -22,6 +22,7 @@ nnoremap <silent> U <C-r>
 nnoremap <S-y> y$
 map ; :
 map ñ :
+map Ñ :
 map Q gq
 nnoremap <Leader><Leader> za
 nnoremap <silent> <Leader>f :Lex %:p:h<CR>
@@ -38,7 +39,7 @@ nnoremap <Leader>pp bi(<Esc>ea)<Esc>
 nnoremap <Leader>ll bi{<Esc>ea}<Esc>
 nnoremap <Leader>cc bi[<Esc>ea]<Esc>
 nnoremap <silent> <Leader>h :noh<cr>
-nnoremap <C-r> :%s//gI<Left><Left><Left>
+nnoremap <C-r> :%s//<Left>
 " }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -42,8 +42,8 @@ let g:bufferline_pathshorten = 1
 let g:bufferline_modified = '+'
 
 " nerdtree
-let g:NERDTreeDirArrowExpandable="►"
-let g:NERDTreeDirArrowCollapsible="▼"
+let g:NERDTreeDirArrowExpandable="+"
+let g:NERDTreeDirArrowCollapsible="-"
 
 " nvim-cmp
 lua <<EOF

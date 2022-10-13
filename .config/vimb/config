@@ -34,6 +34,7 @@ nmap H <C-o>
 nmap L <C-i>
 nmap M '
 nmap ñ :
+nmap Ñ :
 nmap d :quit<CR>
 nmap D :quit!<CR>
 nmap b :open !

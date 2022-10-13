@@ -1,7 +1,7 @@
 #!/bin/sh
 
 editorcmd="$TERMINAL -e $EDITOR"
-choice=$(echo "Window Manager\nTerminal\nNeovim\nBash\nEmacs\nVimb\nCmus\nMpd\nDunst\nIrssi" | \
+choice=$(echo "Window Manager\nTerminal\nNeovim\nLibrewolf\nFirefox\nBash\nEmacs\nVimb\nCmus\nMpd\nDunst\nIrssi" | \
     dmenu -l 5 -i -p "Edit config file:" )
 
 case $choice in
@@ -28,6 +28,12 @@ case $choice in
         ;;
     "Neovim")
         cfgpath="$HOME/.config/nvim/init.vim"
+        ;;
+    "Librewolf")
+        cfgpath="$HOME/.librewolf/*.default/chrome/userChrome.css"
+        ;;
+    "Firefox")
+        cfgpath="$HOME/.mozilla/firefox/*.default-release/chrome/userChrome.css"
         ;;
     "Bash")
         cfgpath="$HOME/.bashrc"

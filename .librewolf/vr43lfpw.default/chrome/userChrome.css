@@ -96,26 +96,26 @@ by Miguel Avila
 .tab-close-button {
   /* make it transparent */
   opacity: 0;
-  transition: 0.5s;
+  transition: 0.3s;
   border-radius: 50%;
 }
 
 .tab-close-button:hover {
   /* make it transparent */
   opacity: 100;
-  transition: 0.5s;
+  transition: 0.3s;
 }
 
 
 .tabbrowser-tab:not([pinned]) .tab-icon-image {
   opacity: 0 !important;
-  transition: 0.5s !important;
+  transition: 0.3s !important;
   width: 0px !important;
 }
 
 .tabbrowser-tab:not([pinned]):hover .tab-icon-image {
   opacity: 100 !important;
-  transition: 0.5s !important;
+  transition: 0.3s !important;
   display: inline-block !important;
 }
 
