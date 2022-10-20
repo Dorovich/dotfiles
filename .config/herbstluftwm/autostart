@@ -29,6 +29,7 @@ hc keybind $Mod-BackSpace spawn "${TERMINAL:-xterm}" # use your $TERMINAL with x
 hc keybind $Mod-b spawn "${BROWSER:-firefox}"
 hc keybind $Mod-f spawn pcmanfm
 hc keybind $Mod-v spawn tabbed -c vimb -e
+hc keybind $Mod-e spawn emacsclient -c
 hc keybind $Mod-p spawn ${HOME}/.config/herbstluftwm/scratchpad.sh # scratchpad!
 
 # basic movement in tiling and floating mode

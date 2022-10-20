@@ -20,7 +20,8 @@ set mouse=a
 set pumheight=10
 set timeoutlen=200
 set hidden
-set nowrap
+"set nowrap
+set wrap
 set gdefault
 set clipboard=unnamedplus
 set encoding=UTF-8
@@ -33,6 +34,7 @@ set foldenable foldmethod=marker
 set title titlestring=%t\ %m titlelen=70
 "set statusline=>\ %f
 set statusline=\ 
+set showbreak=>\ 
 filetype plugin on
 filetype plugin indent on
 syntax on

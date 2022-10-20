@@ -116,6 +116,10 @@ default-fm() {
     fi
 }
 
+mergepdfs() {
+    gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=mergedpdfs.pdf "$@"
+}
+
 # }}}
 
 ############################################
