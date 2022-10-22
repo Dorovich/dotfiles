@@ -48,7 +48,7 @@ imap <C-d> <Esc>
 nmap <C-s> :set scripts!|no r<CR>
 nmap <C-m> :sh! mpv $VIMB_URI<CR> 
 nmap <C-t> Y:tabopen trad <C-r>"<CR>
-#nmap <C-y> :sh vimb-pass $VIMB_URI<CR>
+#nnoremap <C-y> :sh vimb-pass $VIMB_URI<CR>
 nmap gc :sh! st -e nvim ~/.config/vimb/config<CR>
 nmap gd :sh! st -e bash -ilc 'nnn ~/Descargas'<CR>
 nnoremap xc :sh! ~/.local/bin/vimb-clear-history<CR>
@@ -57,36 +57,33 @@ nnoremap xu :sh! ~/.local/bin/vimb-adblock-update<CR>
 # }}}
 
 # Shortcuts {{{
-shortcut-default sxng
+shortcut-default sxngprefs
 
 shortcut-add dd=https://duckduckgo.com/?q=$0
 shortcut-add gg=https://encrypted.google.com/search?q=$0&pccc=1
 shortcut-add sx=https://searx.tiekoetter.com/search?q=$0
 shortcut-add sxng=https://searx.be/?q=$0
 shortcut-add map=https://www.openstreetmap.org/search?query=$0
-shortcut-add wiki=https://farside.link/wikiless/$0
+shortcut-add gmap=https://maps.google.com/maps?saddr=$0&daddr=$1
+shortcut-add wiki=https://es.wikipedia.org/wiki/$0
 shortcut-add trad=https://farside.link/lingva/auto/$0/$1
+shortcut-add gtrad=https://translate.google.com/?hl=en&sl=auto&tl=$0utext=$1&op=translate
 shortcut-add gh=https://github.com/$0/$1
 shortcut-add ghs=https://github.com/search?q=$0&ref=simplesearch
 shortcut-add aw=https://wiki.archlinux.org/?search=$0
 shortcut-add wa=https://www.wolframalpha.com/input/?i=$0
 shortcut-add fc=https://boards.4channel.org/$0/catalog
 shortcut-add lol=https://euw.op.gg/champions/$0
+shortcut-add scp=https://scp-wiki.wikidot.com/scp-$0
+shortcut-add af=https://www3.animeflv.net/browse?q=$0
 shortcut-add yt=https://www.youtube.com/results?search_query=$0
 shortcut-add rd=https://www.reddit.com/r/$0
 shortcut-add iv=https://farside.link/invidious/$0
 shortcut-add nt=https://farside.link/nitter/$0
 shortcut-add td=https://farside.link/teddit/r/$0
 
-shortcut-add scp=https://scp-wiki.wikidot.com/scp-$0
-
-#shortcut-add iv=https://yewtu.be/search?q=$0
-#shortcut-add map=https://maps.google.com/maps?saddr=$0&daddr=$1
-#shortcut-add wiki=https://es.wikipedia.org/wiki/$0
-#shortcut-add trad=https://translate.google.com/?hl=es&sl=auto&tl=es&text=$0&op=translate
-#shortcut-add trad=https://translate.tiekoetter.com/?engine=google&text=$0&sl=auto&tl=en
-#shortcut-add ny=https://nyaa.si/?q=$0
-#shortcut-add af=https://www3.animeflv.net/browse?q=$0
+shortcut-add sxngprefs=https://searx.be/?preferences=eJx1V8uSrDYM_ZqwoWYqN3eRyqJXqco2qcrdU8JWgwbb4vrRNPP1kYFuTDNZDDOWjNDzHI2CiB17wnDp0KEHUxlwXYIOL2DkwAoMXtBVkCIrtqPBiJeOuTNYkZV7zej5Pl9--ISVxdizvvzz978_qgBXDAhe9Zdfq9ijxQsHBb7yGJKJoWHXOJyaCO3lLzABK83UiJLNDf2FQY7v7LtqeestxFkcMdyRYo23Nw1-qAJlh5pVlz2sFLqIvgFDnZU_N8ugb-AU6mZzaJX-TOjnhlwTKcr7SwTkruQoik3l2ZiHZxSgNfI-uo6cJOuPDrqmCawITG1RE_zy258wDrUl79k3zZUMhkUmDtbyrENkj4VC_KAb1hSaZkv9Io2kmmZJbL7VkutKfT7Xq_blVn0jjSzS9fcijW1SA0a5GeWslHqLt-ICj-gk1QELUxJ1CB6vEpwilJyJbMax9EElbwhLiUb8lKQ3NgVS-ay7WuOSSGJ3CBA9T6SbhqUjvJwnGkhDhIM58Tr_dFxPCPnifn_Np4VRrMozW7T8QWMuwX7r270I6WpIDb4UeMQ68DVO4LHW5FFJbeYtTVdPbiAoq9BRJ-WHEEsvO2kaaB-5lZ5s0XfbcZ2Pc0k2-Whgzj0R9nYoNZZvhIfXRta6THAPrYf82L5HVrd79OSgePmDQs-7cpBkQCi-bEhs-bnOkQUqFJ9vm-p8l6-1YtfJsJZtaLgNEd992LyCTzN7UmH32yHeDqV2o90u52b0OHLhwAjiakfh0cBjat9l9LfTzwncoSCL4Dwcq_hUioAjwQoHB2kW5GrW-fFsCbCQY38IAloxSqoOqmcDvpyWEGWIxwyMhW-Rh5kjSyUGcHuEcaKY4eoVSZIL0gmhL8KYoWcuTc6cYmqxcP4pec4hkJkt5yEsrt3IIhfnidq5NGzBC8hJvIdKCQ3cwWl_lObxbZmH8CoUZBdZfm6Cn4kjvt4KnLw6STMmUZxPYp5fsqpJxU92B9m3799_v-8Z1kmj27s_4KcDe4iWPxCHQ0_CLZdkF_jUzh3aR1uPiP4l80vd5BODDO40YVuofLLCHGW6-U4DO-nkOsyO3Wyx8O9jfB8nd8RHK0B6IAEvHpaCEWOmqbWXvxSfx6JUHoolfb6P8FqgPi0jWKE7suDysiGX7nX28zH2_k63ciJa6RsFdtwbM9_eIPuF2w6utFFT1-3FFObxYnM-cs-NZBZl5orgNAvv-bpPD3zeKeV_iOaUnygRzocsY5RZchJuUa-r9pzp7Anj6CgVgCfnmMd2ZQWKu0cr4B8IZaWAkyeb_JCZTfYF_PSb3ZUXnLQdcSqBr5A9vJSYuiMuW7orw0kX0D0D7HEK_A2EvsBuEBrNRB5QVrvCn4dOwFt4GLaF4KgPURg5Cp0_OH3Uebz2S2Mv4OmeWvKytrZQEJNYlxk8vDKPVDLFMX_iq6Z4wl1pd2nVY-CC52pggYSr4enR4mFIbXIxPcYkjehTeCZEdljSslNIt8aC0BYMr1-hMadkYdnnzLNZGWfsi53GClBYWVPq6MEFIxko1yj22tFQCGL07_QAkn2BHU2S2Q2XPPn39-30ztCsy_fkZffdeHBXBzRX2ZOvfNJIjI3qUQ0njbBMI1UbcA5P3Pj6430muvVwstJziALYKK4JIaqvXFtQT5pDrf_KzLLjG1nozq56yKDQyPYq1myuaCW0LN13-Q935ext&q=$0
+shortcut-add sxprefs=https://searx.tiekoetter.com/?preferences=eJx1V81y4zYMfpr6oomn2z10evCps90H6N41EAlLiEhC4Y9k5ekLSrJF2ekhSgiAJAh8-IAoiNiyJwyXFh16MCcDrk3Q4gXD249_T4YVGFm4E6TIiu1gMOKlZW4NnsiKZT14vs2XXz7hyWLsWF9-_vh1CnDFgOBVd_n9FDu0eAmUt588hmRiqNnVDqc6QnP5B0zAk2aqRclmRH9hkOWZfXtat9UhzuJJduOk0EX0NRhqnZW_t_2gR3AKdb3du0o_Evq5JldHinLA4ie5KzmKcqjybMz9fgrQGNmPriUnQfmrhbauAysCU1nUBL_98TcMfWXJe_Z1fSWDYZGJh5V8qxDZY6EQP2jEikJdbyFepJFUXS_hW61uNMpFilD8F0FDri035HW1mhfbFulIGlmk6-9FGpukeoxiGWWtlHqLY2HAAzqJcMDiKAlDCB6vpRMzDqUPKnlDWEo04qekobYpkMpr3VYal8gSu8OLNYtHvupSs3mFnifSdc0CDS_riXrSEOGwSZ6Rf1quJoRsuNuvEbcwyDXyzSdafqchJ2m3ipLG-eAzxtmyMyLfrb7dikhcDanelwKPWAW-xgk8Vpo8KsnxvL3j6sn1BGU25TJKYQ9LS63ACkIs_WgFjHAPhmKNDfp2W67V9ZrZTT4YmDPWwg6zUmN5JDxsG1jrMk8dNB7yZ7uvW3ZvC7K62UNDDoqT3il0vCt7iRSEwg1DcrCfq_zMQIXi821TvdrytVLsWqn7EtqGmxDx7MPmFXya2ZMqomrppgwnvUsc4njAjxvstt2CJAnv780FAJLHjLeAwkQF6O-6ITUCBNiAfNSLlovHDSBhaCncC27QDZZbho6jcN0GUzn4rHG826ZGeOVgPQ-0KT8mcAfQLIJXHljFL3AJOBCsVFhIIfSpSS6m7ZKQBvQpPIKzbsiIrPLnAXOwkFOGDzOJqbBYFVTHBnz5hBCF4IbcGgrfI_ezxEEA1IPbgydsT1rqyQuNFzEVSfaaXY6_rJMLAu7QFa-eQXBb3rAIKmkpck7-ZhGnmHI2Hs9_SB6kBWSEEnKiC7ORLHKxnqiZy7sseGkREpED4KRV3sBpf5RmamuY-_AsPLiaBR-JIz5bBU5ePUuzu0s5lfyZSZ3i_HzAyPNTLjSp-MnuILOzFQaVgoweXDAyGRTsrJNGty8Dfjqwh938jtgfig_GjKld4FMzt2jvFT0g-qfcLB1WruiFwKYJm0Llk21MaTux1476IgB8o56d1FYVZsdOnlM4_D6ch8kdw2WlUR2arBeXS8GAMc8FawF9KX6txVJ5yK8Uz05na067tFDGSRjnMHZAZ5cmdgf_cpi0rHSrst_bGY0gTYEddihn5dYAn0aHgydN1NS2e61JY5fqU_OxtY8k9S11XLxt78f_06VfonHVnnOXf_QpqfJctGubo7jPA-3Wg4oOufa0lzM3-eFJm-wLLiInkCFOJTEWsnvoJLrtU_OYAXbHM-2HKJNAFBZ_UDl5KZMGiq62UvHBN-kzmuLLGCkQkPwdO5gQp-pZ6uZqeLpDZRBuus67UZwo5un3-cCJzcrSQ1dMQN--f__ztvs3xejPdC-EfeIdTBLshUtG7u28rc4M9TqTT16G5a057GohyVp6W49zeGD464O6TN3r4uWUjkMUNkG5RihevV5jpFLjxjulfKtM4W21_h8zy-BvZDr7wtJc5T-AK79opM_UqkPVv2o85JG1lqlXPLM5KyfpYQKDy39R-P57&q=$0
 
 # bookmarks: ~/.local/share/vimb/bookmark
 # }}}
