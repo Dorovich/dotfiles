@@ -153,15 +153,17 @@ c.url.searchengines = {
     'gg': 'https://encrypted.google.com/search?q={}&pccc=1',
     'sx': 'https://searx.tiekoetter.com/search?q={}',
     'sxng': 'https://searx.be/?q={}',
-    'map': 'https://www.openstreetmap.org/search?query={}',
-    'wiki': 'https://farside.link/wikiless/{}',
-    'trad': 'https://farside.link/lingva/auto/es/{}',
+    'map': 'https://maps.google.com/maps/search/{}',
+    'wiki': 'https://es.wikipedia.org/wiki/{}',
+    'trad': 'https://translate.google.com/?hl=en&sl=auto&tl=estext={}&op=translate',
     'gh': 'https://github.com/search?q={}',
     'ghs': 'https://github.com/search?q={}&ref=simplesearch',
     'aw': 'https://wiki.archlinux.org/?search={}',
     'wa': 'https://www.wolframalpha.com/input/?i={}',
     'fc': 'https://boards.4channel.org/{}/catalog',
     'lol': 'https://euw.op.gg/champions/{}',
+    'scp': 'https://scp-wiki.wikidot.com/scp-{}',
+    'af': 'https://www3.animeflv.net/browse?q={}',
     'yt': 'https://www.youtube.com/results?search_query={}',
     'rd': 'https://www.reddit.com/r/{}',
     'iv': 'https://farside.link/invidious/{}',
@@ -226,7 +228,6 @@ c.fonts.messages.info = monospace
 c.fonts.messages.warning = monospace
 c.fonts.prompts = monospace
 c.fonts.statusbar = monospace
-#c.fonts.tabs.selected = f"bold {monospace}"
 c.fonts.tabs.selected = monospace
 c.fonts.tabs.unselected = monospace
 # }}}
