@@ -1,14 +1,23 @@
 #!/usr/bin/env bash
 
+#  ██                     ██                ██    ██           ████   ██
+# ░██                    ░██               ░██   ░██          ░██░   ░██
+# ░██       █████  ██████░██       ██████ ██████ ░██ ██   ██ ██████ ██████
+# ░██████  ██░░░██░░██░░█░██████  ██░░░░ ░░░██░  ░██░██  ░██░░░██░ ░░░██░
+# ░██░░░██░███████ ░██ ░ ░██░░░██░░█████   ░██   ░██░██  ░██  ░██    ░██
+# ░██  ░██░██░░░░  ░██   ░██  ░██ ░░░░░██  ░██   ░██░██  ░██  ░██    ░██
+# ░██  ░██░░██████░███   ░██████  ██████   ░░██  ███░░██████  ░██    ░░██
+# ░░   ░░  ░░░░░░ ░░░    ░░░░░   ░░░░░░     ░░  ░░░  ░░░░░░   ░░      ░░
+
 # this is a simple config for herbstluftwm
 
 hc() {
     herbstclient "$@"
 }
 
-hc emit_hook reload
+scriptsdir=$HOME/.config/herbstluftwm/scripts/
 
-xsetroot -solid '#D19A66'
+hc emit_hook reload
 
 # remove all existing keybindings
 hc keyunbind --all
@@ -20,7 +29,6 @@ Mod=Mod4   # Use the super key as the main modifier
 
 hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
-#hc keybind $Mod-Shift-c close
 hc keybind $Mod-c close
 hc keybind $Mod-Escape spawn slock
 hc keybind $Mod-Return spawn dmenu_run
@@ -30,7 +38,7 @@ hc keybind $Mod-b spawn "${BROWSER:-firefox}"
 hc keybind $Mod-f spawn pcmanfm
 hc keybind $Mod-v spawn tabbed -c vimb -e
 hc keybind $Mod-e spawn emacsclient -c
-hc keybind $Mod-p spawn ${HOME}/.config/herbstluftwm/scratchpad.sh # scratchpad!
+hc keybind $Mod-p spawn $scriptsdir/scratchpad.sh # scratchpad!
 
 # basic movement in tiling and floating mode
 # focusing clients
@@ -71,27 +79,19 @@ hc keybind $Mod-Control-Down    resize down +$resizestep
 hc keybind $Mod-Control-Up      resize up +$resizestep
 hc keybind $Mod-Control-Right   resize right +$resizestep
 
-#dmenu scripts
-scriptsdir=~/.config/dmenu/scripts
-hc keybind $Mod-Mod1-p spawn $scriptsdir/dm-pass
-hc keybind $Mod-Mod1-m spawn $scriptsdir/dm-mpd-ctl
-hc keybind $Mod-Mod1-o spawn $scriptsdir/dm-soundout
-hc keybind $Mod-Mod1-k spawn $scriptsdir/dm-kill
-hc keybind $Mod-Mod1-e spawn $scriptsdir/dm-editcfg
-hc keybind $Mod-Mod1-c spawn $scriptsdir/dm-calc
-
-hc keybind $Mod-Mod1-plus spawn mpc volume +5
-hc keybind $Mod-Mod1-minus spawn mpc volume -5
-
-#screenshot commands
-hc keybind $Mod-Print            spawn print-full
-hc keybind $Mod-Mod1-Print       spawn print-win
-hc keybind $Mod-Shift-Print      spawn print-sel
-hc keybind $Mod-Control-Print    spawn print-cpsel
-#hc keybind $Mod-Print           spawn maim ~/Imágenes/Capturas/captura_$(date +%s).png
-#hc keybind $Mod-Mod1-Print      spawn maim -i $(xdotool getactivewindow) ~/Imágenes/Capturas/ventana_$(date +%s).png
-#hc keybind $Mod-Shift-Print     spawn maim -s ~/Imágenes/Capturas/recorte_$(date +%s).png
-#hc keybind $Mod-Control-Print   spawn maim -s | xclip -selection clipboard -t image/png
+#scripts
+hc keybind $Mod-Mod1-p          spawn $scriptsdir/passget.sh
+hc keybind $Mod-Mod1-m          spawn $scriptsdir/mpdcontrol.sh
+hc keybind $Mod-Mod1-o          spawn $scriptsdir/soundout.sh
+hc keybind $Mod-Mod1-k          spawn $scriptsdir/prockill.sh
+hc keybind $Mod-Mod1-e          spawn $scriptsdir/editcfg.sh
+#hc keybind $Mod-Mod1-c          spawn $scriptsdir/calc.sh
+hc keybind $Mod-Print           spawn $scriptsdir/screenshot.sh 1
+hc keybind $Mod-Mod1-Print      spawn $scriptsdir/screenshot.sh 2
+hc keybind $Mod-Shift-Print     spawn $scriptsdir/screenshot.sh 3
+hc keybind $Mod-Control-Print   spawn $scriptsdir/screenshot.sh 4
+hc keybind $Mod-Mod1-plus       spawn $scriptsdir/volume.sh 1
+hc keybind $Mod-Mod1-minus      spawn $scriptsdir/volume.sh 2
 
 # tags
 tag_names=( {1..9} )
@@ -112,13 +112,13 @@ hc keybind $Mod-period use_index +1 --skip-visible
 hc keybind $Mod-comma  use_index -1 --skip-visible
 
 # layouting
-hc keybind $Mod-r remove
-hc keybind $Mod-s floating toggle
-hc keybind $Mod-Shift-f fullscreen toggle
-hc keybind $Mod-Shift-s set_attr clients.focus.floating toggle
-hc keybind $Mod-Shift-m set_attr clients.focus.minimized true
-hc keybind $Mod-Control-m jumpto last-minimized
-hc keybind $Mod-t pseudotile toggle
+hc keybind $Mod-r           remove
+hc keybind $Mod-s           floating toggle
+hc keybind $Mod-Shift-f     fullscreen toggle
+hc keybind $Mod-Shift-s     set_attr clients.focus.floating toggle
+hc keybind $Mod-Shift-m     set_attr clients.focus.minimized true
+hc keybind $Mod-Control-m   jumpto last-minimized
+hc keybind $Mod-t           pseudotile toggle
 # The following cycles through the available layouts within a frame, but skips
 # layouts, if the layout change wouldn't affect the actual window positions.
 # I.e. if there are two windows within a frame, the grid layout is skipped.
@@ -138,47 +138,27 @@ hc set focus_follows_mouse 1
 hc keybind $Mod-z           cycle_monitor
 hc keybind $Mod-Tab         cycle_all +1
 hc keybind $Mod-Shift-Tab   cycle_all -1
-hc keybind $Mod-n cycle
-hc keybind $Mod-i jumpto urgent
+hc keybind $Mod-n           cycle
+hc keybind $Mod-i           jumpto urgent
 
 # theme
-hc attr theme.tiling.reset 1
-hc attr theme.floating.reset 1
-hc set frame_border_active_color '#222222'
-hc set frame_border_normal_color '#151515'
-hc set frame_bg_normal_color '#565656'
-hc set frame_bg_active_color '#345F0C'
 hc set frame_border_width 1
 hc set always_show_frame 0
 hc set frame_bg_transparent 1
 hc set frame_transparent_width 0
 hc set frame_gap 0
 
-hc attr theme.title_height 0
 hc attr theme.title_font 'mononoki NF:pixelsize=12'  # example using Xft
 # hc attr theme.title_font '-*-fixed-medium-r-*-*-13-*-*-*-*-*-*-*'
-hc attr theme.padding_top 0  # space below the title's baseline (i.e. text depth)
-hc attr theme.active.color '#D19A66'
-hc attr theme.title_color '#ffffff'
-hc attr theme.normal.color '#323232dd'
-hc attr theme.urgent.color '#7811A1dd'
-hc attr theme.normal.title_color '#898989'
+hc attr theme.tiling.reset 1
+hc attr theme.floating.reset 1
 hc attr theme.inner_width 1
-hc attr theme.inner_color black
 hc attr theme.border_width 4
 hc attr theme.floating.border_width 4
 hc attr theme.floating.outer_width 1
-hc attr theme.floating.outer_color black
-hc attr theme.active.inner_color '#151515'
-hc attr theme.urgent.inner_color '#1E4D3D'
-hc attr theme.normal.inner_color '#151515'
-# copy inner color to outer_color
-for state in active urgent normal ; do
-    hc substitute C theme.${state}.inner_color \
-        attr theme.${state}.outer_color C
-done
+hc attr theme.title_height 0
+hc attr theme.padding_top 0  # space below the title's baseline (i.e. text depth)
 hc attr theme.active.outer_width 1
-hc attr theme.background_color '#151515'
 
 hc set window_gap 10
 hc set frame_padding 0
@@ -186,13 +166,13 @@ hc set smart_window_surroundings 1
 hc set smart_frame_surroundings 0
 hc set mouse_recenter_gap 0
 
+. "$HOME/.config/herbstluftwm/colors"
+
 # rules
 hc unrule -F
 #hc rule class=XTerm tag=3 # move all xterms to tag 3
 hc rule focus=on # normally focus new clients
 hc rule floatplacement=center
-# give focus to most common terminals
-#hc rule class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole)' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH|POPUP_MENU)' floating=on
 hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
@@ -209,7 +189,7 @@ hc unlock
 # hc detect_monitors
 
 # find the panel
-panel=~/.config/herbstluftwm/panel.sh
+panel=$scriptsdir/panel.sh
 [ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
 for monitor in $(hc list_monitors | cut -d: -f1) ; do
     # start it on each monitor
