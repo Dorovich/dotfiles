@@ -19,12 +19,12 @@ set hidden
 set nobackup
 set nowritebackup
 set noswapfile
-set nowrap
+set wrap
 set clipboard=unnamedplus
 set hlsearch
 set incsearch
 set pumheight=10
-set timeoutlen=300
+set timeoutlen=250
 set encoding=utf-8
 set expandtab
 set tabstop=8
@@ -39,6 +39,7 @@ set title
 set cursorline
 set titlestring=%f\ %a\ %m titlelen=70
 set statusline=>\ %f
+set showbreak=>\ 
 syntax on
 filetype plugin on
 filetype plugin indent on
@@ -62,9 +63,7 @@ nnoremap <silent> <Leader><S-q> :q!<CR>
 nnoremap <S-h> <Home>
 nnoremap <S-l> <End>
 imap jk <Esc>l
-imap kj <Esc>l
 cmap jk <Esc>
-cmap kj <Esc>
 vmap q <Esc>
 nnoremap <silent> <TAB> :bnext<CR>
 nnoremap <silent> <S-TAB> :bprevious<CR>
@@ -75,6 +74,7 @@ nnoremap <silent> U <C-r>
 nmap <S-y> y$
 map ; :
 map ñ :
+map Ñ :
 map Q gq
 nnoremap <Leader><Leader> za
 nnoremap <silent> <Leader>f :Lex %:p:h<CR>
@@ -90,10 +90,8 @@ nnoremap <silent> <M-l> :vertical resize +2<CR>
 nnoremap <Leader>pp bi(<Esc>ea)<Esc>
 nnoremap <Leader>ll bi{<Esc>ea}<Esc>
 nnoremap <Leader>cc bi[<Esc>ea]<Esc>
-nnoremap / /\v
-vnoremap / /\v
-nnoremap <Leader>h :noh<cr>
-nnoremap <C-r> :%s//gI<Left><Left><Left>
+nnoremap <silent> <Leader>h :noh<cr>
+nnoremap <C-r> :%s//<Left>
 " }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -134,6 +132,7 @@ function! MyHighlights() abort
     highlight Todo         cterm=bold   ctermfg=0    ctermbg=2
     highlight Error        cterm=bold   ctermfg=0    ctermbg=1
     highlight ErrorMsg     cterm=bold   ctermfg=0    ctermbg=1
+    highlight MsgArea      cterm=italic ctermfg=7    ctermbg=none
 endfunction
 
 augroup MyColors
