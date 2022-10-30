@@ -20,8 +20,8 @@ set mouse=a
 set pumheight=10
 set timeoutlen=200
 set hidden
-"set nowrap
 set wrap
+set linebreak
 set gdefault
 set clipboard=unnamedplus
 set encoding=UTF-8
