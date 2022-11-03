@@ -112,12 +112,11 @@ config.bind('Y', 'yank selection')
 config.bind('p', 'open {clipboard}')
 config.bind('P', 'open -t {clipboard}')
 config.bind('c', 'download-clear;; clear-messages')
-config.bind('D', 'close')
-#config.bind('jk', 'mode-leave', 'command')
+#config.bind('D', 'close')
 config.bind('<Ctrl-c>', 'mode-leave', 'command')
 config.bind('gh', 'home')
 config.bind('gc', 'config-edit')
-config.bind('xb', 'config-cycle statusbar.show never in-mode')
+config.bind('xb', 'config-cycle statusbar.show never always')
 config.bind('xt', 'config-cycle tabs.show multiple switching')
 config.bind('<Ctrl-j>', 'tab-move +')
 config.bind('<Ctrl-k>', 'tab-move -')
@@ -184,7 +183,7 @@ c.content.canvas_reading = False
 c.content.webgl = True
 c.content.default_encoding = "utf-8"
 c.content.webrtc_ip_handling_policy = "default-public-interface-only"
-c.content.headers.user_agent = "Mozilla/5.0 ({os_info}; rv:102.0) Gecko/20100101 Firefox/102.0"
+c.content.headers.user_agent = "Mozilla/5.0 ({os_info}; rv:106.0) Gecko/20100101 Firefox/106.0"
 c.content.cookies.accept = "no-3rdparty"
 c.completion.open_categories= [ "history" ]
 

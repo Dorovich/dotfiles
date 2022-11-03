@@ -30,13 +30,13 @@ nmap <C-j> <C-f>
 nmap <C-k> <C-b>
 #nmap <C-j> :sh! xdotool key Page_Down<CR>
 #nmap <C-k> :sh! xdotool key Page_Up<CR>
-nmap H <C-o>
-nmap L <C-i>
+#nmap H <C-o>
+#nmap L <C-i>
 nmap M '
 nmap ñ :
 nmap Ñ :
-nmap d :quit<CR>
-nmap D :quit!<CR>
+#nmap d :quit<CR>
+#nmap D :quit!<CR>
 nmap b :open !
 nmap B :tabopen !
 nmap c <Esc>
@@ -107,6 +107,8 @@ set history-max-items=50
 set webinspector=true
 set header=DNT=1,User-Agent,Cookie='name=value'
 set user-agent=Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0
+set html5-database=true
+set html5-local-storage=true
 # }}}
 
 # Fonts {{{
@@ -130,7 +132,8 @@ set completion-selected-css=color:#151515;background-color:#d19a66;font:11pt mon
 set input-css=color:#abb2bf;background-color:#151515;font:11pt mononoki NF;
 set input-error-css=color:#abb2bf;background-color:#151515;font:11pt mononoki NF;
 set status-css=color:#abb2bf;background-color:#151515;font:11pt mononoki NF;
-set status-ssl-css=color:#5c6370;background-color:#151515;font:11pt mononoki NF;
+#set status-ssl-css=color:#5c6370;background-color:#151515;font:11pt mononoki NF;
+set status-ssl-css=color:#8c909a;background-color:#151515;font:11pt mononoki NF;
 set status-ssl-invalid-css=color:#abb2bf;background-color:#151515;font:11pt mononoki NF;
 # }}}
 

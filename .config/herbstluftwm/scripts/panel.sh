@@ -21,7 +21,6 @@ panel_height=16
 #font="-*-clean-medium-*-*-*-12-*-*-*-*-*-*-*"
 #font="-*-clearlyu-medium-*-*-*-*-*-*-*-*-*-*-*"
 font="-*-courier 10 pitch-bold-i-*-*-*-*-*-*-*-*-*-*"
-#font="-*-courier 10 pitch-medium-i-*-*-*-*-*-*-*-*-*-*"
 # extract colors from hlwm and omit alpha-value
 #bgcolor=$(hc get frame_border_normal_color|sed 's,^\(\#[0-9a-f]\{6\}\)[0-9a-f]\{2\}$,\1,')
 #selbg=$(hc get window_border_active_color|sed 's,^\(\#[0-9a-f]\{6\}\)[0-9a-f]\{2\}$,\1,')
