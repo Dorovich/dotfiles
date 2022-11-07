@@ -4,10 +4,11 @@
 
 (scroll-bar-mode -1)        ; Disable visible scrollbar
 (tool-bar-mode -1)          ; Disable the toolbar
-(tooltip-mode -1)           ; Disable tooltips
-(set-fringe-mode 1)        ; Give some breathing room
-
+(tooltip-mode -1)           ; Disable tooltips (set-fringe-mode 1)        ; Give some breathing room
 (menu-bar-mode -1)          ; Disable the menu bar
+
+;; Disable file backups
+(setq make-backup-files nil)
 
 ;; Set up the visible bell
 (setq visible-bell nil)
@@ -65,6 +66,10 @@
 (use-package warm-night-theme)
 (use-package nano-modeline
   :init (nano-modeline-mode))
+(use-package org-superstar
+  :config
+  (add-hook 'org-mode-hook (lambda ()
+				(org-superstar-mode 1))))
 
 ;; Using garbage magic hack.
  (use-package gcmh
