@@ -37,8 +37,9 @@ hc keybind $Mod-BackSpace spawn "${TERMINAL:-xterm}" # use your $TERMINAL with x
 hc keybind $Mod-b spawn "${BROWSER:-firefox}"
 hc keybind $Mod-f spawn pcmanfm
 hc keybind $Mod-v spawn tabbed -c vimb -e
-hc keybind $Mod-e spawn emacsclient -c
+hc keybind $Mod-e spawn emacsclient -c -a 'emacs'
 hc keybind $Mod-p spawn $scriptsdir/scratchpad.sh # scratchpad!
+hc keybind $Mod-n spawn st -e nnn
 
 # basic movement in tiling and floating mode
 # focusing clients
@@ -138,7 +139,7 @@ hc set focus_follows_mouse 1
 hc keybind $Mod-z           cycle_monitor
 hc keybind $Mod-Tab         cycle_all +1
 hc keybind $Mod-Shift-Tab   cycle_all -1
-hc keybind $Mod-n           cycle
+hc keybind Mod1-Tab           cycle
 hc keybind $Mod-i           jumpto urgent
 
 # theme
@@ -203,4 +204,5 @@ if hc silent new_attr bool my_not_first_autostart ; then
     mpd &
     redshift -l 41.39:2.16 -m randr -t 5500:5000 &
     /usr/bin/nvidia-settings -l &
+    emacs --daemon &
 fi

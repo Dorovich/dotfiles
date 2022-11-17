@@ -168,7 +168,7 @@ color2=$(tput setaf 8)
 bold=$(tput bold)
 reset=$(tput sgr0)
 
-export PS1="\n\[$bold$color1\]\W\[$reset\] "
+export PS1="\n\[$bold$color1\]\W \[$bold$color2\];\[$reset\] "
 export PS2="\[$bold$color2\]>\[$reset\] "
 
 # }}}

@@ -57,7 +57,7 @@ nnoremap xu :sh! ~/.local/bin/vimb-adblock-update<CR>
 # }}}
 
 # Shortcuts {{{
-shortcut-default sxngprefs
+shortcut-default dd
 
 shortcut-add dd=https://duckduckgo.com/?q=$0
 shortcut-add gg=https://encrypted.google.com/search?q=$0&pccc=1
@@ -92,6 +92,7 @@ shortcut-add sxprefs=https://searx.tiekoetter.com/?preferences=eJx1V81y4zYMfpr6o
 handler-add magnet=xdg-open %s
 handler-add mailto=thunderbird %s
 set editor-command=st -e nvim %s
+set x-hint-command=:sh! mpv <C-r>;<CR>
 # }}}
 
 # Web content {{{
