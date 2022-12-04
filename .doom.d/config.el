@@ -76,9 +76,18 @@
 ;; they are implemented.
 
 (require 'iso-transl)
+(global-visual-line-mode t)
 
-(setq fancy-splash-image (concat doom-user-dir "splash_3.png"))
+(setq fancy-splash-image (concat doom-user-dir "splashes/splash_3.png"))
 (setq default-input-method "catalan-prefix")
 
-(evil-define-key 'normal 'global (kbd "ñ") 'evil-ex)
-(evil-define-key 'normal 'global (kbd "U") 'evil-redo)
+(evil-define-key 'normal 'global
+        (kbd "ñ") 'evil-ex
+        (kbd "Ñ") 'execute-extended-command
+        (kbd "U") 'evil-redo
+        (kbd "H") 'evil-beginning-of-line
+        (kbd "L") 'evil-end-of-line
+        (kbd "C-h") 'evil-window-left
+        (kbd "C-j") 'evil-window-down
+        (kbd "C-k") 'evil-window-up
+        (kbd "C-l") 'evil-window-right)
