@@ -91,3 +91,8 @@
         (kbd "C-j") 'evil-window-down
         (kbd "C-k") 'evil-window-up
         (kbd "C-l") 'evil-window-right)
+
+(setq +doom-dashboard-functions
+  '(doom-dashboard-widget-banner
+    doom-dashboard-widget-shortmenu
+    doom-dashboard-widget-loaded))
