@@ -94,5 +94,5 @@
 
 (setq +doom-dashboard-functions
   '(doom-dashboard-widget-banner
-    doom-dashboard-widget-shortmenu
+    ;;doom-dashboard-widget-shortmenu
     doom-dashboard-widget-loaded))
