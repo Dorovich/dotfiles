@@ -1,7 +1,7 @@
+*.font:     Roboto Mono:pixelsize=16:antialias=true:autohint=true
 /*
-*.font:     Inconsolata Regular:pixelsize=16:antialias=true:autohint=true
-*/
 *.font:     mononoki NF:pixelsize=18:antialias=true:autohint=true
+*/
 *.alpha:    0.96
 
 *.background:   #151515

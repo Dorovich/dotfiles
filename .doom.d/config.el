@@ -76,11 +76,13 @@
 ;; they are implemented.
 
 (require 'iso-transl)
-(global-visual-line-mode t)
 
 (setq fancy-splash-image (concat doom-user-dir "splashes/splash_3.png")
       default-input-method "catalan-prefix"
-      shell-file-name "/bin/bash")
+      shell-file-name "/bin/bash"
+      evil-normal-state-cursor '(box "light yellow")
+      evil-insert-state-cursor '(bar "light yellow")
+      evil-visual-state-cursor '(hollow-rectangle "light yellow"))
 
 (evil-define-key 'normal 'global
   (kbd "ñ") 'evil-ex
@@ -117,7 +119,7 @@
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
 
-;; Load our desired dt/org-colors-* theme on startup
+;; Load our desired vido/org-colors-* theme on startup
 (vido/org-colors-tomorrow-night)
 
 ;; Lo que se muestra en la pantalla de inicio
