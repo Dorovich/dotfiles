@@ -78,20 +78,49 @@
 (require 'iso-transl)
 (global-visual-line-mode t)
 
-(setq fancy-splash-image (concat doom-user-dir "splashes/splash_3.png"))
-(setq default-input-method "catalan-prefix")
+(setq fancy-splash-image (concat doom-user-dir "splashes/splash_3.png")
+      default-input-method "catalan-prefix"
+      shell-file-name "/bin/bash")
 
 (evil-define-key 'normal 'global
-        (kbd "ñ") 'evil-ex
-        (kbd "Ñ") 'execute-extended-command
-        (kbd "U") 'evil-redo
-        (kbd "H") 'evil-beginning-of-line
-        (kbd "L") 'evil-end-of-line
-        (kbd "C-h") 'evil-window-left
-        (kbd "C-j") 'evil-window-down
-        (kbd "C-k") 'evil-window-up
-        (kbd "C-l") 'evil-window-right)
+  (kbd "ñ") 'evil-ex
+  (kbd "Ñ") 'execute-extended-command
+  (kbd "U") 'evil-redo
+  (kbd "H") 'evil-beginning-of-line
+  (kbd "L") 'evil-end-of-line
+  (kbd "C-h") 'evil-window-left
+  (kbd "C-j") 'evil-window-down
+  (kbd "C-k") 'evil-window-up
+  (kbd "C-l") 'evil-window-right)
 
+(evil-define-key 'visual 'global
+  (kbd "H") 'evil-beginning-of-line
+  (kbd "L") 'evil-end-of-line)
+
+(after! org
+  (setq org-superstar-headline-bullets-list '("◉" "●" "✱" "◆" "✸" "●" "✱" "◆" "✸")
+        org-superstar-item-bullet-alist '((?+ . ?➤) (?- . ?☛))))
+
+(defun vido/org-colors-tomorrow-night ()
+  "Enable Tomorrow Night colors for Org headers."
+  (interactive)
+  (dolist
+      (face
+       '((org-level-1 1.3 "#81a2be" ultra-bold)
+         (org-level-2 1.15 "#b294bb" extra-bold)
+         (org-level-3 1.07 "#b5bd68" bold)
+         (org-level-4 1.04 "#e6c547" semi-bold)
+         (org-level-5 1.02 "#cc6666" normal)
+         (org-level-6 1.01 "#70c0ba" normal)
+         (org-level-7 1.005 "#b77ee0" normal)
+         (org-level-8 1.003 "#9ec400" normal)))
+    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
+    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
+
+;; Load our desired dt/org-colors-* theme on startup
+(vido/org-colors-tomorrow-night)
+
+;; Lo que se muestra en la pantalla de inicio
 (setq +doom-dashboard-functions
   '(doom-dashboard-widget-banner
     ;;doom-dashboard-widget-shortmenu
