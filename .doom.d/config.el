@@ -79,10 +79,7 @@
 
 (setq fancy-splash-image (concat doom-user-dir "splashes/splash_3.png")
       default-input-method "catalan-prefix"
-      shell-file-name "/bin/bash"
-      evil-normal-state-cursor '(box "light yellow")
-      evil-insert-state-cursor '(bar "light yellow")
-      evil-visual-state-cursor '(hollow-rectangle "light yellow"))
+      shell-file-name "/bin/bash")
 
 ;; Lo que se muestra en la pantalla de inicio
 (setq +doom-dashboard-functions
@@ -90,20 +87,27 @@
     ;;doom-dashboard-widget-shortmenu
     doom-dashboard-widget-loaded))
 
-(evil-define-key 'normal 'global
-  (kbd "ñ") 'evil-ex
-  (kbd "Ñ") 'execute-extended-command
-  (kbd "U") 'evil-redo
-  (kbd "H") 'evil-beginning-of-line
-  (kbd "L") 'evil-end-of-line
-  (kbd "C-h") 'evil-window-left
-  (kbd "C-j") 'evil-window-down
-  (kbd "C-k") 'evil-window-up
-  (kbd "C-l") 'evil-window-right)
+(global-hide-mode-line-mode)
 
-(evil-define-key 'visual 'global
-  (kbd "H") 'evil-beginning-of-line
-  (kbd "L") 'evil-end-of-line)
+(after! evil
+        (setq evil-normal-state-cursor '(box "light yellow")
+              evil-insert-state-cursor '(bar "light yellow")
+              evil-visual-state-cursor '(hollow-rectangle "light yellow"))
+
+        (evil-define-key 'normal 'global
+          (kbd "ñ") 'evil-ex
+          (kbd "Ñ") 'execute-extended-command
+          (kbd "U") 'evil-redo
+          (kbd "H") 'evil-beginning-of-line
+          (kbd "L") 'evil-end-of-line
+          (kbd "C-h") 'evil-window-left
+          (kbd "C-j") 'evil-window-down
+          (kbd "C-k") 'evil-window-up
+          (kbd "C-l") 'evil-window-right)
+
+        (evil-define-key 'visual 'global
+          (kbd "H") 'evil-beginning-of-line
+          (kbd "L") 'evil-end-of-line))
 
 (after! org
         (setq org-superstar-headline-bullets-list '("◉" "●" "✱" "◆" "✸" "●" "✱" "◆" "✸")
