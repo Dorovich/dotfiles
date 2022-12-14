@@ -19,6 +19,7 @@ Plug 'tpope/vim-surround'                           " Cierra parentesis automati
 Plug 'mg979/vim-visual-multi', {'branch': 'master'} " Editar multiples instancias
 Plug 'ryanoasis/vim-devicons'                       " Iconos dentro de la terminal
 Plug 'bfrg/vim-cpp-modern'                          " Mejores colores para C/C++
+Plug 'jceb/vim-orgmode'                             " Emulacion de Org-mode
 
 Plug 'neovim/nvim-lspconfig'                        " Cofiguraciones para LSP
 Plug 'hrsh7th/nvim-cmp'                             " Autocomopletado de texto y tal
@@ -49,7 +50,7 @@ let g:NERDTreeDirArrowCollapsible="-"
 lua <<EOF
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local lspconfig = require('lspconfig')
 
