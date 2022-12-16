@@ -1,16 +1,17 @@
 # ~ .dotfiles ~
-*Archivos de configuración de mi sistema y otros cosos de interés*
+*Archivos de configuración de mi sistema y cosas de interés*
 
 ![](showcase.png)
 
-## Información+
+## Información
 - Distro: `Pop!_OS`
 - DE/WM: `herbstluftwm`
 - Terminal: `st`
 - Shell: `bash`
-- Editor: `neovim`
-- Navegador: `librewolf`, `firefox`, `qutebrowser`, `vimb`
+- Barra: `polybar`
+- Editor: `neovim`, `emacs (Doom)`
 - Fuente: `mononoki (Nerd Font)`
-- Música: `spotify`, `cmus`
+- Música: `spotify`, `mpd (+ mpc/ncmpcpp)`
+- Navegador: `librewolf`, `firefox`, `qutebrowser`, `vimb`
 - Notificaciones: `dunst`
-- Tema GTK: `Juno ocean`
+- Tema GTK: `Pop-dark`
