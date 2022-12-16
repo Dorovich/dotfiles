@@ -31,8 +31,8 @@ c.tabs.show = "multiple"
 c.tabs.select_on_remove = "prev"
 c.tabs.background = True
 c.tabs.padding = {
-    "left": 0,
-    "right": 0,
+    "left": 1,
+    "right": 1,
     "top": 1,
     "bottom": 1,
 }
@@ -41,62 +41,7 @@ c.tabs.padding = {
 # Mappings {{{
 c.input.partial_timeout = 500
 
-# Unbinds {{{
-config.unbind('co')
-config.unbind('cd')
-config.unbind('gJ')
-config.unbind('gK')
-config.unbind('xo')
-config.unbind('xO')
-config.unbind('go')
-config.unbind('gO')
-config.unbind('wo')
-config.unbind('wO')
-config.unbind('ga')
-config.unbind('gm')
-config.unbind('tl')
-config.unbind('wl')
-config.unbind('yy')
-config.unbind('yY')
-config.unbind('yt')
-config.unbind('yT')
-config.unbind('yd')
-config.unbind('yD')
-config.unbind('yp')
-config.unbind('yP')
-config.unbind('ym')
-config.unbind('yM')
-config.unbind('pp')
-config.unbind('pP')
-config.unbind('Pp')
-config.unbind('PP')
-config.unbind('wp')
-config.unbind('wP')
-config.unbind('ZZ')
-config.unbind('ZQ')
-config.unbind('tsh')
-config.unbind('tSh')
-config.unbind('tsH')
-config.unbind('tSH')
-config.unbind('tsu')
-config.unbind('tSu')
-config.unbind('tph')
-config.unbind('tPh')
-config.unbind('tpH')
-config.unbind('tpH')
-config.unbind('tih')
-config.unbind('tIh')
-config.unbind('tiH')
-config.unbind('tIH')
-config.unbind('tiu')
-config.unbind('tIu')
-config.unbind('tch')
-config.unbind('tCh')
-config.unbind('tcH')
-config.unbind('tCH')
-config.unbind('tcu')
-config.unbind('tCu')
-# }}}
+config.source("unbinds.py")
 
 config.bind('K', 'fake-key <PgUp>')
 config.bind('J', 'fake-key <PgDown>')
@@ -112,19 +57,20 @@ config.bind('Y', 'yank selection')
 config.bind('p', 'open {clipboard}')
 config.bind('P', 'open -t {clipboard}')
 config.bind('c', 'download-clear;; clear-messages')
+config.bind('d', 'tab-close')
 #config.bind('D', 'close')
 config.bind('<Ctrl-c>', 'mode-leave', 'command')
 config.bind('gh', 'home')
 config.bind('gc', 'config-edit')
 config.bind('xb', 'config-cycle statusbar.show never always')
 config.bind('xt', 'config-cycle tabs.show multiple switching')
+config.bind('Ctrl-p', 'tab-pin')
 config.bind('<Ctrl-j>', 'tab-move +')
 config.bind('<Ctrl-k>', 'tab-move -')
 config.bind('<Ctrl-h>', 'tab-prev')
 config.bind('<Ctrl-l>', 'tab-next')
 config.bind('<Ctrl-i>', 'forward')
 config.bind('<Ctrl-o>', 'back')
-config.bind('<Ctrl-e>', 'config-edit')
 config.bind('<ctrl+shift+p>', 'open -p')
 
 config.bind(',m', 'hint links spawn mpv {hint-url}')
@@ -132,9 +78,9 @@ config.bind(',M', 'spawn mpv {url}')
 config.bind(',t', 'spawn --userscript translate --text')
 config.bind(',T', 'spawn --userscript translate')
 config.bind(',d', 'download-open')
-config.bind('<Ctrl-p>', 'spawn --userscript password_fill')
-config.bind('<Ctrl-p>', 'spawn --userscript password_fill', 'insert')
+config.bind('<Ctrl-y>', 'spawn --userscript password_fill')
 
+config.bind('<Ctrl-y>', 'spawn --userscript password_fill', 'insert')
 config.bind('<Ctrl-d>', 'mode-leave', 'insert')
 config.bind('<Ctrl-h>', 'fake-key <Backspace>', 'insert')
 config.bind('<Ctrl-a>', 'fake-key <Home>', 'insert')
@@ -147,7 +93,7 @@ config.bind('<Ctrl-k>', 'fake-key <Shift-End><Delete>', 'insert')
 
 # Shortcuts {{{
 c.url.searchengines = {
-    'DEFAULT': 'https://searx.be/?q={}',
+    'DEFAULT': 'https://duckduckgo.com/?q={}',
     'dd': 'https://duckduckgo.com/?q={}',
     'gg': 'https://encrypted.google.com/search?q={}&pccc=1',
     'sx': 'https://searx.tiekoetter.com/search?q={}',
@@ -183,7 +129,7 @@ c.content.canvas_reading = False
 c.content.webgl = True
 c.content.default_encoding = "utf-8"
 c.content.webrtc_ip_handling_policy = "default-public-interface-only"
-c.content.headers.user_agent = "Mozilla/5.0 ({os_info}; rv:106.0) Gecko/20100101 Firefox/106.0"
+c.content.headers.user_agent = "Mozilla/5.0 ({os_info}; rv:107.0) Gecko/20100101 Firefox/107.0"
 c.content.cookies.accept = "no-3rdparty"
 c.completion.open_categories= [ "history" ]
 
@@ -214,7 +160,7 @@ c.content.blocking.hosts.lists = [ \
 # }}}
 
 # Fonts {{{
-monospace = "14px 'mononoki NF'"
+monospace = "15px 'mononoki NF'"
 c.fonts.hints = f"bold {monospace}"
 c.fonts.default_family = monospace
 c.fonts.completion.category = f"bold {monospace}"
