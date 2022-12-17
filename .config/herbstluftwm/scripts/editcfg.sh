@@ -27,7 +27,7 @@ case $choice in
         esac
         ;;
     "Neovim")
-        cfgpath="$HOME/.config/nvim/init.vim"
+        cfgpath="$HOME/.config/nvim/init.*"
         ;;
     "Librewolf")
         cfgpath="$HOME/.librewolf/*.default/chrome/userChrome.css"

@@ -1,0 +1,22 @@
+require('core/utils')
+
+nmap('H', '<Home>', nrsl)
+nmap('L', '<End>', nrsl)
+nmap('<C-h>', '<C-w>h', nrsl)
+nmap('<C-j>', '<C-w>j', nrsl)
+nmap('<C-k>', '<C-w>k', nrsl)
+nmap('<C-l>', '<C-w>l', nrsl)
+nmap('ñ', ':', nrsl)
+nmap('Ñ', ':', nrsl)
+nmap('<Tab>', 'za', nrsl)
+nmap('U', '<C-r>', nrsl)
+nmap('<C-r>', ':%s//<Left>', nrsl)
+nmap('Y', 'y$', nrsl)
+nmap('<Leader>w', ':w<CR>', nrsl)
+nmap('<Leader>q', ':q<CR>', nrsl)
+nmap('<Leader>h', ':nohl<CR>', nrsl)
+
+xmap('>', '>gv', nrsl)
+xmap('<', '<gv', nrsl)
+
+imap('jk', '<Esc>l', nrsl)
