@@ -32,6 +32,10 @@ return require('packer').startup(function(use)
         'ramojus/mellifluous.nvim',
         requires = {'rktjmp/lush.nvim'}
     }
+    -- Completion
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'L3MON4D3/LuaSnip'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
