@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/home/vido25'
+let g:netrw_dirhist_6='/home/vido25/.config/nvim/settings'
+let g:netrw_dirhist_5='/home/vido25/Documentos/UPC/PRO2/practica'
+let g:netrw_dirhist_4='/home/vido25/Descargas'
+let g:netrw_dirhist_3='/home/vido25/.config'
+let g:netrw_dirhist_2='/home/vido25/.config/nvim'
+let g:netrw_dirhist_1='/home/vido25/.config/nvim/settings'
+let g:netrw_dirhist_0='/home/vido25/Documentos/UPC/PRO2/practica'
+let g:netrw_dirhist_9='/home/vido25/.config/nvim/settings'
+let g:netrw_dirhist_8='/home/vido25'

@@ -41,6 +41,7 @@ hc keybind $Mod-e spawn emacsclient -c -a 'emacs'
 hc keybind $Mod-n spawn st -e nnn
 #hc keybind $Mod-p spawn $scriptsdir/scratchpad.sh # scratchpad!
 #hc keybind $Mod-m spawn thunderbird
+hc keybind $Mod-m spawn st -e ncmpcpp
 
 # basic movement in tiling and floating mode
 # focusing clients

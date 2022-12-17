@@ -30,9 +30,9 @@ volume_color          = "white"
 
 # window
 song_window_title_format = "{%a} - {%t}"
-statusbar_visibility     = "no"
-header_visibility        = "no"
-titles_visibility        = "no"
+statusbar_visibility     = "yes"
+header_visibility        = "yes"
+titles_visibility        = "yes"
 
 # progress bar
 progressbar_look          = "▃▃▃"

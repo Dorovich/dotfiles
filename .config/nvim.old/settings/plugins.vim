@@ -14,7 +14,7 @@ endif
 " Plugin setup
 call plug#begin()
 
-Plug 'scrooloose/nerdTree'                          " Menu lateral de archivos
+"Plug 'scrooloose/nerdTree'                          " Menu lateral de archivos
 Plug 'tpope/vim-surround'                           " Cierra parentesis automaticamente
 Plug 'mg979/vim-visual-multi', {'branch': 'master'} " Editar multiples instancias
 Plug 'ryanoasis/vim-devicons'                       " Iconos dentro de la terminal
@@ -105,32 +105,6 @@ cmp.setup {
     { name = 'buffer' },
   },
 }
-
---require'lspconfig'.rust_analyzer.setup{}
-
-require'lspconfig'.sumneko_lua.setup {
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
-}
-
 EOF
 
 " }}}

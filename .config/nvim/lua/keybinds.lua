@@ -1,0 +1,17 @@
+local keymap = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true }
+keymap('n', 'H', '<Home>', opts)
+keymap('n', 'L', '<End>', opts)
+keymap('n', '<C-h>', '<C-w>h', opts)
+keymap('n', '<C-j>', '<C-w>j', opts)
+keymap('n', '<C-k>', '<C-w>k', opts)
+keymap('n', '<C-l>', '<C-w>l', opts)
+keymap('n', 'ñ', ':', opts)
+keymap('n', 'Ñ', ':', opts)
+keymap('i', 'jk', '<Esc>l', opts)
+keymap('n', '<Tab>', 'za', opts)
+keymap('n', 'U', '<C-r>', opts)
+keymap('n', '<C-r>', ':%s//<Left>', opts)
+keymap('n', 'Y', 'y$', opts)
+keymap('n', '<Leader>w', ':w<CR>', opts)
+keymap('n', '<Leader>q', ':q<CR>', opts)
