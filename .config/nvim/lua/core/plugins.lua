@@ -1,3 +1,4 @@
+-- Packer auto-install {{{
 local ensure_packer = function()
     local fn = vim.fn
     local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -10,36 +11,49 @@ local ensure_packer = function()
 end
 
 local packer_bootstrap = ensure_packer()
+-- }}}
 
+-- Plugin declaration
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
-    use 'ellisonleao/gruvbox.nvim'
+    use 'tpope/vim-surround'
     use 'nvim-tree/nvim-tree.lua'
     use 'nvim-tree/nvim-web-devicons'
     use 'nvim-lualine/lualine.nvim'
     use 'nvim-treesitter/nvim-treesitter'
     use {
-        'williamboman/mason.nvim',
-        'williamboman/mason-lspconfig.nvim',
-        'neovim/nvim-lspconfig'
-    }
-    use {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.0',
         requires = { {'nvim-lua/plenary.nvim'} }
     }
+
+    -- LSP
+    use {
+        'williamboman/mason.nvim',
+        'williamboman/mason-lspconfig.nvim',
+        'neovim/nvim-lspconfig'
+    }
+
+    -- Completion
+    use 'L3MON4D3/LuaSnip'
+    use {
+        'hrsh7th/nvim-cmp',
+        'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-path'
+    }
+
+    -- Colorschemes
+    use 'ellisonleao/gruvbox.nvim'
+    use 'RRethy/nvim-base16'
     use {
         'ramojus/mellifluous.nvim',
         requires = {'rktjmp/lush.nvim'}
     }
-    -- Completion
-    use 'hrsh7th/nvim-cmp'
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'L3MON4D3/LuaSnip'
 
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if packer_bootstrap then
-    require('packer').sync()
-  end
+    -- Automatically set up your configuration after cloning packer.nvim
+    -- Put this at the end after all plugins
+    if packer_bootstrap then
+        require('packer').sync()
+    end
 end)

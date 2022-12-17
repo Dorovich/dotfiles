@@ -79,10 +79,20 @@ _G.packer_plugins = {
     path = "/home/vido25/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["cmp-buffer"] = {
+    loaded = true,
+    path = "/home/vido25/.local/share/nvim/site/pack/packer/start/cmp-buffer",
+    url = "https://github.com/hrsh7th/cmp-buffer"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/home/vido25/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
+  },
+  ["cmp-path"] = {
+    loaded = true,
+    path = "/home/vido25/.local/share/nvim/site/pack/packer/start/cmp-path",
+    url = "https://github.com/hrsh7th/cmp-path"
   },
   ["gruvbox.nvim"] = {
     loaded = true,
@@ -113,6 +123,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/vido25/.local/share/nvim/site/pack/packer/start/mellifluous.nvim",
     url = "https://github.com/ramojus/mellifluous.nvim"
+  },
+  ["nvim-base16"] = {
+    loaded = true,
+    path = "/home/vido25/.local/share/nvim/site/pack/packer/start/nvim-base16",
+    url = "https://github.com/RRethy/nvim-base16"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -153,6 +168,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/vido25/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["vim-surround"] = {
+    loaded = true,
+    path = "/home/vido25/.local/share/nvim/site/pack/packer/start/vim-surround",
+    url = "https://github.com/tpope/vim-surround"
   }
 }
 
