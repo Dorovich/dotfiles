@@ -24,7 +24,7 @@ NMAP('Ñ', ':', VOID)
 --NMAP('n', 'nzzzv', VOID)
 --NMAP('N', 'Nzzzv', VOID)
 
-IMAP('jk', '<Esc>l', NRSL)
+--IMAP('jk', '<Esc>l', NRSL)
 
 VMAP('J', ":m '>+1<CR>gv=gv", VOID)
 VMAP('K', ":m '<-2<CR>gv=gv", VOID)

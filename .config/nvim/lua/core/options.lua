@@ -8,28 +8,30 @@ opt.number = true
 opt.relativenumber = true
 opt.laststatus = 2
 opt.showtabline = 0
+opt.cursorline = true
 opt.showmode = false
 opt.ruler = true
+
 opt.mouse = "a"
-opt.timeoutlen = 200
+opt.timeoutlen = 500
 opt.clipboard = "unnamedplus"
 opt.scrolloff = 7
 opt.pumheight = 10
 opt.lazyredraw = true
 opt.path = "**"
 opt.showcmd = true
-opt.cursorline = true
 opt.autoread = true
 opt.wrap = true
 opt.linebreak = true
 opt.wildmenu = true
 opt.wildignore = "*.docx,*.jpg,*.png,*.gif,*.pdf,*.exe,*.o,*.mp3,*.mp4,*.mov,*.mkv,*.ogg,*.dat"
-opt.encoding = "UTF-8"
 opt.foldenable = true
 opt.foldmethod = "marker"
 opt.updatetime = 50
 opt.incsearch = true
 opt.hlsearch = true
+opt.encoding = "UTF-8"
+vim.cmd('language es_ES.utf8')
 
 -- Tabulaciones
 opt.smarttab = true

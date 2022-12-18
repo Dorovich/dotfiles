@@ -6,6 +6,7 @@ require('core/plugin_config/lsp_config')
 require('core/plugin_config/completions')
 require('core/plugin_config/harpoon')
 require('core/plugin_config/orgmode')
+require('core/plugin_config/better-escape')
 
 -- Colorschemes (choose one)
 --require('core/plugin_config/gruvbox')
