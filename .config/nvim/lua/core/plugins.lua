@@ -21,6 +21,7 @@ return require('packer').startup(function(use)
     use 'nvim-tree/nvim-web-devicons'
     use 'nvim-lualine/lualine.nvim'
     use 'nvim-treesitter/nvim-treesitter'
+    use 'theprimeagen/harpoon'
     use {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.0',
@@ -49,6 +50,14 @@ return require('packer').startup(function(use)
     use {
         'ramojus/mellifluous.nvim',
         requires = {'rktjmp/lush.nvim'}
+    }
+    use {
+        'rose-pine/neovim',
+        as = 'rose-pine',
+    }
+    use {
+        'Everblush/everblush.nvim',
+        as = 'everblush',
     }
 
     -- Automatically set up your configuration after cloning packer.nvim

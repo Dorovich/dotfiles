@@ -1,21 +1,47 @@
 require('mason').setup()
 require('mason-lspconfig').setup({
-    ensure_installed = { 'clangd' }
+    ensure_installed = { 'clangd', 'sumneko_lua' }
 })
 
-local on_attach = function()
+local attach_data = function(_, _)
     require('core/utils')
-    nmap('<Leader>rn', vim.lsp.buf.rename, void)
-    nmap('<Leader>ca', vim.lsp.buf.code_action, void)
-    nmap('gd', vim.lsp.buf.definition, void)
-    nmap('gi', vim.lsp.buf.implementation, void)
-    nmap('gr', require('telescope/builtin').lsp_references, void)
-    nmap('K', vim.lsp.buf.hover, void)
+    NMAP('<Leader>rn', vim.lsp.buf.rename, VOID)
+    NMAP('<Leader>ca', vim.lsp.buf.code_action, VOID)
+    NMAP('gd', vim.lsp.buf.definition, VOID)
+    NMAP('gD', vim.lsp.buf.declaration, VOID)
+    NMAP('gi', vim.lsp.buf.implementation, VOID)
+    NMAP('gr', require('telescope/builtin').lsp_references, VOID)
+    NMAP('K', vim.lsp.buf.hover, VOID)
 end
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capability_data = require('cmp_nvim_lsp').default_capabilities()
 
 require('lspconfig').clangd.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
+    on_attach = attach_data,
+    capabilities = capability_data,
+}
+
+require('lspconfig').sumneko_lua.setup {
+    on_attach = attach_data,
+    capabilities = capability_data,
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { "vim", "luasnip" },
+            },
+            runtime = {
+                version = "LuaJIT",
+                path = vim.split(package.path, ";")
+            },
+            workspace = {
+                library = {
+                    [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+                    [vim.fn.stdpath "config" .. "/lua"] = true,
+                },
+            },
+            telemetry = {
+                enable = false,
+            },
+        },
+    },
 }

@@ -15,7 +15,6 @@ opt.timeoutlen = 200
 opt.clipboard = "unnamedplus"
 opt.scrolloff = 7
 opt.pumheight = 10
-opt.hlsearch = true
 opt.lazyredraw = true
 opt.path = "**"
 opt.showcmd = true
@@ -28,6 +27,9 @@ opt.wildignore = "*.docx,*.jpg,*.png,*.gif,*.pdf,*.exe,*.o,*.mp3,*.mp4,*.mov,*.m
 opt.encoding = "UTF-8"
 opt.foldenable = true
 opt.foldmethod = "marker"
+opt.updatetime = 50
+opt.incsearch = true
+opt.hlsearch = true
 
 -- Tabulaciones
 opt.smarttab = true

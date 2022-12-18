@@ -2,23 +2,27 @@
 
 local keymap = vim.keymap.set
 
-nr = { noremap = true }
-sl = { silent = true }
-nrsl = { noremap = true, silent = true }
-void = {}
+NR = { noremap = true }
+SL = { silent = true }
+NRSL = { noremap = true, silent = true }
+VOID = {}
 
-function nmap (first, second, opts)
+function NMAP (first, second, opts)
     keymap('n', first, second, opts)
 end
 
-function imap (first, second, opts) 
-    keymap('i', first, second, opts) 
+function IMAP (first, second, opts)
+    keymap('i', first, second, opts)
 end
 
-function cmap (first, second, opts) 
-    keymap('c', first, second, opts) 
+function CMAP (first, second, opts)
+    keymap('c', first, second, opts)
 end
 
-function xmap (first, second, opts) 
-    keymap('x', first, second, opts) 
+function VMAP (first, second, opts)
+    keymap('v', first, second, opts)
+end
+
+function XMAP (first, second, opts)
+    keymap('x', first, second, opts)
 end
