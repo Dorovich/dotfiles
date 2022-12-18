@@ -22,6 +22,7 @@ return require('packer').startup(function(use)
     use 'nvim-lualine/lualine.nvim'
     use 'nvim-treesitter/nvim-treesitter'
     use 'theprimeagen/harpoon'
+    use 'nvim-orgmode/orgmode'
     use {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.0',

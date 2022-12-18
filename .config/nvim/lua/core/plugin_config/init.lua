@@ -5,6 +5,7 @@ require('core/plugin_config/treesitter')
 require('core/plugin_config/lsp_config')
 require('core/plugin_config/completions')
 require('core/plugin_config/harpoon')
+require('core/plugin_config/orgmode')
 
 -- Colorschemes (choose one)
 --require('core/plugin_config/gruvbox')
