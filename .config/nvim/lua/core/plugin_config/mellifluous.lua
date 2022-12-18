@@ -8,7 +8,6 @@ require('mellifluous').setup({
         enabled = true,
         cursor_line = false,
     },
-
     plugins = {
         --cmp = true,
         nvim_tree = {
@@ -16,7 +15,6 @@ require('mellifluous').setup({
             show_root = false,
         },
     },
-
     telescope = {
         enabled = true
     },
