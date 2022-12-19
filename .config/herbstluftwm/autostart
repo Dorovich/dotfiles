@@ -91,6 +91,7 @@ hc keybind $Mod-Mod1-e          spawn $scriptsdir/editcfg.sh
 #hc keybind $Mod-Mod1-c          spawn $scriptsdir/calc.sh
 hc keybind $Mod-Insert          spawn $scriptsdir/snippetctl.sh 1
 hc keybind $Mod-Mod1-b          spawn $scriptsdir/snippetctl.sh 2
+hc keybind $Mod-Mod1-s          spawn $scriptsdir/emojis.sh copy
 hc keybind $Mod-Print           spawn $scriptsdir/screenshot.sh 1
 hc keybind $Mod-Mod1-Print      spawn $scriptsdir/screenshot.sh 2
 hc keybind $Mod-Shift-Print     spawn $scriptsdir/screenshot.sh 3
