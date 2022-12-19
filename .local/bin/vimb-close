@@ -1,0 +1,7 @@
+#!/bin/sh
+
+instances=$(xdotool search --class vimb | wc -l)
+
+if [ $instances -gt 2 ]; then
+    xdotool key ctrl+q
+fi

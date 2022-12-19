@@ -36,6 +36,7 @@ nmap M '
 nmap ñ :
 nmap Ñ :
 #nmap d :quit<CR>
+nmap d :sh! ~/.local/bin/vimb-close<CR>
 #nmap D :quit!<CR>
 nmap b :open !
 nmap B :tabopen !
@@ -57,12 +58,11 @@ nnoremap xu :sh! ~/.local/bin/vimb-adblock-update<CR>
 # }}}
 
 # Shortcuts {{{
-shortcut-default dd
+shortcut-default sx
 
 shortcut-add dd=https://duckduckgo.com/?q=$0
 shortcut-add gg=https://encrypted.google.com/search?q=$0&pccc=1
-shortcut-add sx=https://searx.tiekoetter.com/search?q=$0
-shortcut-add sxng=https://searx.be/?q=$0
+shortcut-add sx=https://searx.envs.net/search?q=$0
 shortcut-add map=https://www.openstreetmap.org/search?query=$0
 shortcut-add gmap=https://maps.google.com/maps?saddr=$0&daddr=$1
 shortcut-add wiki=https://es.wikipedia.org/wiki/$0
@@ -81,9 +81,6 @@ shortcut-add rd=https://www.reddit.com/r/$0
 shortcut-add iv=https://farside.link/invidious/$0
 shortcut-add nt=https://farside.link/nitter/$0
 shortcut-add td=https://farside.link/teddit/r/$0
-
-shortcut-add sxngprefs=https://searx.be/?preferences=eJx1V8uSrDYM_ZqwoWYqN3eRyqJXqco2qcrdU8JWgwbb4vrRNPP1kYFuTDNZDDOWjDh6HWkUROzYE4ZLhw49mMqA6xJ0eEFXGVZglr8gRVZsR4MRLxVZudCMnu_z5YdPWFmMPevLP3__-6MKcMWA4FV_-bWKPVq8cFDgK48hmRgado3DqYnQXv4CE7DSTI0o2dzQXxjk-M6-q5a33kKcBYLhjhRrvL1p8EMVKENpVl3GVil0EX0Dhjorf26WQd_AKdTNBmiV_kzo54ZcEynK-4sH5K7kKIpN5dmYBzIK0Bp5H11HTqL0Rwdd0wRWBKa2qAl--e1PGIfakvfsm-ZKBsMiE4C1POsQ2WOhEBx0w5pC02wxX6SRVNMsgc23WnJdqc_netW-3KpvpJFFuv5epLFNasAoN6OclVJv8VZc4BGdhDpgYUq8DsHjVZxThBIzkc04lhhU8oawlGjETwl6Y1Mglc-6qzUugSR2BwfR80S6aVgqwst5ooE0RDiYE9T5p-N6QsgX9_trPC2MYlWe2aLlDxpzCvZb3-6FS1dDavClwCPWga9xAo-1Jo9KcjNvYbp6cgNBmYWOOkk_hFii7KRooH3EVmqyRd9tx465E5inlGzy0cCcayLs5VBqLN8ID6-NrHUZ4B5aD_mxfY-sbnfvyUHx8geFnnflIMGAUHzZkNjyc509C1QoPt821fkuX2vFrpNmLcvQcBsivvuwoYJPM3tSYcftEG-HVLvRbpdzMXocuQAwgkDtKDwKeEztu7T-dvo5gTskZBGcm2MVn1IRcCRY6eAgzYKczTo_niUBFrLvD0FAK0ZJ1UH1bMCX3RKiNPGYibHAFnmYObJkYgC3e5hckIyHvoA7Q89cvjpziqnFAuRT8uw3IDNbzs1WXLuRRS7OE7VzadiCFzITvw4ZEaK_g9P-KM1t2jIP4VUoDC6y_NwEPxNHfL0VOHl1kmbuoTifxDy_RE-Tip_sjrKk0e1lHfDTgT24xx-Iw6HY4JabaBf41M4d2ke9joj-JdQLtcsnBunIacK2UPlkZSSU8eU7DeykROswO3azxQLfx_g-Tu5IfFYY8sDuXhCWghFjnj9rkX4pPtd7qTxkRwp47801I31aeqtCdxxvy8uGXLrXGeejn_2dbmWpt1IoCuy4V2K-vXHxy9A6QGmjpq7b-0BGiheb83Go3EiaTJqpcE6zDDRf9-lBvPus-J8JcopPFA_nQ5QxSvM4cbfI11V7znPqyc_oKBVMJueY-3Sle4o7opXJD5Ni5fYTkk1-iMwm-4JX-s3uSvhOyo44lYxWyB4oxafuSLiW7spw0gUnzwC7n8JrA6EvSBlkPuYJHVB2tgLPQyesLAMWtkl_1IcoozbKnH4M61Hn9tovjb2wontqycsi2kIxccS69ODhlXmkcgQc4ydYNcXTaiblLqV6dFyIWg0slHA1PD1KPAypTS6mR5ukEX0Kz4DIckpalgWp1lhMqjhRzGvn62cXMq9fOTKHahmrTy5gs46YsS-WGCsEYmUvqaMHF4xEptibvn3__vt9BzCx146GwmSM_p0efLMvsKNJ0uLhkgni_r6d3hmadfmevOy-2xzc1QHNVfbkK580EopG9aiGk0amTyPJHXAOT3r5-uN9HoDr4WSl5xCF11GgyaBUX0FbyFFqSK3_w8yy4xtZ6M5QPWTuaGR7FWs2J76SsSxFevkPwnfpig==&q=$0
-shortcut-add sxprefs=https://searx.tiekoetter.com/?preferences=eJx1V81y4zYMfpr6oomn2z10evCps90H6N41EAlLiEhC4Y9k5ekLSrJF2ekhSgiAJAh8-IAoiNiyJwyXFh16MCcDrk3Q4gXD249_T4YVGFm4E6TIiu1gMOKlZW4NnsiKZT14vs2XXz7hyWLsWF9-_vh1CnDFgOBVd_n9FDu0eAmUt588hmRiqNnVDqc6QnP5B0zAk2aqRclmRH9hkOWZfXtat9UhzuJJduOk0EX0NRhqnZW_t_2gR3AKdb3du0o_Evq5JldHinLA4ie5KzmKcqjybMz9fgrQGNmPriUnQfmrhbauAysCU1nUBL_98TcMfWXJe_Z1fSWDYZGJh5V8qxDZY6EQP2jEikJdbyFepJFUXS_hW61uNMpFilD8F0FDri035HW1mhfbFulIGlmk6-9FGpukeoxiGWWtlHqLY2HAAzqJcMDiKAlDCB6vpRMzDqUPKnlDWEo04qekobYpkMpr3VYal8gSu8OLNYtHvupSs3mFnifSdc0CDS_riXrSEOGwSZ6Rf1quJoRsuNuvEbcwyDXyzSdafqchJ2m3ipLG-eAzxtmyMyLfrb7dikhcDanelwKPWAW-xgk8Vpo8KsnxvL3j6sn1BGU25TJKYQ9LS63ACkIs_WgFjHAPhmKNDfp2W67V9ZrZTT4YmDPWwg6zUmN5JDxsG1jrMk8dNB7yZ7uvW3ZvC7K62UNDDoqT3il0vCt7iRSEwg1DcrCfq_zMQIXi821TvdrytVLsWqn7EtqGmxDx7MPmFXya2ZMqomrppgwnvUsc4njAjxvstt2CJAnv780FAJLHjLeAwkQF6O-6ITUCBNiAfNSLlovHDSBhaCncC27QDZZbho6jcN0GUzn4rHG826ZGeOVgPQ-0KT8mcAfQLIJXHljFL3AJOBCsVFhIIfSpSS6m7ZKQBvQpPIKzbsiIrPLnAXOwkFOGDzOJqbBYFVTHBnz5hBCF4IbcGgrfI_ezxEEA1IPbgydsT1rqyQuNFzEVSfaaXY6_rJMLAu7QFa-eQXBb3rAIKmkpck7-ZhGnmHI2Hs9_SB6kBWSEEnKiC7ORLHKxnqiZy7sseGkREpED4KRV3sBpf5RmamuY-_AsPLiaBR-JIz5bBU5ePUuzu0s5lfyZSZ3i_HzAyPNTLjSp-MnuILOzFQaVgoweXDAyGRTsrJNGty8Dfjqwh938jtgfig_GjKld4FMzt2jvFT0g-qfcLB1WruiFwKYJm0Llk21MaTux1476IgB8o56d1FYVZsdOnlM4_D6ch8kdw2WlUR2arBeXS8GAMc8FawF9KX6txVJ5yK8Uz05na067tFDGSRjnMHZAZ5cmdgf_cpi0rHSrst_bGY0gTYEddihn5dYAn0aHgydN1NS2e61JY5fqU_OxtY8k9S11XLxt78f_06VfonHVnnOXf_QpqfJctGubo7jPA-3Wg4oOufa0lzM3-eFJm-wLLiInkCFOJTEWsnvoJLrtU_OYAXbHM-2HKJNAFBZ_UDl5KZMGiq62UvHBN-kzmuLLGCkQkPwdO5gQp-pZ6uZqeLpDZRBuus67UZwo5un3-cCJzcrSQ1dMQN--f__ztvs3xejPdC-EfeIdTBLshUtG7u28rc4M9TqTT16G5a057GohyVp6W49zeGD464O6TN3r4uWUjkMUNkG5RihevV5jpFLjxjulfKtM4W21_h8zy-BvZDr7wtJc5T-AK79opM_UqkPVv2o85JG1lqlXPLM5KyfpYQKDy39R-P57&q=$0
 
 # bookmarks: ~/.local/share/vimb/bookmark
 # }}}
@@ -160,7 +157,7 @@ aug YtBlock
 aug end
 
 aug SearxEsc
-    au LoadFinished https://searx.be/search?q=* no <Esc>
+    au LoadFinished https://searx.envs.net/search?q=* no <Esc>
 aug end
 
 # Cookies {{{
