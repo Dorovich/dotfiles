@@ -9,7 +9,7 @@ require('mellifluous').setup({
         cursor_line = false,
     },
     plugins = {
-        --cmp = true,
+        cmp = true,
         nvim_tree = {
             enabled = true,
             show_root = false,
