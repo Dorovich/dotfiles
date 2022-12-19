@@ -24,3 +24,5 @@
 *.color14:  #56b6c2
 *.color7:   #abb2bf
 *.color15:  #c5c8c6
+
+xterm*font:     *-fixed-*-*-*-18-*
