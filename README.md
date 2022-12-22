@@ -12,6 +12,6 @@
 - Editor: `neovim`, `emacs (Doom)`
 - Fuente: `mononoki (Nerd Font)`
 - Música: `spotify`, `mpd (+ mpc/ncmpcpp)`
-- Navegador: `librewolf`, `firefox`, `qutebrowser`, `vimb`
+- Navegador: `firefox`, `qutebrowser`, `vimb`
 - Notificaciones: `dunst`
 - Tema GTK: `Pop-dark`

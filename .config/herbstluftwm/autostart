@@ -183,6 +183,7 @@ hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH|POPUP_MENU)' floa
 hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 hc rule class~'.*-prompter|.*\.exe|scratchpad|[Dd]ragon|[Ss]xiv|[Ss]team|[Mm]pv' floating=on
+hc rule windowrole='GtkFileChooserDialog' floating=on
 
 hc set tree_style '╾│ ├└╼─┐'
 

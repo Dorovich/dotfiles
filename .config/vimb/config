@@ -5,7 +5,7 @@
 #
 # https://fanglingsu.github.io/vimb/man.html
 
-set home-page=https://dorovich.github.io/f
+set home-page=https://dorovich.github.io/home
 
 # UI {{{
 set input-autohide=true
