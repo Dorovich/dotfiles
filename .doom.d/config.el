@@ -87,7 +87,7 @@
     ;;doom-dashboard-widget-shortmenu
     doom-dashboard-widget-loaded))
 
-(global-hide-mode-line-mode)
+;;(global-hide-mode-line-mode)
 
 (after! evil
         (setq evil-normal-state-cursor '(box "light yellow")

@@ -19,6 +19,7 @@ local capability_data = require('cmp_nvim_lsp').default_capabilities()
 require('lspconfig').clangd.setup {
     on_attach = attach_data,
     capabilities = capability_data,
+    cmd = { "clangd", "--query-driver=/usr/bin/g++", "--enable-config" }
 }
 
 require('lspconfig').sumneko_lua.setup {

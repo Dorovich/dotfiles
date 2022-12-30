@@ -104,7 +104,7 @@ set accelerated-2d-canvas=ondemand
 set history-max-items=50
 set webinspector=true
 set header=DNT=1,User-Agent,Cookie='name=value'
-set user-agent=Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0
+set user-agent=Mozilla/5.0 (X11, Linux x86_64; rv:107.0) Gecko/20100101 Firefox/107.0
 set html5-database=true
 set html5-local-storage=true
 # }}}

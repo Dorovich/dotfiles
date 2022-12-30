@@ -578,14 +578,14 @@ def_key "x"
 # }}}
 ### GESTIONAR COLA ### {{{
 
-def_key "H"
-   previous
-
 def_key "J"
    move_selected_items_down
 
 def_key "K"
    move_selected_items_up
+
+def_key "H"
+   previous
 
 def_key "L"
    next
@@ -596,16 +596,16 @@ def_key "a"
 def_key "d"
   delete_playlist_items
 
-def_key "D"
+def_key "c"
   clear_playlist
 
-def_key "ctrl-d"
+def_key "D"
   crop_playlist
 
-def_key "D"
+def_key "c"
   clear_main_playlist
 
-def_key "ctrl-d"
+def_key "D"
   crop_main_playlist
 
 # }}}
@@ -618,66 +618,75 @@ def_key "ctrl-a"
 ### SELECCIONES ### {{{
 
 def_key "v"
-   select_item
+    select_item
 
 def_key "V"
-   remove_selection
+    remove_selection
 
 def_key "ctrl-v"
-   reverse_selection
+    reverse_selection
 
 # }}}
 ### DESPLAZARSE ### {{{
 
 def_key "h" 
-   previous_column
+    previous_column
 
 def_key "j"
-   scroll_down
+    scroll_down
 
 def_key "k"
-   scroll_up
+    scroll_up
 
 def_key "l" 
-   next_column
+    next_column
 
 def_key "h"
-  jump_to_parent_directory
+    jump_to_parent_directory
 
 def_key "l"
-  enter_directory
+    enter_directory
 
 def_key "g"
-  move_home
+    move_home
 
 def_key "G"
-  move_end
+    move_end
 
 def_key "ctrl-g"
-   jump_to_playing_song
+    jump_to_playing_song
+
+def_key "ctrl-u"
+    page_up
+
+def_key "ctrl-d"
+    page_down
 
 # }}}
 ### VOLUMEN ### {{{
 
 def_key "+" 
-   volume_up
+    volume_up
 
 def_key "-" 
-   volume_down
+    volume_down
 
 # }}}
 ### OTROS ### {{{
 
 def_key "space"
-  toggle_visualization_type
+    toggle_visualization_type
 
 def_key "ctrl-l"
-   show_lyrics
+    show_lyrics
 
 def_key "ctrl-r"
-   refetch_lyrics
+    refetch_lyrics
 
 def_key "ctrl-t"
-  toggle_lyrics_fetcher
+    toggle_lyrics_fetcher
+
+def_key "u"
+    update_database
 
 # }}}
