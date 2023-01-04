@@ -31,6 +31,8 @@ opt.updatetime = 50
 opt.incsearch = true
 opt.hlsearch = true
 opt.encoding = "UTF-8"
+opt.splitbelow = true
+opt.splitright = true
 vim.cmd('language es_ES.utf8')
 
 -- Tabulaciones

@@ -40,7 +40,7 @@ hc set smart_frame_surroundings 0
 hc set mouse_recenter_gap 0
 hc set tree_style '╾│ ├└╼─┐'
 
-source "$HOME/.config/herbstluftwm/keybinds"
+source "$HOME/.config/herbstluftwm/keybinds-b"
 source "$HOME/.config/herbstluftwm/colors"
 
 # rules
@@ -72,6 +72,7 @@ done
 #actually autostart applications
 if hc silent new_attr bool my_not_first_autostart ; then
     setxkbmap es &
+    xset r rate 300 35 &
     nitrogen --restore &
     picom &
     mpd &
