@@ -1,6 +1,8 @@
 #!/bin/bash
 # Source: https://github.com/kubami/dmenu-mpd
 
+dmenulines=10
+
 if [ -f $HOME/.dmenurc ]; then
   . $HOME/.dmenurc
 else
@@ -70,13 +72,13 @@ case $1 in
 	
 	while true; do
 
-		ARTIST="$(mpc list artist | sort -f | $DMENU -p artists:)";
+		ARTIST="$(mpc list artist | sort -f | $DMENU -l $dmenulines -p artists:)";
 		if [ "$ARTIST" = "" ]; then break; fi
 		
 		while true; do
 
 			ALBUMS=$(mpc list album artist "$ARTIST" | sort -f);
-			ALBUM=$(echo -e "replace all\nadd all\n--------------------------\n$ALBUMS" | $DMENU -p albums:);
+			ALBUM=$(echo -e "replace all\nadd all\n--------------------------\n$ALBUMS" | $DMENU -l $dmenulines -p albums:);
 			if [ "$ALBUM" = "" ]; then break;
 			
 			elif [ "$ALBUM" = "replace all" ]; then
@@ -93,7 +95,7 @@ case $1 in
 			while true; do
 				
 				TITLES=$(mpc list title artist "$ARTIST" album "$ALBUM")
-				TITLE=$(echo -e "replace all\nadd all\n--------------------------\n$TITLES" | $DMENU -p tracks:);
+				TITLE=$(echo -e "replace all\nadd all\n--------------------------\n$TITLES" | $DMENU -l $dmenulines -p tracks:);
 				if [ "$TITLE" = "" ]; then break
 				elif [ "$TITLE" = "replace all" ]; then
 					CUR_SONG=$(mpc current)
@@ -144,7 +146,7 @@ case $1 in
 
 	-t|--track)
 		
-	TITLE=$(mpc list title | sort -f | $DMENU -p tracks:)
+	TITLE=$(mpc list title | sort -f | $DMENU -l $dmenulines -p tracks:)
 	if [ "$TITLE" = "" ]; then exit; fi
 	
 	SONG=$(mpc find title "$TITLE" | head -1) 
@@ -152,7 +154,7 @@ case $1 in
 	;;
 
 	-p|--playlist)
-	PLAYLIST=$(mpc lsplaylists | $DMENU -p playlists:);
+	PLAYLIST=$(mpc lsplaylists | $DMENU -l $dmenulines -p playlists:);
 	if [ "$PLAYLIST" = "" ]; then exit; fi
 	CUR_SONG=$(mpc current)
 	mpc clear
@@ -163,7 +165,7 @@ case $1 in
 	-j|--jump)
 	
         CUR_PLAYLIST=$(mpc playlist)
-        CHOICE=$(echo -e "next\nprev\n--------------------------\n$CUR_PLAYLIST" | $DMENU -p jump:);
+        CHOICE=$(echo -e "next\nprev\n--------------------------\n$CUR_PLAYLIST" | $DMENU -l $dmenulines -p jump:);
         case $CHOICE in
             "")
                 break
@@ -185,14 +187,14 @@ case $1 in
 	
 	while true; do
 
-		ALBUM=$(mpc list album | sort -f | $DMENU -p albums:);
+		ALBUM=$(mpc list album | sort -f | $DMENU -l $dmenulines -p albums:);
 		if [ "$ALBUM" = "" ]; then break;
 		fi
 		
 		while true; do
 			
 			TITLES=$(mpc list title album "$ALBUM")
-			TITLE=$(echo -e "replace all\nadd all\n--------------------------\n$TITLES" | $DMENU -p tracks:);
+			TITLE=$(echo -e "replace all\nadd all\n--------------------------\n$TITLES" | $DMENU -l $dmenulines -p tracks:);
 			if [ "$TITLE" = "" ]; then break
 			elif [ "$TITLE" = "replace all" ]; then
 				CUR_SONG=$(mpc current)
