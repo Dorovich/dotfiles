@@ -56,10 +56,9 @@ hc rule windowrole='GtkFileChooserDialog' floating=on
 # unlock, just to be sure
 hc unlock
 
-# do multi monitor setup here, e.g.:
+# monitors
 #hc set_monitors 1280x1024+0+0 1280x1024+1280+0
-# or simply:
-#hc detect_monitors
+hc detect_monitors
 
 # find the panel
 panel=~/.config/polybar/launch.sh
