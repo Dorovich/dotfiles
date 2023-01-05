@@ -1,11 +1,11 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""             CONFIGS BASICAS             """""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-" (Espacio dos veces para desplegar) {{{
+" (Tabulador para desplegar) {{{
 set laststatus=0
 set showtabline=0
 set wildmenu
-set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.exe,*.o,*.mp3,*.mp4,*.mov,*.mkv,*.ogg,*.dat
+set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.exe,*.o,*.mp3,*.mp4,*.mov,*.mkv,*.ogg,*.dat,*.odt,*.ppt
 set ruler
 set number
 set relativenumber
@@ -37,7 +37,8 @@ set foldenable
 set foldmethod=marker
 set title
 set cursorline
-set titlestring=%f\ %a\ %m titlelen=70
+set titlestring=%f\ %a\ %m
+set titlelen=70
 set statusline=>\ %f
 set showbreak=>\ 
 syntax on
@@ -53,7 +54,7 @@ autocmd CursorMoved * echon ''
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""              CONFIGS TECLAS             """""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-" (Espacio dos veces para desplegar) {{{
+" (Tabulador para desplegar) {{{
 let g:mapleader = ' '
 nnoremap <silent> <C-s> :w!<CR>
 nnoremap <silent> <C-q> :q<CR>
@@ -62,21 +63,18 @@ nnoremap <silent> <Leader>q :q<CR>
 nnoremap <silent> <Leader><S-q> :q!<CR>
 nnoremap <S-h> <Home>
 nnoremap <S-l> <End>
-imap jk <Esc>l
-cmap jk <Esc>
+imap jk <Esc>
 vmap q <Esc>
-nnoremap <silent> <TAB> :bnext<CR>
-nnoremap <silent> <S-TAB> :bprevious<CR>
-nnoremap <silent> <C-c> :bdelete!<CR>
+nnoremap <silent> gl :bnext<CR>
+nnoremap <silent> gh :bprevious<CR>
 xnoremap < <gv
 xnoremap > >gv
 nnoremap <silent> U <C-r>
 nmap <S-y> y$
-map ; :
 map ñ :
 map Ñ :
 map Q gq
-nnoremap <Leader><Leader> za
+nnoremap <Tab> za
 nnoremap <silent> <Leader>f :Lex %:p:h<CR>
 nnoremap <silent> <Leader>e :Lex %:p:h<CR>
 nnoremap <C-h> <C-w>h
@@ -87,9 +85,6 @@ nnoremap <silent> <M-j> :resize -2<CR>
 nnoremap <silent> <M-k> :resize +2<CR>
 nnoremap <silent> <M-h> :vertical resize -2<CR>
 nnoremap <silent> <M-l> :vertical resize +2<CR>
-nnoremap <Leader>pp bi(<Esc>ea)<Esc>
-nnoremap <Leader>ll bi{<Esc>ea}<Esc>
-nnoremap <Leader>cc bi[<Esc>ea]<Esc>
 nnoremap <silent> <Leader>h :noh<cr>
 nnoremap <C-r> :%s//<Left>
 " }}}
@@ -97,7 +92,7 @@ nnoremap <C-r> :%s//<Left>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""             CONFIGS COLORES             """""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-" (Espacio dos veces para desplegar) {{{
+" (Tabulador para desplegar) {{{
 function! MyHighlights() abort
     highlight clear CursorLine
     "         object       effect       foreground   background
@@ -114,7 +109,7 @@ function! MyHighlights() abort
     highlight Function     cterm=none   ctermfg=1    ctermbg=none
     highlight Visual       cterm=none   ctermfg=none ctermbg=238
     highlight Character    cterm=none   ctermfg=12   ctermbg=none
-    highlight ModeMsg      cterm=none   ctermfg=6    ctermbg=none
+    highlight ModeMsg      cterm=bold   ctermfg=1    ctermbg=none
     highlight LineNr       cterm=none   ctermfg=8    ctermbg=none
     highlight CursorLine   cterm=none   ctermfg=none ctermbg=234
     highlight CursorLineNr cterm=bold   ctermfg=6    ctermbg=234
