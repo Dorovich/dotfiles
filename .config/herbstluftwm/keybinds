@@ -24,13 +24,13 @@ hc keybind $Mod-e               spawn emacsclient -c -a 'emacs'
 hc keybind $Mod-v               spawn tabbed -c vimb -e
 
 # Scripts
-hc keybind $Mod-p               spawn $scriptsdir/passget.sh
-hc keybind $Mod-m               spawn $scriptsdir/mpdctl.sh
+hc keybind $Mod-m               spawn $scriptsdir/music.sh
+hc keybind $Mod-p               spawn $scriptsdir/password.sh
 hc keybind $Mod-$AMod-o         spawn $scriptsdir/soundout.sh
-hc keybind $Mod-$AMod-k         spawn $scriptsdir/prockill.sh
+hc keybind $Mod-$AMod-k         spawn $scriptsdir/kill.sh
 hc keybind $Mod-$AMod-e         spawn $scriptsdir/editcfg.sh
-hc keybind $Mod-Insert          spawn $scriptsdir/snippetctl.sh 1
-hc keybind $Mod-$AMod-b         spawn $scriptsdir/snippetctl.sh 2
+hc keybind $Mod-Insert          spawn $scriptsdir/snippet.sh 1
+hc keybind $Mod-$AMod-b         spawn $scriptsdir/snippet.sh 2
 hc keybind $Mod-plus            spawn $scriptsdir/volume.sh 1
 hc keybind $Mod-minus           spawn $scriptsdir/volume.sh 2
 hc keybind $Mod-Print           spawn $scriptsdir/screenshot.sh 1
