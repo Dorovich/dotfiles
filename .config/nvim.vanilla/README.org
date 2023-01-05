@@ -3,7 +3,11 @@
 Esta es una configuración sencilla y sin plugins ni nada raro para tanto *Vim* como *Neovim*. Se puede instalar con un solo comando tal que...
 
 ...para *Vim*:
-=curl https://github.com/Dorovich/dotfiles/tree/main/.config/nvim.vanilla/init.vim > ~/.vimrc=
+#+begin_src bash
+curl https://github.com/Dorovich/dotfiles/tree/main/.config/nvim.vanilla/init.vim > ~/.vimrc
+#+end_src
 
 ...para *Neovim*:
-=curl https://github.com/Dorovich/dotfiles/tree/main/.config/nvim.vanilla/init.vim > ~/.config/nvim/init.vim=
+#+begin_src bash
+curl https://github.com/Dorovich/dotfiles/tree/main/.config/nvim.vanilla/init.vim > ~/.config/nvim/init.vim
+#+end_src
