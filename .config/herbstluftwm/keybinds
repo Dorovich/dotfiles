@@ -16,7 +16,7 @@ AMod=Mod1
 # Programas
 hc keybind $Mod-Escape          spawn slock
 hc keybind $Mod-Return          spawn $terminal
-hc keybind $Mod-d               spawn dmenu_run
+hc keybind $Mod-d               spawn dmenu_run -i -p "Run:"
 hc keybind $Mod-Shift-d         spawn rofi -modi drun,run -show drun
 hc keybind $Mod-b               spawn $browser
 hc keybind $Mod-n               spawn $terminal -e nnn
@@ -65,13 +65,14 @@ hc keybind $Mod-Shift-k         shift up
 hc keybind $Mod-Shift-l         shift right
 
 # Estructura de ventanas
+hc keybind $Mod-c               close_or_remove
 hc keybind $Mod-q               close
-hc keybind $Mod-c               close
 hc keybind $Mod-f               fullscreen toggle
 hc keybind $Mod-s               set_attr clients.focus.floating toggle
 hc keybind $Mod-Shift-s         floating toggle
 hc keybind $Mod-Shift-m         set_attr clients.focus.minimized true
 hc keybind $Mod-Control-m       jumpto last-minimized
+hc keybind $Mod-t               pseudotile
 
 # Crear marcos
 hc keybind $Mod-u               split bottom  0.5
@@ -97,6 +98,7 @@ hc mousebind $Mod-Button3       resize
 
 # General
 hc keybind $Mod-Shift-r         reload
+hc keybind $Mod-F1              spawn $terminal -e less /usr/share/doc/help_hlwm.txt
 
 # Tags
 hc keybind $Mod-period          use_index +1 --skip-visible

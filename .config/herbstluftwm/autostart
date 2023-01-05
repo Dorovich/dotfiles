@@ -16,7 +16,7 @@ hc() {
 }
 
 hc emit_hook reload
-
+hc set default_frame_layout horizontal
 hc set focus_follows_mouse 1
 hc set frame_border_width 1
 hc set always_show_frame 0
@@ -31,7 +31,7 @@ hc attr theme.border_width 4
 hc attr theme.floating.border_width 4
 hc attr theme.floating.outer_width 1
 hc attr theme.title_height 0
-hc attr theme.padding_top 0  # space below the title's baseline (i.e. text depth)
+hc attr theme.padding_top 0
 hc attr theme.active.outer_width 1
 hc set window_gap 10
 hc set frame_padding 0
@@ -45,7 +45,7 @@ source "$HOME/.config/herbstluftwm/colors"
 
 # rules
 hc unrule -F
-hc rule focus=on # normally focus new clients
+hc rule focus=on
 hc rule floatplacement=center
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH|POPUP_MENU)' floating=on
 hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
