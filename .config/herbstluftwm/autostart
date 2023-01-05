@@ -40,7 +40,7 @@ hc set smart_frame_surroundings 0
 hc set mouse_recenter_gap 0
 hc set tree_style '╾│ ├└╼─┐'
 
-source "$HOME/.config/herbstluftwm/keybinds-b"
+source "$HOME/.config/herbstluftwm/keybinds"
 source "$HOME/.config/herbstluftwm/colors"
 
 # rules
