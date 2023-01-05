@@ -47,7 +47,7 @@ hc keybind $Mod-l               focus right
 hc keybind $Mod-c               cycle
 hc keybind $Mod-Tab             cycle_all +1
 hc keybind $Mod-Shift-Tab       cycle_all -1
-hc keybind $Mod-z               cycle_monitor
+hc keybind $Mod-Delete          cycle_monitor
 hc keybind $Mod-i               jumpto urgent
 
 # Cambiar ventanas
