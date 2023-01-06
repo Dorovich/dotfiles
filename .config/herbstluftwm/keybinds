@@ -22,6 +22,7 @@ hc keybind $Mod-b               spawn $browser
 hc keybind $Mod-n               spawn $terminal -e nnn
 hc keybind $Mod-e               spawn emacsclient -c -a 'emacs'
 hc keybind $Mod-v               spawn tabbed -c vimb -e
+hc keybind $Mod-w               spawn pcmanfm
 
 # Scripts
 hc keybind $Mod-m               spawn $scriptsdir/music.sh
