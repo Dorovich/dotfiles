@@ -1,5 +1,4 @@
 local autocmd = vim.api.nvim_create_autocmd
-local getbfr = vim.api.nvim_get_current_buf
 
 autocmd(
     { "FileType" },
@@ -12,15 +11,28 @@ autocmd(
 )
 
 autocmd(
+    { "TermEnter" },
+    {
+        callback = function ()
+            vim.schedule(Term_utils)
+        end,
+    }
+)
+
+autocmd(
     { "TermClose" },
     {
-        command = [[call nvim_input('<CR>')]],
+        command = "call nvim_input('<CR>')",
     }
 )
 
 function C_utils ()
     require("core/utils")
-    local nbfr = getbfr();
-    BFR_NMAP(nbfr, '<C-c>', ':!make<CR>', NRSL)
-    BFR_NMAP(nbfr, '<C-t>', ':split<CR>:term<CR>i', NRSL)
+    NMAP('<C-c>', ':!make<CR>', NRSLBFR)
+    NMAP('<C-t>', ':split<CR>:term<CR>i', NRSLBFR)
+end
+
+function Term_utils ()
+    vim.opt_local.number = false;
+    vim.opt_local.relativenumber = false;
 end
