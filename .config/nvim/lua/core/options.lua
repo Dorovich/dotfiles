@@ -34,6 +34,7 @@ opt.encoding = "UTF-8"
 opt.splitbelow = true
 opt.splitright = true
 vim.cmd('language es_ES.utf8')
+g.c_syntax_for_h = true
 
 -- Tabulaciones
 opt.smarttab = true
