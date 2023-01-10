@@ -6,10 +6,10 @@ g.maplocalleader = " "
 
 opt.number = true
 opt.relativenumber = true
-opt.laststatus = 2
+opt.laststatus = 0
 opt.showtabline = 0
 opt.cursorline = true
-opt.showmode = false
+opt.showmode = true
 opt.ruler = true
 
 opt.mouse = "a"

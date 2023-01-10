@@ -63,6 +63,7 @@ shortcut-default sx
 shortcut-add dd=https://duckduckgo.com/?q=$0
 shortcut-add gg=https://encrypted.google.com/search?q=$0&pccc=1
 shortcut-add sx=https://searx.envs.net/search?q=$0
+shortcut-add sxng=https://searx.be/search?q=$0
 shortcut-add map=https://www.openstreetmap.org/search?query=$0
 shortcut-add gmap=https://maps.google.com/maps?saddr=$0&daddr=$1
 shortcut-add wiki=https://es.wikipedia.org/wiki/$0
