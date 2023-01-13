@@ -5,7 +5,7 @@
 #define BROWSER "firefox"
 
 /* appearance */
-static const unsigned int borderpx  = 3;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
@@ -16,22 +16,23 @@ static const int smartgaps          = 0;        /* 1 means no outer gap when the
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 
-static const char *fonts[]          = { "mononoki NF:pixelsize=12" };
+static const char *fonts[]          = { "mononoki NF:pixelsize=15" };
 static const char col_white[]       = "#ABB2BF";
 static const char col_yellow[]      = "#D19A66";
 static const char col_gray[]        = "#5C6370";
 static const char col_darkgray[]    = "#151515";
 
 static const char *colors[][3]      = {
-	/*               fg         bg              border   */
-	[SchemeNorm] = { col_gray,  col_darkgray,   col_darkgray },
-	[SchemeSel]  = { col_white, col_yellow,     col_yellow  },
+	/*               fg             bg              border   */
+	[SchemeNorm] = { col_white,     col_darkgray,   col_darkgray },
+	[SchemeSel]  = { col_darkgray,  col_yellow,     col_yellow  },
 };
 
 static const char *const autostart[] = {
 	"setxkbmap", "es", NULL,
 	"xset", "r", "rate", "300", "35", NULL,
 	"nitrogen", "--restore", NULL,
+        "dwm-status", NULL,
 	"picom", NULL,
 	"mpd", NULL,
         "redshift", "-l", "41.39:2.16", "-m", "randr", "-t", "5500:5000", NULL,
@@ -94,15 +95,13 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_Escape, spawn,          CMD("slock") },
 	{ MODKEY|SHIFT,                 XK_q,      quit,           {0} },
+     	{ MODKEY|SHIFT,                 XK_r,      quit,           {1} }, 
         
 	{ MODKEY,                       XK_Return, spawn,          CMD(TERMINAL) },
 	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run -i -p 'Run:'") },
-	//{ MODKEY,                       XK_d,      spawn,          { (const char*[]){"dmenu_run", "-i", "-p", "'Run:'", NULL} },
 	{ MODKEY|SHIFT,                 XK_d,      spawn,          SHCMD("rofi -modi drun,run -show drun") },
 	{ MODKEY,                       XK_b,      spawn,          CMD(BROWSER) },
-	//{ MODKEY,                       XK_n,      spawn,          SHCMD(TERMINAL, "-e nnn") },
 	{ MODKEY,                       XK_n,      spawn,          SHCMD("st -e nnn") },
-	//{ MODKEY,                       XK_n,      spawn,          { (const char*[]){TERMINAL, "-e", "nnn", NULL} },
 	{ MODKEY,                       XK_e,      spawn,          SHCMD("emacsclient -c -a 'emacs'") },
 	{ MODKEY,                       XK_v,      spawn,          SHCMD("tabbed -c vimb -e") },
 	{ MODKEY,                       XK_w,      spawn,          CMD("pcmanfm") },
@@ -146,7 +145,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_u,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY,                       XK_f,      togglefullscr,  {0} },
-	{ MODKEY|SHIFT,                 XK_f,      togglefloating, {0} },
+	{ MODKEY,                       XK_s,      togglefloating, {0} },
         
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)

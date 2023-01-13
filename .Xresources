@@ -2,7 +2,7 @@
 *.font:     Roboto Mono:pixelsize=16:antialias=true:autohint=true
 */
 *.font:     mononoki NF:pixelsize=18:antialias=true:autohint=true
-*.alpha:    0.96
+*.alpha:    0.97
 
 *.background:   #151515
 *.foreground:   #abb2bf
