@@ -3,6 +3,7 @@
 #define TERMINAL "st"
 #define TERMCLASS "St"
 #define BROWSER "firefox"
+#define FILEMNGR "pcmanfm"
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
@@ -15,9 +16,8 @@ static const unsigned int gappov    = 10;       /* vert outer gap between window
 static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *barlayout        = "tl|s";
-
-static const char *fonts[]          = { "mononoki NF:pixelsize=15" };
+static const char *barlayout        = "tl|s";   /* t: tags, l: layout, n: window name, |: separator, s: extra stuff */
+static const char *fonts[]          = { "mononoki NF:pixelsize=15:antialias=true:autohint=true" };
 static const char col_white[]       = "#ABB2BF";
 static const char col_yellow[]      = "#D19A66";
 static const char col_gray[]        = "#5C6370";
@@ -30,10 +30,11 @@ static const char *colors[][3]      = {
 };
 
 static const char *const autostart[] = {
+        "wmname", "dwm", NULL,
 	"setxkbmap", "es", NULL,
 	"xset", "r", "rate", "300", "35", NULL,
-	"nitrogen", "--restore", NULL,
         "dwm-status", NULL,
+	"nitrogen", "--restore", NULL,
 	"picom", NULL,
 	"mpd", NULL,
         "redshift", "-l", "41.39:2.16", "-m", "randr", "-t", "5500:5000", NULL,
@@ -89,39 +90,52 @@ static const Layout layouts[] = {
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
-#define CMD(cmd) { .v = (const char*[]){ cmd, NULL } }
-//#define COMMAND .v = (const char*[])
+#define CMD(cmd) { .v = cmd }
+
+/* defined commands */
+static const char *term_cmd[]       = { TERMINAL, NULL };
+static const char *browser_cmd[]    = { BROWSER, NULL };
+static const char *filemngr_cmd[]   = { FILEMNGR, NULL };
+static const char *lock_cmd[]       = { "slock", NULL };
+static const char *dmenu_cmd[]      = { "dmenu_run", "-i", "-p", "'Run:'", NULL };
+static const char *rofi_cmd[]       = { "rofi", "-show", "drun", NULL };
+static const char *nnn_cmd[]        = { TERMINAL, "-e", "nnn", NULL };
+static const char *vimb_cmd[]       = { "tabbed", "-c", "vimb", "-e", NULL };
+static const char *emacs_cmd[]      = { "emacsclient", "-c", "-a", "'emacs'", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_Escape, spawn,          CMD("slock") },
-	{ MODKEY|SHIFT,                 XK_q,      quit,           {0} },
-     	{ MODKEY|SHIFT,                 XK_r,      quit,           {1} }, 
+	{ MODKEY,                       XK_Escape, spawn,          CMD(lock_cmd) },
+	//{ MODKEY|SHIFT,                 XK_q,      quit,           {0} },
+     	{ MODKEY|SHIFT,                 XK_r,      quit,           {1} }, /* restart dwm */
         
-	{ MODKEY,                       XK_Return, spawn,          CMD(TERMINAL) },
-	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run -i -p 'Run:'") },
-	{ MODKEY|SHIFT,                 XK_d,      spawn,          SHCMD("rofi -modi drun,run -show drun") },
-	{ MODKEY,                       XK_b,      spawn,          CMD(BROWSER) },
-	{ MODKEY,                       XK_n,      spawn,          SHCMD("st -e nnn") },
-	{ MODKEY,                       XK_e,      spawn,          SHCMD("emacsclient -c -a 'emacs'") },
-	{ MODKEY,                       XK_v,      spawn,          SHCMD("tabbed -c vimb -e") },
-	{ MODKEY,                       XK_w,      spawn,          CMD("pcmanfm") },
+        /* Programs */
+	{ MODKEY,                       XK_Return, spawn,          CMD(term_cmd) },
+	{ MODKEY,                       XK_b,      spawn,          CMD(browser_cmd) },
+	{ MODKEY,                       XK_w,      spawn,          CMD(filemngr_cmd) },
+	{ MODKEY,                       XK_d,      spawn,          CMD(dmenu_cmd) },
+	{ MODKEY|SHIFT,                 XK_d,      spawn,          CMD(rofi_cmd) },
+	{ MODKEY,                       XK_n,      spawn,          CMD(nnn_cmd) },
+	{ MODKEY,                       XK_e,      spawn,          CMD(emacs_cmd) },
+	{ MODKEY,                       XK_v,      spawn,          CMD(vimb_cmd) },
 
-	{ MODKEY,                       XK_m,      spawn,          SHCMD("~/.config/herbstluftwm/scripts/music.sh") },
-	{ MODKEY,                       XK_p,      spawn,          SHCMD("~/.config/herbstluftwm/scripts/password.sh") },
-	{ MODKEY|ALT,                   XK_o,      spawn,          SHCMD("~/.config/herbstluftwm/scripts/soundout.sh") },
-	{ MODKEY|ALT,                   XK_k,      spawn,          SHCMD("~/.config/herbstluftwm/scripts/kill.sh") },
-	{ MODKEY|ALT,                   XK_e,      spawn,          SHCMD("~/.config/herbstluftwm/scripts/editcfg.sh") },
-	{ MODKEY,                       XK_Insert, spawn,          SHCMD("~/.config/herbstluftwm/scripts/snippet.sh 1") },
-	{ MODKEY|ALT,                   XK_b,      spawn,          SHCMD("~/.config/herbstluftwm/scripts/snippet.sh 2") },
-	{ MODKEY,                       XK_plus,   spawn,          SHCMD("~/.config/herbstluftwm/scripts/volume.sh 1") },
-	{ MODKEY,                       XK_minus,  spawn,          SHCMD("~/.config/herbstluftwm/scripts/volume.sh 2") },
-	{ MODKEY,                       XK_Print,  spawn,          SHCMD("~/.config/herbstluftwm/scripts/screenshot.sh 1") },
-	{ MODKEY|ALT,                   XK_Print,  spawn,          SHCMD("~/.config/herbstluftwm/scripts/screenshot.sh 2") },
-	{ MODKEY|SHIFT,                 XK_Print,  spawn,          SHCMD("~/.config/herbstluftwm/scripts/screenshot.sh 3") },
-	{ MODKEY|CTRL,                  XK_Print,  spawn,          SHCMD("~/.config/herbstluftwm/scripts/screenshot.sh 4") },
-	//{ MODKEY|SHIFT,                 XK_q,      spawn,          SHCMD("~/.config/herbstluftwm/scripts/wmquit.sh") },
-
+        /* Scripts */
+	{ MODKEY,                       XK_m,      spawn,          SHCMD("scriptctl music") },
+	{ MODKEY,                       XK_p,      spawn,          SHCMD("scriptctl password") },
+	{ MODKEY|ALT,                   XK_o,      spawn,          SHCMD("scriptctl soundout") },
+	{ MODKEY|ALT,                   XK_k,      spawn,          SHCMD("scriptctl kill") },
+	{ MODKEY|ALT,                   XK_e,      spawn,          SHCMD("scriptctl editcfg") },
+	{ MODKEY,                       XK_Insert, spawn,          SHCMD("scriptctl snippet 1") },
+	{ MODKEY|ALT,                   XK_b,      spawn,          SHCMD("scriptctl snippet 2") },
+	{ MODKEY,                       XK_plus,   spawn,          SHCMD("scriptctl volume 1") },
+	{ MODKEY,                       XK_minus,  spawn,          SHCMD("scriptctl volume 2") },
+	{ MODKEY,                       XK_Print,  spawn,          SHCMD("scriptctl screenshot 1") },
+	{ MODKEY|ALT,                   XK_Print,  spawn,          SHCMD("scriptctl screenshot 2") },
+	{ MODKEY|SHIFT,                 XK_Print,  spawn,          SHCMD("scriptctl screenshot 3") },
+	{ MODKEY|CTRL,                  XK_Print,  spawn,          SHCMD("scriptctl screenshot 4") },
+	{ MODKEY|SHIFT,                 XK_q,      spawn,          SHCMD("scriptctl wmquit") },
+        
+        /* Managing windows */
 	STACKKEYS(MODKEY,                          focus)
 	STACKKEYS(MODKEY|SHIFT,                    push)
 	{ MODKEY,                       XK_c,      killclient,     {0} },
@@ -136,18 +150,22 @@ static const Key keys[] = {
 	{ MODKEY|ALT|SHIFT,             XK_0,      defaultgaps,    {0} },
 	{ MODKEY,                       XK_g,      zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|SHIFT,                 XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|SHIFT,                 XK_period, tagmon,         {.i = +1 } },
         
+        /* Layouts */
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_u,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY,                       XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_s,      togglefloating, {0} },
+
+        /* Monitors */
+	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
+	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
+	{ MODKEY|SHIFT,                 XK_comma,  tagmon,         {.i = -1 } },
+	{ MODKEY|SHIFT,                 XK_period, tagmon,         {.i = +1 } },
         
+        /* Tag related */
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
