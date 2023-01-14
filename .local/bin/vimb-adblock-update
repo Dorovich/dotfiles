@@ -1,6 +1,6 @@
 #!/bin/bash
-notify-send --urgency=normal "Updating adblock"
-
+#notify-send --urgency=normal "Updating adblock"
+herbe "Updating adblock"
 
 EASYLIST_PATH="${HOME}/.config/wyebadblock/"
 
@@ -19,7 +19,9 @@ popd
 
 if [[ "${result}" == "0" ]];
 then
-    notify-send --urgency=normal "Adblock update done"
+    #notify-send --urgency=normal "Adblock update done"
+    pkill herbe && herbe "Adblock update done"
 else
-    notify-send --urgency=normal "Failed to update adblock"
+    #notify-send --urgency=normal "Failed to update adblock"
+    pkill herbe && herbe "Failed to update adblock"
 fi
