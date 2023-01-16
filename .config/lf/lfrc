@@ -1,0 +1,18 @@
+set shell sh
+set shellopts '-eu'
+set ifs "\n"
+set scrolloff 10
+set period 1
+set autoquit on
+# set icons
+
+source "~/.config/lf/functions"
+
+map x $$f
+map X !$f
+map o &mimeopen $f
+map O $mimeopen --ask $f
+map D delete
+map Y $printf "%s" "$fx" | xclip -selection clipboard
+
+# source "~/.config/lf/bookmarks"
