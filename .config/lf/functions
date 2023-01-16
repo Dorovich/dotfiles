@@ -54,3 +54,20 @@ cmd open ${{
         *) for f in $fx; do setsid -f $OPENER $f >/dev/null 2>&1; done;;
     esac
 }}
+
+# drag to other programs
+cmd dragon %dragon $fx
+cmd dragon-all %dragon -a -x $fx
+
+# change permissions
+cmd chmod ${{
+  printf "Mode Bits: "
+  read ans
+
+  for file in "$fx"
+  do
+    chmod $ans $file
+  done
+
+  lf -remote 'send reload'
+}}

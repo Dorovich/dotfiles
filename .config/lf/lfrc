@@ -4,7 +4,6 @@ set ifs "\n"
 set scrolloff 10
 set period 1
 set autoquit on
-# set icons
 
 source "~/.config/lf/functions"
 
@@ -13,6 +12,8 @@ map X !$f
 map o &mimeopen $f
 map O $mimeopen --ask $f
 map D delete
+map R chmod
 map Y $printf "%s" "$fx" | xclip -selection clipboard
-
-# source "~/.config/lf/bookmarks"
+map t dragon
+map T dragon-all
+map . set hidden!

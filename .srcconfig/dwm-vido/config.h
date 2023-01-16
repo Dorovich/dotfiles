@@ -55,8 +55,9 @@ static const Rule rules[] = {
 	{ "Gimp",    NULL,     NULL,           0,         0,          0,           0,        -1 },
 	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
 	{ TERMCLASS, NULL,     NULL,           0,         0,          1,           0,        -1 },
-	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
+	{ "Dragon",  NULL,     NULL,           0,         1,          0,          -1,        -1 },
 	{ NULL,      NULL,     "lf",           0,         0,          0,           1,        -1 },
+	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
 
 /* layout(s) */
@@ -100,7 +101,7 @@ static const char *filemngr_cmd[]   = { FILEMNGR, NULL };
 static const char *lock_cmd[]       = { "slock", NULL };
 static const char *dmenu_cmd[]      = { "dmenu_run", "-i", "-p", "Run:", NULL };
 static const char *rofi_cmd[]       = { "rofi", "-show", "drun", NULL };
-static const char *nnn_cmd[]        = { TERMINAL, "-e", "nnn", NULL };
+//static const char *nnn_cmd[]        = { TERMINAL, "-e", "nnn", NULL };
 static const char *lf_cmd[]         = { TERMINAL, "-e", "lf", NULL };
 static const char *vimb_cmd[]       = { "tabbed", "-c", "vimb", "-e", NULL };
 static const char *emacs_cmd[]      = { "emacsclient", "-c", "-a", "'emacs'", NULL };
@@ -118,7 +119,7 @@ static const Key keys[] = {
 	{ MODKEY|SHIFT,                 XK_d,      spawn,          CMD(rofi_cmd) },
 	{ MODKEY,                       XK_b,      spawn,          CMD(browser_cmd) },
 	{ MODKEY|SHIFT,                 XK_b,      spawn,          CMD(vimb_cmd) },
-	{ MODKEY,                       XK_n,      spawn,          CMD(nnn_cmd) },
+	//{ MODKEY,                       XK_n,      spawn,          CMD(nnn_cmd) },
 	{ MODKEY,                       XK_r,      spawn,          CMD(lf_cmd) },
 	{ MODKEY,                       XK_w,      spawn,          CMD(filemngr_cmd) },
 	{ MODKEY,                       XK_e,      spawn,          CMD(emacs_cmd) },
@@ -154,7 +155,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_g,      incrgaps,       {.i = +1 } },
 	{ MODKEY|SHIFT,                 XK_g,      incrgaps,       {.i = -1 } },
 	{ MODKEY|ALT,                   XK_g,      togglegaps,     {0} },
-	//{ MODKEY,                       XK_g,      zoom,           {0} },
+	//{ MODKEY,                       XK_z,      zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
         
         /* Layouts */
