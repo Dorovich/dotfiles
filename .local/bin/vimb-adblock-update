@@ -1,6 +1,6 @@
 #!/bin/bash
 #notify-send --urgency=normal "Updating adblock"
-herbe "Updating adblock"
+pkill herbe && herbe "Updating adblock"
 
 EASYLIST_PATH="${HOME}/.config/wyebadblock/"
 

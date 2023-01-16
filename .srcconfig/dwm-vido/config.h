@@ -17,7 +17,7 @@ static const int smartgaps          = 0;        /* 1 means no outer gap when the
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *barlayout        = "tl|s";   /* t: tags, l: layout, n: window name, |: separator, s: extra stuff */
-static const char *fonts[]          = { "mononoki NF:pixelsize=15:antialias=true:autohint=true" };
+static const char *fonts[]          = { "mononoki NF:pixelsize=15:antialias=true:autohint=true", "Noto Color Emoji:pixelsize=15:antialias=true" };
 static const char col_white[]       = "#ABB2BF";
 static const char col_yellow[]      = "#D19A66";
 static const char col_gray[]        = "#5C6370";
@@ -42,7 +42,7 @@ static const char *const autostart[] = {
         "emacs", "--daemon", NULL,
 	NULL /* terminate */
 };
-
+ 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
@@ -52,10 +52,11 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
+	{ "Gimp",    NULL,     NULL,           0,         0,          0,           0,        -1 },
 	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
 	{ TERMCLASS, NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
+	{ NULL,      NULL,     "Minecraft server",     0,         1,          0,           1,        -1 }, /* minecraft server */
 };
 
 /* layout(s) */
@@ -84,9 +85,9 @@ static const Layout layouts[] = {
 #define STACKKEYS(MOD,ACTION) \
 	{ MOD, XK_j,     ACTION##stack, {.i = INC(+1) } }, \
 	{ MOD, XK_k,     ACTION##stack, {.i = INC(-1) } }, \
-	{ MOD, XK_space, ACTION##stack, {.i = 0 } }, \
-	{ MOD, XK_a,     ACTION##stack, {.i = 1 } }, \
-	{ MOD, XK_x,     ACTION##stack, {.i = -1 } },
+	{ MOD, XK_space, ACTION##stack, {.i = 0 } },
+	//{ MOD, XK_a,     ACTION##stack, {.i = 1 } },
+	//{ MOD, XK_x,     ACTION##stack, {.i = -1 } },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -108,16 +109,17 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Escape, spawn,          CMD(lock_cmd) },
 	//{ MODKEY|SHIFT,                 XK_q,      quit,           {0} },
      	{ MODKEY|SHIFT,                 XK_r,      quit,           {1} }, /* restart dwm */
+     	{ MODKEY,                       XK_F1,     spawn,          SHCMD("ayuda") },
         
         /* Programs */
 	{ MODKEY,                       XK_Return, spawn,          CMD(term_cmd) },
-	{ MODKEY,                       XK_b,      spawn,          CMD(browser_cmd) },
-	{ MODKEY,                       XK_w,      spawn,          CMD(filemngr_cmd) },
 	{ MODKEY,                       XK_d,      spawn,          CMD(dmenu_cmd) },
 	{ MODKEY|SHIFT,                 XK_d,      spawn,          CMD(rofi_cmd) },
+	{ MODKEY,                       XK_b,      spawn,          CMD(browser_cmd) },
+	{ MODKEY|SHIFT,                 XK_b,      spawn,          CMD(vimb_cmd) },
 	{ MODKEY,                       XK_n,      spawn,          CMD(nnn_cmd) },
+	{ MODKEY,                       XK_w,      spawn,          CMD(filemngr_cmd) },
 	{ MODKEY,                       XK_e,      spawn,          CMD(emacs_cmd) },
-	{ MODKEY,                       XK_v,      spawn,          CMD(vimb_cmd) },
 
         /* Scripts */
 	{ MODKEY,                       XK_m,      spawn,          SHCMD("scriptctl music") },
@@ -126,7 +128,7 @@ static const Key keys[] = {
 	{ MODKEY|ALT,                   XK_k,      spawn,          SHCMD("scriptctl kill") },
 	{ MODKEY|ALT,                   XK_e,      spawn,          SHCMD("scriptctl editcfg") },
 	{ MODKEY,                       XK_Insert, spawn,          SHCMD("scriptctl snippet 1") },
-	{ MODKEY|ALT,                   XK_b,      spawn,          SHCMD("scriptctl snippet 2") },
+	{ MODKEY|ALT,                   XK_s,      spawn,          SHCMD("scriptctl snippet 2") },
 	{ MODKEY,                       XK_plus,   spawn,          SHCMD("scriptctl volume 1") },
 	{ MODKEY,                       XK_minus,  spawn,          SHCMD("scriptctl volume 2") },
 	{ MODKEY,                       XK_Print,  spawn,          SHCMD("scriptctl screenshot 1") },
@@ -139,22 +141,24 @@ static const Key keys[] = {
 	STACKKEYS(MODKEY,                          focus)
 	STACKKEYS(MODKEY|SHIFT,                    push)
 	{ MODKEY,                       XK_c,      killclient,     {0} },
-	{ MODKEY|SHIFT,                 XK_b,      togglebar,      {0} },
+	{ MODKEY,                       XK_q,      killclient,     {0} },
+	{ MODKEY|ALT,                   XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY|SHIFT,                 XK_i,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY|ALT,                   XK_h,      incrgaps,       {.i = +1 } },
-	{ MODKEY|ALT,                   XK_l,      incrgaps,       {.i = -1 } },
-	{ MODKEY|ALT,                   XK_0,      togglegaps,     {0} },
-	{ MODKEY|ALT|SHIFT,             XK_0,      defaultgaps,    {0} },
-	{ MODKEY,                       XK_g,      zoom,           {0} },
+        { MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
+	{ MODKEY|SHIFT,                 XK_l,      shiftview,      {.i = +1 } },
+        { MODKEY|SHIFT,                 XK_h,      shiftview,      {.i = -1 } },
+	{ MODKEY,                       XK_g,      incrgaps,       {.i = +1 } },
+	{ MODKEY|SHIFT,                 XK_g,      incrgaps,       {.i = -1 } },
+	{ MODKEY|ALT,                   XK_g,      togglegaps,     {0} },
+	//{ MODKEY,                       XK_g,      zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
         
         /* Layouts */
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_u,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_r,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[2]} },
 	//{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY,                       XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_s,      togglefloating, {0} },
@@ -177,7 +181,6 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|SHIFT,                 XK_0,      tag,            {.ui = ~0 } },
-        
 };
 
 /* button definitions */
