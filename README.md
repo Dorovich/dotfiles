@@ -9,9 +9,10 @@
 - Terminal: `st`
 - Shell: `bash`
 - Barra: `polybar`
-- Editor: `neovim`, `emacs (Doom)`
+- Editor: `neovim` (tui), `emacs (Doom)` (gui)
+- Gestor de archivos: `lf` (tui), `pcmanfm` (gui)
 - Fuente: `mononoki (Nerd Font)`
-- Música: `spotify`, `mpd (+ mpc/ncmpcpp)`
+- Música: `spotify`, `mpd`
 - Navegador: `firefox`, `qutebrowser`, `vimb`
 - Notificaciones: `dunst`
 - Tema GTK: `Pop-dark`
