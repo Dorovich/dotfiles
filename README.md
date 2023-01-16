@@ -5,10 +5,10 @@
 
 ## Información
 - Distro: `Pop!_OS`
-- DE/WM: `herbstluftwm`
+- DE/WM: `herbstluftwm`, `dwm`
 - Terminal: `st`
 - Shell: `bash`
-- Barra: `polybar`
+- Barra: `polybar` (herbstluftwm)
 - Editor: `neovim` (tui), `emacs (Doom)` (gui)
 - Gestor de archivos: `lf` (tui), `pcmanfm` (gui)
 - Fuente: `mononoki (Nerd Font)`
