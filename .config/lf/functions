@@ -34,7 +34,7 @@ cmd zip ${{
 cmd delete ${{
     set -f
     printf "$fx\n"
-    printf "delete?[y/n]"
+    printf "delete file(s)?[y/n] "
     read ans
     [ "$ans" = "y" ] && rm -rf $fx
 }}
@@ -70,4 +70,21 @@ cmd chmod ${{
   done
 
   lf -remote 'send reload'
+}}
+
+# create new file or directory
+cmd newfile ${{
+    set -f
+    printf "create new [f]ile/[d]irectory? "
+    read ans
+    case $ans in
+        "f")
+            printf "new file name: "
+            read name
+            touch $name;;
+        "d")
+            printf "new directory name: "
+            read name
+            mkdir $name;;
+    esac
 }}

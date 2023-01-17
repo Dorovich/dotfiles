@@ -19,3 +19,4 @@ map t dragon
 map T dragon-all
 map gr cd /
 map . set hidden!
+map C newfile

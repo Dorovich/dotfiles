@@ -101,15 +101,20 @@ static const char *filemngr_cmd[]   = { FILEMNGR, NULL };
 static const char *lock_cmd[]       = { "slock", NULL };
 static const char *dmenu_cmd[]      = { "dmenu_run", "-i", "-p", "Run:", NULL };
 static const char *rofi_cmd[]       = { "rofi", "-show", "drun", NULL };
-//static const char *nnn_cmd[]        = { TERMINAL, "-e", "nnn", NULL };
 static const char *lf_cmd[]         = { TERMINAL, "-e", "lf", NULL };
 static const char *vimb_cmd[]       = { "tabbed", "-c", "vimb", "-e", NULL };
 static const char *emacs_cmd[]      = { "emacsclient", "-c", "-a", "'emacs'", NULL };
 
 static const Key keys[] = {
+        /* Unused */
+        /*
+	{ MODKEY|SHIFT,                 XK_q,      quit,           {0} },
+	{ MODKEY,                       XK_space,  setlayout,      {0} },
+	{ MODKEY,                       XK_z,      zoom,           {0} },
+        */
+
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_Escape, spawn,          CMD(lock_cmd) },
-	//{ MODKEY|SHIFT,                 XK_q,      quit,           {0} },
      	{ MODKEY|SHIFT,                 XK_r,      quit,           {1} }, /* restart dwm */
      	{ MODKEY,                       XK_F1,     spawn,          SHCMD("ayuda") },
         
@@ -119,7 +124,6 @@ static const Key keys[] = {
 	{ MODKEY|SHIFT,                 XK_d,      spawn,          CMD(rofi_cmd) },
 	{ MODKEY,                       XK_b,      spawn,          CMD(browser_cmd) },
 	{ MODKEY|SHIFT,                 XK_b,      spawn,          CMD(vimb_cmd) },
-	//{ MODKEY,                       XK_n,      spawn,          CMD(nnn_cmd) },
 	{ MODKEY,                       XK_r,      spawn,          CMD(lf_cmd) },
 	{ MODKEY,                       XK_w,      spawn,          CMD(filemngr_cmd) },
 	{ MODKEY,                       XK_e,      spawn,          CMD(emacs_cmd) },
@@ -152,17 +156,16 @@ static const Key keys[] = {
         { MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY|SHIFT,                 XK_l,      shiftview,      {.i = +1 } },
         { MODKEY|SHIFT,                 XK_h,      shiftview,      {.i = -1 } },
+	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_g,      incrgaps,       {.i = +1 } },
 	{ MODKEY|SHIFT,                 XK_g,      incrgaps,       {.i = -1 } },
 	{ MODKEY|ALT,                   XK_g,      togglegaps,     {0} },
-	//{ MODKEY,                       XK_z,      zoom,           {0} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
+	{ MODKEY|SHIFT|ALT,             XK_g,      defaultgaps,    {0} },
         
         /* Layouts */
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} }, /* tiled */
 	{ MODKEY|SHIFT,                 XK_s,      setlayout,      {.v = &layouts[1]} }, /* floating */
 	{ MODKEY|SHIFT,                 XK_t,      setlayout,      {.v = &layouts[2]} }, /* monocle */
-	//{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY,                       XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_s,      togglefloating, {0} },
 
