@@ -4,6 +4,7 @@ set ifs "\n"
 set scrolloff 10
 set period 1
 set autoquit on
+set mouse on
 
 source "~/.config/lf/functions"
 
