@@ -16,3 +16,5 @@
 - Navegador: `firefox`, `qutebrowser`, `vimb`
 - Notificaciones: `dunst`
 - Tema GTK: `Pop-dark`
+
+*otro: para poder poner acentos en st he tenido que añadir la línea `XPROFILE=` a /etc/environment*
