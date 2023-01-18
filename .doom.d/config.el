@@ -21,8 +21,10 @@
 ;;
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
-(setq doom-font (font-spec :family "Roboto Mono" :size 17)
-      doom-variable-pitch-font (font-spec :family "Roboto Mono" :size 17))
+(setq doom-font (font-spec :family "mononoki NF" :size 17)
+      doom-variable-pitch-font (font-spec :family "mononoki NF" :size 17))
+;;(setq doom-font (font-spec :family "Roboto Mono" :size 17)
+;;      doom-variable-pitch-font (font-spec :family "Roboto Mono" :size 17))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -118,7 +120,7 @@
         (interactive)
         (dolist
         (face
-        '((org-level-1 1.3 "#81a2be" ultra-bold)
+                '((org-level-1 1.3 "#81a2be" ultra-bold)
                 (org-level-2 1.15 "#b294bb" extra-bold)
                 (org-level-3 1.07 "#b5bd68" bold)
                 (org-level-4 1.04 "#e6c547" semi-bold)
