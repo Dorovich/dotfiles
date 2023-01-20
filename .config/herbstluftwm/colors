@@ -17,8 +17,7 @@ hc attr theme.normal.inner_color '#151515'
 hc attr theme.normal.title_color '#898989'
 
 hc attr theme.active.color '#D19A66'
-hc attr theme.active.inner_color '#151515'
-#hc attr theme.active.inner_color '#D19A66' # bordes mas gordos
+hc attr theme.active.inner_color '#D19A66'
 
 hc attr theme.urgent.color '#7811A1dd'
 hc attr theme.urgent.inner_color '#1E4D3D'

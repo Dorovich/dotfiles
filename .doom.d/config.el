@@ -111,6 +111,7 @@
           (kbd "H") 'evil-beginning-of-line
           (kbd "L") 'evil-end-of-line))
 
+;; Configurar color de las cabeceras en org y su tamaño
 (after! org
         (setq org-superstar-headline-bullets-list '("◉" "●" "✱" "◆" "✸" "●" "✱" "◆" "✸")
                 org-superstar-item-bullet-alist '((?+ . ?➤) (?- . ?☛)))
