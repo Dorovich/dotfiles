@@ -7,7 +7,6 @@ export ALTERNATE_EDITOR="emacsclient -t -a ''"
 export HISTCONTROL=ignoreboth
 export HISTSIZE=2000
 export PATH="${PATH}:${HOME}/.local/bin:${HOME}/.emacs.d/bin:${HOME}/Applications:${HOME}/.spicetify"
-#export CPLUS_INCLUDE_PATH="${CPLUS_INCLUDE_PATH:+${CPLUS_INCLUDE_PATH}:}/usr/include/x86_64-linux-gnu:/usr/include/c++"
 export MYVIMRC="$HOME/.config/nvim/init.lua"
 
 export alm="/media/vido25/Almacenamiento"

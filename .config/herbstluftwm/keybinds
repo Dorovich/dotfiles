@@ -2,14 +2,12 @@
 
 hc keyunbind --all
 
-tag_names=( {1..9} )
-tag_keys=( {1..9} 0 )
-resizestep=0.02
 terminal="${TERMINAL:-xterm}"
 browser="${BROWSER:-firefox}"
+tag_names=( {1..9} )
+tag_keys=( {1..9} 0 )
 scriptsdir=$HOME/.config/herbstluftwm/scripts/
-
-# Teclas maestras
+resizestep=0.02
 Mod=Mod4
 AMod=Mod1
 
@@ -20,9 +18,9 @@ hc keybind $Mod-d               spawn dmenu_run -i -p "Run:"
 hc keybind $Mod-Shift-d         spawn rofi -show drun
 hc keybind $Mod-b               spawn $browser
 hc keybind $Mod-Shift-b         spawn tabbed -c vimb -e
-hc keybind $Mod-e               spawn emacsclient -c -a 'emacs'
 hc keybind $Mod-r               spawn $terminal -e lf
 hc keybind $Mod-w               spawn pcmanfm
+hc keybind $Mod-e               spawn emacsclient -c -a 'emacs'
 
 # Scripts
 hc keybind $Mod-m               spawn $scriptsdir/music.sh
@@ -49,7 +47,7 @@ hc keybind $Mod-h               focus left
 hc keybind $Mod-j               focus down
 hc keybind $Mod-k               focus up
 hc keybind $Mod-l               focus right
-hc keybind $Mod-c               cycle
+#hc keybind $Mod-c               cycle
 hc keybind $Mod-Tab             cycle_all +1
 hc keybind $Mod-Shift-Tab       cycle_all -1
 hc keybind $Mod-Delete          cycle_monitor
@@ -83,7 +81,7 @@ hc keybind $Mod-t               pseudotile
 hc keybind $Mod-u               split bottom  0.5
 hc keybind $Mod-o               split right   0.5
 hc keybind $Mod-Control-space   split explode
-#hc keybind $Mod-r               remove
+hc keybind $Mod-Shift-c         remove
 
 # Cambiar tamaño de marcos
 hc keybind $Mod-Control-h       resize left +$resizestep
