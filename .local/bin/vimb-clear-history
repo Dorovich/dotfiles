@@ -7,5 +7,4 @@ if [ -f "$storage/command" ]; then rm "$storage/command"; fi
 if [ -f "$storage/history" ]; then rm "$storage/history"; fi
 if [ -f "$storage/search" ]; then rm "$storage/search"; fi
 
-#notify-send --urgency=normal "Cleaned history files"
-pkill herbe && herbe "Cleaned history files"
+notify-send --urgency=normal "Cleaned history files"

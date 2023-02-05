@@ -32,14 +32,14 @@ static const char *colors[][3]      = {
 static const char *const autostart[] = {
         "wmname", "dwm", NULL,
 	"setxkbmap", "es", NULL,
+        "/usr/bin/nvidia-settings", "-l", NULL,
 	"xset", "r", "rate", "300", "35", NULL,
         "dwm-status", NULL,
 	"nitrogen", "--restore", NULL,
 	"picom", NULL,
 	"mpd", NULL,
         "redshift", "-l", "41.39:2.16", "-m", "randr", "-t", "5500:5000", NULL,
-        "/usr/bin/nvidia-settings", "-l", NULL,
-        "emacs", "--daemon", NULL,
+        //"emacs", "--daemon", NULL,
 	NULL /* terminate */
 };
  

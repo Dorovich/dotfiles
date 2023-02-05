@@ -1,4 +1,6 @@
 local autocmd = vim.api.nvim_create_autocmd
+local FNAME = vim.fn.expand("%:t:r")
+-- local FNAME = vim.api.nvim_buf_get_name(0)
 
 autocmd(
     { "FileType" },
@@ -6,6 +8,26 @@ autocmd(
         pattern = { "c", "cc", "cpp" },
         callback = function ()
             vim.schedule(C_utils)
+        end,
+    }
+)
+
+autocmd(
+    { "FileType" },
+    {
+        pattern = { "nroff" },
+        callback = function ()
+            vim.schedule(Groff_utils)
+        end,
+    }
+)
+
+autocmd(
+    { "FileType" },
+    {
+        pattern = { "help" },
+        callback = function ()
+            vim.schedule(Help_utils)
         end,
     }
 )
@@ -35,4 +57,19 @@ end
 function Term_utils ()
     vim.opt_local.number = false;
     vim.opt_local.relativenumber = false;
+end
+
+function Groff_utils ()
+    vim.opt_local.number = false;
+    vim.opt_local.relativenumber = false;
+    require("core/utils")
+    local compile_cmd = ':!pdfmom ' .. FNAME .. '.mom > ' .. FNAME .. '.pdf<CR>'
+    local see_cmd = ':!groff -mom ' .. FNAME .. '.mom -Tpdf | zathura -<CR>'
+    NMAP('<C-c>', compile_cmd, NRSLBFR)
+    NMAP('<C-s>', see_cmd, NRSLBFR)
+end
+
+function Help_utils ()
+    require("core/utils")
+    NMAP('q', ':q<CR>', NRSLBFR)
 end

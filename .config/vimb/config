@@ -58,7 +58,7 @@ nnoremap xu :sh! ~/.local/bin/vimb-adblock-update<CR>
 # }}}
 
 # Shortcuts {{{
-shortcut-default sx
+shortcut-default dd
 
 shortcut-add dd=https://duckduckgo.com/?q=$0
 shortcut-add gg=https://encrypted.google.com/search?q=$0&pccc=1
@@ -79,9 +79,12 @@ shortcut-add scp=https://scp-wiki.wikidot.com/scp-$0
 shortcut-add af=https://www3.animeflv.net/browse?q=$0
 shortcut-add yt=https://www.youtube.com/results?search_query=$0
 shortcut-add rd=https://www.reddit.com/r/$0
-shortcut-add iv=https://farside.link/invidious/$0
-shortcut-add nt=https://farside.link/nitter/$0
-shortcut-add td=https://farside.link/teddit/r/$0
+#shortcut-add iv=https://farside.link/invidious/$0
+#shortcut-add nt=https://farside.link/nitter/$0
+#shortcut-add td=https://farside.link/teddit/r/$0
+shortcut-add iv=https://yewtu.be/search?q=$0
+shortcut-add nt=https://unofficialbird.com/search?&q=$0
+shortcut-add td=https://teddit.net/r/$0
 
 # bookmarks: ~/.local/share/vimb/bookmark
 # }}}
