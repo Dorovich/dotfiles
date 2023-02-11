@@ -12,6 +12,9 @@ case $confirmation in
             "dwm")
                 kill -TERM $(pidof dwm)
                 ;;
+            "spectrwm")
+                exit
+                ;;
         esac
         ;;
     "Shutdown")

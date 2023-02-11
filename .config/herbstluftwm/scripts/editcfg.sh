@@ -14,6 +14,9 @@ case $choice in
             "dwm")
                 cfgpath="$HOME/.config/dwm/config.h"
                 ;;
+            "spectrwm")
+                cfgpath="$HOME/.config/spectrwm/spectrwm.conf"
+                ;;
         esac
         ;;
     "Terminal")
