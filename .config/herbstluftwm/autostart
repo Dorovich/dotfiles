@@ -50,6 +50,7 @@ hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 hc rule class~'.*-prompter|.*\.exe|scratchpad|[Dd]ragon|[Ss]xiv|[Mm]pv' floating=on
 hc rule windowrole='GtkFileChooserDialog' floating=on
+hc rule class~'[Aa]n-anime-game-launcher' floating=on
 
 # unlock, just to be sure
 hc unlock
@@ -75,5 +76,5 @@ if hc silent new_attr bool my_not_first_autostart ; then
     mpd &
     redshift -l 41.39:2.16 -m randr -t 5500:5000 &
     /usr/bin/nvidia-settings -l &
-    emacs --daemon &
+#   emacs --daemon &
 fi

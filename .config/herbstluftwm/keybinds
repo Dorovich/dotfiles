@@ -39,14 +39,14 @@ hc keybind $Mod-Control-Print   spawn $scriptsdir/screenshot.sh 4
 hc keybind $Mod-Shift-q         spawn $scriptsdir/wmquit.sh
 
 # Moverse entre ventanas
-hc keybind $Mod-Left            focus left
-hc keybind $Mod-Down            focus down
-hc keybind $Mod-Up              focus up
-hc keybind $Mod-Right           focus right
 hc keybind $Mod-h               focus left
 hc keybind $Mod-j               focus down
 hc keybind $Mod-k               focus up
 hc keybind $Mod-l               focus right
+hc keybind $Mod-Left            focus left
+hc keybind $Mod-Down            focus down
+hc keybind $Mod-Up              focus up
+hc keybind $Mod-Right           focus right
 #hc keybind $Mod-c               cycle
 hc keybind $Mod-Tab             cycle_all +1
 hc keybind $Mod-Shift-Tab       cycle_all -1
@@ -58,14 +58,14 @@ hc keybind $Mod-i               jumpto urgent
 #hc keybind $Mod-k               cycle_all -1
 
 # Cambiar ventanas
-hc keybind $Mod-Shift-Left      shift left
-hc keybind $Mod-Shift-Down      shift down
-hc keybind $Mod-Shift-Up        shift up
-hc keybind $Mod-Shift-Right     shift right
 hc keybind $Mod-Shift-h         shift left
 hc keybind $Mod-Shift-j         shift down
 hc keybind $Mod-Shift-k         shift up
 hc keybind $Mod-Shift-l         shift right
+hc keybind $Mod-Shift-Left      shift left
+hc keybind $Mod-Shift-Down      shift down
+hc keybind $Mod-Shift-Up        shift up
+hc keybind $Mod-Shift-Right     shift right
 
 # Estructura de ventanas
 hc keybind $Mod-c               close_or_remove
