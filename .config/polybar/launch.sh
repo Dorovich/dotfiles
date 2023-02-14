@@ -8,4 +8,11 @@ fi
 # Wait until the processes have been shut down
 while pgrep -x polybar >/dev/null; do sleep 1; done
 
-polybar bar1-hlwm --reload --config=/home/vido25/.config/polybar/config.ini &
+case $(wmname) in
+    "herbstluftwm")
+        polybar bar1-hlwm --reload --config=/home/vido25/.config/polybar/config.ini &
+        ;;
+    "bspwm")
+        polybar bar1-bspwm --reload --config=/home/vido25/.config/polybar/config.ini &
+        ;;
+esac
