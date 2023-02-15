@@ -39,10 +39,8 @@ g.c_syntax_for_h = true
 -- Tabulaciones
 opt.smarttab = true
 opt.autoindent = true
-opt.expandtab = true
-opt.tabstop = 8
-opt.shiftwidth = 4
-opt.softtabstop = 4
+opt.expandtab = false
+-- opt.shiftwidth = 4 -- sustituye tabs por espacios
 
 -- Copias de seguridad
 opt.backup = false
