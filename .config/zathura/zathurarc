@@ -10,3 +10,4 @@ set completion-highlight-fg "#151515"
 set completion-highlight-bg "#D19A66"
 set font "mononoki NF 11"
 set n-completion-items 10
+set guioptions ""

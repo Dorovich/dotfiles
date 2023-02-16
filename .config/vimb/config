@@ -35,9 +35,9 @@ nmap <C-k> <C-b>
 nmap M '
 nmap ñ :
 nmap Ñ :
-#nmap d :quit<CR>
-nmap d :sh! ~/.local/bin/vimb-close<CR>
-#nmap D :quit!<CR>
+nmap d :quit<CR>
+#nmap d :sh! ~/.local/bin/vimb-close<CR>
+nmap D :quit!<CR>
 nmap b :open !
 nmap B :tabopen !
 nmap c <Esc>
@@ -58,7 +58,7 @@ nnoremap xu :sh! ~/.local/bin/vimb-adblock-update<CR>
 # }}}
 
 # Shortcuts {{{
-shortcut-default dd
+shortcut-default wb
 
 shortcut-add dd=https://duckduckgo.com/?q=$0
 shortcut-add gg=https://encrypted.google.com/search?q=$0&pccc=1
@@ -85,6 +85,7 @@ shortcut-add rd=https://www.reddit.com/r/$0
 shortcut-add iv=https://yewtu.be/search?q=$0
 shortcut-add nt=https://unofficialbird.com/search?&q=$0
 shortcut-add td=https://teddit.net/r/$0
+shortcut-add wb=https://wiby.me/?q=$0
 
 # bookmarks: ~/.local/share/vimb/bookmark
 # }}}

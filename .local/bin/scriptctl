@@ -3,34 +3,40 @@
 scriptdir="${HOME}/.config/herbstluftwm/scripts"
 
 case $1 in
-    "music")
-        $scriptdir/music.sh
-        ;;
-    "password")
-        $scriptdir/password.sh
-        ;;
-    "soundout")
-        $scriptdir/soundout.sh
-        ;;
-    "kill")
-        $scriptdir/kill.sh
-        ;;
-    "editcfg")
-        $scriptdir/editcfg.sh
-        ;;
-    "snippet")
-        $scriptdir/snippet.sh $2
-        ;;
-    "volume")
-        $scriptdir/volume.sh $2
-        ;;
-    "screenshot")
-        $scriptdir/screenshot.sh $2
-        ;;
-    "wmquit")
-        $scriptdir/wmquit.sh
-        ;;
-    *)
-        exit
-        ;;
+    "music")		$scriptdir/music.sh;;
+    "password")		$scriptdir/password.sh;;
+    "soundout")		$scriptdir/soundout.sh;;
+    "kill")		$scriptdir/kill.sh;;
+    "editcfg")		$scriptdir/editcfg.sh;;
+    "snippet")		$scriptdir/snippet.sh $2;;
+    "volume") 		$scriptdir/volume.sh $2;;
+    "screenshot") 	$scriptdir/screenshot.sh $2;;
+    "wmquit") 		$scriptdir/wmquit.sh;;
+    *) 
+	choice=$(echo "music\npassword\nsoundout\nkill\neditcfg\nsnippet\nvolume\nscreenshot" | dmenu -p "Script:")
+	case $choice in
+		"") exit;;
+		"snippet")
+        		option=$(echo "load\nsave" | dmenu -p "Snippet option:")
+			case $option in
+				"load") scriptctl snippet 1;;
+				"save") scriptctl snippet 2;;
+			esac;;
+		"screenshot")
+        		option=$(echo "full\nactive\nselect\ncopy" | dmenu -p "Screenshot option:")
+			case $option in
+				"full") scriptctl screenshot 1;;
+				"active") scriptctl screenshot 2;;
+				"select") scriptctl screenshot 3;;
+				"copy") scriptctl screenshot 4;;
+			esac;;
+		"volume")
+        		option=$(echo "up\ndown" | dmenu -p "Volume option:")
+			case $option in
+				"up") scriptctl volume 1;;
+				"down") scriptctl volume 2;;
+			esac;;
+		*) scriptctl $choice;;
+	esac
+	;;
 esac
