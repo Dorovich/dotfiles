@@ -1,6 +1,6 @@
 #!/bin/sh
 
-confirmation=$(echo "No\nLogout\nShutdown" | dmenu -i -p "Do you want to quit?")
+confirmation=$(echo "No\nLogout\nShutdown\nReboot" | dmenu -i -p "Do you want to quit?")
 
 case $confirmation in
     "Logout")
@@ -17,10 +17,7 @@ case $confirmation in
                 ;;
         esac
         ;;
-    "Shutdown")
-        shutdown -h now
-        ;;
-    *)
-        exit
-        ;;
+    "Shutdown") shutdown -h now;;
+    "Reboot") reboot;;
+    *) exit;;
 esac
