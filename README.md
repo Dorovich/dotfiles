@@ -5,7 +5,7 @@
 
 ## Información
 - Distro: `Pop!_OS`
-- DE/WM: ![dwm](https://github.com/Dorovich/dwm-vido)
+- DE/WM: ![dwm](https://github.com/Dorovich/dwm-minimal-restartsig)
 - Terminal: ![st](https://github.com/Dorovich/st-vido)
 - Shell: `bash`
 - Editor: `neovim` (tui), `emacs (Doom)` (gui)
