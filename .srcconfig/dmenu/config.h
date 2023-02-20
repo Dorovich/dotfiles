@@ -12,6 +12,7 @@ static const char *colors[SchemeLast][2] = {
 	[SchemeNorm] = { "#abb2bf", "#151515" },
 	/*[SchemeSel] = { "#151515", "#d19a66" },*/ // Color amarillo
 	[SchemeSel] = { "#abb2bf", "#323232" }, // Color gris
+	/*[SchemeSel] = { "#d1cfc7", "#376777" },*/ // Color azur
 	[SchemeOut] = { "#000000", "#00ffff" },
 };
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */

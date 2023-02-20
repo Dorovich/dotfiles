@@ -12,7 +12,7 @@ case $choice in
                 cfgpath="$HOME/.config/herbstluftwm/autostart"
                 ;;
             "dwm")
-                cfgpath="$HOME/.config/dwm/config.h"
+                cfgpath="$HOME/.srcconfig/dwm-minimal/config.h"
                 ;;
             "spectrwm")
                 cfgpath="$HOME/.config/spectrwm/spectrwm.conf"
