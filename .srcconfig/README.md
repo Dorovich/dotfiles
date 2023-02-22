@@ -1,1 +1,1 @@
-Aquí también guardo mis builds de dwm (![dwm-vido](https://github.com/Dorovich/dwm-vido), ![dwm-minimal-restartsig](https://github.com/Dorovich/dwm-minimal-restartsig), ![dwm-minimal](https://github.com/Dorovich/dwm-minimal)) y de st (![st-vido](https://github.com/Dorovich/st-vido))
+Aquí también guardo mis builds de dwm (![dwm-vido](https://github.com/Dorovich/dwm-vido), ![dwm-minimal](https://github.com/Dorovich/dwm-minimal)) y de st (![st-vido](https://github.com/Dorovich/st-vido))
