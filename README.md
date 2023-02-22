@@ -16,5 +16,5 @@
 - Notificaciones: `dunst`
 - Tema GTK: `Pop-dark`
 
-*OTRO: para poder poner acentos en st he tenido que añadir la línea `XPROFILE=` a `/etc/environment`*
-*OTRO: los programas que se autoinician estan en .xprofile*
+> *OTRO: para poder poner acentos en st he tenido que añadir la línea `XPROFILE=` a `/etc/environment`*
+> *OTRO: los programas que se autoinician estan en .xprofile*
