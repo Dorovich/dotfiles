@@ -4,16 +4,14 @@
 ![](showcase.png)
 
 ## Información
-- Distro: `Pop!_OS`
+- Distro: `Pop!_OS` (![void linux](https://voidlinux.org/) la proxima)
 - DE/WM: ![dwm](https://github.com/Dorovich/dwm-vido)
 - Terminal: ![st](https://github.com/Dorovich/st-vido)
 - Shell: `bash`
-- Editor: `neovim` (tui), `emacs (Doom)` (gui)
-- Gestor de archivos: `lf` (tui), `pcmanfm` (gui)
+- Editor: `neovim`
+- Gestor de archivos: `lf`, `pcmanfm`
 - Fuente: `mononoki (Nerd Font)`
 - Música: `spotify`, `mpd`
-- Navegador: `firefox`, `qutebrowser`, `vimb`
-- Notificaciones: `dunst`
-- Tema GTK: `Pop-dark`
+- Navegador: `firefox`, `vimb`
 
 > *OTROS: para poder poner acentos en st he tenido que añadir la línea `XPROFILE=` a `/etc/environment`. Los programas que se autoinician estan en `~/.xprofile`*
