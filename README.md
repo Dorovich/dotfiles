@@ -4,7 +4,7 @@
 ![](showcase.png)
 
 ## Información
-- Distro: `Pop!_OS` (![void linux](https://voidlinux.org) la proxima)
+- Distro: `Pop!_OS` (void linux la proxima)
 - DE/WM: ![dwm](https://github.com/Dorovich/dwm-vido)
 - Terminal: ![st](https://github.com/Dorovich/st-vido)
 - Shell: `bash`
