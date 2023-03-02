@@ -1,9 +1,9 @@
 # ~ .dotfiles ~
 *Archivos de configuración de mi sistema y cosas de interés*
 
-*Artista original del fondo de pantalla: @slope_moon (twitter)*
-
 ![](showcase.png)
+
+*Artista original del fondo de pantalla: @slope_moon (twitter)*
 
 ## Información
 - Distro: `Pop!_OS` (Void Linux la proxima)
