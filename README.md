@@ -1,6 +1,8 @@
 # ~ .dotfiles ~
 *Archivos de configuración de mi sistema y cosas de interés*
 
+*Artista original del fondo de pantalla: @slope_moon (twitter)*
+
 ![](showcase.png)
 
 ## Información
@@ -15,5 +17,3 @@
 - Navegador: `firefox`, `vimb`
 
 > *OTROS: para poder poner acentos en st he tenido que añadir la línea `XPROFILE=` a `/etc/environment`. Los programas que se autoinician estan en `~/.xprofile`. Las variables globales del sistema (como $SCRIPTSDIR, $TERMINAL o $BROWSER) estan en `~/.profile`.*
-
-*Artista original del fondo de pantalla: @slope_moon (twitter)*
