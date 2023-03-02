@@ -54,7 +54,7 @@ nnoremap xu :sh! ~/.local/bin/vimb-adblock-update<CR>
 # }}}
 
 # Shortcuts {{{
-shortcut-default wb
+shortcut-default dd
 
 shortcut-add dd=https://duckduckgo.com/?q=$0
 shortcut-add gg=https://encrypted.google.com/search?q=$0&pccc=1
@@ -139,7 +139,7 @@ set completion-selected-css=color:#d1d1d1;background-color:#346475;font:11pt mon
 set input-css=color:#d1d1d1;background-color:#151515;font:11pt mononoki NF;
 set input-error-css=color:#d1d1d1;background-color:#151515;font:11pt mononoki NF;
 set status-css=color:#d1d1d1;background-color:#151515;font:11pt mononoki NF;
-set status-ssl-css=color:#8c909a;background-color:#151515;font:11pt mononoki NF;
+set status-ssl-css=color:#888888;background-color:#151515;font:11pt mononoki NF;
 set status-ssl-invalid-css=color:#d1d1d1;background-color:#151515;font:11pt mononoki NF;
 # }}}
 

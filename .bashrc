@@ -6,7 +6,7 @@ export VISUAL="emacsclient -c -a 'emacs'"
 export ALTERNATE_EDITOR="emacsclient -t -a ''"
 export HISTCONTROL=ignoreboth
 export HISTSIZE=2000
-export PATH="${PATH}:${HOME}/.local/bin:${HOME}/.emacs.d/bin:${HOME}/Applications:${HOME}/.spicetify"
+export PATH="${PATH}:${HOME}/.local/bin:${HOME}/.emacs.d/bin:${HOME}/Applications"
 export MYVIMRC="$HOME/.config/nvim/init.lua"
 
 export alm="/media/vido25/Almacenamiento"
@@ -135,7 +135,7 @@ color2=$(tput setaf 8)
 bold=$(tput bold)
 reset=$(tput sgr0)
 
-export PS1="\n\[$bold$color1\]\W \[$bold$color2\];\[$reset\] "
+export PS1="\n\[$bold$color1\]\W \[$bold$color2\]$\[$reset\] "
 export PS2="\[$bold$color2\]>\[$reset\] "
 
 # }}}
