@@ -6,7 +6,6 @@ terminal="${TERMINAL:-xterm}"
 browser="${BROWSER:-firefox}"
 tag_names=( {1..9} )
 tag_keys=( {1..9} 0 )
-scriptsdir=$HOME/.config/herbstluftwm/scripts/
 resizestep=0.02
 Mod=Mod4
 AMod=Mod1
@@ -18,25 +17,25 @@ hc keybind $Mod-d               spawn dmenu_run -i -p "Run:"
 hc keybind $Mod-Shift-d         spawn rofi -show drun
 hc keybind $Mod-b               spawn $browser
 hc keybind $Mod-Shift-b         spawn tabbed -c vimb -e
-hc keybind $Mod-r               spawn $terminal -e lf
-hc keybind $Mod-w               spawn pcmanfm
-hc keybind $Mod-e               spawn emacsclient -c -a 'emacs'
+hc keybind $Mod-w               spawn $terminal -e lf
+hc keybind $Mod-Shift-w         spawn pcmanfm
+#hc keybind $Mod-e               spawn emacsclient -c -a 'emacs'
 
 # Scripts
-hc keybind $Mod-m               spawn $scriptsdir/music.sh
-hc keybind $Mod-p               spawn $scriptsdir/password.sh
-hc keybind $Mod-$AMod-o         spawn $scriptsdir/soundout.sh
-hc keybind $Mod-$AMod-k         spawn $scriptsdir/kill.sh
-hc keybind $Mod-$AMod-e         spawn $scriptsdir/editcfg.sh
-hc keybind $Mod-Insert          spawn $scriptsdir/snippet.sh 1
-hc keybind $Mod-$AMod-b         spawn $scriptsdir/snippet.sh 2
-hc keybind $Mod-plus            spawn $scriptsdir/volume.sh 1
-hc keybind $Mod-minus           spawn $scriptsdir/volume.sh 2
-hc keybind $Mod-Print           spawn $scriptsdir/screenshot.sh 1
-hc keybind $Mod-$AMod-Print     spawn $scriptsdir/screenshot.sh 2
-hc keybind $Mod-Shift-Print     spawn $scriptsdir/screenshot.sh 3
-hc keybind $Mod-Control-Print   spawn $scriptsdir/screenshot.sh 4
-hc keybind $Mod-Shift-q         spawn $scriptsdir/wmquit.sh
+hc keybind $Mod-m               spawn $SCRIPTSDIR/music.sh
+hc keybind $Mod-p               spawn $SCRIPTSDIR/password.sh
+hc keybind $Mod-$AMod-o         spawn $SCRIPTSDIR/soundout.sh
+hc keybind $Mod-$AMod-k         spawn $SCRIPTSDIR/kill.sh
+hc keybind $Mod-$AMod-e         spawn $SCRIPTSDIR/editcfg.sh
+hc keybind $Mod-Insert          spawn $SCRIPTSDIR/snippet.sh 1
+hc keybind $Mod-$AMod-b         spawn $SCRIPTSDIR/snippet.sh 2
+hc keybind $Mod-plus            spawn $SCRIPTSDIR/volume.sh 1
+hc keybind $Mod-minus           spawn $SCRIPTSDIR/volume.sh 2
+hc keybind $Mod-Print           spawn $SCRIPTSDIR/screenshot.sh 1
+hc keybind $Mod-$AMod-Print     spawn $SCRIPTSDIR/screenshot.sh 2
+hc keybind $Mod-Shift-Print     spawn $SCRIPTSDIR/screenshot.sh 3
+hc keybind $Mod-Control-Print   spawn $SCRIPTSDIR/screenshot.sh 4
+hc keybind $Mod-Shift-q         spawn $SCRIPTSDIR/wmquit.sh
 
 # Moverse entre ventanas
 hc keybind $Mod-h               focus left
