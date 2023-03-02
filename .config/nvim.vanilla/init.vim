@@ -19,7 +19,7 @@ set hidden
 set nobackup
 set nowritebackup
 set noswapfile
-set wrap
+set nowrap
 set clipboard=unnamedplus
 set hlsearch
 set incsearch
@@ -58,9 +58,6 @@ autocmd CursorMoved * echon ''
 let g:mapleader = ' '
 nnoremap <silent> <C-s> :w!<CR>
 nnoremap <silent> <C-q> :q<CR>
-nnoremap <silent> <Leader>w :w!<CR>
-nnoremap <silent> <Leader>q :q<CR>
-nnoremap <silent> <Leader><S-q> :q!<CR>
 nnoremap <S-h> <Home>
 nnoremap <S-l> <End>
 imap jk <Esc>

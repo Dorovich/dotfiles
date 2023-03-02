@@ -15,3 +15,5 @@
 - Navegador: `firefox`, `vimb`
 
 > *OTROS: para poder poner acentos en st he tenido que añadir la línea `XPROFILE=` a `/etc/environment`. Los programas que se autoinician estan en `~/.xprofile`. Las variables globales del sistema (como $SCRIPTSDIR, $TERMINAL o $BROWSER) estan en `~/.profile`.*
+
+*Artista original del fondo de pantalla: ![@slope_moon](https://twitter.com/slope_moon)*
