@@ -1,3 +1,0 @@
-#!/bin/env bash
-
-maim -i $(xdotool getactivewindow) ~/Imágenes/Capturas/ventana_$(date +%s).png

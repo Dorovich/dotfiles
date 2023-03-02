@@ -1,3 +1,0 @@
-#!/bin/env bash
-
-maim ~/Imágenes/Capturas/captura_$(date +%s).png

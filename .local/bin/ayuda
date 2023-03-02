@@ -1,0 +1,6 @@
+#!/bin/sh
+# 
+#   Displays the window manager keybinds document
+# 
+
+$TERMINAL -e less /usr/share/doc/help_dwm.txt
