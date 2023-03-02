@@ -1,7 +1,5 @@
 #!/bin/sh
 
-dir="${HOME}/.config/herbstluftwm/scripts/"
-
 while true; do
     mpc status | grep "playing" 2> /dev/null
     if [ $? -eq 0 ]; then
@@ -18,19 +16,19 @@ while true; do
             mpc pause
             ;;
         jump)
-            $dir/mpdctl.sh -j
+            $SCRIPTSDIR/mpdctl.sh -j
             ;;
         artist)
-            $dir/mpdctl.sh -a
+            $SCRIPTSDIR/mpdctl.sh -a
             ;;
         album)
-            $dir/mpdctl.sh -l
+            $SCRIPTSDIR/mpdctl.sh -l
             ;;
         track)
-            $dir/mpdctl.sh -t
+            $SCRIPTSDIR/mpdctl.sh -t
             ;;
         load)
-            $dir/mpdctl.sh -p
+            $SCRIPTSDIR/mpdctl.sh -p
             ;;
         clear)
             mpc clear
