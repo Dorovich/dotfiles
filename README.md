@@ -14,4 +14,4 @@
 - Música: `spotify`, `mpd`
 - Navegador: `firefox`, `vimb`
 
-> *OTROS: para poder poner acentos en st he tenido que añadir la línea `XPROFILE=` a `/etc/environment`. Los programas que se autoinician estan en `~/.xprofile`. Las variables globales del sistema (como $SCRIPTSDIR) estan en `~/.profile`.*
+> *OTROS: para poder poner acentos en st he tenido que añadir la línea `XPROFILE=` a `/etc/environment`. Los programas que se autoinician estan en `~/.xprofile`. Las variables globales del sistema (como $SCRIPTSDIR, $TERMINAL o $BROWSER) estan en `~/.profile`.*
