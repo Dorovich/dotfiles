@@ -31,9 +31,8 @@ nmap <C-k> <C-b>
 nmap M '
 nmap ñ :
 nmap Ñ :
-nmap d :quit<CR>
+nmap q :quit<CR>
 #nmap d :sh! ~/.local/bin/vimb-close<CR>
-nmap D :quit!<CR>
 nmap b :open !
 nmap B :tabopen !
 nmap c <Esc>

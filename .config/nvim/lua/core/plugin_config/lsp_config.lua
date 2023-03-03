@@ -1,6 +1,6 @@
 require('mason').setup()
 require('mason-lspconfig').setup({
-    ensure_installed = { 'clangd', 'sumneko_lua' }
+    ensure_installed = { 'clangd', 'lua_ls' }
 })
 
 local attach_data = function(_, _)
@@ -22,7 +22,7 @@ require('lspconfig').clangd.setup {
     cmd = { "clangd", "--query-driver=/usr/bin/g++" }
 }
 
-require('lspconfig').sumneko_lua.setup {
+require('lspconfig').lua_ls.setup {
     on_attach = attach_data,
     capabilities = capability_data,
     settings = {
