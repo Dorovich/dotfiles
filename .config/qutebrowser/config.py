@@ -14,7 +14,7 @@ c.url.start_pages = ["cosas-de-vido.neocities.org"]
 config.source("colors.py")
 c.hints.chars = "asdfghjklie"
 c.statusbar.show = "always"
-c.messages.timeout = 500
+c.messages.timeout = 1000
 c.colors.webpage.preferred_color_scheme = "dark"
 c.colors.webpage.darkmode.enabled = False
 c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
@@ -23,7 +23,7 @@ c.colors.webpage.darkmode.policy.images = 'never'
 c.completion.show = "auto"
 c.completion.use_best_match = True
 c.scrolling.smooth = True
-c.completion.height = "30%"
+c.completion.height = "35%"
 c.completion.quick = False
 c.window.title_format = "{private}{perc}qutebrowser"
 c.content.fullscreen.overlay_timeout = 500
