@@ -14,6 +14,7 @@ c.url.start_pages = ["cosas-de-vido.neocities.org"]
 config.source("colors.py")
 c.hints.chars = "asdfghjklie"
 c.statusbar.show = "always"
+c.messages.timeout = 500
 c.colors.webpage.preferred_color_scheme = "dark"
 c.colors.webpage.darkmode.enabled = False
 c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
