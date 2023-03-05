@@ -33,6 +33,17 @@ autocmd(
 )
 
 autocmd(
+    { "FileType" },
+    {
+        pattern = { "text", "org", "markdown" },
+        callback = function ()
+            vim.schedule(Plaintext_utils)
+        end,
+    }
+)
+
+
+autocmd(
     { "TermEnter" },
     {
         callback = function ()
@@ -72,4 +83,8 @@ end
 function Help_utils ()
     require("core/utils")
     NMAP('q', ':q<CR>', NRSLBFR)
+end
+
+function Plaintext_utils ()
+    vim.opt_local.wrap = true
 end

@@ -5,7 +5,7 @@
 #
 # https://fanglingsu.github.io/vimb/man.html
 
-set home-page=https://dorovich.github.io/home
+set home-page=https://cosas-de-vido.neocities.org/
 
 # UI {{{
 set input-autohide=true
