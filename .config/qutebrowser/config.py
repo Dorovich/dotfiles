@@ -40,10 +40,62 @@ c.tabs.padding = {
 # }}}
 
 # Mappings {{{
-c.input.partial_timeout = 500
+c.input.partial_timeout = 0
 
-config.source("unbinds.py")
-config.source("keybinds.py")
+#c.bindings.default = {}
+c.bindings.commands = {
+    'normal': {
+        'ñ': 'set-cmd-text :',
+        'o': 'set-cmd-text -s :open',
+        'O': 'set-cmd-text :open {url}',
+        't': 'set-cmd-text -s :open -t',
+        'T': 'set-cmd-text :open -t {url}',
+        'b': 'set-cmd-text -s :quickmark-load',
+        'B': 'set-cmd-text -s :quickmark-load -t',
+        'y': 'yank pretty-url',
+        'Y': 'yank selection',
+        'p': 'open {clipboard}',
+        'P': 'open -t {clipboard}',
+        'd': 'tab-close',
+        'D': 'close',
+        'gh': 'home',
+        'gc': 'config-edit',
+        'gd': 'spawn st -e lf /home/vido25/Descargas',
+        'xb': 'config-cycle statusbar.show never always',
+        'xt': 'config-cycle tabs.show multiple never',
+        'xc': 'history-clear',
+        'c': 'download-clear;; clear-messages',
+        '<Ctrl-p>': 'tab-pin',
+        '<Ctrl-j>': 'tab-move +',
+        '<Ctrl-k>': 'tab-move -',
+        '<Ctrl-h>': 'tab-prev',
+        '<Ctrl-l>': 'tab-next',
+        '<Ctrl-i>': 'forward',
+        '<Ctrl-o>': 'back',
+        '<Ctrl-z>': 'mode-enter passthrough',
+        '<Ctrl-Shift-p>': 'open -p',
+        ',m': 'hint links spawn mpv {hint-url}',
+        ',M': 'spawn mpv {url}',
+        ',t': 'spawn --userscript translate --text',
+        ',T': 'spawn --userscript translate',
+        ',d': 'download-open',
+        '<Ctrl-y>': 'spawn --userscript password_fill',
+    },
+    'insert': {
+        '<Ctrl-y>': 'spawn --userscript password_fill',
+        '<Ctrl-d>': 'mode-leave',
+        '<Ctrl-h>': 'fake-key <Backspace>',
+        '<Ctrl-a>': 'fake-key <Home>',
+        '<Ctrl-e>': 'fake-key <End>',
+        '<Ctrl-b>': 'fake-key <Delete>',
+        '<Ctrl-w>': 'fake-key <Ctrl-Backspace>',
+        '<Ctrl-u>': 'fake-key <Shift-Home><Delete>',
+        '<Ctrl-k>': 'fake-key <Shift-End><Delete>',
+    },
+    'command': {
+        '<Ctrl-c>': 'mode-leave',
+    }
+}
 # }}}
 
 # Shortcuts {{{
@@ -140,4 +192,5 @@ config.set('content.javascript.enabled', True, 'chrome-devtools://*')
 config.set('content.javascript.enabled', True, 'devtools://*')
 config.set('content.javascript.enabled', True, 'chrome://*/*')
 config.set('content.javascript.enabled', True, 'qute://*/*')
+config.set('content.media.audio_capture', True, 'https://discord.com/*')
 # }}}
