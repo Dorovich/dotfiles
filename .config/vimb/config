@@ -46,7 +46,7 @@ nmap <C-m> :sh! mpv $VIMB_URI<CR>
 nmap <C-t> Y:tabopen trad <C-r>"<CR>
 #nnoremap <C-y> :sh vimb-pass $VIMB_URI<CR>
 nmap gc :sh! st -e nvim ~/.config/vimb/config<CR>
-nmap gd :sh! st -e bash -ilc 'nnn ~/Descargas'<CR>
+nmap gd :sh! st -e lf /home/vido25/Descargas<CR>
 nnoremap xc :sh! ~/.local/bin/vimb-clear-history<CR>
 nnoremap xu :sh! ~/.local/bin/vimb-adblock-update<CR>
 #nnoremap xb :e! ytblock();<CR>

@@ -8,3 +8,6 @@ mpd &
 redshift -l 41.39:2.16 -m randr -t 5500:5000 &
 /usr/bin/nvidia-settings -l &
 # emacs --daemon &
+setxkbmap -option caps:ctrl_modifier &
+# setxkbmap -option caps:super &
+# setxkbmap -option ctrl:swapcaps &

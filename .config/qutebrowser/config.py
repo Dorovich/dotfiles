@@ -84,7 +84,8 @@ c.content.canvas_reading = False
 c.content.webgl = True
 c.content.default_encoding = "utf-8"
 c.content.webrtc_ip_handling_policy = "default-public-interface-only"
-c.content.headers.user_agent = "Mozilla/5.0 ({os_info}; rv:107.0) Gecko/20100101 Firefox/107.0"
+#c.content.headers.user_agent = "Mozilla/5.0 ({os_info}; rv:110.0) Gecko/20100101 Firefox/110.0"
+c.content.headers.user_agent = "Mozilla/5.0 (Windows NT 10.0; rv:110.0) Gecko/20100101 Firefox/110.0"
 c.content.cookies.accept = "no-3rdparty"
 c.completion.open_categories= [ "history" ]
 
