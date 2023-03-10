@@ -15,4 +15,7 @@ case $1 in
             notify-send "¡Snippet añadido!" "$new_snippet fue añadido al archivo"
         fi
         ;;
+    *)
+        xdotool type $(grep -v '^#' ~/.local/share/snippets | dmenu -i -l 15 | cut -d' ' -f1)
+        ;;
 esac

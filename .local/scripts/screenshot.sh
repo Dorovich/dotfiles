@@ -13,4 +13,7 @@ case $1 in
     4)      # Mouse selection (copy)
         maim -s | xclip -selection clipboard -t image/png
         ;;
+    *)
+        maim ~/Imágenes/Capturas/captura_$(date +%s).png
+        ;;
 esac
