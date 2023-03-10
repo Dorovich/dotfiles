@@ -40,7 +40,7 @@ g.c_syntax_for_h = true
 opt.smarttab = true
 opt.autoindent = true
 opt.expandtab = false
--- opt.shiftwidth = 4 -- sustituye tabs por espacios
+opt.shiftwidth = 4 -- sustituye tabs por espacios
 
 -- Copias de seguridad
 opt.backup = false

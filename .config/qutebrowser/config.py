@@ -24,6 +24,7 @@ c.completion.show = "auto"
 c.completion.use_best_match = True
 c.scrolling.smooth = True
 c.completion.height = "35%"
+c.completion.cmd_history_max_items = 100
 c.completion.quick = False
 c.window.title_format = "{private}{perc}qutebrowser"
 c.content.fullscreen.overlay_timeout = 500
@@ -42,9 +43,21 @@ c.tabs.padding = {
 # Mappings {{{
 c.input.partial_timeout = 0
 
-#c.bindings.default = {}
+c.bindings.default = {}
 c.bindings.commands = {
-    'normal': {
+    'normal': { # {{{
+        'h': 'scroll left',
+        'j': 'scroll down',
+        'k': 'scroll up',
+        'l': 'scroll right',
+        'i': 'mode-enter insert',
+        'f': 'hint',
+        'F': 'hint all tab',
+        'r': 'reload',
+        'R': 'reload -f',
+        '/': 'set-cmd-text /',
+        '?': 'set-cmd-text ?',
+        ':': 'set-cmd-text :',
         'ñ': 'set-cmd-text :',
         'o': 'set-cmd-text -s :open',
         'O': 'set-cmd-text :open {url}',
@@ -58,20 +71,46 @@ c.bindings.commands = {
         'P': 'open -t {clipboard}',
         'd': 'tab-close',
         'D': 'close',
+        'm': 'quickmark-save',
+        'M': 'bookmark-add',
+        'u': 'undo',
+        'U': 'undo -w',
+        'v': 'mode-enter caret',
+        'V': 'mode-enter caret;; selection-toggle --line',
         'gh': 'home',
         'gc': 'config-edit',
         'gd': 'spawn st -e lf /home/vido25/Descargas',
+        'gi': 'hint inputs --first',
         'xb': 'config-cycle statusbar.show never always',
         'xt': 'config-cycle tabs.show multiple never',
         'xc': 'history-clear',
+        'wi': 'devtools',
         'c': 'download-clear;; clear-messages',
+        '+': 'zoom-in',
+        '-': 'zoom-out',
+        '=': 'zoom',
+        '<F5>': 'reload',
+        '<Ctrl-F5>': 'reload',
+        '<Ctrl-w>': 'tab-close',
+        '<Ctrl-t>': 'open -t',
+        '<Ctrl-q>': 'close',
         '<Ctrl-p>': 'tab-pin',
+        '<Ctrl-n>': 'open -w',
+        '<Ctrl-Shift-n>': 'open -p',
+        '<Ctrl-Shift-t>': 'undo',
         '<Ctrl-j>': 'tab-move +',
         '<Ctrl-k>': 'tab-move -',
         '<Ctrl-h>': 'tab-prev',
         '<Ctrl-l>': 'tab-next',
         '<Ctrl-i>': 'forward',
         '<Ctrl-o>': 'back',
+        '<Ctrl-u>': 'scroll-page 0 -0.5',
+        '<Ctrl-d>': 'scroll-page 0 0.5',
+        '<Ctrl-f>': 'scroll-page 0 1',
+        '<Ctrl-b>': 'scroll-page 0 -1',
+        '<Ctrl-s>': 'stop',
+        '<Ctrl-a>': 'navigate increment',
+        '<Ctrl-x>': 'navigate decrement',
         '<Ctrl-z>': 'mode-enter passthrough',
         '<Ctrl-Shift-p>': 'open -p',
         ',m': 'hint links spawn mpv {hint-url}',
@@ -80,8 +119,31 @@ c.bindings.commands = {
         ',T': 'spawn --userscript translate',
         ',d': 'download-open',
         '<Ctrl-y>': 'spawn --userscript password_fill',
-    },
-    'insert': {
+        '<Alt-1>': 'tab-focus 1',
+        '<Alt-2>': 'tab-focus 2',
+        '<Alt-3>': 'tab-focus 3',
+        '<Alt-4>': 'tab-focus 4',
+        '<Alt-5>': 'tab-focus 5',
+        '<Alt-6>': 'tab-focus 6',
+        '<Alt-7>': 'tab-focus 7',
+        '<Alt-8>': 'tab-focus 8',
+        '<Alt-9>': 'tab-focus -1',
+        ';i': 'hint all images',
+        ';b': 'hint all tab-bg',
+        ';f': 'hint all tab-fg',
+        ';h': 'hint all hover',
+        ';i': 'hint images',
+        ';I': 'hint images tab',
+        ';o': 'hint links fill :open {hint-url}',
+        ';O': 'hint links fill :open -t -r {hint-url}',
+        ';y': 'hint links yank',
+        ';Y': 'hint links yank-primary',
+        ';r': 'hint --rapid links tab-bg',
+        ';R': 'hint --rapid links window',
+        ';d': 'hint links download',
+        ';t': 'hint inputs',
+    }, # }}}
+    'insert': { # {{{
         '<Ctrl-y>': 'spawn --userscript password_fill',
         '<Ctrl-d>': 'mode-leave',
         '<Ctrl-h>': 'fake-key <Backspace>',
@@ -91,10 +153,92 @@ c.bindings.commands = {
         '<Ctrl-w>': 'fake-key <Ctrl-Backspace>',
         '<Ctrl-u>': 'fake-key <Shift-Home><Delete>',
         '<Ctrl-k>': 'fake-key <Shift-End><Delete>',
-    },
-    'command': {
+        '<Escape>': 'mode-leave',
+    }, # }}}
+    'command': { # {{{
         '<Ctrl-c>': 'mode-leave',
-    }
+        '<Ctrl+p>': 'command-history-prev',
+        '<Ctrl+n>': 'command-history-next',
+        '<Up>': 'completion-item-focus --history prev',
+        '<Down>': 'completion-item-focus --history next',
+        '<Shift+Tab>': 'completion-item-focus prev',
+        '<Tab>': 'completion-item-focus next',
+        '<Ctrl+Tab>': 'completion-item-focus next-category',
+        '<Ctrl+Shift+Tab>': 'completion-item-focus prev-category',
+        '<PgDown>': 'completion-item-focus next-page',
+        '<PgUp>': 'completion-item-focus prev-page',
+        '<Ctrl+d>': 'completion-item-del',
+        '<Shift+Del>': 'completion-item-del',
+        '<Ctrl+Shift+c>': 'completion-item-yank --sel',
+        '<Return>': 'command-accept',
+        '<Ctrl+Return>': 'command-accept --rapid',
+        '<Ctrl+b>': 'rl-backward-char',
+        '<Ctrl+f>': 'rl-forward-char',
+        '<Alt+b>': 'rl-backward-word',
+        '<Alt+f>': 'rl-forward-word',
+        '<Ctrl+a>': 'rl-beginning-of-line',
+        '<Ctrl+e>': 'rl-end-of-line',
+        '<Ctrl+u>': 'rl-unix-line-discard',
+        '<Ctrl+k>': 'rl-kill-line',
+        '<Alt+d>': 'rl-kill-word',
+        '<Ctrl+w>': 'rl-rubout " "',
+        '<Ctrl+Shift+w>': 'rl-filename-rubout',
+        '<Alt+Backspace>': 'rl-backward-kill-word',
+        '<Ctrl+y>': 'rl-yank',
+        '<Ctrl+?>': 'rl-delete-char',
+        '<Ctrl+h>': 'rl-backward-delete-char',
+        '<Escape>': 'mode-leave',
+    }, # }}}
+    'hint': { # {{{
+        '<Return>': 'hint-follow',
+        '<Ctrl+r>': 'hint --rapid links tab-bg',
+        '<Ctrl+f>': 'hint links',
+        '<Ctrl+b>': 'hint all tab-bg',
+        '<Escape>': 'mode-leave',
+    }, # }}}
+    'passthrough': { # {{{
+        '<Shift-Escape>': 'mode-leave',
+    }, # }}}
+    'prompt': { # {{{
+        '<Return>': 'prompt-accept',
+        '<Ctrl+x>': 'prompt-open-download',
+        '<Ctrl+p>': 'prompt-open-download --pdfjs',
+        '<Shift+Tab>': 'prompt-item-focus prev',
+        '<Up>': 'prompt-item-focus prev',
+        '<Tab>': 'prompt-item-focus next',
+        '<Down>': 'prompt-item-focus next',
+        '<Alt+y>': 'prompt-yank',
+        '<Alt+Shift+y>': 'prompt-yank --sel',
+        '<Ctrl+b>': 'rl-backward-char',
+        '<Ctrl+f>': 'rl-forward-char',
+        '<Alt+b>': 'rl-backward-word',
+        '<Alt+f>': 'rl-forward-word',
+        '<Ctrl+a>': 'rl-beginning-of-line',
+        '<Ctrl+e>': 'rl-end-of-line',
+        '<Ctrl+u>': 'rl-unix-line-discard',
+        '<Ctrl+k>': 'rl-kill-line',
+        '<Alt+d>': 'rl-kill-word',
+        '<Ctrl+w>': 'rl-rubout " "',
+        '<Ctrl+Shift+w>': 'rl-filename-rubout',
+        '<Alt+Backspace>': 'rl-backward-kill-word',
+        '<Ctrl+?>': 'rl-delete-char',
+        '<Ctrl+h>': 'rl-backward-delete-char',
+        '<Ctrl+y>': 'rl-yank',
+        '<Escape>': 'mode-leave',
+    }, # }}}
+    'register': { # {{{
+        '<Escape>': 'mode-leave',
+    }, # }}}
+    'yesno': { # {{{
+        '<Return>': 'prompt-accept',
+        'y': 'prompt-accept yes',
+        'n': 'prompt-accept no',
+        'Y': 'prompt-accept --save yes',
+        'N': 'prompt-accept --save no',
+        '<Alt+y>': 'prompt-yank',
+        '<Alt+Shift+y>': 'prompt-yank --sel',
+        '<Escape>': 'mode-leave',
+    }, # }}}
 }
 # }}}
 
@@ -121,7 +265,7 @@ c.url.searchengines = {
     'iv': 'https://farside.link/invidious/{}',
     'nt': 'https://farside.link/nitter/{}',
     'td': 'https://farside.link/teddit/r/{}'
-    }
+}
 # }}}
 
 # Web content {{{

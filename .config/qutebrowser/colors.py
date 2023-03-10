@@ -94,8 +94,8 @@ c.colors.statusbar.url.warn.fg = ERRCOLOR
 
 # Tabs
 c.colors.tabs.bar.bg = BGCOLOR
-c.colors.tabs.indicator.start = ACCENT1
-c.colors.tabs.indicator.stop = ACCENT1
+c.colors.tabs.indicator.start = BGCOLOR
+c.colors.tabs.indicator.stop = ACCENT2
 c.colors.tabs.indicator.error = ERRCOLOR
 c.colors.tabs.odd.fg = FGCOLOR
 c.colors.tabs.odd.bg = BGCOLOR
