@@ -13,7 +13,7 @@
 - Editor: `neovim`, `emacs`
 - Gestor de archivos: `lf`, `pcmanfm`
 - Fuente: `mononoki (Nerd Font)`
-- Música: `spotify`, `mpd`
+- Música: `spotify`, `mpd (+ ncmpcpp)`
 - Navegador: `qutebrowser`, `firefox`
 
 > *OTROS: para poder poner acentos en st he tenido que añadir la línea `XPROFILE=` a `/etc/environment`. Los programas que se autoinician estan en `~/.xprofile`. Las variables globales del sistema (como $SCRIPTSDIR, $TERMINAL o $BROWSER) estan en `~/.profile`.*
