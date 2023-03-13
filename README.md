@@ -3,7 +3,7 @@
 
 ![](showcase.png)
 
-*Artista original del fondo de pantalla: @slope_moon (twitter)*
+*Artista original del fondo de pantalla: [@slope_moon](https://twitter.com/slope_moon)*
 
 ## Información
 - Distro: `Pop!_OS` (Void Linux la proxima)
