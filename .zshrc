@@ -58,11 +58,8 @@ function 0url() { curl -F"url=$1" https://envs.sh ; }       # 0url "https://url"
 function 0short() { curl -F"shorten=$1" https://envs.sh ; } # 0short "https://long-url"
 
 alias wacom-osu='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" Area 5667 3667 8633 5833'
-#alias wacom-osu='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" Area 5167 3167 9133 6333'
+alias wacom-small='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" Area 5167 3167 9133 6333'
 alias wacom-reset='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" ResetArea'
-
-alias icat="kitty +kitten icat"
-alias diff="kitty +kitten diff"
 
 function default-fm() {
     if [ $1 ]; then
