@@ -16,8 +16,9 @@ case $1 in
     "volume") 		$SCRIPTSDIR/volume.sh $2;;
     "screenshot") 	$SCRIPTSDIR/screenshot.sh $2;;
     "wmquit") 		$SCRIPTSDIR/wmquit.sh;;
+    "youtube") 		$SCRIPTSDIR/youtube.sh;;
     *) 
-	choice=$(echo "music\npassword\nsoundout\nkill\neditcfg\nsnippet\nvolume\nscreenshot" | dmenu -p "Script:")
+	choice=$(echo "music\npassword\nsoundout\nkill\neditcfg\nsnippet\nvolume\nscreenshot\nyoutube" | dmenu -p "Script:")
 	case $choice in
 		"") exit;;
 		"snippet")

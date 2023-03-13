@@ -1,0 +1,62 @@
+#!/bin/env bash
+
+set -euo pipefail
+
+# Youtube channels to check
+declare -A youtube_channels
+youtube_channels[Chris Titus Tech]="https://www.youtube.com/ChrisTitusTech/featured"
+youtube_channels[Dina Ariya]="https://www.youtube.com/DinaAriya/featured"
+youtube_channels[DistroTube]="https://www.youtube.com/DistroTube/featured"
+youtube_channels[ElRichMC]="https://www.youtube.com/ElRichMC/featured"
+youtube_channels[Fireship]="https://www.youtube.com/Fireship/featured"
+youtube_channels[Juniper Actias]="https://www.youtube.com/@juniperactiasofficial5251/featured"
+youtube_channels[MASTER BOOT RECORD]="https://www.youtube.com/MasterBootRecord/featured"
+youtube_channels[Mental Outlaw]="https://www.youtube.com/MentalOutlaw/featured"
+youtube_channels[MTB]="https://www.youtube.com/MTB396/featured"
+youtube_channels[NewRetroWave]="https://www.youtube.com/NewRetroWave/featured"
+youtube_channels[Nyanners]="https://www.youtube.com/Nyanners/featured"
+youtube_channels[PerlDrop]="https://www.youtube.com/PerlDrop/featured"
+youtube_channels[Ken Ashcorp]="https://www.youtube.com/KenAshcorp/featured"
+youtube_channels[sum]="https://www.youtube.com/@sum123/featured"
+
+xmlgetnext () { #{{{
+  local IFS='>'
+  read -d '<' TAG VALUE
+} #}}}
+
+parse_rss() { #{{{
+    echo "$1" | while xmlgetnext ; do
+    case $TAG in
+        'entry')
+          title=''
+          link=''
+          published=''
+          ;;
+        'media:title')
+          title="$VALUE"
+          ;;
+        'yt:videoId')
+          link="$VALUE"
+          ;;
+        'published')
+          published="$(date --date="${VALUE}" "+%Y-%m-%d %H:%M")"
+            ;;
+        '/entry')
+          echo " ${published} | ${link} | ${title}"
+          ;;
+        esac
+  done
+} #}}}
+
+_channel=$(printf '%s\n' "${!youtube_channels[@]}" | sort | dmenu -i -l 10 -p 'Select Channel:' "$@")
+_channel_id=$(curl -s -f -L "${youtube_channels[${_channel}]}" | grep -o "channel_id=.*" | sed 's/".*//g')
+
+_feed_url="https://www.youtube.com/feeds/videos.xml?channel_id=${_channel_id##*=}"
+
+_video_list=$(parse_rss "$(curl -s "${_feed_url}")")
+_video=$(printf '%s\n' "${_video_list}" | sort -r | dmenu -i -l 10 -p 'Select Video:' "$@")
+_video_id=$(echo "${_video}" | cut -d'|' -f2 | sed -e 's/^[ \t]*//')
+
+if [[ -n ${_video_id} ]]; then
+    mpv "https://www.youtube.com/watch?v=${_video_id}"
+fi
