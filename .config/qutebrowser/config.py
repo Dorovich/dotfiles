@@ -50,6 +50,8 @@ c.bindings.commands = {
         'j': 'scroll down',
         'k': 'scroll up',
         'l': 'scroll right',
+        'J': 'scroll-page 0 0.5',
+        'K': 'scroll-page 0 -0.5',
         'i': 'mode-enter insert',
         'f': 'hint',
         'F': 'hint all tab',
@@ -77,6 +79,8 @@ c.bindings.commands = {
         'U': 'undo -w',
         'v': 'mode-enter caret',
         'V': 'mode-enter caret;; selection-toggle --line',
+        'gg': 'scroll-to-perc 0',
+        'G': 'scroll-to-perc 100',
         'gh': 'home',
         'gc': 'config-edit',
         'gd': 'spawn st -e lf /home/vido25/Descargas',
@@ -106,8 +110,8 @@ c.bindings.commands = {
         '<Ctrl-o>': 'back',
         '<Ctrl-u>': 'scroll-page 0 -0.5',
         '<Ctrl-d>': 'scroll-page 0 0.5',
-        '<Ctrl-f>': 'scroll-page 0 1',
         '<Ctrl-b>': 'scroll-page 0 -1',
+        '<Ctrl-f>': 'scroll-page 0 1',
         '<Ctrl-s>': 'stop',
         '<Ctrl-a>': 'navigate increment',
         '<Ctrl-x>': 'navigate decrement',
@@ -242,9 +246,9 @@ c.bindings.commands = {
 }
 # }}}
 
-# Shortcuts {{{
+# Search engines {{{
 c.url.searchengines = {
-    'DEFAULT': 'https://duckduckgo.com/?q={}',
+    'DEFAULT': 'https://searx.be/?q={}',
     'dd': 'https://duckduckgo.com/?q={}',
     'gg': 'https://encrypted.google.com/search?q={}&pccc=1',
     'sx': 'https://searx.tiekoetter.com/search?q={}',

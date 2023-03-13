@@ -9,7 +9,7 @@
     background-color:           #151515;
     border-color:               #151515;
     text-color:                 #abb2bf;
-    height:                     18px;
+    height:                     20px;
     prompt-background:          #d19a66;
     prompt-foreground:          #151515;
     prompt-padding:             2px;

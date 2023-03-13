@@ -10,8 +10,8 @@ export ALTERNATE_EDITOR="emacsclient -t -a ''"
 export HISTSIZE=2000
 export SAVEHIST=2000
 export HISTFILE=~/.zsh_history
-export PATH="${PATH}:${HOME}/.local/bin:${HOME}/.emacs.d/bin:${HOME}/Applications"
 export MYVIMRC="$HOME/.config/nvim/init.lua"
+export HISTORY_IGNORE="(ls|pwd|exit)"
 
 # Vimb config
 export JavaScriptCoreUseJIT="0"
@@ -78,6 +78,33 @@ alias qmake-qt5="qmake"
 function mergepdfs() {
     gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=mergedpdfs.pdf "$@"
 }
+
+# }}}
+
+###########################################
+###                 PATH                ###
+###########################################
+# {{{
+
+if [ -d "$HOME/.bin" ] ;
+  then PATH="$HOME/.bin:$PATH"
+fi
+
+if [ -d "$HOME/.local/bin" ] ;
+  then PATH="$HOME/.local/bin:$PATH"
+fi
+
+if [ -d "$HOME/.emacs.d/bin" ] ;
+  then PATH="$HOME/.emacs.d/bin:$PATH"
+fi
+
+if [ -d "$HOME/Applications" ] ;
+  then PATH="$HOME/Applications:$PATH"
+fi
+
+if [ -d "/var/lib/flatpak/exports/bin/" ] ;
+  then PATH="/var/lib/flatpak/exports/bin/:$PATH"
+fi
 
 # }}}
 

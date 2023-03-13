@@ -81,7 +81,7 @@
 
 (setq fancy-splash-image (concat doom-user-dir "splashes/splash_3.png")
       default-input-method "catalan-prefix"
-      shell-file-name "/bin/bash")
+      shell-file-name "/bin/zsh")
 
 ;; Lo que se muestra en la pantalla de inicio
 (setq +doom-dashboard-functions

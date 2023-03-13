@@ -5,6 +5,7 @@ wmname dwm &
 dwm-status &
 nitrogen --restore &
 mpd &
+numlockx on &
 redshift -l 41.39:2.16 -m randr -t 5500:5000 &
 # picom &
 # emacs --daemon &

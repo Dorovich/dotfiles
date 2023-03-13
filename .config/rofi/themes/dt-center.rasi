@@ -1,27 +1,20 @@
-/**
- * ROFI Color theme
- * NAME: dt-center.rasi
- * DESCRIPTION: This is a centered prompt.
- * AUTHOR: Derek Taylor (DT)
- */
-
 * {
     width:                       500;
     lines:                       8;
     background-color:            #151515;
-    border-color:                #151515;
-    text-color:                  #abb2bf;
-    prompt-background:           #d19a66;
-    prompt-foreground:           #151515;
+    border-color:                #346475;
+    text-color:                  #d1d1d1;
+    prompt-background:           #346475;
+    prompt-foreground:           #d1d1d1;
     prompt-padding:              4px;
     alternate-normal-background: #262626;
     alternate-normal-foreground: @text-color;
-    selected-normal-background:  #d19a66;
-    selected-normal-foreground:  #151515;
+    selected-normal-background:  #346475;
+    selected-normal-foreground:  #d1d1d1;
     spacing:                     3;
 }
 #window {
-    border:  1;
+    border:  2;
     padding: 5;
 }
 #mainbox {
