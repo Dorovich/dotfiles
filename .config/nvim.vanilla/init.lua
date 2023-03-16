@@ -42,7 +42,7 @@ vim.keymap.set('i', 'jk', '<Esc>', {})
 -- ",r" para buscar y reemplazar (ej. :%s/antiguo/nuevo/g)
 vim.keymap.set('n', '<Leader>r', ':%s//g<Left><Left>', {})
 
--- ",t" para despleagar una terminal
+-- ",t" para desplegar una terminal
 vim.keymap.set('n', '<Leader>t', ':split<CR>:term<CR>i', {})
 
 -- ",c" para compilar desde el cirectorio actual (hace falta Makefile)

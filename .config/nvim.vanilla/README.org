@@ -6,3 +6,5 @@ Esta es una configuración sencilla y sin plugins ni nada raro para *Neovim*. La
 mkdir -p ~/.config/nvim
 curl https://github.com/Dorovich/dotfiles/tree/main/.config/nvim.vanilla/init.lua > ~/.config/nvim/init.lua
 #+end_src
+
+Si buscas una configuración algo más sofisticada, la mía está [aquí](https://github.com/Dorovich/dotfiles/tree/main/.config/nvim).
