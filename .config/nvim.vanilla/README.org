@@ -1,13 +1,8 @@
 #+options: \n:t num:nil timestamp:nil
 
-Esta es una configuración sencilla y sin plugins ni nada raro para tanto *Vim* como *Neovim*. Se puede instalar con un solo comando tal que...
+Esta es una configuración sencilla y sin plugins ni nada raro para *Neovim*. Se puede instalar con un solo comando tal que...
 
-...para *Vim*:
 #+begin_src bash
-curl https://github.com/Dorovich/dotfiles/tree/main/.config/nvim.vanilla/init.vim > ~/.vimrc
-#+end_src
-
-...para *Neovim*:
-#+begin_src bash
-curl https://github.com/Dorovich/dotfiles/tree/main/.config/nvim.vanilla/init.vim > ~/.config/nvim/init.vim
+mkdir -p ~/.config/nvim
+curl https://github.com/Dorovich/dotfiles/tree/main/.config/nvim.vanilla/init.lua > ~/.config/nvim/init.lua
 #+end_src
