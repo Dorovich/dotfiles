@@ -66,6 +66,7 @@ c.bindings.commands = {
     },
     'insert': {
         '<Ctrl-y>': 'spawn --userscript password_fill',
+        '<Ctrl-c>': 'mode-leave',
     },
     'command': {
         '<Ctrl-c>': 'mode-leave',
