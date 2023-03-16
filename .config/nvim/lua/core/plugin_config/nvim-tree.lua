@@ -4,4 +4,4 @@ vim.g.loaded_netrwPlugin = 1
 require('nvim-tree').setup()
 require('core/utils')
 
-Nmap('<C-n>', ':NvimTreeFindFileToggle<CR>', None)
+Nmap('<C-n>', ':NvimTreeFindFileToggle<CR>', SL)

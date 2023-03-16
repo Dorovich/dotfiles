@@ -136,11 +136,6 @@ _G.packer_plugins = {
     path = "/home/vido25/.local/share/nvim/site/pack/packer/start/mellifluous.nvim",
     url = "https://github.com/ramojus/mellifluous.nvim"
   },
-  ["nvim-base16"] = {
-    loaded = true,
-    path = "/home/vido25/.local/share/nvim/site/pack/packer/start/nvim-base16",
-    url = "https://github.com/RRethy/nvim-base16"
-  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/home/vido25/.local/share/nvim/site/pack/packer/start/nvim-cmp",
