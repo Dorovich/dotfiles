@@ -5,13 +5,13 @@ require('mason-lspconfig').setup({
 
 local attach_data = function(_, _)
     require('core/utils')
-    NMAP('<Leader>rn', vim.lsp.buf.rename, VOID)
-    NMAP('<Leader>ca', vim.lsp.buf.code_action, VOID)
-    NMAP('gd', vim.lsp.buf.definition, VOID)
-    NMAP('gD', vim.lsp.buf.declaration, VOID)
-    NMAP('gi', vim.lsp.buf.implementation, VOID)
-    NMAP('gr', require('telescope/builtin').lsp_references, VOID)
-    NMAP('K', vim.lsp.buf.hover, VOID)
+    Nmap('<Leader>rn', vim.lsp.buf.rename, None)
+    Nmap('<Leader>ca', vim.lsp.buf.code_action, None)
+    Nmap('gd', vim.lsp.buf.definition, None)
+    Nmap('gD', vim.lsp.buf.declaration, None)
+    Nmap('gi', vim.lsp.buf.implementation, None)
+    Nmap('gr', require('telescope/builtin').lsp_references, None)
+    Nmap('K', vim.lsp.buf.hover, None)
 end
 
 local capability_data = require('cmp_nvim_lsp').default_capabilities()

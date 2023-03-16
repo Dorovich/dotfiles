@@ -1,31 +1,33 @@
--- Keymapping functions
-
-local keymap = vim.keymap.set
+Glb = vim.g
+Opt = vim.opt
+Optl = vim.opt_local
+Keymap = vim.keymap.set
+Autocmd = vim.api.nvim_create_autocmd
 
 NR = { noremap = true }
 SL = { silent = true }
-BFR = { buffer = true }
+BF = { buffer = true }
 NRSL = { noremap = true, silent = true }
-NRBFR = { noremap = true, buffer = true }
-NRSLBFR = { noremap = true, silent = true, buffer = true }
-VOID = {}
+NRBF = { noremap = true, buffer = true }
+NRSLBF = { noremap = true, silent = true, buffer = true }
+None = {}
 
-function NMAP (first, second, opts)
-    keymap('n', first, second, opts)
+function Nmap (first, second, opts)
+    Keymap('n', first, second, opts)
 end
 
-function IMAP (first, second, opts)
-    keymap('i', first, second, opts)
+function Imap (first, second, opts)
+    Keymap('i', first, second, opts)
 end
 
-function CMAP (first, second, opts)
-    keymap('c', first, second, opts)
+function Cmap (first, second, opts)
+    Keymap('c', first, second, opts)
 end
 
-function VMAP (first, second, opts)
-    keymap('v', first, second, opts)
+function Vmap (first, second, opts)
+    Keymap('v', first, second, opts)
 end
 
-function XMAP (first, second, opts)
-    keymap('x', first, second, opts)
+function Xmap (first, second, opts)
+    Keymap('x', first, second, opts)
 end

@@ -32,6 +32,7 @@ qutebrowser
 rar
 redshift
 rofi
+simple-scan
 soulseek
 spotify
 st
@@ -47,3 +48,7 @@ yt-dlp
 zathura
 zip
 zsh
+
+
+compilar programas de suckless:
+sudo xbps-install -Su base-devel libX11-devel libXft-devel libXinerama-devel freetype-devel fontconfig-devel
