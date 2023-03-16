@@ -1,6 +1,6 @@
 #+options: \n:t num:nil timestamp:nil
 
-Esta es una configuración sencilla y sin plugins ni nada raro para *Neovim*. Se puede instalar con un solo comando tal que...
+Esta es una configuración sencilla y sin plugins ni nada raro para *Neovim*. La he comentado para que se pueda entender si no se es familiar con Neovim. Se puede instalar con un solo comando tal que:
 
 #+begin_src bash
 mkdir -p ~/.config/nvim
