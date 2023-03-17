@@ -1,4 +1,5 @@
 an-anime-game
+baobab
 discord
 dmenu
 dwm
