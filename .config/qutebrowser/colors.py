@@ -7,7 +7,6 @@ WRNCOLOR = "#8b711d"
 OUTCOLOR = "#464646"
 PRIVATE = "#c678dd"
 BRIGHTY = "#f4bf75"
-URLCOLOR = "#888888"
 
 # Completions
 c.colors.completion.fg = FGCOLOR
@@ -70,26 +69,28 @@ c.colors.prompts.selected.bg = BGCOLOR
 # Statusbar
 c.colors.statusbar.normal.fg = FGCOLOR
 c.colors.statusbar.normal.bg = BGCOLOR
-c.colors.statusbar.insert.fg = FGCOLOR
-c.colors.statusbar.insert.bg = BGCOLOR
+c.colors.statusbar.insert.fg = BGCOLOR
+c.colors.statusbar.insert.bg = ACCENT2
 c.colors.statusbar.passthrough.fg = BRIGHTY
 c.colors.statusbar.passthrough.bg = BGCOLOR
 c.colors.statusbar.private.fg = PRIVATE
 c.colors.statusbar.private.bg = BGCOLOR
-c.colors.statusbar.command.fg = FGCOLOR
-c.colors.statusbar.command.bg = BGCOLOR
-c.colors.statusbar.command.private.fg = PRIVATE
-c.colors.statusbar.command.private.bg = BGCOLOR
 c.colors.statusbar.caret.fg = ACCENT1
 c.colors.statusbar.caret.bg = BGCOLOR
 c.colors.statusbar.caret.selection.fg = ACCENT1
 c.colors.statusbar.caret.selection.bg = BGCOLOR
 c.colors.statusbar.progress.bg = ACCENT1
-c.colors.statusbar.url.fg = URLCOLOR
+
+c.colors.statusbar.command.fg = FGCOLOR
+c.colors.statusbar.command.bg = BGCOLOR
+c.colors.statusbar.command.private.fg = PRIVATE
+c.colors.statusbar.command.private.bg = BGCOLOR
+
+c.colors.statusbar.url.fg = ACCENT2
 c.colors.statusbar.url.error.fg = ERRCOLOR
-c.colors.statusbar.url.hover.fg = URLCOLOR
-c.colors.statusbar.url.success.http.fg = URLCOLOR
-c.colors.statusbar.url.success.https.fg = URLCOLOR
+c.colors.statusbar.url.hover.fg = ACCENT2
+c.colors.statusbar.url.success.http.fg = ACCENT2
+c.colors.statusbar.url.success.https.fg = ACCENT2
 c.colors.statusbar.url.warn.fg = ERRCOLOR
 
 # Tabs
@@ -101,10 +102,10 @@ c.colors.tabs.odd.fg = FGCOLOR
 c.colors.tabs.odd.bg = BGCOLOR
 c.colors.tabs.even.fg = FGCOLOR
 c.colors.tabs.even.bg = BGCOLOR
-c.colors.tabs.pinned.even.bg = URLCOLOR
-c.colors.tabs.pinned.even.fg = BGCOLOR
-c.colors.tabs.pinned.odd.bg = URLCOLOR
-c.colors.tabs.pinned.odd.fg = BGCOLOR
+c.colors.tabs.pinned.even.bg = BGCOLOR
+c.colors.tabs.pinned.even.fg = FGCOLOR
+c.colors.tabs.pinned.odd.bg = BGCOLOR
+c.colors.tabs.pinned.odd.fg = FGCOLOR
 c.colors.tabs.pinned.selected.even.bg = ACCENT1
 c.colors.tabs.pinned.selected.even.fg = FGCOLOR
 c.colors.tabs.pinned.selected.odd.bg = ACCENT1

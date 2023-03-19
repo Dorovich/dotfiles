@@ -26,7 +26,7 @@ c.scrolling.smooth = True
 c.completion.height = "35%"
 c.completion.cmd_history_max_items = 100
 c.completion.quick = False
-c.window.title_format = "{private}{perc}qutebrowser"
+c.window.title_format = "{private}{perc}{current_title}{title_sep}qutebrowser"
 c.content.fullscreen.overlay_timeout = 500
 c.tabs.last_close = "ignore"
 c.tabs.show = "multiple"
@@ -76,7 +76,7 @@ c.bindings.commands = {
 
 # Search engines {{{
 c.url.searchengines = {
-    'DEFAULT': 'https://searx.be/?q={}',
+    'DEFAULT': 'https://duckduckgo.com/?q={}',
     'dd': 'https://duckduckgo.com/?q={}',
     'gg': 'https://encrypted.google.com/search?q={}&pccc=1',
     'sx': 'https://searx.tiekoetter.com/search?q={}',
@@ -119,28 +119,28 @@ c.completion.open_categories= [ "history" ]
 
 c.content.blocking.enabled = True
 c.content.blocking.method = 'both'
-c.content.blocking.adblock.lists = [ \
-    "https://easylist.to/easylist/easylist.txt", \
-    "https://easylist.to/easylist/easyprivacy.txt", \
-    "https://secure.fanboy.co.nz/fanboy-cookiemonster.txt", \
-    "https://secure.fanboy.co.nz/fanboy-annoyance.txt", \
-    "https://raw.githubusercontent.com/piperun/iploggerfilter/master/filterlist", \
-    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances.txt", \
-    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2020.txt", \
-    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2021.txt", \
-    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2022.txt", \
-    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2023.txt", \
-    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt", \
-    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/resource-abuse.txt", \
-    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/privacy.txt", \
-    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badware.txt", \
-    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt" \
+c.content.blocking.adblock.lists = [
+    "https://easylist.to/easylist/easylist.txt",
+    "https://easylist.to/easylist/easyprivacy.txt",
+    "https://secure.fanboy.co.nz/fanboy-cookiemonster.txt",
+    "https://secure.fanboy.co.nz/fanboy-annoyance.txt",
+    "https://raw.githubusercontent.com/piperun/iploggerfilter/master/filterlist",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2020.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2021.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2022.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2023.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/resource-abuse.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/privacy.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badware.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt",
     ]
-c.content.blocking.hosts.lists = [ \
-    'https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts', \
-    'https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews/hosts', \
-    'https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling/hosts', \
-    'https://curbengh.github.io/malware-filter/urlhaus-filter-online.txt' \
+c.content.blocking.hosts.lists = [
+    'https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts',
+    'https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews/hosts',
+    'https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling/hosts',
+    'https://curbengh.github.io/malware-filter/urlhaus-filter-online.txt',
     ]
 # }}}
 
