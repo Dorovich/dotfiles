@@ -9,6 +9,7 @@ Opt.cursorline = true
 Opt.laststatus = 0
 Opt.swapfile = false
 Opt.shiftwidth = 4
+Opt.expandtab = true
 Opt.clipboard = 'unnamedplus'
 Opt.lazyredraw = true
 Opt.pumheight = 8
