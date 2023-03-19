@@ -10,6 +10,9 @@ vim.opt.swapfile = false
 -- Tabulaciones como 4 espacios (comentar para una tabulacion clasica)
 vim.opt.shiftwidth = 4
 
+-- Convertir tabulacioes en espacios, no en \t
+vim.opt.expandtab = true
+
 -- Copiar y pegar directamente al portapapeles
 vim.opt.clipboard = 'unnamedplus'
 
