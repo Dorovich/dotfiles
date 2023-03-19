@@ -22,3 +22,4 @@ Opt.scrolloff = 5
 Opt.sidescrolloff = 5
 Opt.foldmethod = 'marker'
 Opt.timeoutlen = 500
+Opt.termguicolors = true

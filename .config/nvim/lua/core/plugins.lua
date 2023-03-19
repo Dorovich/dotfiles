@@ -31,6 +31,7 @@ return require('packer').startup(function(use)
         'jdhao/better-escape.vim',
         event = 'InsertEnter'
     }
+    use 'norcalli/nvim-colorizer.lua'
 
     -- LSP
     use {

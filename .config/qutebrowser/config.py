@@ -6,6 +6,8 @@
 #
 # qute://help/index.html
 
+import os
+
 config.load_autoconfig(False)
 c.url.default_page = "cosas-de-vido.neocities.org"
 c.url.start_pages = ["cosas-de-vido.neocities.org"]
@@ -46,13 +48,19 @@ c.input.partial_timeout = 0
 c.bindings.commands = {
     'normal': {
         'ñ': 'set-cmd-text :',
+        'ys' : 'yank selection',
+        'yo' : 'yank inline [[{url}][{title}]]',
         ',gh': 'home',
-        ',gc': 'spawn st -e nvim /home/vido25/.config/qutebrowser/config.py',
-        ',gd': 'spawn st -e lf /home/vido25/Descargas',
+        ',gc': 'spawn ' + os.environ["TERMINAL"] + ' -e '
+                + os.environ["EDITOR"] + ' '
+                + os.environ["HOME"] + '/.config/qutebrowser/config.py',
+        ',gd': 'spawn ' + os.environ["TERMINAL"] + ' -e lf '
+                + os.environ["HOME"] + '/Descargas',
         ',m': 'hint links spawn mpv {hint-url}',
         ',M': 'spawn mpv {url}',
         ',t': 'spawn --userscript translate --text',
         ',T': 'spawn --userscript translate',
+        ',pf': 'spawn --userscript password_fill',
         ',ko': 'jseval (function () { '+
                 '   var i, elements = document.querySelectorAll("body *");'+
                 '   for (i = 0; i < elements.length; i++) {'+
@@ -62,7 +70,6 @@ c.bindings.commands = {
                 '       }'+
                 '   }'+
                 '})();',
-        ',pf': 'spawn --userscript password_fill',
     },
     'insert': {
         '<Ctrl-y>': 'spawn --userscript password_fill',
