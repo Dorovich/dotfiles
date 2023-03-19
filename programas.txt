@@ -22,7 +22,7 @@ ncmpcpp
 nvidia (drivers)
 nvim
 obs
-osu!
+osu! (lazer)
 p7zip
 parsec
 pass
