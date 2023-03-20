@@ -110,6 +110,7 @@ c.url.searchengines = {
     'nt': 'https://farside.link/nitter/{}',
     'td': 'https://farside.link/teddit/r/{}',
     'yub': 'https://yubnub.org/parser/parse?command={}',
+    'bc': 'https://bandcamp.com/search?q={}',
 }
 # }}}
 
