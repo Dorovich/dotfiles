@@ -88,3 +88,12 @@ cmd newfile ${{
             mkdir $name;;
     esac
 }}
+
+# upload files to 0x0.st
+cmd share $curl -F"file=@$fx" https://0x0.st | xclip -selection clipboard
+
+# pick files (print to stdout)
+cmd pick ${{
+    set -f
+    echo $fx
+}}

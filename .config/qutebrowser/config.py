@@ -6,11 +6,12 @@
 #
 # qute://help/index.html
 
-import os
-
 config.load_autoconfig(False)
-c.url.default_page = "cosas-de-vido.neocities.org"
-c.url.start_pages = ["cosas-de-vido.neocities.org"]
+
+import os
+Terminal = os.getenv("TERMINAL")
+Editor = os.getenv("EDITOR")
+Homedir = os.getenv("HOME")
 
 # UI {{{
 config.source("colors.py")
@@ -48,16 +49,16 @@ c.input.partial_timeout = 0
 c.bindings.commands = {
     'normal': {
         'ñ': 'set-cmd-text :',
-        'ys' : 'yank selection',
-        'yo' : 'yank inline [[{url}][{title}]]',
+        'ys': 'yank selection',
+        'yo': 'yank inline [[{url}][{title}]]',
+        'cs': 'config-source',
         ',gh': 'home',
-        ',gc': 'spawn ' + os.environ["TERMINAL"] + ' -e '
-                + os.environ["EDITOR"] + ' '
-                + os.environ["HOME"] + '/.config/qutebrowser/config.py',
-        ',gd': 'spawn ' + os.environ["TERMINAL"] + ' -e lf '
-                + os.environ["HOME"] + '/Descargas',
-        ',m': 'hint links spawn mpv {hint-url}',
-        ',M': 'spawn mpv {url}',
+        ',gc': 'spawn --detach ' + Terminal + ' -e '
+                + Editor + ' ' + Homedir + '/.config/qutebrowser/config.py',
+        ',gd': 'spawn --detach ' + Terminal + ' -e lf '
+                + Homedir + '/Descargas',
+        ',m': 'hint links spawn --detach mpv --force-window=immediate {hint-url}',
+        ',M': 'spawn --detach mpv --force-window=immediate {url}',
         ',t': 'spawn --userscript translate --text',
         ',T': 'spawn --userscript translate',
         ',pf': 'spawn --userscript password_fill',
@@ -79,6 +80,10 @@ c.bindings.commands = {
         '<Ctrl-c>': 'mode-leave',
     },
 }
+
+c.aliases['mpv'] = 'spawn --detach mpv --force-window=immediate {url}'
+c.aliases['archive'] = 'open --tab https://web.archive.org/save/{url}'
+c.aliases['view-archive'] = 'open --tab https://web.archive.org/web/*/{url}'
 # }}}
 
 # Search engines {{{
@@ -103,12 +108,18 @@ c.url.searchengines = {
     'rd': 'https://www.reddit.com/r/{}',
     'iv': 'https://farside.link/invidious/{}',
     'nt': 'https://farside.link/nitter/{}',
-    'td': 'https://farside.link/teddit/r/{}'
+    'td': 'https://farside.link/teddit/r/{}',
+    'yub': 'https://yubnub.org/parser/parse?command={}',
 }
 # }}}
 
 # Web content {{{
-c.editor.command = ['st', '-e', 'nvim', '{}']
+c.url.default_page = "cosas-de-vido.neocities.org"
+c.url.start_pages = ["cosas-de-vido.neocities.org"]
+c.editor.command = [Terminal, '-e', Editor, '{}']
+c.fileselect.handler = 'external'
+c.fileselect.single_file.command = [Terminal, '-c', 'FilePicker', '-e', 'lf', '-selection-path', '{}']
+c.fileselect.multiple_files.command = [Terminal, '-c', 'FilePicker', '-e', 'lf', '-selection-path', '{}']
 c.downloads.location.directory = "$HOME/Descargas"
 c.confirm_quit = ["downloads"]
 c.downloads.location.prompt = False
@@ -122,8 +133,10 @@ c.content.webrtc_ip_handling_policy = "default-public-interface-only"
 #c.content.headers.user_agent = "Mozilla/5.0 ({os_info}; rv:110.0) Gecko/20100101 Firefox/110.0"
 c.content.headers.user_agent = "Mozilla/5.0 (Windows NT 10.0; rv:110.0) Gecko/20100101 Firefox/110.0"
 c.content.cookies.accept = "no-3rdparty"
-c.completion.open_categories= [ "history" ]
+c.completion.open_categories= ["history"]
+# }}}
 
+# Adblock {{{
 c.content.blocking.enabled = True
 c.content.blocking.method = 'both'
 c.content.blocking.adblock.lists = [

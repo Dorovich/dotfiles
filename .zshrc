@@ -28,21 +28,17 @@ export PS2="%B%F{8}>%f%b "
 # {{{
 
 alias v="nvim"
-alias vt="/usr/bin/vim.tiny"
 alias em="emacsclient -t"
 alias grep='grep --color=auto'
 alias ls='exa --icons --group-directories-first --no-time --no-user --color=auto -F'
 alias la='exa -a --icons --group-directories-first --no-time --no-user --color=auto -F'
 alias ll='exa -l --icons --group-directories-first --no-time --no-user --color=auto -F'
-alias fetch="neofetch --config $HOME/.config/neofetch/config.conf"
-alias neofetch="neofetch --config none"
 alias whichgpu="lspci -k | grep -EA3 'VGA|3D|Display'"
 alias hamachi="sudo hamachi"
 alias clean="bleachbit -c --preset"
 alias fullclean="bleachbit -c --preset && sudo bleachbit -c --preset"
 alias weather="curl https://wttr.in/"
 alias myip="ip -c a"
-alias remake='make clean && make'
 alias emacsc="emacsclient -c -a 'emacs'"
 alias mp="ncmpcpp"
 
@@ -51,15 +47,16 @@ alias yt-mp4="yt-dlp --format mp4 "
 alias yt-best="yt-dlp -f bestvideo+bestaudio "
 alias yt-xbest="yt-dlp --extract-audio --audio-format best "
 
-function cdl() { cd $1 && ls ; }
+alias wacom-osu='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" Area 5667 3667 8633 5833'
+alias wacom-small='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" Area 5167 3167 9133 6333'
+alias wacom-reset='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" ResetArea'
+
+alias qmake-qt5="qmake"
+
 function 0file() { curl -F"file=@$1" https://envs.sh ; }    # 0file "file.png"
 function 0pb() { curl -F"file=@-;" https://envs.sh ; }      # echo "text" | 0pb
 function 0url() { curl -F"url=$1" https://envs.sh ; }       # 0url "https://url"
 function 0short() { curl -F"shorten=$1" https://envs.sh ; } # 0short "https://long-url"
-
-alias wacom-osu='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" Area 5667 3667 8633 5833'
-alias wacom-small='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" Area 5167 3167 9133 6333'
-alias wacom-reset='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" ResetArea'
 
 function default-fm() {
     if [ $1 ]; then
@@ -69,8 +66,6 @@ function default-fm() {
         echo "eg. pcmanfm, nemo"
     fi
 }
-
-alias qmake-qt5="qmake"
 
 function mergepdfs() {
     gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=mergedpdfs.pdf "$@"
