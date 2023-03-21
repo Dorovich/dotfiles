@@ -1,0 +1,12 @@
+include "/usr/share/nano/*.nanorc"
+
+set autoindent
+set minibar
+set mouse
+set boldtext
+
+set titlecolor brightwhite,black
+set keycolor yellow
+set functioncolor normal
+set numbercolor gray
+set errorcolor red

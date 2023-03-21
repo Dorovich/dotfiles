@@ -17,7 +17,7 @@ Homedir = os.getenv("HOME")
 config.source("colors.py")
 c.hints.chars = "asdfghjklie"
 c.statusbar.show = "always"
-c.messages.timeout = 1000
+c.messages.timeout = 1500
 c.colors.webpage.preferred_color_scheme = "dark"
 c.colors.webpage.darkmode.enabled = False
 c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
@@ -46,6 +46,8 @@ c.tabs.padding = {
 # Mappings {{{
 c.input.partial_timeout = 0
 
+c.aliases['mpv'] = 'spawn --detach mpv --force-window=immediate {url}'
+
 c.bindings.commands = {
     'normal': {
         'ñ': 'set-cmd-text :',
@@ -53,10 +55,10 @@ c.bindings.commands = {
         'yo': 'yank inline [[{url}][{title}]]',
         'cs': 'config-source',
         ',gh': 'home',
-        ',gc': 'spawn --detach ' + Terminal + ' -e '
-                + Editor + ' ' + Homedir + '/.config/qutebrowser/config.py',
-        ',gd': 'spawn --detach ' + Terminal + ' -e lf '
-                + Homedir + '/Descargas',
+        ',gc': 'spawn --detach ' + Terminal + ' -e ' + Editor + ' '
+                + Homedir + '/.config/qutebrowser/config.py',
+        ',gd': 'spawn --detach ' + Terminal + ' -e lf ' + Homedir + '/Descargas',
+        #',as': 'spawn echo "{url}" >> ' + Homedir + '/.local/share/snippets',
         ',m': 'hint links spawn --detach mpv --force-window=immediate {hint-url}',
         ',M': 'spawn --detach mpv --force-window=immediate {url}',
         ',t': 'spawn --userscript translate --text',
@@ -80,10 +82,6 @@ c.bindings.commands = {
         '<Ctrl-c>': 'mode-leave',
     },
 }
-
-c.aliases['mpv'] = 'spawn --detach mpv --force-window=immediate {url}'
-c.aliases['archive'] = 'open --tab https://web.archive.org/save/{url}'
-c.aliases['view-archive'] = 'open --tab https://web.archive.org/web/*/{url}'
 # }}}
 
 # Search engines {{{
@@ -190,4 +188,5 @@ config.set('content.javascript.enabled', True, 'devtools://*')
 config.set('content.javascript.enabled', True, 'chrome://*/*')
 config.set('content.javascript.enabled', True, 'qute://*/*')
 config.set('content.media.audio_capture', True, 'https://discord.com/*')
+config.set('content.javascript.can_access_clipboard', True, 'https://github.com/*')
 # }}}

@@ -198,7 +198,7 @@ alias configr="config rm -r"
 alias configl='config log --pretty=format:"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]" --abbrev-commit -30'
 
 configc() {
-    config commit -a -m "$*" 
+    config commit -a -m "$*"
 }
 
 configstart() {
