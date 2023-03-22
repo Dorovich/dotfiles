@@ -108,8 +108,8 @@ c.url.searchengines = {
     'iv': 'https://farside.link/invidious/{}',
     'nt': 'https://farside.link/nitter/{}',
     'td': 'https://farside.link/teddit/r/{}',
-    'yub': 'https://yubnub.org/parser/parse?command={}',
     'bc': 'https://bandcamp.com/search?q={}',
+    'gi': 'https://genshin.gg/characters/{}',
 }
 # }}}
 
