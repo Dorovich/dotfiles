@@ -17,18 +17,19 @@ xresources = read_xresources("*")
 Foreground = xresources["*.foreground"]
 Background = xresources["*.background"]
 Accent = xresources["*.color6"]
-Alternative = xresources["*.color3"]
+AltAccent = xresources["*.color3"]
 Error = xresources["*.color1"]
 Warn = xresources["*.color9"]
 Dimmed = xresources["*.color8"]
 Private = xresources["*.color5"]
 Shiny = xresources["*.cursorColor"]
+AltShiny = xresources["*.color14"]
 
 # Completions
 c.colors.completion.fg = Foreground
 c.colors.completion.odd.bg = Background
 c.colors.completion.even.bg = Background
-c.colors.completion.category.fg = Alternative
+c.colors.completion.category.fg = AltAccent
 c.colors.completion.category.bg = Background
 c.colors.completion.category.border.top = Background
 c.colors.completion.category.border.bottom = Background
@@ -104,7 +105,7 @@ c.colors.statusbar.command.private.bg = Background
 
 c.colors.statusbar.url.fg = Shiny
 c.colors.statusbar.url.error.fg = Error
-c.colors.statusbar.url.hover.fg = Accent
+c.colors.statusbar.url.hover.fg = AltShiny
 c.colors.statusbar.url.success.http.fg = Shiny
 c.colors.statusbar.url.success.https.fg = Shiny
 c.colors.statusbar.url.warn.fg = Warn
@@ -112,7 +113,7 @@ c.colors.statusbar.url.warn.fg = Warn
 # Tabs
 c.colors.tabs.bar.bg = Background
 c.colors.tabs.indicator.start = Background
-c.colors.tabs.indicator.stop = Alternative
+c.colors.tabs.indicator.stop = AltAccent
 c.colors.tabs.indicator.error = Error
 c.colors.tabs.odd.fg = Foreground
 c.colors.tabs.odd.bg = Background
