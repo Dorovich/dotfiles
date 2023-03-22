@@ -10,8 +10,8 @@ Autocmd({ "FileType" }, {
 	Opt.relativenumber = false;
 	local compile_cmd = ':!pdfmom ' .. Filename .. '.mom > ' .. Filename .. '.pdf<CR>'
 	local see_cmd = ':!groff -mom ' .. Filename .. '.mom -Tpdf | zathura -<CR>'
-	Nmap('<C-c>', compile_cmd, BF)
-	Nmap('<M-c>', see_cmd, NRSLBF)
+	Nmap('<Leader>gc', compile_cmd, BF)
+	Nmap('<Leader>gs', see_cmd, NRSLBF)
     end,
 })
 

@@ -58,5 +58,5 @@ _video=$(printf '%s\n' "${_video_list}" | sort -r | dmenu -i -l 10 -p 'Select Vi
 _video_id=$(echo "${_video}" | cut -d'|' -f2 | sed -e 's/^[ \t]*//')
 
 if [[ -n ${_video_id} ]]; then
-    mpv "https://www.youtube.com/watch?v=${_video_id}"
+    mpv --force-window=immediate "https://www.youtube.com/watch?v=${_video_id}"
 fi

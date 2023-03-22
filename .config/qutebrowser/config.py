@@ -15,6 +15,7 @@ Homedir = os.getenv("HOME")
 
 # UI {{{
 config.source("colors.py")
+#config.source("xresources.py")
 c.hints.chars = "asdfghjklie"
 c.statusbar.show = "always"
 c.messages.timeout = 1500
@@ -25,11 +26,12 @@ c.colors.webpage.darkmode.policy.page = 'smart'
 c.colors.webpage.darkmode.policy.images = 'never'
 c.completion.show = "auto"
 c.completion.use_best_match = True
-c.scrolling.smooth = True
+c.scrolling.smooth = False
 c.completion.height = "35%"
 c.completion.cmd_history_max_items = 100
 c.completion.quick = False
 c.window.title_format = "{private}{perc}{current_title}{title_sep}qutebrowser"
+c.tabs.title.format = "{audio}{current_title}"
 c.content.fullscreen.overlay_timeout = 500
 c.tabs.last_close = "ignore"
 c.tabs.show = "multiple"
@@ -129,7 +131,7 @@ c.content.webgl = True
 c.content.default_encoding = "utf-8"
 c.content.webrtc_ip_handling_policy = "default-public-interface-only"
 #c.content.headers.user_agent = "Mozilla/5.0 ({os_info}; rv:110.0) Gecko/20100101 Firefox/110.0"
-c.content.headers.user_agent = "Mozilla/5.0 (Windows NT 10.0; rv:110.0) Gecko/20100101 Firefox/110.0"
+c.content.headers.user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
 c.content.cookies.accept = "no-3rdparty"
 c.completion.open_categories= ["history"]
 # }}}

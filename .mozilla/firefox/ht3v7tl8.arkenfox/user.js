@@ -1,7 +1,7 @@
 /******
 *    name: arkenfox user.js
-*    date: 7 February 2023
-* version: 109
+*    date: 12 March 2023
+* version: 110
 *     url: https://github.com/arkenfox/user.js
 * license: MIT: https://github.com/arkenfox/user.js/blob/master/LICENSE.txt
 
@@ -557,13 +557,6 @@ user_pref("privacy.userContext.ui.enabled", true);
 
 /*** [SECTION 2000]: PLUGINS / MEDIA / WEBRTC ***/
 user_pref("_user.js.parrot", "2000 syntax error: the parrot's snuffed it!");
-/* 2001: disable WebRTC (Web Real-Time Communication)
- * Firefox desktop uses mDNS hostname obfuscation and the private IP is never exposed until
- * required in TRUSTED scenarios; i.e. after you grant device (microphone or camera) access
- * [TEST] https://browserleaks.com/webrtc
- * [1] https://groups.google.com/g/discuss-webrtc/c/6stQXi72BEU/m/2FwZd24UAQAJ
- * [2] https://datatracker.ietf.org/doc/html/draft-ietf-mmusic-mdns-ice-candidates#section-3.1.1 ***/
-   // user_pref("media.peerconnection.enabled", false);
 /* 2002: force WebRTC inside the proxy [FF70+] ***/
 user_pref("media.peerconnection.ice.proxy_only_if_behind_proxy", true);
 /* 2003: force a single network interface for ICE candidates generation [FF42+]
@@ -954,9 +947,9 @@ user_pref("_user.js.parrot", "5000 syntax error: the parrot's taken 'is last bow
    // user_pref("extensions.formautofill.addresses.enabled", false); // [FF55+]
    // user_pref("extensions.formautofill.creditCards.enabled", false); // [FF56+]
    // user_pref("extensions.formautofill.heuristics.enabled", false); // [FF55+]
-/* 5017: limit events that can cause a pop-up ***/
+/* 5018: limit events that can cause a pop-up ***/
    // user_pref("dom.popup_allowed_events", "click dblclick mousedown pointerdown");
-/* 5018: disable page thumbnail collection ***/
+/* 5019: disable page thumbnail collection ***/
    // user_pref("browser.pagethumbnails.capturing_disabled", true); // [HIDDEN PREF]
 
 /*** [SECTION 5500]: OPTIONAL HARDENING
@@ -1143,6 +1136,13 @@ user_pref("_user.js.parrot", "7000 syntax error: the parrot's pushing up daisies
  * [NOTE] To remove all subscriptions, reset "dom.push.userAgentID"
  * [1] https://support.mozilla.org/kb/push-notifications-firefox ***/
    // user_pref("dom.push.enabled", false);
+/* 7020: disable WebRTC (Web Real-Time Communication)
+ * [WHY] Firefox desktop uses mDNS hostname obfuscation and the private IP is never exposed until
+ * required in TRUSTED scenarios; i.e. after you grant device (microphone or camera) access
+ * [TEST] https://browserleaks.com/webrtc
+ * [1] https://groups.google.com/g/discuss-webrtc/c/6stQXi72BEU/m/2FwZd24UAQAJ
+ * [2] https://datatracker.ietf.org/doc/html/draft-ietf-mmusic-mdns-ice-candidates#section-3.1.1 ***/
+   // user_pref("media.peerconnection.enabled", false);
 
 /*** [SECTION 8000]: DON'T BOTHER: FINGERPRINTING
    [WHY] They are insufficient to help anti-fingerprinting and do more harm than good
@@ -1214,78 +1214,3 @@ user_pref("keyword.enabled", true);
 user_pref("extensions.pocket.enabled", false);
 user_pref("reader.parse-on-load.enabled", false);
 user_pref("browser.tabs.tabmanager.enabled", false);
-
-// Firefox-UI-Fix stuff
-user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
-user_pref("browser.proton.enabled", true);
-user_pref("svg.context-properties.content.enabled", true);
-user_pref("layout.css.color-mix.enabled", true);
-user_pref("layout.css.backdrop-filter.enabled", true);
-user_pref("browser.compactmode.show", true);
-user_pref("browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar", false);
-uuser_pref("userChrome.compatibility.theme",       true);
-user_pref("userChrome.compatibility.os",          true);
-
-user_pref("userChrome.theme.built_in_contrast",   true);
-user_pref("userChrome.theme.system_default",      true);
-user_pref("userChrome.theme.proton_color",        true);
-user_pref("userChrome.theme.proton_chrome",       true); // Need proton_color
-user_pref("userChrome.theme.fully_color",         true); // Need proton_color
-user_pref("userChrome.theme.fully_dark",          true); // Need proton_color
-
-user_pref("userChrome.decoration.cursor",         true);
-user_pref("userChrome.decoration.field_border",   true);
-user_pref("userChrome.decoration.download_panel", true);
-user_pref("userChrome.decoration.animate",        true);
-
-user_pref("userChrome.padding.tabbar_width",      true);
-user_pref("userChrome.padding.tabbar_height",     true);
-user_pref("userChrome.padding.toolbar_button",    true);
-user_pref("userChrome.padding.navbar_width",      true);
-user_pref("userChrome.padding.urlbar",            true);
-user_pref("userChrome.padding.bookmarkbar",       true);
-user_pref("userChrome.padding.infobar",           true);
-user_pref("userChrome.padding.menu",              true);
-user_pref("userChrome.padding.bookmark_menu",     true);
-user_pref("userChrome.padding.global_menubar",    true);
-user_pref("userChrome.padding.panel",             true);
-user_pref("userChrome.padding.popup_panel",       true);
-
-user_pref("userChrome.tab.multi_selected",        true);
-user_pref("userChrome.tab.unloaded",              true);
-user_pref("userChrome.tab.letters_cleary",        true);
-user_pref("userChrome.tab.close_button_at_hover", true);
-user_pref("userChrome.tab.sound_hide_label",      true);
-user_pref("userChrome.tab.sound_with_favicons",   true);
-user_pref("userChrome.tab.pip",                   true);
-user_pref("userChrome.tab.container",             true);
-user_pref("userChrome.tab.crashed",               true);
-
-user_pref("userChrome.fullscreen.overlap",        true);
-user_pref("userChrome.fullscreen.show_bookmarkbar", true);
-
-user_pref("userChrome.icon.library",              true);
-user_pref("userChrome.icon.panel",                true);
-user_pref("userChrome.icon.menu",                 true);
-user_pref("userChrome.icon.context_menu",         true);
-user_pref("userChrome.icon.global_menu",          true);
-user_pref("userChrome.icon.global_menubar",       true);
-
-// -- User Content -------------------------------------------------------------
-user_pref("userContent.player.ui",             true);
-user_pref("userContent.player.icon",           true);
-user_pref("userContent.player.noaudio",        true);
-user_pref("userContent.player.size",           true);
-user_pref("userContent.player.click_to_play",  true);
-user_pref("userContent.player.animate",        true);
-
-user_pref("userContent.newTab.full_icon",      true);
-user_pref("userContent.newTab.animate",        true);
-user_pref("userContent.newTab.pocket_to_last", true);
-user_pref("userContent.newTab.searchbar",      true);
-
-user_pref("userContent.page.field_border",     true);
-user_pref("userContent.page.illustration",     true);
-user_pref("userContent.page.proton_color",     true);
-user_pref("userContent.page.dark_mode",        true); // Need proton_color
-user_pref("userContent.page.proton",           true); // Need proton_colorser_pref("layout.css.has-selector.enabled", true);
