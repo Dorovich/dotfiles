@@ -15,7 +15,6 @@ Homedir = os.getenv("HOME")
 
 # UI {{{
 config.source("colors.py")
-config.source("xresources.py")
 c.hints.chars = "asdfghjklie"
 c.statusbar.show = "always"
 c.messages.timeout = 1500
