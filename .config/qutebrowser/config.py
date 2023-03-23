@@ -55,11 +55,10 @@ c.bindings.commands = {
         'ys': 'yank selection',
         'yo': 'yank inline [[{url}][{title}]]',
         'cs': 'config-source',
-        ',gh': 'home',
-        ',gc': 'spawn --detach ' + Terminal + ' -e ' + Editor + ' '
+        'ce': 'spawn --detach ' + Terminal + ' -e ' + Editor + ' '
                 + Homedir + '/.config/qutebrowser/config.py',
+        # ',gh': 'home', # innecesario, ya existe <Ctrl-h>
         ',gd': 'spawn --detach ' + Terminal + ' -e lf ' + Homedir + '/Descargas',
-        #',as': 'spawn echo "{url}" >> ' + Homedir + '/.local/share/snippets',
         ',m': 'hint links spawn --detach mpv --force-window=immediate {hint-url}',
         ',M': 'spawn --detach mpv --force-window=immediate {url}',
         ',t': 'spawn --userscript translate --text',
@@ -80,6 +79,9 @@ c.bindings.commands = {
         '<Ctrl-c>': 'mode-leave',
     },
     'command': {
+        '<Ctrl-c>': 'mode-leave',
+    },
+    'hint': {
         '<Ctrl-c>': 'mode-leave',
     },
 }
@@ -115,7 +117,7 @@ c.url.searchengines = {
 # Web content {{{
 c.url.default_page = "cosas-de-vido.neocities.org"
 c.url.start_pages = ["cosas-de-vido.neocities.org"]
-c.editor.command = [Terminal, '-e', Editor, '{}']
+c.editor.command = [Terminal, '-e', Editor, '{file}', '-c', 'normal {line}G{column0}l']
 c.fileselect.handler = 'external'
 c.fileselect.single_file.command = [Terminal, '-c', 'FilePicker', '-e', 'lf', '-selection-path', '{}']
 c.fileselect.multiple_files.command = [Terminal, '-c', 'FilePicker', '-e', 'lf', '-selection-path', '{}']

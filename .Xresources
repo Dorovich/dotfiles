@@ -32,7 +32,8 @@
 /* ALTERNATIVE */
 *.color0:   #1e2127
 *.color8:   #464646
-*.color1:   #743448
+/* *.color1:   #743448 */ 
+*.color1:   #e06c75
 *.color9:   #e06c75
 *.color2:   #98c379
 *.color10:  #98c379

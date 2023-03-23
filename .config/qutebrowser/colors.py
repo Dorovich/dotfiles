@@ -55,19 +55,20 @@ c.colors.downloads.bar.bg = Background
 c.colors.downloads.start.bg = Accent
 c.colors.downloads.start.fg = Foreground
 c.colors.downloads.stop.bg = Error
-c.colors.downloads.stop.fg = Foreground
+c.colors.downloads.stop.fg = Background
 c.colors.downloads.error.fg = Foreground
 
 # Hints
 c.colors.hints.fg = Background
-c.colors.hints.bg = Shiny
+c.colors.hints.bg = AltAccent
 c.colors.hints.match.fg = Foreground
 c.colors.keyhint.fg = Foreground
 c.colors.keyhint.suffix.fg = Foreground
 c.colors.keyhint.bg = Background
+c.hints.border = AltAccent
 
 # Other messages
-c.colors.messages.error.fg = Foreground
+c.colors.messages.error.fg = Background
 c.colors.messages.error.bg = Error
 c.colors.messages.error.border = Error
 c.colors.messages.warning.fg = Background
@@ -104,8 +105,8 @@ c.colors.statusbar.command.private.fg = Private
 c.colors.statusbar.command.private.bg = Background
 
 c.colors.statusbar.url.fg = Shiny
-c.colors.statusbar.url.error.fg = Error
-c.colors.statusbar.url.hover.fg = AltShiny
+c.colors.statusbar.url.error.fg = Warn # looks better
+c.colors.statusbar.url.hover.fg = AltShiny # looks better
 c.colors.statusbar.url.success.http.fg = Shiny
 c.colors.statusbar.url.success.https.fg = Shiny
 c.colors.statusbar.url.warn.fg = Warn

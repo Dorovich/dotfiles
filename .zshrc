@@ -19,7 +19,7 @@ export WEBKIT_DISABLE_COMPOSITING_MODE=1
 
 # Prompt
 export PS1="
-%B%F{3}%1~%f %F{8}$%f%b "
+%B%F{3}%1~%f %F{8}λ%f%b "
 export PS2="%B%F{8}>%f%b "
 
 ###########################################
@@ -182,3 +182,5 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # }}}
+
+source ~/.config/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
