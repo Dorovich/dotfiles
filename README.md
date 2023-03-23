@@ -15,5 +15,6 @@
 - Fuente: `mononoki (Nerd Font)`
 - Música: `spotify`, `mpd (+ ncmpcpp)`
 - Navegador: `qutebrowser`, `firefox`
+Para mas cosas ver mi lista de [programas interesantes](PROGRAMS.md).
 
 > *OTROS: para poder poner acentos en st he tenido que añadir la línea `XPROFILE=` a `/etc/environment`. Los programas que se autoinician estan en `~/.xprofile`. Las variables globales del sistema (como $SCRIPTSDIR, $TERMINAL o $BROWSER) estan en `~/.profile`.*
