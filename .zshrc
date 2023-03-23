@@ -183,4 +183,5 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # }}}
 
+# Fuente: https://github.com/zsh-users/zsh-syntax-highlighting
 source ~/.config/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
