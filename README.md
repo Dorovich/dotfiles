@@ -6,7 +6,7 @@
 *Artista original del fondo de pantalla: [@slope_moon](https://twitter.com/slope_moon)*
 
 ## Información
-- Distro: `Pop!_OS` (Void Linux la proxima)
+- Distro: `Pop!_OS` (`Void Linux` la proxima)
 - DE/WM: [dwm](https://github.com/Dorovich/dwm-vido)
 - Terminal: [st](https://github.com/Dorovich/st-vido)
 - Shell: `zsh`
