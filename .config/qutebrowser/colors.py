@@ -61,7 +61,7 @@ c.colors.downloads.error.fg = Foreground
 # Hints
 c.colors.hints.fg = Background
 c.colors.hints.bg = AltAccent
-c.colors.hints.match.fg = Foreground
+c.colors.hints.match.fg = Accent
 c.colors.keyhint.fg = Foreground
 c.colors.keyhint.suffix.fg = Foreground
 c.colors.keyhint.bg = Background

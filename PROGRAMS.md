@@ -51,3 +51,8 @@
 - [zathura](https://pwmt.org/projects/zathura/)
 - zip
 - [zsh](https://zsh.sourceforge.io/)
+
+# Librerías para compilar:
+
+- Programas de suckless:
+**Void Linux**: libX11-devel libXft-devel fontconfig-devel libXinerama-devel freetype-devel
