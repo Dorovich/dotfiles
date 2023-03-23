@@ -1,4 +1,4 @@
-# Los programas que tengo que más me interesan.
+# Programas utiles y/o interesantes:
 
 - an-anime-game
 - [baobab](https://gitlab.gnome.org/GNOME/baobab/)
