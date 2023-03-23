@@ -1,7 +1,7 @@
 # ~ .dotfiles ~
 *Archivos de configuración de mi sistema y cosas de interés*
 
-![](showcase.png)
+![](screenshot.png)
 
 *Artista original del fondo de pantalla: [@slope_moon](https://twitter.com/slope_moon)*
 
