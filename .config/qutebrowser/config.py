@@ -54,6 +54,8 @@ c.bindings.commands = {
         'ñ': 'set-cmd-text :',
         'ys': 'yank selection',
         'yo': 'yank inline [[{url}][{title}]]',
+        'wd': 'close',
+        'gA': 'set-cmd-text -s :tab-take',
         'cs': 'config-source',
         'ce': 'spawn --detach ' + Terminal + ' -e ' + Editor + ' '
                 + Homedir + '/.config/qutebrowser/config.py',
