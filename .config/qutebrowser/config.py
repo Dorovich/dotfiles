@@ -59,8 +59,7 @@ c.bindings.commands = {
         'cs': 'config-source',
         'ce': 'spawn --detach ' + Terminal + ' -e ' + Editor + ' '
                 + Homedir + '/.config/qutebrowser/config.py',
-        # ',gh': 'home', # innecesario, ya existe <Ctrl-h>
-        ',gd': 'spawn --detach ' + Terminal + ' -e lf ' + Homedir + '/Descargas',
+        ',d': 'spawn --detach ' + Terminal + ' -e lf ' + Homedir + '/Descargas',
         ',m': 'hint links spawn --detach mpv --force-window=immediate {hint-url}',
         ',M': 'spawn --detach mpv --force-window=immediate {url}',
         ',t': 'spawn --userscript translate --text',
@@ -78,7 +77,7 @@ c.bindings.commands = {
     },
     'insert': {
         '<Ctrl-y>': 'spawn --userscript password_fill',
-        '<Ctrl-c>': 'mode-leave',
+        '<Ctrl-d>': 'mode-leave',
     },
     'command': {
         '<Ctrl-c>': 'mode-leave',

@@ -93,9 +93,9 @@ c.colors.statusbar.passthrough.fg = Shiny
 c.colors.statusbar.passthrough.bg = Background
 c.colors.statusbar.private.fg = Private
 c.colors.statusbar.private.bg = Background
-c.colors.statusbar.caret.fg = Accent
+c.colors.statusbar.caret.fg = AltShiny
 c.colors.statusbar.caret.bg = Background
-c.colors.statusbar.caret.selection.fg = Accent
+c.colors.statusbar.caret.selection.fg = Warn
 c.colors.statusbar.caret.selection.bg = Background
 c.colors.statusbar.progress.bg = Accent
 
