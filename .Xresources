@@ -5,9 +5,7 @@
 *.alpha:    0.97
 
 *.background:   #151515
-/*
-*.foreground:   #abb2bf
-*/
+/* *.foreground:   #abb2bf */
 *.foreground:   #d1d1d1
 *.cursorColor:  #dbc49b
 

@@ -37,11 +37,18 @@ c.tabs.show = "multiple"
 c.tabs.select_on_remove = "next"
 c.tabs.background = True
 c.tabs.padding = {
-    "left": 1,
-    "right": 1,
+    "left": 3,
+    "right": 3,
     "top": 1,
     "bottom": 1,
 }
+c.statusbar.padding = {
+    "left": 3,
+    "right": 3,
+    "top": 1,
+    "bottom": 1,
+}
+
 # }}}
 
 # Mappings {{{
@@ -92,13 +99,12 @@ c.bindings.commands = {
 c.url.searchengines = {
     'DEFAULT': 'https://duckduckgo.com/?q={}',
     'dd': 'https://duckduckgo.com/?q={}',
-    'gg': 'https://encrypted.google.com/search?q={}&pccc=1',
+    'gg': 'https://encrypted.google.com/search?q={}',
     'sx': 'https://searx.be/?q={}',
     'map': 'https://maps.google.com/maps/search/{}',
     'wiki': 'https://es.wikipedia.org/wiki/{}',
-    'trad': 'https://translate.google.com/?hl=en&sl=auto&tl=estext={}&op=translate',
+    'trad': 'https://translate.google.com/?hl=en&sl=auto&tl=en&text={}&op=translate',
     'gh': 'https://github.com/search?q={}',
-    'ghs': 'https://github.com/search?q={}&ref=simplesearch',
     'aw': 'https://wiki.archlinux.org/?search={}',
     'wa': 'https://www.wolframalpha.com/input/?i={}',
     'fc': 'https://boards.4channel.org/{}/catalog',
@@ -107,11 +113,11 @@ c.url.searchengines = {
     'af': 'https://www3.animeflv.net/browse?q={}',
     'yt': 'https://www.youtube.com/results?search_query={}',
     'rd': 'https://www.reddit.com/r/{}',
+    'bc': 'https://bandcamp.com/search?q={}',
+    'gi': 'https://genshin.gg/characters/{}',
     'iv': 'https://farside.link/invidious/{}',
     'nt': 'https://farside.link/nitter/{}',
     'td': 'https://farside.link/teddit/r/{}',
-    'bc': 'https://bandcamp.com/search?q={}',
-    'gi': 'https://genshin.gg/characters/{}',
 }
 # }}}
 
@@ -161,7 +167,7 @@ c.content.blocking.adblock.lists = [
 c.content.blocking.hosts.lists = [
     'https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts',
     'https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews/hosts',
-    'https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling/hosts',
+'https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling/hosts',
     'https://curbengh.github.io/malware-filter/urlhaus-filter-online.txt',
     ]
 # }}}
@@ -191,6 +197,6 @@ config.set('content.javascript.enabled', True, 'chrome-devtools://*')
 config.set('content.javascript.enabled', True, 'devtools://*')
 config.set('content.javascript.enabled', True, 'chrome://*/*')
 config.set('content.javascript.enabled', True, 'qute://*/*')
-config.set('content.media.audio_capture', True, 'https://discord.com/*')
 config.set('content.javascript.can_access_clipboard', True, 'https://github.com/*')
+config.set('content.media.audio_capture', True, 'https://discord.com/*')
 # }}}
