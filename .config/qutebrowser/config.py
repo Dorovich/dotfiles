@@ -31,7 +31,9 @@ c.completion.cmd_history_max_items = 100
 c.completion.quick = False
 c.window.title_format = "{private}{perc}{current_title}{title_sep}qutebrowser"
 c.tabs.title.format = "{audio}{current_title}"
+c.completion.timestamp_format = '%H:%M %d/%m'
 c.content.fullscreen.overlay_timeout = 500
+c.downloads.position = "bottom"
 c.tabs.last_close = "ignore"
 c.tabs.show = "multiple"
 c.tabs.select_on_remove = "next"
@@ -59,7 +61,7 @@ c.aliases['mpv'] = 'spawn --detach mpv --force-window=immediate {url}'
 c.bindings.commands = {
     'normal': {
         'ñ': 'set-cmd-text :',
-        'ys': 'yank selection',
+        'ys': 'yank selection', # ya se puede hacer con 'vy'
         'yo': 'yank inline [[{url}][{title}]]',
         'wd': 'close',
         'gA': 'set-cmd-text -s :tab-take',
@@ -132,7 +134,7 @@ c.downloads.location.directory = "$HOME/Descargas"
 c.confirm_quit = ["downloads"]
 c.downloads.location.prompt = False
 c.content.autoplay = False
-c.content.pdfjs = True
+c.content.pdfjs = False
 c.content.geolocation = False
 c.content.canvas_reading = False
 c.content.webgl = True
@@ -152,6 +154,7 @@ c.content.blocking.adblock.lists = [
     "https://easylist.to/easylist/easyprivacy.txt",
     "https://secure.fanboy.co.nz/fanboy-cookiemonster.txt",
     "https://secure.fanboy.co.nz/fanboy-annoyance.txt",
+    "https://www.i-dont-care-about-cookies.eu/abp/",
     "https://raw.githubusercontent.com/piperun/iploggerfilter/master/filterlist",
     "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances.txt",
     "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2020.txt",
@@ -163,6 +166,11 @@ c.content.blocking.adblock.lists = [
     "https://github.com/uBlockOrigin/uAssets/raw/master/filters/privacy.txt",
     "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badware.txt",
     "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt",
+	"https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-firstparty.txt",
+	"https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-social.txt",
+	"https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-specific.txt",
+	"https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-sugarcoat.txt",
+	"https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-firstparty-cname.txt",
     ]
 c.content.blocking.hosts.lists = [
     'https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts',
