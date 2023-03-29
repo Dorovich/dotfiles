@@ -44,7 +44,7 @@ cmd open ${{
         text/*|application/json|inode/x-empty|application/x-subrip) $EDITOR $fx;;
 	image/x-xcf) setsid -f gimp $f >/dev/null 2>&1 ;;
 	image/svg+xml) display -- $f ;;
-	image/*) setsid -f sxiv $fx ;;
+	image/*) setsid -f nsxiv $fx ;;
 	audio/*|video/x-ms-asf) mpv --audio-display=no $f ;;
 	video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
 	application/pdf|application/vnd.djvu|application/epub*|application/vnd.comicbook*) setsid -f zathura $fx >/dev/null 2>&1 ;;

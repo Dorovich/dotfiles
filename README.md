@@ -2,6 +2,7 @@
 *Archivos de configuración de mi sistema y cosas de interés*
 
 ![](screenshot.png)
+![](screenshot_2.png)
 
 *Artista original del fondo de pantalla: [@slope_moon](https://twitter.com/slope_moon)*
 
