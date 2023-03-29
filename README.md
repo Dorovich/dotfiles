@@ -1,10 +1,11 @@
 # ~ .dotfiles ~
 *Archivos de configuración de mi sistema y cosas de interés*
 
-![](screenshot.png)
-![](screenshot_2.png)
+[//]: # "![](screenshot.png)"
+[//]: # "*Artista original: [@slope_moon](https://twitter.com/slope_moon)*"
 
-*Artistas originales (fondos de pantalla): [@slope_moon](https://twitter.com/slope_moon) y [Nundang](https://www.pixiv.net/en/users/21239559)*
+![](screenshot_2.png)
+*Artista original: [Nundang](https://www.pixiv.net/en/users/21239559)*
 
 ## Información
 - Distro: `Pop!_OS` (`Void Linux` la proxima)
