@@ -4,7 +4,7 @@
 ![](screenshot.png)
 ![](screenshot_2.png)
 
-*Artista original del fondo de pantalla: [@slope_moon](https://twitter.com/slope_moon) y [Nundang](https://www.pixiv.net/en/users/21239559)*
+*Artistas originales (fondos de pantalla): [@slope_moon](https://twitter.com/slope_moon) y [Nundang](https://www.pixiv.net/en/users/21239559)*
 
 ## Información
 - Distro: `Pop!_OS` (`Void Linux` la proxima)
