@@ -9,7 +9,6 @@ require('core/plugin_config/orgmode')
 require('core/plugin_config/nvim-colorizer')
 
 -- Colorschemes (choose one)
---require('core/plugin_config/gruvbox')
 --require('core/plugin_config/rose-pine')
 --require('core/plugin_config/everblush')
 require('core/plugin_config/mellifluous')

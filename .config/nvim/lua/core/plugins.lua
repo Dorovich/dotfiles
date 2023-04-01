@@ -50,7 +50,6 @@ return require('packer').startup(function(use)
     }
 
     -- Colorschemes
-    use 'ellisonleao/gruvbox.nvim'
     use {
         'ramojus/mellifluous.nvim',
         requires = {'rktjmp/lush.nvim'}

@@ -71,6 +71,8 @@ function mergepdfs() {
     gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=mergedpdfs.pdf "$@"
 }
 
+alias camaraobs="sudo modprobe v4l2loopback exclusive_caps=1 card_label='CamaraOBS:CamaraOBS'"
+
 # }}}
 
 ###########################################

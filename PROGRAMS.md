@@ -2,6 +2,7 @@
 
 - an-anime-game
 - [baobab](https://gitlab.gnome.org/GNOME/baobab/)
+- bear
 - [discord](https://discord.com/)
 - [dmenu](http://tools.suckless.org/dmenu/)
 - [dwm](http://dwm.suckless.org/)
