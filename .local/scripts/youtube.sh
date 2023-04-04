@@ -4,6 +4,7 @@ set -euo pipefail
 
 # Youtube channels to check
 declare -A youtube_channels
+youtube_channels[chibidoki]="https://www.youtube.com/@chibidoki/featured"
 youtube_channels[Chris Titus Tech]="https://www.youtube.com/ChrisTitusTech/featured"
 youtube_channels[Dina Ariya]="https://www.youtube.com/DinaAriya/featured"
 youtube_channels[DistroTube]="https://www.youtube.com/DistroTube/featured"

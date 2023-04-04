@@ -23,7 +23,7 @@ Nmap('ñ', ':', None)
 Nmap('<Leader>r', ':%s//g<Left><Left>', None)
 Nmap('<Leader>c', ':!make<CR>', None)
 Nmap('<Leader>t', ':split<CR>:term<CR>i', None)
-Nmap('<Leader>s', ':!sbcl --script %<CR>', None)
+Nmap('<Leader>s', ':!clisp %<CR>', None)
 
 Vmap('J', ":m '>+1<CR>gv=gv", None)
 Vmap('K', ":m '<-2<CR>gv=gv", None)

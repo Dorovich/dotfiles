@@ -5,6 +5,7 @@ set scrolloff 10
 set period 1
 set autoquit on
 set mouse on
+set icons
 
 source "~/.config/lf/functions"
 

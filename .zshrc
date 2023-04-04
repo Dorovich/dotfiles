@@ -41,6 +41,7 @@ alias weather="curl https://wttr.in/"
 alias myip="ip -c a"
 alias emacsc="emacsclient -c -a 'emacs'"
 alias mp="ncmpcpp"
+alias lisp="sbcl --noinform --load"
 
 alias yt-mp3="yt-dlp --extract-audio --audio-format mp3 "
 alias yt-mp4="yt-dlp --format mp4 "
