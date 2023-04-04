@@ -141,7 +141,8 @@ fi             # FILE
 *.rproj         鉶
 *.sol           ﲹ
 *.pem           
-*.lisp          λ
+*.lisp          󰘧
+*.org           
 
 # file names (vim-devicons) (case-insensitive not supported in lf)
 *gruntfile.coffee       
@@ -299,3 +300,7 @@ fi             # FILE
 
 # other formats
 *.pdf   
+*.cbz   
+*.cba   
+*.iso   
+*.torrent 󰹢
