@@ -16,6 +16,7 @@ Homedir = os.getenv("HOME")
 # UI {{{
 config.source("colors.py")
 c.hints.chars = "asdfghjklie"
+c.hints.uppercase = True
 c.statusbar.show = "always"
 c.messages.timeout = 1500
 c.colors.webpage.preferred_color_scheme = "dark"
@@ -26,6 +27,7 @@ c.colors.webpage.darkmode.policy.images = "never"
 c.completion.show = "auto"
 c.completion.use_best_match = True
 c.scrolling.smooth = False
+c.scrolling.bar = "always"
 c.completion.height = "35%"
 c.completion.cmd_history_max_items = 100
 c.completion.quick = False

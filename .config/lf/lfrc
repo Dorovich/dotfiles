@@ -22,3 +22,4 @@ map gr cd /
 map . set hidden!
 map C newfile
 map S share
+map E extract
