@@ -55,5 +55,5 @@
 
 # Librerías para compilar:
 
-- Programas de suckless (y [ly](https://github.com/fairyglade/ly)):
-**Void Linux**: libX11-devel libXft-devel fontconfig-devel libXinerama-devel freetype-devel pam-devel
+Programas de suckless (y [ly](https://github.com/fairyglade/ly)):
+- **Void Linux**: libX11-devel libXft-devel fontconfig-devel libXinerama-devel freetype-devel pam-devel
