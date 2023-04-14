@@ -143,6 +143,7 @@ fi             # FILE
 *.pem           
 *.lisp          󰘧
 *.org           
+*.el            
 
 # file names (vim-devicons) (case-insensitive not supported in lf)
 *gruntfile.coffee       

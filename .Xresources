@@ -5,27 +5,9 @@
 *.foreground:   #d1d1d1
 *.cursorColor:  #dbc49b
 
-/* COLORICOS
-*.color0:   #1e2127
-*.color8:   #5c6370
-*.color1:   #e06c75
-*.color9:   #e06c75
-*.color2:   #98c379
-*.color10:  #98c379
-*.color3:   #d19a66
-*.color11:  #d19a66
-*.color4:   #61afef
-*.color12:  #61afef
-*.color5:   #c678dd
-*.color13:  #c678dd
-*.color6:   #56b6c2
-*.color14:  #56b6c2
-*.color7:   #abb2bf
-*.color15:  #c5c8c6 */
-
-/* ALTERNATIVE */
 *.color0:   #1e2127
 *.color8:   #464646
+/* *.color8:   #5c6370 */
 *.color1:   #e06c75
 *.color9:   #e06c75
 *.color2:   #98c379
@@ -37,8 +19,12 @@
 *.color5:   #c678dd
 *.color13:  #c678dd
 *.color6:   #346475
+/* *.color6:   #56b6c2 */
 *.color14:  #56b6c2
 *.color7:   #abb2bf
 *.color15:  #abb2bf
+/* *.color15:  #c5c8c6 */
 
-xterm*font:     *-fixed-*-*-*-18-*
+Sxiv.font: mononoki NF:size=14
+Sxiv.foreground: #d1d1d1
+Sxiv.background: #151515
