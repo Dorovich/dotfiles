@@ -4,7 +4,7 @@
 [//]: # "![](screenshot.png)"
 [//]: # "*Artista original: [@slope_moon](https://twitter.com/slope_moon)*"
 
-![](screenshot_2.png)
+![](screenshot1.png)
 *Artista original: [Nundang](https://www.pixiv.net/en/users/21239559)*
 
 ## Información

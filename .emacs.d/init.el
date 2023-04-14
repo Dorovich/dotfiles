@@ -85,3 +85,16 @@
 (defun reload-config ()
   (interactive)
   (load-file (expand-file-name "init.el" user-emacs-directory)))
+
+;; Gives right-click a context menu
+(global-set-key [mouse-3] 'mouse-popup-menubar-stuff)
+
+;; Cursor configuration
+(set-cursor-color "#dbc49b")
+(blink-cursor-mode 0)
+
+;; Matching parenthesis color
+(set-face-background 'show-paren-match "#346475")
+
+;; Make *scratch* buffer blank
+(setq initial-scratch-message "")
