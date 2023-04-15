@@ -98,3 +98,13 @@
 
 ;; Make *scratch* buffer blank
 (setq initial-scratch-message "")
+
+;; Put Emacs auto-save and backup files to /tmp/ or C:/Temp/
+(defconst emacs-tmp-dir (expand-file-name (format "emacs%d" (user-uid)) temporary-file-directory))
+
+;; Change autosave dir to tmp
+(setq auto-save-file-name-transforms `((".*" ,emacs-tmp-dir t))
+      backup-directory-alist `((".*" . ,emacs-tmp-dir)))
+
+;; Auto-update buffer if file has changed on disk
+(global-auto-revert-mode t)
