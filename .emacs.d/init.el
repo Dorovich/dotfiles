@@ -34,7 +34,7 @@
   (package-refresh-contents))
 
 ;; Install packages.
-(dolist (package '(slime paredit rainbow-delimiters))
+(dolist (package '(slime paredit rainbow-delimiters evil evil-collection all-the-icons key-chord))
   (unless (package-installed-p package)
     (package-install package)))
 
@@ -61,6 +61,18 @@
 (add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'slime-repl-mode-hook 'rainbow-delimiters-mode)
 
+;; Configure and enable Evil and Evil-collection
+(setq evil-want-integration t)
+(setq evil-want-keybinding nil) ; for Evil-collection
+(setq evil-want-C-u-scroll t)
+(evil-mode 1)
+(evil-collection-init) ; must be done after evil mode is activated
+
+;; Enable key-chord to exit insert mode in Evil
+(setq key-chord-two-keys-delay 0.2)
+(key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
+(key-chord-mode 1)
+
 ;; Customize Rainbow Delimiters.
 (require 'rainbow-delimiters)
 (set-face-foreground 'rainbow-delimiters-depth-1-face "#c66")  ; red
@@ -72,8 +84,6 @@
 (set-face-foreground 'rainbow-delimiters-depth-7-face "#ccc")  ; light gray
 (set-face-foreground 'rainbow-delimiters-depth-8-face "#999")  ; medium gray
 (set-face-foreground 'rainbow-delimiters-depth-9-face "#666")  ; dark gray
-
-;; MY CUSTOM CONFIG PART:
 
 ;; y-or-n-p makes answering questions faster.
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -88,10 +98,6 @@
 
 ;; Gives right-click a context menu
 (global-set-key [mouse-3] 'mouse-popup-menubar-stuff)
-
-;; Cursor configuration
-(set-cursor-color "#dbc49b")
-(blink-cursor-mode 0)
 
 ;; Matching parenthesis color
 (set-face-background 'show-paren-match "#346475")
@@ -108,3 +114,16 @@
 
 ;; Auto-update buffer if file has changed on disk
 (global-auto-revert-mode t)
+
+;; Evil keybinds
+(evil-define-key 'normal 'global (kbd "ñ") 'evil-ex)
+(evil-define-key 'normal 'global (kbd "U") 'evil-redo)
+(evil-define-key 'normal 'global (kbd "C-+") 'text-scale-increase)
+(evil-define-key 'normal 'global (kbd "C--") 'text-scale-decrease)
+
+;; Cursor configuration
+(set-cursor-color "#dbc49b")
+(blink-cursor-mode 0)
+
+;; Set frame size by pixels, not by character height
+(setq frame-resize-pixelwise t)
