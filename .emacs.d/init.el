@@ -34,7 +34,8 @@
   (package-refresh-contents))
 
 ;; Install packages.
-(dolist (package '(slime paredit rainbow-delimiters evil evil-collection all-the-icons key-chord))
+(dolist (package '(slime paredit rainbow-delimiters evil evil-collection
+                         all-the-icons key-chord all-the-icons-dired))
   (unless (package-installed-p package)
     (package-install package)))
 
@@ -72,6 +73,9 @@
 (setq key-chord-two-keys-delay 0.2)
 (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
 (key-chord-mode 1)
+
+;; Enable dired icons
+(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 
 ;; Customize Rainbow Delimiters.
 (require 'rainbow-delimiters)
