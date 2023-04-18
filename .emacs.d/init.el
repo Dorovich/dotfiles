@@ -125,9 +125,17 @@
 (evil-define-key 'normal 'global (kbd "C-+") 'text-scale-increase)
 (evil-define-key 'normal 'global (kbd "C--") 'text-scale-decrease)
 
-;; Cursor configuration
-(set-cursor-color "#dbc49b")
-(blink-cursor-mode 0)
-
 ;; Set frame size by pixels, not by character height
 (setq frame-resize-pixelwise t)
+
+;; Enable highlighting of the current line
+(global-hl-line-mode 1)
+(set-face-foreground 'highlight nil)
+(set-face-attribute hl-line-face nil
+                    :foreground nil
+                    :background "#222222"
+                    :underline nil)
+
+;; Cursor configuration
+(blink-cursor-mode 0)
+(set-cursor-color "#dbc49b")
