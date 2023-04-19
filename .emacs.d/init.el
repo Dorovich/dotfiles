@@ -1,11 +1,18 @@
-;;; Emacs4CL 0.4.0 <https://github.com/susam/emacs4cl>
+;; init.el gc values (faster loading)
+(setq gc-cons-threshold (* 384 1024 1024)
+      gc-cons-percentage 0.6)
 
-;; Customize user interface.
-(menu-bar-mode 0)
-(when (display-graphic-p)
-  (tool-bar-mode 0)
-  (scroll-bar-mode 0))
-(setq inhibit-startup-screen t)
+;; Emacs "updates" its ui more often than it needs to, so we slow it down slightly from 0.5s
+(setq idle-update-delay 1.0)
+
+;; Disable second passing of auto-mode-alist
+(setq auto-mode-case-fold nil)
+
+;; Do not load outdated byte code files.
+(setq load-prefer-newer t)
+
+;; Default was too low; Increase for better lsp performance.
+(setq read-process-output-max (* 3 1024 1024)) ;; 3mb
 
 ;; Dark theme.
 (load-theme 'wombat)
@@ -33,9 +40,12 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
+;; From https://irreal.org/blog/?p=8243
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+
 ;; Install packages.
-(dolist (package '(slime paredit rainbow-delimiters evil evil-collection
-                         all-the-icons key-chord all-the-icons-dired))
+(dolist (package '(slime paredit rainbow-delimiters undo-tree evil evil-collection
+                         all-the-icons key-chord all-the-icons-dired dired-open))
   (unless (package-installed-p package)
     (package-install package)))
 
@@ -63,11 +73,22 @@
 (add-hook 'slime-repl-mode-hook 'rainbow-delimiters-mode)
 
 ;; Configure and enable Evil and Evil-collection
-(setq evil-want-integration t)
-(setq evil-want-keybinding nil) ; for Evil-collection
-(setq evil-want-C-u-scroll t)
+(setq evil-want-integration t
+      evil-want-keybinding nil ; for Evil-collection
+      evil-want-C-u-scroll t
+      evil-want-Y-yank-to-eol t
+      evil-normal-state-cursor '(box "#dbc49b")
+      evil-insert-state-cursor '((bar . 2) "#dbc49b")
+      evil-visual-state-cursor '(hollow "#dbc49b")
+      evil-split-window-below t
+      evil-split-window-right t
+      evil-undo-system 'undo-tree)
 (evil-mode 1)
 (evil-collection-init) ; must be done after evil mode is activated
+
+;; Enable undo-tree for Evil
+(setq undo-tree-history-directory-alist '(("." . "/tmp")))
+(global-undo-tree-mode 1) ; in emacs < 28.1
 
 ;; Enable key-chord to exit insert mode in Evil
 (setq key-chord-two-keys-delay 0.2)
@@ -89,6 +110,18 @@
 (set-face-foreground 'rainbow-delimiters-depth-8-face "#999")  ; medium gray
 (set-face-foreground 'rainbow-delimiters-depth-9-face "#666")  ; dark gray
 
+;; Configure dired-open external programs
+(setq dired-open-extensions '(("gif" . "sxiv")
+                              ("jpg" . "sxiv")
+                              ("jpeg" . "sxiv")
+                              ("png" . "sxiv")
+                              ("pdf" . "zathura")
+                              ("cbz" . "zathura")
+                              ("mkv" . "mpv")
+                              ("webm" . "mpv")
+                              ("mp4" . "mpv")
+                              ("xcf" . "gimp")))
+
 ;; y-or-n-p makes answering questions faster.
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -106,7 +139,6 @@
 ;; Matching parenthesis color
 (set-face-background 'show-paren-match "#346475")
 
-;; Make *scratch* buffer blank
 (setq initial-scratch-message "")
 
 ;; Put Emacs auto-save and backup files to /tmp/ or C:/Temp/
@@ -125,6 +157,10 @@
 (evil-define-key 'normal 'global (kbd "C-+") 'text-scale-increase)
 (evil-define-key 'normal 'global (kbd "C--") 'text-scale-decrease)
 
+(with-eval-after-load 'dired
+  (evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory)
+  (evil-define-key 'normal dired-mode-map (kbd "l") 'dired-open-file)) ; use dired-find-file if not using dired-open package
+
 ;; Set frame size by pixels, not by character height
 (setq frame-resize-pixelwise t)
 
@@ -139,3 +175,5 @@
 ;; Cursor configuration
 (blink-cursor-mode 0)
 (set-cursor-color "#dbc49b")
+
+(setq initial-major-mode 'fundamental-mode)
