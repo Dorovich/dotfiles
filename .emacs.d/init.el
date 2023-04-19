@@ -5,11 +5,35 @@
 ;; Emacs "updates" its ui more often than it needs to, so we slow it down slightly from 0.5s
 (setq idle-update-delay 1.0)
 
+;; Setup fonts
+(defvar vido/font-family "mononoki NF")
+(defvar vido/default-font-size 160)
+(defvar vido/default-variable-font-size 160)
+
+(set-face-attribute 'default nil
+                    :font vido/font-family
+                    :height vido/default-font-size)
+(set-face-attribute 'fixed-pitch nil
+                    :font vido/font-family
+                    :height vido/default-font-size)
+(set-face-attribute 'variable-pitch nil
+                    :font vido/font-family
+                    :height vido/default-variable-font-size)
+
+;; Silence compiler warnings as they can be pretty disruptive
+(setq comp-async-report-warnings-errors nil)
+(if (boundp 'comp-deferred-compilation)
+    (setq comp-deferred-compilation nil)
+    (setq native-comp-deferred-compilation nil))
+
 ;; Disable second passing of auto-mode-alist
 (setq auto-mode-case-fold nil)
 
 ;; Do not load outdated byte code files.
 (setq load-prefer-newer t)
+
+;; Give some breathing room
+(set-fringe-mode 1)
 
 ;; Default was too low; Increase for better lsp performance.
 (setq read-process-output-max (* 3 1024 1024)) ;; 3mb
@@ -44,6 +68,8 @@
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
 ;; Install packages.
+;;;; nano-modeline para el pc de la uni!!
+;;;; (nano-modeline-mode) despues de instalarlo
 (dolist (package '(slime paredit rainbow-delimiters undo-tree evil evil-collection
                          all-the-icons key-chord all-the-icons-dired dired-open))
   (unless (package-installed-p package)
@@ -152,10 +178,16 @@
 (global-auto-revert-mode t)
 
 ;; Evil keybinds
-(evil-define-key 'normal 'global (kbd "ñ") 'evil-ex)
-(evil-define-key 'normal 'global (kbd "U") 'evil-redo)
-(evil-define-key 'normal 'global (kbd "C-+") 'text-scale-increase)
-(evil-define-key 'normal 'global (kbd "C--") 'text-scale-decrease)
+;(evil-define-key 'normal 'global (kbd "ñ") 'evil-ex)
+;(evil-define-key 'normal 'global (kbd "U") 'evil-redo)
+;(evil-define-key 'normal 'global (kbd "C-+") 'text-scale-increase)
+;(evil-define-key 'normal 'global (kbd "C--") 'text-scale-decrease)
+
+(evil-define-key 'normal 'global
+  (kbd "ñ") 'evil-ex
+  (kbd "U") 'evil-redo
+  (kbd "C-+") 'text-scale-increase
+  (kbd "C--") 'text-scale-decrease)
 
 (with-eval-after-load 'dired
   (evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory)
@@ -187,3 +219,47 @@
 (defun zsh-shell-mode-setup ()
   (setq-local comint-process-echoes t))
 (add-hook 'shell-mode-hook #'zsh-shell-mode-setup)
+
+;; Fancy welcome screen
+(with-eval-after-load 'evil
+    (defun vido/show-welcome-buffer ()
+    "Show *Welcome* buffer."
+    (with-current-buffer (get-buffer-create "*Welcome*")
+        (setq truncate-lines t)
+        (let* ((buffer-read-only)
+            (image-path "~/.emacs.d/emacs.png")
+            (image (create-image image-path))
+            (size (image-size image))
+            (height (cdr size))
+            (width (car size))
+            (top-margin (floor (/ (- (window-height) height) 2)))
+            (left-margin (floor (/ (- (window-width) width) 2)))
+            (title "¡Bienvenido a Emacs!"))
+        (erase-buffer)
+        ;;(setq mode-line-format nil)
+        (goto-char (point-min))
+        (insert (make-string top-margin ?\n ))
+        (insert (make-string left-margin ?\ ))
+        (insert-image image)
+        (insert "\n\n\n")
+        (insert (make-string (floor (/ (- (window-width) (string-width title)) 2)) ?\ ))
+        (insert title))
+        (setq cursor-type nil)
+        (read-only-mode +1)
+        (switch-to-buffer (current-buffer))
+        ;;(local-set-key (kbd "q") 'kill-this-buffer)
+        (evil-local-set-key 'normal (kbd "q") 'kill-this-buffer)))
+
+    (when (< (length command-line-args) 2)
+    (add-hook 'emacs-startup-hook (lambda ()
+                                    (when (display-graphic-p)
+                                        (vido/show-welcome-buffer))))))
+
+;; Mensaje de inicio
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (message "--> Emacs ha cargado en %s con %d recogidas de basura."
+                     (format "%.2f segundos"
+                             (float-time
+                              (time-subtract after-init-time before-init-time)))
+                     gcs-done)))

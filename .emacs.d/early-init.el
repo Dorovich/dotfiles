@@ -34,3 +34,6 @@
 
 ;; No welcome screen, direcly to *scratch*
 (setq inhibit-startup-screen t)
+
+;; Fix transparency issues
+(add-to-list 'default-frame-alist '(alpha . 100))
