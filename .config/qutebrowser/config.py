@@ -85,6 +85,7 @@ c.bindings.commands = {
                 '       }'+
                 '   }'+
                 '})();',
+        ',ff': 'spawn --detach firefox {url}',
     },
     'insert': {
         '<Ctrl-y>': 'spawn --userscript password_fill',

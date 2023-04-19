@@ -176,4 +176,14 @@
 (blink-cursor-mode 0)
 (set-cursor-color "#dbc49b")
 
+;; Use fundamental mode for starting buffer so to not load a lot of packages
 (setq initial-major-mode 'fundamental-mode)
+
+;; Shell config
+;; More at: https://www.masteringemacs.org/article/complete-guide-mastering-eshell
+(setq explicit-shell-file-name "/usr/bin/zsh")
+(setq shell-file-name "zsh")
+(setq explicit-zsh-args '("--login" "--interactive"))
+(defun zsh-shell-mode-setup ()
+  (setq-local comint-process-echoes t))
+(add-hook 'shell-mode-hook #'zsh-shell-mode-setup)
