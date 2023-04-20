@@ -1,9 +1,21 @@
 ;; init.el gc values (faster loading)
-(setq gc-cons-threshold (* 384 1024 1024)
+(setq gc-cons-threshold (* 128 1024 1024)
       gc-cons-percentage 0.6)
 
 ;; Emacs "updates" its ui more often than it needs to, so we slow it down slightly from 0.5s
 (setq idle-update-delay 1.0)
+
+;; Disable bidirectional text rendering for a modest performance boost.
+(setq-default bidi-display-reordering 'left-to-right
+              bidi-paragraph-direction 'left-to-right)
+
+;; Reduce rendering/line scan work for Emacs by not rendering cursors or regions
+;; in non-focused windows.
+(setq-default cursor-in-non-selected-windows nil)
+(setq highlight-nonselected-windows nil)
+
+;; Don't ping things that look like domain names.
+(setq ffap-machine-p-known 'reject)
 
 ;; Setup fonts
 (defvar vido/font-family "mononoki NF")
@@ -25,6 +37,11 @@
 (if (boundp 'comp-deferred-compilation)
     (setq comp-deferred-compilation nil)
     (setq native-comp-deferred-compilation nil))
+
+;; Get rid of "For information about GNU Emacs..." message at startup,
+;; unless we're in a daemon session
+(unless (daemonp)
+  (advice-add #'display-startup-echo-are-message :override #'ignore))
 
 ;; Disable second passing of auto-mode-alist
 (setq auto-mode-case-fold nil)
@@ -71,7 +88,7 @@
 ;;;; nano-modeline para el pc de la uni!!
 ;;;; (nano-modeline-mode) despues de instalarlo
 (dolist (package '(slime paredit rainbow-delimiters undo-tree evil evil-collection
-                         all-the-icons key-chord all-the-icons-dired dired-open))
+                         all-the-icons key-chord all-the-icons-dired dired-open hide-mode-line))
   (unless (package-installed-p package)
     (package-install package)))
 
@@ -135,6 +152,11 @@
 (set-face-foreground 'rainbow-delimiters-depth-7-face "#ccc")  ; light gray
 (set-face-foreground 'rainbow-delimiters-depth-8-face "#999")  ; medium gray
 (set-face-foreground 'rainbow-delimiters-depth-9-face "#666")  ; dark gray
+
+;; Configure hide-mode-line
+(add-hook 'dired-mode-hook 'hide-mode-line-mode)
+(add-hook 'eshell-mode-hook 'hide-mode-line-mode)
+(add-hook 'completion-list-mode-hook 'hide-mode-line-mode)
 
 ;; Configure dired-open external programs
 (setq dired-open-extensions '(("gif" . "sxiv")
@@ -211,6 +233,9 @@
 ;; Use fundamental mode for starting buffer so to not load a lot of packages
 (setq initial-major-mode 'fundamental-mode)
 
+;; Show current key sequence in minibuffer
+(setq echo-keystrokes 0.02)
+
 ;; Shell config
 ;; More at: https://www.masteringemacs.org/article/complete-guide-mastering-eshell
 (setq explicit-shell-file-name "/usr/bin/zsh")
@@ -236,7 +261,8 @@
             (left-margin (floor (/ (- (window-width) width) 2)))
             (title "¡Bienvenido a Emacs!"))
         (erase-buffer)
-        ;;(setq mode-line-format nil)
+        ;;(setq mode-line-format nil) ; if not using hide-mode-line-mode
+        ;;(hide-mode-line-mode) ; if using hide-mode-line-mode
         (goto-char (point-min))
         (insert (make-string top-margin ?\n ))
         (insert (make-string left-margin ?\ ))
@@ -247,7 +273,7 @@
         (setq cursor-type nil)
         (read-only-mode +1)
         (switch-to-buffer (current-buffer))
-        ;;(local-set-key (kbd "q") 'kill-this-buffer)
+        ;;(local-set-key (kbd "q") 'kill-this-buffer) ; if not using evil-mode
         (evil-local-set-key 'normal (kbd "q") 'kill-this-buffer)))
 
     (when (< (length command-line-args) 2)
@@ -255,11 +281,15 @@
                                     (when (display-graphic-p)
                                         (vido/show-welcome-buffer))))))
 
-;; Mensaje de inicio
+;; Startup welcome message
 (add-hook 'emacs-startup-hook
           (lambda ()
-            (message "--> Emacs ha cargado en %s con %d recogidas de basura."
+            (message "--> Emacs ha iniciado en %s con %d recogidas de basura."
                      (format "%.2f segundos"
                              (float-time
                               (time-subtract after-init-time before-init-time)))
                      gcs-done)))
+
+;; Undo gc values post init.el.
+(setq gc-cons-threshold 100000000
+      gc-cons-percentage 0.1)
