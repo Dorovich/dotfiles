@@ -1,6 +1,10 @@
+;;; -*- lexical-binding: t; -*-
+
 ;; init.el gc values (faster loading)
 (setq gc-cons-threshold (* 384 1024 1024)
       gc-cons-percentage 0.6)
+
+(add-to-list 'load-path "~/.config/emacs/lisp/")
 
 ;; Emacs "updates" its ui more often than it needs to, so we slow it down slightly from 0.5s
 (setq idle-update-delay 1.0)
@@ -51,6 +55,9 @@
 
 ;; Give some breathing room
 (set-fringe-mode 0)
+
+;; Dired file display and sorting
+(setq dired-listing-switches "-AhgG --group-directories-first --time-style=+%D")
 
 ;; Default was too low; Increase for better lsp performance.
 (setq read-process-output-max (* 3 1024 1024)) ;; 3mb
@@ -158,6 +165,27 @@
 (add-hook 'eshell-mode-hook 'hide-mode-line-mode)
 (add-hook 'completion-list-mode-hook 'hide-mode-line-mode)
 
+;; Customize org mode header font size
+(with-eval-after-load 'org
+  (defun vido/org-header-sizes ()
+    "Configure size of org mode headers."
+    (interactive)
+    (dolist
+        (face
+         '((org-level-1 1.3 ultra-bold)
+           (org-level-2 1.15 extra-bold)
+           (org-level-3 1.07 bold)
+           (org-level-4 1.04 semi-bold)
+           (org-level-5 1.02 normal)
+           (org-level-6 1.01 normal)
+           (org-level-7 1.005 normal)
+           (org-level-8 1.003 normal)))
+      (set-face-attribute (nth 0 face) nil
+                          :font vido/font-family
+                          :height (nth 1 face)
+                          :weight (nth 2 face))))
+  (vido/org-header-sizes))
+
 ;; Configure dired-open external programs
 (setq dired-open-extensions '(("gif" . "sxiv")
                               ("jpg" . "sxiv")
@@ -168,6 +196,8 @@
                               ("mkv" . "mpv")
                               ("webm" . "mpv")
                               ("mp4" . "mpv")
+                              ("mp3" . "mpv")
+                              ("flac" . "mpv")
                               ("xcf" . "gimp")))
 
 ;; y-or-n-p makes answering questions faster.
@@ -175,6 +205,10 @@
 
 ;; Selected text will be overwritten when you start typing.
 (delete-selection-mode 1)
+
+;; Add a one character margin at the sides of the window
+(setq-default left-margin-width 1
+              right-margin-width 1)
 
 ;; Function to reload the user configuration.
 (defun reload-config ()
@@ -207,8 +241,8 @@
   (kbd "C--") 'text-scale-decrease)
 
 (with-eval-after-load 'dired
-  (evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory)
-  (evil-define-key 'normal dired-mode-map (kbd "l") 'dired-open-file)) ; use dired-find-file if not using dired-open package
+  (evil-define-key 'normal dired-mode-map (kbd "l") 'dired-open-file) ; use dired-find-file if not using dired-open package
+  (evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory))
 
 ;; Set frame size by pixels, not by character height
 (setq frame-resize-pixelwise t)
@@ -242,19 +276,19 @@
 
 ;; Fancy welcome screen
 (with-eval-after-load 'evil
-    (defun vido/show-welcome-buffer ()
+  (defun vido/show-welcome-buffer ()
     "Show *Welcome* buffer."
     (with-current-buffer (get-buffer-create "*Welcome*")
-        (setq truncate-lines t)
-        (let* ((buffer-read-only)
-            (image-path "~/.config/emacs/emacs.png")
-            (image (create-image image-path))
-            (size (image-size image))
-            (height (cdr size))
-            (width (car size))
-            (top-margin (floor (/ (- (window-height) height) 2)))
-            (left-margin (floor (/ (- (window-width) width) 2)))
-            (title "¡Bienvenido a Emacs!"))
+      (setq truncate-lines t)
+      (let* ((buffer-read-only)
+             (image-path "~/.config/emacs/emacs.png")
+             (image (create-image image-path))
+             (size (image-size image))
+             (height (cdr size))
+             (width (car size))
+             (top-margin (floor (/ (- (window-height) height) 2)))
+             (left-margin (floor (/ (- (window-width) width) 2)))
+             (title "¡Bienvenido a Emacs!"))
         (erase-buffer)
         ;;(setq mode-line-format nil) ; if not using hide-mode-line-mode
         ;;(hide-mode-line-mode) ; if using hide-mode-line-mode
@@ -265,16 +299,16 @@
         (insert "\n\n\n")
         (insert (make-string (floor (/ (- (window-width) (string-width title)) 2)) ?\ ))
         (insert title))
-        (setq cursor-type nil)
-        (read-only-mode +1)
-        (switch-to-buffer (current-buffer))
-        ;;(local-set-key (kbd "q") 'kill-this-buffer) ; if not using evil-mode
-        (evil-local-set-key 'normal (kbd "q") 'kill-this-buffer)))
+      (setq cursor-type nil)
+      (read-only-mode +1)
+      (switch-to-buffer (current-buffer))
+      ;;(local-set-key (kbd "q") 'kill-this-buffer) ; if not using evil-mode
+      (evil-local-set-key 'normal (kbd "q") 'kill-this-buffer)))
 
-    (when (< (length command-line-args) 2)
+  (when (< (length command-line-args) 2)
     (add-hook 'emacs-startup-hook (lambda ()
                                     (when (display-graphic-p)
-                                        (vido/show-welcome-buffer))))))
+                                      (vido/show-welcome-buffer))))))
 
 ;; Startup welcome message
 (add-hook 'emacs-startup-hook
@@ -288,3 +322,4 @@
 ;; Undo gc values post init.el.
 (setq gc-cons-threshold 100000000
       gc-cons-percentage 0.1)
+(put 'dired-find-alternate-file 'disabled nil)
