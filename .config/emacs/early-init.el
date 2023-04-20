@@ -1,4 +1,5 @@
-;; https://github.com/hlissner/doom-emacs/blob/58af4aef56469f3f495129b4e7d947553f420fca/core/core.el#L323
+
+;; Resizing the Emacs frame can be a terribly expensive part of changing the font.
 (setq frame-inhibit-implied-resize t)
 
 ;; https://github.com/hlissner/doom-emacs/blob/58af4aef56469f3f495129b4e7d947553f420fca/core/core.el#L331
@@ -8,7 +9,7 @@
 (setq idle-update-delay 1.0)
 
 ;; Don't want a mode line while loading init.
-;(setq mode-line-format nil)
+(setq mode-line-format nil)
 
 ;; No scrollbar by default.
 (when (fboundp 'scroll-bar-mode)

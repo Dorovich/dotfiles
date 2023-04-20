@@ -1,5 +1,5 @@
 ;; init.el gc values (faster loading)
-(setq gc-cons-threshold (* 128 1024 1024)
+(setq gc-cons-threshold (* 384 1024 1024)
       gc-cons-percentage 0.6)
 
 ;; Emacs "updates" its ui more often than it needs to, so we slow it down slightly from 0.5s
@@ -50,7 +50,7 @@
 (setq load-prefer-newer t)
 
 ;; Give some breathing room
-(set-fringe-mode 1)
+(set-fringe-mode 0)
 
 ;; Default was too low; Increase for better lsp performance.
 (setq read-process-output-max (* 3 1024 1024)) ;; 3mb
@@ -247,7 +247,7 @@
     (with-current-buffer (get-buffer-create "*Welcome*")
         (setq truncate-lines t)
         (let* ((buffer-read-only)
-            (image-path "~/.emacs.d/emacs.png")
+            (image-path "~/.config/emacs/emacs.png")
             (image (create-image image-path))
             (size (image-size image))
             (height (cdr size))
