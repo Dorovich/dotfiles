@@ -200,11 +200,6 @@
 (global-auto-revert-mode t)
 
 ;; Evil keybinds
-;(evil-define-key 'normal 'global (kbd "ñ") 'evil-ex)
-;(evil-define-key 'normal 'global (kbd "U") 'evil-redo)
-;(evil-define-key 'normal 'global (kbd "C-+") 'text-scale-increase)
-;(evil-define-key 'normal 'global (kbd "C--") 'text-scale-decrease)
-
 (evil-define-key 'normal 'global
   (kbd "ñ") 'evil-ex
   (kbd "U") 'evil-redo
