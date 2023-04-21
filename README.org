@@ -1,0 +1,24 @@
+#+options: \n:t num:nil timestamp:nil
+
+* ~ .dotfiles ~
+/Archivos de configuración de mi sistema y cosas de interés/
+
+[[screenshot1.png]]
+
+** Información
++ Distro: =Pop!_OS= (=Void Linux= la próxima)
++ DE/WM: [[https://github.com/Dorovich/dwm-vido][dwm]]
++ Terminal: [[https://github.com/Dorovich/st-vido][st]]
++ Shell: =zsh=
++ Editor: =neovim=, =emacs=
++ Gestor de archivos: =lf=, =pcmanfm=
++ Fuente: =mononoki (Nerd Font)=
++ Música: =spotify=, =mpd (+ ncmpcpp)=
++ Navegador: =qutebrowser=, =firefox=
+
+/Para más cositas ver mi lista de [[PROGRAMS.md][programas interesantes]]./
+
+** Otros
+/Para poder poner acentos en st he tenido que añadir la línea `XPROFILE=` a =/etc/environment=./
+/Los programas que se autoinician estan en =~/.xprofile=./
+/Las variables globales del sistema (como $SCRIPTSDIR, $TERMINAL o $BROWSER) estan en =~/.profile=./
