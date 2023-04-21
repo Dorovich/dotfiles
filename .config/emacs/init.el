@@ -165,25 +165,32 @@
 (add-hook 'eshell-mode-hook 'hide-mode-line-mode)
 (add-hook 'completion-list-mode-hook 'hide-mode-line-mode)
 
-;; Customize org mode header font size
+;; Customize org mode header font size and block indentation
+(add-hook 'org-mode-hook 'org-indent-mode)
 (with-eval-after-load 'org
   (defun vido/org-header-sizes ()
     "Configure size of org mode headers."
     (interactive)
     (dolist
         (face
-         '((org-level-1 1.3 ultra-bold)
-           (org-level-2 1.15 extra-bold)
-           (org-level-3 1.07 bold)
-           (org-level-4 1.04 semi-bold)
-           (org-level-5 1.02 normal)
-           (org-level-6 1.01 normal)
-           (org-level-7 1.005 normal)
-           (org-level-8 1.003 normal)))
+         '((org-level-1 1.3 ultra-bold "#e5786d")
+           (org-level-2 1.15 extra-bold "#70cecc")
+           (org-level-3 1.07 bold "#edc4a3")
+           (org-level-4 1.04 semi-bold "#95e454")
+           (org-level-5 1.02 normal "#a6a1de")
+           (org-level-6 1.01 normal "#ddaa6f")
+           (org-level-7 1.005 normal "#8ac6f2")
+           (org-level-8 1.003 normal "#cccaa8f")))
       (set-face-attribute (nth 0 face) nil
                           :font vido/font-family
                           :height (nth 1 face)
-                          :weight (nth 2 face))))
+                          :weight (nth 2 face)
+                          :foreground (nth 3 face)))
+    (set-face-attribute 'org-table nil
+                        :font vido/font-family
+                        :height 1.0
+                        :weight 'normal
+                        :foreground "#bfafdf"))
   (vido/org-header-sizes))
 
 ;; Configure dired-open external programs
@@ -247,6 +254,9 @@
 ;; Set frame size by pixels, not by character height
 (setq frame-resize-pixelwise t)
 
+;; Line wrapping by words on text mode
+(add-hook 'text-mode-hook 'turn-on-visual-line-mode)
+
 ;; Enable highlighting of the current line
 (global-hl-line-mode 1)
 (set-face-foreground 'highlight nil)
@@ -290,8 +300,6 @@
              (left-margin (floor (/ (- (window-width) width) 2)))
              (title "¡Bienvenido a Emacs!"))
         (erase-buffer)
-        ;;(setq mode-line-format nil) ; if not using hide-mode-line-mode
-        ;;(hide-mode-line-mode) ; if using hide-mode-line-mode
         (goto-char (point-min))
         (insert (make-string top-margin ?\n ))
         (insert (make-string left-margin ?\ ))
