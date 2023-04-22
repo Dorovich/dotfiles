@@ -1,12 +1,12 @@
 ;;; -*- lexical-binding: t; -*-
 
-;; init.el gc values (faster loading)
-(setq gc-cons-threshold (* 512 1024 1024)
-      gc-cons-percentage 0.6)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;                OPTIMIZATIONS                 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; init.el gc values (faster loading)
+(setq gc-cons-threshold (* 512 1024 1024)
+      gc-cons-percentage 0.6)
 
 ;; Do not load outdated byte code files.
 (setq load-prefer-newer t)
@@ -101,16 +101,10 @@
 
 ;; Highlight matching pairs of parentheses.
 (setq show-paren-delay 0)
-(set-face-background 'show-paren-match "#346475")
 (show-paren-mode)
 
 ;; Enable highlighting of the current line
 (global-hl-line-mode 1)
-(set-face-foreground 'highlight nil)
-(set-face-attribute hl-line-face nil
-                    :foreground nil
-                    :background "#222222"
-                    :underline nil)
 
 ;; Disable blinking cursor
 (blink-cursor-mode 0)
@@ -268,6 +262,7 @@
           (builtin yellow-cooler)
           (fnname green-faint)
           (fg-heading-1 red-faint)
+          (bg-hl-line "#222222")
           (border-mode-line-active bg-mode-line-active)
           (border-mode-line-inactive bg-mode-line-inactive)
           ))
