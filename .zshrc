@@ -34,7 +34,7 @@ alias ls='exa --icons --group-directories-first --no-time --no-user --color=auto
 alias la='exa -a --icons --group-directories-first --no-time --no-user --color=auto -F'
 alias ll='exa -l --icons --group-directories-first --no-time --no-user --color=auto -F'
 alias whichgpu="lspci -k | grep -EA3 'VGA|3D|Display'"
-alias hamachi="sudo hamachi"
+#alias hamachi="sudo hamachi"
 alias clean="bleachbit -c --preset"
 alias fullclean="bleachbit -c --preset && sudo bleachbit -c --preset"
 alias weather="curl https://wttr.in/"
