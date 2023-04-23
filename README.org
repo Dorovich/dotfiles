@@ -3,7 +3,9 @@
 * ~ .dotfiles ~
 /Archivos de configuración de mi sistema y cosas de interés/
 
-[[screenshot1.png]]
+#+ATTR_ORG: :width 1000
+[[file:scr/4.png]]
+[[file:scr/5.png]]
 
 ** Información
 + Distro: =Pop!_OS= (=Void Linux= la próxima)
