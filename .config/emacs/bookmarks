@@ -1,0 +1,19 @@
+;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*-
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+
+(
+  ("h" (filename . "~/"))
+  ("c" (filename . "~/.config/"))
+  ("e" (filename . "~/.config/emacs/"))
+  ("s" (filename . "~/.srcconfig/"))
+  ("l" (filename . "~/.local/"))
+  ("d" (filename . "~/Descargas/"))
+  ("i" (filename . "~/Imágenes/"))
+  ("p" (filename . "~/Documentos/Programillas/"))
+  ("u" (filename . "~/Documentos/UPC/"))
+  ("a" (filename . "/media/vido25/Almacenamiento/"))
+  ("m" (filename . "/media/vido25/Almacenamiento/Musica/"))
+  ("r" (filename . "/media/vido25/Almacenamiento/RPGs/"))
+)

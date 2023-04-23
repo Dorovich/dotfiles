@@ -137,7 +137,7 @@
 (add-hook 'text-mode-hook 'turn-on-visual-line-mode)
 
 ;; Dired file display and sorting
-(setq dired-listing-switches "-AhgG --group-directories-first --time-style=+%D"
+(setq dired-listing-switches "-AhgG --group-directories-first --time-style=+%d-%m-%y"
       dired-dwim-target t)
 
 ;; Use spaces, not tabs, for indentation.
@@ -165,9 +165,13 @@
 (setq explicit-shell-file-name "/usr/bin/zsh"
       shell-file-name "zsh"
       explicit-zsh-args '("--login" "--interactive"))
+
+;; Use ibuffer instead of list-buffers
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
 (defun zsh-shell-mode-setup ()
   (setq-local comint-process-echoes t))
-(add-hook 'shell-mode-hook #'zsh-shell-mode-setup)
+(add-hook 'shell-mode-hook 'zsh-shell-mode-setup)
 
 ;; Function to reload the user configuration.
 (defun reload-config ()
@@ -272,14 +276,14 @@
   :config
   (setq modus-themes-common-palette-overrides
         '((bg-main "#151515")
+          (bg-hl-line "#222222")
           (keyword red-faint)
           (builtin yellow-cooler)
           (fnname green-faint)
+          (fg-prompt red-faint)
           (fg-heading-1 red-faint)
-          (bg-hl-line "#222222")
           (border-mode-line-active bg-mode-line-active)
-          (border-mode-line-inactive bg-mode-line-inactive)
-          ))
+          (border-mode-line-inactive bg-mode-line-inactive)))
   (load-theme 'modus-vivendi :no-confirm))
 
 (use-package all-the-icons
@@ -299,6 +303,7 @@
                                 ("jpg" . "sxiv")
                                 ("jpeg" . "sxiv")
                                 ("png" . "sxiv")
+                                ("webp" . "sxiv")
                                 ("pdf" . "zathura")
                                 ("cbz" . "zathura")
                                 ("mkv" . "mpv")
@@ -307,6 +312,12 @@
                                 ("mp3" . "mpv")
                                 ("flac" . "mpv")
                                 ("xcf" . "gimp"))))
+
+(use-package diredfl
+  :ensure t
+  :after dired
+  :hook dired-mode)
+ 
 
 (use-package slime
   :ensure t
@@ -358,6 +369,48 @@
   :commands (dired-mode dired)
   :defer t)
 
+(use-package ibuffer
+  :commands ibuffer
+  :defer t
+  :config
+  (setq ibuffer-show-empty-filter-groups nil
+        ibuffer-filter-group-name-face '(:inherit (success bold))
+        ibuffer-formats
+        '((mark modified read-only locked
+                " " (icon 2 2 :left :elide)
+                " " (name 18 18 :left :elide)
+                " " (size 9 -1 :right)
+                " " (mode 16 16 :left :elide)
+                " " filename-and-process)
+          (mark " " (name 16 -1)
+                " " filename))
+        ibuffer-saved-filter-groups
+        '(("default"
+           ("Dired" (mode . dired-mode))
+           ("Emacs" (or
+                     (name . "^\\*scratch\\*$")
+                     (name . "^\\*Messages\\*$"))))))
+
+  ;; Buffer icons column for GUI
+  (define-ibuffer-column icon (:name "  ")
+    (let ((icon (if (and (buffer-file-name)
+                         (all-the-icons-auto-mode-match?))
+                    (all-the-icons-icon-for-file (file-name-nondirectory (buffer-file-name)) :v-adjust -0.05)
+                  (all-the-icons-icon-for-mode major-mode :v-adjust -0.05))))
+      (if (symbolp icon)
+          (setq icon (all-the-icons-faicon "file-o" :face 'all-the-icons-dsilver :height 0.8 :v-adjust 0.0))
+        icon)))
+
+  ;; Redefine size column to display human readable size
+  (define-ibuffer-column size (:name "Size"
+                                     :inline t
+                                     :header-mouse-map ibuffer-size-header-map)
+    (file-size-human-readable (buffer-size)))
+
+  (defun ibuffer-set-custom-filter ()
+    (ibuffer-switch-to-saved-filter-groups "default"))
+  (add-hook 'ibuffer-mode-hook 'ibuffer-set-custom-filter))
+
 (use-package gcmh
   :ensure t
   :init
@@ -369,7 +422,8 @@
   (evil-define-key 'normal dired-mode-map
     [mouse-1] 'dired-open-file
     (kbd "l") 'dired-open-file ; use dired-find-file if not using dired-open package
-    (kbd "h") 'dired-up-directory))
+    (kbd "h") 'dired-up-directory
+    (kbd "'") 'bookmark-jump))
 
 (with-eval-after-load 'org
   (setq org-image-actual-width nil
