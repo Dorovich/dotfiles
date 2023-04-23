@@ -29,6 +29,14 @@
 ;; Don't ping things that look like domain names.
 (setq ffap-machine-p-known 'reject)
 
+;; Resizing the Emacs frame can be a terribly expensive part of changing the font.
+(setq frame-inhibit-implied-resize t)
+
+;; Font compacting can be terribly expensive, especially for rendering icon
+;; fonts on Windows. Whether it has a notable affect on Linux and Mac hasn't
+;; been determined, but we inhibit it there anyway.
+(setq inhibit-compacting-font-caches t)
+
 ;; Silence compiler warnings as they can be pretty disruptive
 (setq comp-async-report-warnings-errors nil)
 (if (boundp 'comp-deferred-compilation)
@@ -66,6 +74,9 @@
 (setq auto-save-file-name-transforms `((".*" ,emacs-tmp-dir t))
       backup-directory-alist `((".*" . ,emacs-tmp-dir)))
 
+;; Don't auto-initialize.
+(setq package-enable-at-startup nil)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;               CUSTOMIZATIONS                 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -90,8 +101,12 @@
 (setq-default left-margin-width 1
               right-margin-width 1)
 
-;; Show nothing on scratch buffer
-(setq initial-scratch-message "")
+;; Reduce *Message* noise at startup. An empty scratch buffer (or the dashboard) is more than enough.
+(setq inhibit-startup-message t
+      inhibit-startup-echo-area-message user-login-name
+      inhibit-default-init t
+      initial-major-mode 'fundamental-mode
+      initial-scratch-message nil)
 
 ;; Show current key sequence in minibuffer
 (setq echo-keystrokes 0.02)
@@ -142,11 +157,14 @@
 ;; Auto-update buffer if file has changed on disk
 (global-auto-revert-mode t)
 
+;; Enable this command, which is disabled for some reason
+(put 'dired-find-alternate-file 'disabled nil)
+
 ;; Shell config
 ;; More at: https://www.masteringemacs.org/article/complete-guide-mastering-eshell
-(setq explicit-shell-file-name "/usr/bin/zsh")
-(setq shell-file-name "zsh")
-(setq explicit-zsh-args '("--login" "--interactive"))
+(setq explicit-shell-file-name "/usr/bin/zsh"
+      shell-file-name "zsh"
+      explicit-zsh-args '("--login" "--interactive"))
 (defun zsh-shell-mode-setup ()
   (setq-local comint-process-echoes t))
 (add-hook 'shell-mode-hook #'zsh-shell-mode-setup)
@@ -196,14 +214,10 @@
                      gcs-done)))
 
 ;; Install use-package
-(require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(package-initialize)
-
-(unless package-archive-contents
-  (package-refresh-contents))
 
 (unless (package-installed-p 'use-package)
+  (package-refresh-contents)
   (package-install 'use-package))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -274,11 +288,12 @@
 (use-package all-the-icons-dired
   :ensure t
   :requires all-the-icons
+  :after dired
   :hook dired-mode)
 
 (use-package dired-open
   :ensure t
-  :defer t
+  :after dired
   :config
   (setq dired-open-extensions '(("gif" . "sxiv")
                                 ("jpg" . "sxiv")
@@ -339,10 +354,22 @@
 (use-package org
   :defer t)
 
+(use-package dired
+  :commands (dired-mode dired)
+  :defer t)
+
+(use-package gcmh
+  :ensure t
+  :init
+  (setq gcmh-idle-delay 5
+        gcmh-high-cons-threshold (* 16 1024 1024) ; 16mb
+        gcmh-verbose nil))
+
 (with-eval-after-load 'dired
-  (evil-define-key 'normal dired-mode-map [mouse-1] 'dired-open-file)
-  (evil-define-key 'normal dired-mode-map (kbd "l") 'dired-open-file) ; use dired-find-file if not using dired-open package
-  (evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory))
+  (evil-define-key 'normal dired-mode-map
+    [mouse-1] 'dired-open-file
+    (kbd "l") 'dired-open-file ; use dired-find-file if not using dired-open package
+    (kbd "h") 'dired-up-directory))
 
 (with-eval-after-load 'org
   (setq org-image-actual-width nil
@@ -374,9 +401,6 @@
                                     (when (display-graphic-p)
                                       (vido/show-welcome-buffer))))))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ;; Undo gc values post init.el.
-(setq gc-cons-threshold 100000000
-      gc-cons-percentage 0.1)
-(put 'dired-find-alternate-file 'disabled nil)
+;(setq gc-cons-threshold 100000000
+;      gc-cons-percentage 0.1)
