@@ -4,7 +4,8 @@
 ;;                OPTIMIZATIONS                 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; init.el gc values (faster loading)
+;; Initial gc values for faster startup.
+;; Later gcmh will be enabled and it will configure these variables.
 (setq gc-cons-threshold (* 512 1024 1024)
       gc-cons-percentage 0.6)
 
@@ -46,7 +47,7 @@
 ;; Get rid of "For information about GNU Emacs..." message at startup,
 ;; unless we're in a daemon session
 (unless (daemonp)
-  (advice-add #'display-startup-echo-are-message :override #'ignore))
+  (advice-add 'display-startup-echo-are-message :override 'ignore))
 
 ;; Disable second passing of auto-mode-alist
 (setq auto-mode-case-fold nil)
@@ -247,7 +248,7 @@
         evil-split-window-right t
         evil-undo-system 'undo-tree)
   :config
-  ;; Evil keybinds
+  ;; Evil global keybinds
   (evil-define-key 'normal 'global
     (kbd "ñ") 'evil-ex
     (kbd "U") 'evil-redo
@@ -274,7 +275,7 @@
 (use-package modus-themes
   :ensure t
   :config
-  (setq modus-themes-common-palette-overrides
+  (setq modus-vivendi-palette-overrides
         '((bg-main "#151515")
           (bg-hl-line "#222222")
           (keyword red-faint)
@@ -287,12 +288,12 @@
   (load-theme 'modus-vivendi :no-confirm))
 
 (use-package all-the-icons
-  :ensure t)
+  :ensure t
+  :after (:any dired ibuffer))
 
 (use-package all-the-icons-dired
   :ensure t
-  :requires all-the-icons
-  :after dired
+  :after all-the-icons
   :hook dired-mode)
 
 (use-package dired-open
@@ -317,7 +318,6 @@
   :ensure t
   :after dired
   :hook dired-mode)
- 
 
 (use-package slime
   :ensure t
@@ -342,6 +342,7 @@
 
 (use-package rainbow-delimiters
   :ensure t
+  :defer t
   :hook (emacs-lisp-mode
          ielm-mode
          lisp-interaction-mode
@@ -374,6 +375,7 @@
   :defer t
   :config
   (setq ibuffer-show-empty-filter-groups nil
+        ibuffer-display-summary nil
         ibuffer-filter-group-name-face '(:inherit (success bold))
         ibuffer-formats
         '((mark modified read-only locked
@@ -409,20 +411,35 @@
 
   (defun ibuffer-set-custom-filter ()
     (ibuffer-switch-to-saved-filter-groups "default"))
-  (add-hook 'ibuffer-mode-hook 'ibuffer-set-custom-filter))
+  (add-hook 'ibuffer-mode-hook 'ibuffer-set-custom-filter)
+
+  (defadvice ibuffer-update-title-and-summary (after remove-column-titles)
+    (with-current-buffer "*Ibuffer*"
+      (read-only-mode 0)
+      (goto-char 1)
+      (search-forward "-\n" nil t)
+      (delete-region 1 (point))
+      (let ((window-min-height 1)) 
+        ;; save a little screen estate
+        (shrink-window-if-larger-than-buffer))
+      (read-only-mode 1)))
+  (ad-activate 'ibuffer-update-title-and-summary))
 
 (use-package gcmh
   :ensure t
   :init
   (setq gcmh-idle-delay 5
         gcmh-high-cons-threshold (* 16 1024 1024) ; 16mb
-        gcmh-verbose nil))
+        gcmh-verbose nil)
+  :config
+  (gcmh-mode 1))
 
 (with-eval-after-load 'dired
   (evil-define-key 'normal dired-mode-map
     [mouse-1] 'dired-open-file
     (kbd "l") 'dired-open-file ; use dired-find-file if not using dired-open package
     (kbd "h") 'dired-up-directory
+    (kbd "q") 'kill-this-buffer
     (kbd "'") 'bookmark-jump))
 
 (with-eval-after-load 'org
@@ -438,23 +455,24 @@
       (face
        '((org-level-1 1.3 ultra-bold)
          (org-level-2 1.15 extra-bold)
-         (org-level-3 1.07 bold)
-         (org-level-4 1.04 semi-bold)
-         (org-level-5 1.02 normal)
-         (org-level-6 1.01 normal)
-         (org-level-7 1.005 normal)
-         (org-level-8 1.003 normal)))
+         (org-level-3 1.10 bold)
+         (org-level-4 1.07 semi-bold)
+         (org-level-5 1.04 normal)
+         (org-level-6 1.02 normal)
+         (org-level-7 1.01 normal)
+         (org-level-8 1.005 normal)))
     (set-face-attribute (nth 0 face) nil
                         :font vido/font-family
                         :height (nth 1 face)
-                        :weight (nth 2 face))))
+                        :weight (nth 2 face)))
+  ;; Allow inline image previews of http(s)? urls or data uris.
+  (setq org-display-remote-inline-images 'download) ; TRAMP urls
+  (org-link-set-parameters "http"  :image-data-fun #'+org-http-image-data-fn)
+  (org-link-set-parameters "https" :image-data-fun #'+org-http-image-data-fn)
+  (org-link-set-parameters "img"   :image-data-fun #'+org-inline-image-data-fn))
 
 (with-eval-after-load 'evil
   (when (< (length command-line-args) 2)
     (add-hook 'emacs-startup-hook (lambda ()
                                     (when (display-graphic-p)
                                       (vido/show-welcome-buffer))))))
-
-;; Undo gc values post init.el.
-;(setq gc-cons-threshold 100000000
-;      gc-cons-percentage 0.1)
