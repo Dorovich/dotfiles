@@ -132,14 +132,14 @@ set spell-checking-languages=en,es_ES
 # set status-ssl-invalid-css=color:#abb2bf;background-color:#151515;font:11pt mononoki NF;
 
 # azul
-set completion-css=color:#d1d1d1;background-color:#151515;font:11pt mononoki NF;
-set completion-hover-css=color:#d1d1d1;background-color:#262626;font:11pt mononoki NF;
-set completion-selected-css=color:#d1d1d1;background-color:#346475;font:11pt mononoki NF;
-set input-css=color:#d1d1d1;background-color:#151515;font:11pt mononoki NF;
-set input-error-css=color:#d1d1d1;background-color:#151515;font:11pt mononoki NF;
-set status-css=color:#d1d1d1;background-color:#151515;font:11pt mononoki NF;
-set status-ssl-css=color:#d1d1d1;background-color:#151515;font:11pt mononoki NF;
-set status-ssl-invalid-css=color:#d1d1d1;background-color:#151515;font:11pt mononoki NF;
+set completion-css=color:#d1d1d1;background-color:#151515;font:12pt mononoki NF;
+set completion-hover-css=color:#d1d1d1;background-color:#262626;font:12pt mononoki NF;
+set completion-selected-css=color:#d1d1d1;background-color:#346475;font:12pt mononoki NF;
+set input-css=color:#d1d1d1;background-color:#151515;font:12pt mononoki NF;
+set input-error-css=color:#d1d1d1;background-color:#151515;font:12pt mononoki NF;
+set status-css=color:#d1d1d1;background-color:#151515;font:12pt mononoki NF;
+set status-ssl-css=color:#d1d1d1;background-color:#151515;font:12pt mononoki NF;
+set status-ssl-invalid-css=color:#d1d1d1;background-color:#151515;font:12pt mononoki NF;
 # }}}
 
 # Autocommands {{{

@@ -434,9 +434,7 @@
 (use-package company
   :ensure t
   :config
-  (add-hook 'after-init-hook 'global-company-mode)
-  (evil-define-key 'insert company-mode-map
-    (kbd "TAB") 'company-indent-or-complete-common))
+  (add-hook 'after-init-hook 'global-company-mode))
 
 (use-package gcmh
   :ensure t
