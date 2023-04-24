@@ -232,7 +232,7 @@
 ;; https://jwiegley.github.io/use-package
 
 (require 'use-package)
-(setq use-package-verbose nil) ; Set to t for debugging
+(setq use-package-verbose t) ; Set to t for debugging
 
 (use-package evil
   :ensure t
@@ -320,7 +320,6 @@
   :hook dired-mode)
 
 (use-package slime
-  :ensure t
   :defer t
   :config
   (add-to-list 'exec-path "/usr/local/bin")
@@ -425,6 +424,20 @@
       (read-only-mode 1)))
   (ad-activate 'ibuffer-update-title-and-summary))
 
+(use-package eglot
+  :ensure t
+  :commands eglot
+  :init
+  (add-hook 'c-mode-hook #'eglot-ensure)
+  (add-hook 'c++-mode-hook #'eglot-ensure))
+
+(use-package company
+  :ensure t
+  :config
+  (add-hook 'after-init-hook 'global-company-mode)
+  (evil-define-key 'insert company-mode-map
+    (kbd "TAB") 'company-indent-or-complete-common))
+
 (use-package gcmh
   :ensure t
   :init
@@ -451,6 +464,7 @@
         org-fontify-quote-and-verse-blocks t
         org-fontify-whole-heading-line t
         org-return-follows-link t)
+  ;; Set different font sizes to headers
   (dolist
       (face
        '((org-level-1 1.3 ultra-bold)
@@ -464,12 +478,7 @@
     (set-face-attribute (nth 0 face) nil
                         :font vido/font-family
                         :height (nth 1 face)
-                        :weight (nth 2 face)))
-  ;; Allow inline image previews of http(s)? urls or data uris.
-  (setq org-display-remote-inline-images 'download) ; TRAMP urls
-  (org-link-set-parameters "http"  :image-data-fun #'+org-http-image-data-fn)
-  (org-link-set-parameters "https" :image-data-fun #'+org-http-image-data-fn)
-  (org-link-set-parameters "img"   :image-data-fun #'+org-inline-image-data-fn))
+                        :weight (nth 2 face))))
 
 (with-eval-after-load 'evil
   (when (< (length command-line-args) 2)

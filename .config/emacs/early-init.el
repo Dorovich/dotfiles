@@ -27,6 +27,9 @@
 (when (fboundp 'tooltip-mode)
   (tooltip-mode -1))
 
+;; No dialog boxes
+(setq use-dialog-box nil)
+
 ;; No Alarms by default.
 (setq ring-bell-function 'ignore)
 
