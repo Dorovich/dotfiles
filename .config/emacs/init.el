@@ -1,9 +1,10 @@
 ;;; -*- lexical-binding: t; -*-
 
-;; Setup fonts
+;; Setup fonts and config dir
 (defvar vido/font-family "mononoki NF")
 (defvar vido/default-font-size 160)
 (defvar vido/default-variable-font-size 160)
+(defvar config-directory (concat user-emacs-directory "config/"))
 
 ;; Fonts
 (set-face-attribute 'default nil
@@ -155,8 +156,6 @@
 
 (require 'use-package)
 (setq use-package-verbose nil) ; Set to t for debugging
-
-(defvar config-directory (concat user-emacs-directory "config/"))
 
 ;; Load all *.el files recursively in config directory
 (cl-loop for file in (reverse (directory-files-recursively config-directory "\\.el$"))
