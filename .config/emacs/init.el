@@ -1,87 +1,5 @@
 ;;; -*- lexical-binding: t; -*-
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;                OPTIMIZATIONS                 ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; Initial gc values for faster startup.
-;; Later gcmh will be enabled and it will configure these variables.
-(setq gc-cons-threshold (* 512 1024 1024)
-      gc-cons-percentage 0.6)
-
-;; Do not load outdated byte code files.
-(setq load-prefer-newer t)
-
-;; Emacs "updates" its ui more often than it needs to, so we slow it down slightly from 0.5s
-(setq idle-update-delay 1.0)
-
-;; No need to keep duplicates in prompt history.
-(setq history-delete-duplicates t)
-
-;; Disable bidirectional text rendering for a modest performance boost.
-(setq-default bidi-display-reordering 'left-to-right
-              bidi-paragraph-direction 'left-to-right)
-
-;; Reduce rendering/line scan work for Emacs by not rendering cursors or regions
-;; in non-focused windows.
-(setq-default cursor-in-non-selected-windows nil)
-(setq highlight-nonselected-windows nil)
-
-;; Don't ping things that look like domain names.
-(setq ffap-machine-p-known 'reject)
-
-;; Resizing the Emacs frame can be a terribly expensive part of changing the font.
-(setq frame-inhibit-implied-resize t)
-
-;; Font compacting can be terribly expensive, especially for rendering icon
-;; fonts on Windows. Whether it has a notable affect on Linux and Mac hasn't
-;; been determined, but we inhibit it there anyway.
-(setq inhibit-compacting-font-caches t)
-
-;; Silence compiler warnings as they can be pretty disruptive
-(setq comp-async-report-warnings-errors nil)
-(if (boundp 'comp-deferred-compilation)
-    (setq comp-deferred-compilation nil)
-    (setq native-comp-deferred-compilation nil))
-
-;; Get rid of "For information about GNU Emacs..." message at startup,
-;; unless we're in a daemon session
-(unless (daemonp)
-  (advice-add 'display-startup-echo-are-message :override 'ignore))
-
-;; Disable second passing of auto-mode-alist
-(setq auto-mode-case-fold nil)
-
-;; Give some breathing room
-(set-fringe-mode 0)
-
-;; Default was too low; Increase for better lsp performance.
-(setq read-process-output-max (* 3 1024 1024)) ;; 3mb
-
-;; Workaround for https://debbugs.gnu.org/34341 in GNU Emacs <= 26.3.
-(when (and (version< emacs-version "26.3") (>= libgnutls-version 30603))
-  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
-
-;; Use fundamental mode for starting buffer so to not load a lot of packages
-(setq initial-major-mode 'fundamental-mode)
-
-;; From https://irreal.org/blog/?p=8243
-(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
-
-;; Put Emacs auto-save and backup files to /tmp/ or C:/Temp/
-(defconst emacs-tmp-dir (expand-file-name (format "emacs%d" (user-uid)) temporary-file-directory))
-
-;; Change autosave dir to tmp
-(setq auto-save-file-name-transforms `((".*" ,emacs-tmp-dir t))
-      backup-directory-alist `((".*" . ,emacs-tmp-dir)))
-
-;; Don't auto-initialize.
-(setq package-enable-at-startup nil)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;               CUSTOMIZATIONS                 ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ;; Setup fonts
 (defvar vido/font-family "mononoki NF")
 (defvar vido/default-font-size 160)
@@ -219,224 +137,32 @@
                               (time-subtract after-init-time before-init-time)))
                      gcs-done)))
 
-;; Install use-package
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;                   PACKAGES                   ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Don't auto-initialize.
+(setq package-enable-at-startup nil)
+
+;; Add additional package sources
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+
+;; Install use-package
 ;; https://jwiegley.github.io/use-package
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
 (require 'use-package)
-(setq use-package-verbose t) ; Set to t for debugging
+(setq use-package-verbose nil) ; Set to t for debugging
 
-(use-package evil
-  :ensure t
-  :init
-  (setq evil-want-integration t
-        evil-want-keybinding nil ; for evil-collection
-        evil-want-C-u-scroll t
-        evil-want-Y-yank-to-eol t
-        evil-normal-state-cursor '(box "#dbc49b")
-        evil-insert-state-cursor '((bar . 2) "#dbc49b")
-        evil-visual-state-cursor '(hollow "#dbc49b")
-        evil-split-window-below t
-        evil-split-window-right t
-        evil-undo-system 'undo-tree)
-  :config
-  ;; Evil global keybinds
-  (evil-define-key 'normal 'global
-    (kbd "ñ") 'evil-ex
-    (kbd "U") 'evil-redo
-    (kbd "C-+") 'text-scale-increase
-    (kbd "C--") 'text-scale-decrease)
-  ;; Time to be evil
-  (evil-mode 1))
+(defvar config-directory (concat user-emacs-directory "config/"))
 
-(use-package evil-collection
-  :ensure t
-  :requires evil
-  :config
-  (evil-collection-init))
+;; Load all *.el files recursively in config directory
+(cl-loop for file in (reverse (directory-files-recursively config-directory "\\.el$"))
+         do (load file))
 
-(use-package key-chord
-  :ensure t
-  :requires evil
-  :config
-  ;; Enable key-chord to exit insert mode in Evil
-  (setq key-chord-two-keys-delay 0.2)
-  (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
-  (key-chord-mode 1))
-
-(use-package modus-themes
-  :ensure t
-  :config
-  (setq modus-vivendi-palette-overrides
-        '((bg-main "#151515")
-          (bg-hl-line "#222222")
-          (keyword red-faint)
-          (builtin yellow-cooler)
-          (fnname green-faint)
-          (fg-prompt red-faint)
-          (fg-heading-1 red-faint)
-          (border-mode-line-active bg-mode-line-active)
-          (border-mode-line-inactive bg-mode-line-inactive)))
-  (load-theme 'modus-vivendi :no-confirm))
-
-(use-package all-the-icons
-  :ensure t
-  :after (:any dired ibuffer))
-
-(use-package all-the-icons-dired
-  :ensure t
-  :after all-the-icons
-  :hook dired-mode)
-
-(use-package dired-open
-  :ensure t
-  :after dired
-  :config
-  (setq dired-open-extensions '(("gif" . "sxiv")
-                                ("jpg" . "sxiv")
-                                ("jpeg" . "sxiv")
-                                ("png" . "sxiv")
-                                ("webp" . "sxiv")
-                                ("pdf" . "zathura")
-                                ("cbz" . "zathura")
-                                ("mkv" . "mpv")
-                                ("webm" . "mpv")
-                                ("mp4" . "mpv")
-                                ("mp3" . "mpv")
-                                ("flac" . "mpv")
-                                ("xcf" . "gimp"))))
-
-(use-package diredfl
-  :ensure t
-  :after dired
-  :hook dired-mode)
-
-(use-package slime
-  :defer t
-  :config
-  (add-to-list 'exec-path "/usr/local/bin")
-  (setq inferior-lisp-program "sbcl"))
-
-(use-package paredit
-  :ensure t
-  :hook (emacs-lisp-mode
-         eval-expression-minibuffer-setup
-         ielm-mode
-         lisp-interaction-mode
-         lisp-mode
-         slime-repl-mode)
-  :config
-  (defun override-slime-del-key ()
-    (define-key slime-repl-mode-map
-      (read-kbd-macro paredit-backward-delete-key) nil))
-  (add-hook 'slime-repl-mode-hook 'override-slime-del-key))
-
-(use-package rainbow-delimiters
-  :ensure t
-  :defer t
-  :hook (emacs-lisp-mode
-         ielm-mode
-         lisp-interaction-mode
-         lisp-mode
-         slime-repl-mode))
-
-(use-package undo-tree
-  :ensure t
-  :after evil
-  :config
-  ;; Enable undo-tree for Evil
-  (setq undo-tree-history-directory-alist '(("." . "/tmp")))
-  (global-undo-tree-mode 1))
-
-(use-package hide-mode-line
-  :ensure t
-  :hook (dired-mode
-         eshell-mode
-         completion-list-mode))
-
-(use-package org
-  :defer t)
-
-(use-package dired
-  :commands (dired-mode dired)
-  :defer t)
-
-(use-package ibuffer
-  :commands ibuffer
-  :defer t
-  :config
-  (setq ibuffer-show-empty-filter-groups nil
-        ibuffer-display-summary nil
-        ibuffer-filter-group-name-face '(:inherit (success bold))
-        ibuffer-formats
-        '((mark modified read-only locked
-                " " (icon 2 2 :left :elide)
-                " " (name 18 18 :left :elide)
-                " " (size 9 -1 :right)
-                " " (mode 16 16 :left :elide)
-                " " filename-and-process)
-          (mark " " (name 16 -1)
-                " " filename))
-        ibuffer-saved-filter-groups
-        '(("default"
-           ("Dired" (mode . dired-mode))
-           ("Emacs" (or
-                     (name . "^\\*scratch\\*$")
-                     (name . "^\\*Messages\\*$"))))))
-
-  ;; Buffer icons column for GUI
-  (define-ibuffer-column icon (:name "  ")
-    (let ((icon (if (and (buffer-file-name)
-                         (all-the-icons-auto-mode-match?))
-                    (all-the-icons-icon-for-file (file-name-nondirectory (buffer-file-name)) :v-adjust -0.05)
-                  (all-the-icons-icon-for-mode major-mode :v-adjust -0.05))))
-      (if (symbolp icon)
-          (setq icon (all-the-icons-faicon "file-o" :face 'all-the-icons-dsilver :height 0.8 :v-adjust 0.0))
-        icon)))
-
-  ;; Redefine size column to display human readable size
-  (define-ibuffer-column size (:name "Size"
-                                     :inline t
-                                     :header-mouse-map ibuffer-size-header-map)
-    (file-size-human-readable (buffer-size)))
-
-  (defun ibuffer-set-custom-filter ()
-    (ibuffer-switch-to-saved-filter-groups "default"))
-  (add-hook 'ibuffer-mode-hook 'ibuffer-set-custom-filter)
-
-  (defadvice ibuffer-update-title-and-summary (after remove-column-titles)
-    (with-current-buffer "*Ibuffer*"
-      (read-only-mode 0)
-      (goto-char 1)
-      (search-forward "-\n" nil t)
-      (delete-region 1 (point))
-      (let ((window-min-height 1)) 
-        ;; save a little screen estate
-        (shrink-window-if-larger-than-buffer))
-      (read-only-mode 1)))
-  (ad-activate 'ibuffer-update-title-and-summary))
-
-(use-package eglot
-  :ensure t
-  :commands eglot
-  :init
-  (add-hook 'c-mode-hook #'eglot-ensure)
-  (add-hook 'c++-mode-hook #'eglot-ensure))
-
-(use-package company
-  :ensure t
-  :config
-  (add-hook 'after-init-hook 'global-company-mode))
-
+;; Enable garbage collect magic
 (use-package gcmh
   :ensure t
   :init
@@ -445,42 +171,3 @@
         gcmh-verbose nil)
   :config
   (gcmh-mode 1))
-
-(with-eval-after-load 'dired
-  (evil-define-key 'normal dired-mode-map
-    [mouse-1] 'dired-open-file
-    (kbd "l") 'dired-open-file ; use dired-find-file if not using dired-open package
-    (kbd "h") 'dired-up-directory
-    (kbd "q") 'kill-this-buffer
-    (kbd "'") 'bookmark-jump))
-
-(with-eval-after-load 'org
-  (setq org-image-actual-width nil
-        org-hide-leading-stars t
-        org-startup-folded nil
-        org-startup-indented t
-        org-fontify-done-headline t
-        org-fontify-quote-and-verse-blocks t
-        org-fontify-whole-heading-line t
-        org-return-follows-link t)
-  ;; Set different font sizes to headers
-  (dolist
-      (face
-       '((org-level-1 1.3 ultra-bold)
-         (org-level-2 1.15 extra-bold)
-         (org-level-3 1.10 bold)
-         (org-level-4 1.07 semi-bold)
-         (org-level-5 1.04 normal)
-         (org-level-6 1.02 normal)
-         (org-level-7 1.01 normal)
-         (org-level-8 1.005 normal)))
-    (set-face-attribute (nth 0 face) nil
-                        :font vido/font-family
-                        :height (nth 1 face)
-                        :weight (nth 2 face))))
-
-(with-eval-after-load 'evil
-  (when (< (length command-line-args) 2)
-    (add-hook 'emacs-startup-hook (lambda ()
-                                    (when (display-graphic-p)
-                                      (vido/show-welcome-buffer))))))
