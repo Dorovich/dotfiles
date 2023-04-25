@@ -183,6 +183,7 @@
 ;; Fancy welcome screen
 ;; Call after evil has loaded
 (defun vido/show-welcome-buffer ()
+  (interactive)
   "Show *Welcome* buffer."
   (with-current-buffer (get-buffer-create "*Welcome*")
     (setq truncate-lines t)
