@@ -70,7 +70,21 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
 ;; Gives right-click a context menu.
-(global-set-key [mouse-3] 'mouse-popup-menubar-stuff)
+(global-set-key [mouse-3] #'mouse-popup-menubar-stuff)
+
+;; Comment a line or region, if there is one.
+(defun comment-or-uncomment-region-or-line ()
+  "Comments or uncomments the region or the current line if there's no active region"
+  (interactive)
+  (let (beg end)
+    (if (region-active-p)
+        (setq beg (region-beginning) end (region-end))
+      (setq beg (line-beginning-position) end (line-end-position)))
+    (comment-or-uncomment-region beg end)
+    (forward-line)))
+
+;; Convenient keymap to un/comment lines.
+(global-set-key (kbd "C-;") #'comment-or-uncomment-region-or-line)
 
 ;; Auto-update buffer if file has changed on disk.
 (global-auto-revert-mode t)
@@ -131,7 +145,7 @@
                              (float-time (time-subtract after-init-time before-init-time)))
                      gcs-done)))
 
-;; Packages setup.
+;; Packages setup -->
 
 ;; Don't auto-initialize packages.
 (setq package-enable-at-startup nil)
