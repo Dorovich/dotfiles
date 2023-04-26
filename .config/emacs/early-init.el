@@ -72,12 +72,6 @@
 ;; Resizing the Emacs frame can be a terribly expensive part of changing the font.
 (setq frame-inhibit-implied-resize t)
 
-;; https://github.com/hlissner/doom-emacs/blob/58af4aef56469f3f495129b4e7d947553f420fca/core/core.el#L331
-(setq inhibit-compacting-font-caches t)
-
-;; https://github.com/hlissner/doom-emacs/blob/58af4aef56469f3f495129b4e7d947553f420fca/core/core.el#L205
-(setq idle-update-delay 1.0)
-
 ;; Don't want a mode line while loading init.
 (setq mode-line-format nil)
 
@@ -111,3 +105,9 @@
 
 ;; Fix transparency issues
 (add-to-list 'default-frame-alist '(alpha . 100))
+
+;; Enable this command, which is disabled for some reason
+(put 'dired-find-alternate-file 'disabled nil)
+
+;; Set frame size by pixels, not by character height
+(setq frame-resize-pixelwise t)
