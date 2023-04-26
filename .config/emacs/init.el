@@ -1,21 +1,21 @@
 ;;; -*- lexical-binding: t; -*-
 
 ;; Setup fonts and config directory.
-(defvar vido/font-family "mononoki NF")
-(defvar vido/default-font-size 160)
-(defvar vido/default-variable-font-size 160)
+(defvar default-font-family "mononoki NF")
+(defvar default-font-size 160)
+(defvar default-variable-font-size 160)
 (defvar config-directory (concat user-emacs-directory "config/"))
 
 ;; Fonts.
 (set-face-attribute 'default nil
-                    :font vido/font-family
-                    :height vido/default-font-size)
+                    :font default-font-family
+                    :height default-font-size)
 (set-face-attribute 'fixed-pitch nil
-                    :font vido/font-family
-                    :height vido/default-font-size)
+                    :font default-font-family
+                    :height default-font-size)
 (set-face-attribute 'variable-pitch nil
-                    :font vido/font-family
-                    :height vido/default-variable-font-size)
+                    :font default-font-family
+                    :height default-font-size)
 
 ;; Add a one character margin at the sides of the window.
 (setq-default left-margin-width 1
@@ -109,7 +109,7 @@
 (load custom-file t)
 
 ;; Fancy welcome screen.
-(defun vido/show-welcome-buffer ()
+(defun show-welcome-buffer ()
   (interactive)
   "Show *Welcome* buffer."
   (with-current-buffer (get-buffer-create "*Welcome*")

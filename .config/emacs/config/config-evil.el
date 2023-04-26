@@ -50,4 +50,4 @@
   (when (< (length command-line-args) 2)
     (add-hook 'emacs-startup-hook (lambda ()
                                     (when (display-graphic-p)
-                                      (vido/show-welcome-buffer))))))
+                                      (show-welcome-buffer))))))
