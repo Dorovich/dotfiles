@@ -68,6 +68,7 @@
 
 ;; Write customizations to a separate file instead of this file.
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load custom-file t)
 
 ;; Gives right-click a context menu.
 (global-set-key [mouse-3] #'mouse-popup-menubar-stuff)
@@ -106,7 +107,6 @@
 (defun reload-config ()
   (interactive)
   (load-file (expand-file-name "init.el" user-emacs-directory)))
-(load custom-file t)
 
 ;; Fancy welcome screen.
 (defun show-welcome-buffer ()
