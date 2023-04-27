@@ -20,6 +20,8 @@
     (kbd "U") 'evil-redo
     (kbd "C-+") 'text-scale-increase
     (kbd "C--") 'text-scale-decrease)
+  (evil-define-key 'visual 'global
+    (kbd "TAB") 'indent-region)
   ;; Time to be evil
   (evil-mode 1))
 

@@ -6,6 +6,7 @@
   :config
   (evil-define-key 'normal dired-mode-map
     (kbd "h") 'dired-up-directory
+    (kbd "<left>") 'dired-up-directory
     (kbd "q") 'kill-this-buffer
     (kbd "'") 'bookmark-jump))
 
@@ -20,7 +21,8 @@
   :config
   (evil-define-key 'normal dired-mode-map
     [mouse-1] 'dired-open-file
-    (kbd "l") 'dired-open-file)
+    (kbd "l") 'dired-open-file
+    (kbd "<right>") 'dired-open-file)
   (setq dired-open-extensions '(("gif" . "sxiv")
                                 ("jpg" . "sxiv")
                                 ("jpeg" . "sxiv")

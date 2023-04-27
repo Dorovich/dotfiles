@@ -24,6 +24,6 @@
          (org-level-7 1.01 normal)
          (org-level-8 1.005 normal)))
     (set-face-attribute (nth 0 face) nil
-                        :font vido/font-family
+                        :font default-font-family
                         :height (nth 1 face)
                         :weight (nth 2 face))))
