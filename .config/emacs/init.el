@@ -115,7 +115,7 @@
   (with-current-buffer (get-buffer-create "*Welcome*")
     (setq truncate-lines t)
     (let* ((buffer-read-only)
-           (image-path "~/.config/emacs/pics/emacs.png")
+           (image-path "~/.config/emacs/pics/reimu.png")
            (image (create-image image-path))
            (size (image-size image))
            (height (cdr size))

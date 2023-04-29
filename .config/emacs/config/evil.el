@@ -14,6 +14,13 @@
         evil-split-window-right t
         evil-undo-system 'undo-tree)
   :config
+  (evil-put-property 'evil-state-properties 'normal :tag " NORMAL ")
+  (evil-put-property 'evil-state-properties 'insert :tag " INSERT ")
+  (evil-put-property 'evil-state-properties 'visual :tag " VISUAL ")
+  (evil-put-property 'evil-state-properties 'motion :tag " MOTION ")
+  (evil-put-property 'evil-state-properties 'emacs :tag " EMACS ")
+  (evil-put-property 'evil-state-properties 'replace :tag " REPLACE ")
+  (evil-put-property 'evil-state-properties 'operator :tag " OPERATOR ")
   ;; Evil global keybinds
   (evil-define-key 'normal 'global
     (kbd "ñ") 'evil-ex
@@ -30,6 +37,28 @@
   :requires evil
   :config
   (evil-collection-init))
+
+(use-package evil-surround
+  :ensure t
+  :requires evil
+  :config
+  (global-evil-surround-mode 1))
+
+(use-package evil-numbers
+  :ensure t
+  :requires evil
+  :config
+  (evil-define-key 'normal 'global
+    (kbd "C-c +") 'evil-numbers/inc-at-pt
+    (kbd "C-c -") 'evil-numbers/dec-at-pt
+    (kbd "<kp-add>") 'evil-numbers/inc-at-pt
+    (kbd "<kp-subtract>") 'evil-numbers/dec-at-pt))
+
+(use-package evil-anzu
+  :ensure t
+  :requires evil
+  :config
+  (global-anzu-mode 1))
 
 (use-package undo-tree
   :ensure t
