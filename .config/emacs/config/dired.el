@@ -32,6 +32,7 @@
                                 ("cbz" . "zathura")
                                 ("mkv" . "mpv")
                                 ("webm" . "mpv")
+                                ("mov" . "mpv")
                                 ("mp4" . "mpv")
                                 ("mp3" . "mpv")
                                 ("flac" . "mpv")

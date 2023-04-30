@@ -109,6 +109,9 @@
       evil-split-window-right t
       evil-undo-system 'undo-tree)
 
+(require 'evil)
+(evil-mode 1)
+
 (evil-define-key 'normal 'global
   (kbd "ñ") 'evil-ex
   (kbd "U") 'evil-redo
@@ -120,20 +123,25 @@
 
 ;; evil-collection
 
+(require 'evil-collection)
 (evil-collection-init)
 
 ;; undo-tree
 
+(require 'undo-tree)
 (setq undo-tree-history-directory-alist '(("." . "/tmp")))
 (global-undo-tree-mode 1)
 
 ;; key-chord
 
+(require 'key-chord)
 (setq key-chord-two-keys-delay 0.2)
 (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
 (key-chord-mode 1)
 
 ;; ibuffer
+
+(require 'ibuffer)
 
 (setq ibuffer-show-empty-filter-groups nil
       ibuffer-display-summary nil
@@ -151,6 +159,8 @@
 (add-hook 'ibuffer-mode-hook 'ibuffer-set-custom-filter)
 
 ;; gcmh
+
+(require 'gcmh)
 
 (setq gcmh-idle-delay 5
       gcmh-high-cons-threshold (* 16 1024 1024) ; 16mb

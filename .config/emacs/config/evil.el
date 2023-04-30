@@ -14,13 +14,13 @@
         evil-split-window-right t
         evil-undo-system 'undo-tree)
   :config
-  (evil-put-property 'evil-state-properties 'normal :tag " NORMAL ")
-  (evil-put-property 'evil-state-properties 'insert :tag " INSERT ")
-  (evil-put-property 'evil-state-properties 'visual :tag " VISUAL ")
-  (evil-put-property 'evil-state-properties 'motion :tag " MOTION ")
-  (evil-put-property 'evil-state-properties 'emacs :tag " EMACS ")
-  (evil-put-property 'evil-state-properties 'replace :tag " REPLACE ")
-  (evil-put-property 'evil-state-properties 'operator :tag " OPERATOR ")
+  (setq evil-normal-state-tag " NORMAL "
+        evil-insert-state-tag " INSERT "
+        evil-visual-state-tag " VISUAL "
+        evil-motion-state-tag " MOTION "
+        evil-emacs-state-tag " EMACS "
+        evil-replace-state-tag " REPLACE "
+        evil-operator-state-tag " OPERATOR ")
   ;; Evil global keybinds
   (evil-define-key 'normal 'global
     (kbd "ñ") 'evil-ex
