@@ -29,6 +29,8 @@
                     :font default-font-family
                     :height default-font-size)
 
+(load-theme 'wombat)
+
 (setq load-prefer-newer t
       idle-update-delay 1.0
       history-delete-duplicates t
@@ -92,7 +94,7 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-(dolist (package '(evil evil-collection undo-tree key-chord gcmh))
+(dolist (package '(evil evil-collection undo-tree key-chord nano-modeline gcmh))
   (unless (package-installed-p package)
     (package-install package)))
 
@@ -157,6 +159,31 @@
   (ibuffer-switch-to-saved-filter-groups "default"))
 
 (add-hook 'ibuffer-mode-hook 'ibuffer-set-custom-filter)
+
+(add-hook 'ibuffer-mode-hook 'ibuffer-auto-mode)
+
+(defadvice ibuffer-update-title-and-summary (after remove-column-titles)
+    (with-current-buffer "*Ibuffer*")
+    (read-only-mode 0)
+    (goto-char 1)
+    (search-forward "-\n" nil t)
+    (delete-region 1 (point))
+    (read-only-mode 1))
+
+(ad-activate 'ibuffer-update-title-and-summary)
+
+;; dired
+
+(evil-define-key 'normal dired-mode-map
+    (kbd "h") 'dired-up-directory
+    (kbd "<left>") 'dired-up-directory
+    (kbd "q") 'kill-this-buffer
+    (kbd "'") 'bookmark-jump)
+
+;; nano-modeline
+
+(require 'nano-modeline)
+(nano-modeline-mode 1)
 
 ;; gcmh
 

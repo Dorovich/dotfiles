@@ -26,7 +26,8 @@
     (kbd "ñ") 'evil-ex
     (kbd "U") 'evil-redo
     (kbd "C-+") 'text-scale-increase
-    (kbd "C--") 'text-scale-decrease)
+    (kbd "C--") 'text-scale-decrease
+    (kbd "C-,") 'dired-jump)
   (evil-define-key 'visual 'global
     (kbd "TAB") 'indent-region)
   ;; Time to be evil
@@ -77,7 +78,7 @@
   (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
   (key-chord-mode 1))
 
-(with-eval-after-load 'evil
+(after 'evil
   (when (< (length command-line-args) 2)
     (add-hook 'emacs-startup-hook (lambda ()
                                     (when (display-graphic-p)

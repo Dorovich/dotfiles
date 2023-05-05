@@ -5,7 +5,9 @@
   :commands eglot
   :init
   (add-hook 'c-mode-hook #'eglot-ensure)
-  (add-hook 'c++-mode-hook #'eglot-ensure))
+  (add-hook 'c++-mode-hook #'eglot-ensure)
+  :config
+  (setq eglot-autoshutdown t))
 
 (use-package company
   :ensure t

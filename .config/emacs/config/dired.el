@@ -1,7 +1,7 @@
 ;; -*- lexical-binding: t -*-
 
 (use-package dired
-  :commands (dired-mode dired)
+  :commands (dired-mode dired-jump dired)
   :defer t
   :config
   (evil-define-key 'normal dired-mode-map

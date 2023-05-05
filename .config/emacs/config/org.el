@@ -3,7 +3,7 @@
 (use-package org
   :defer t)
 
-(with-eval-after-load 'org
+(after 'org
   (setq org-image-actual-width nil
         org-hide-leading-stars t
         org-startup-folded nil
