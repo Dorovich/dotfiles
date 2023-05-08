@@ -39,11 +39,25 @@
   :config
   (evil-collection-init))
 
+(use-package evil-escape
+  :ensure t
+  :requires evil
+  :config
+  (setq-default evil-escape-key-sequence "jk"
+                evil-escape-delay 0.2)
+  (evil-escape-mode 1))
+
 (use-package evil-surround
   :ensure t
   :requires evil
   :config
   (global-evil-surround-mode 1))
+
+(use-package evil-anzu
+  :ensure t
+  :requires evil
+  :config
+  (global-anzu-mode 1))
 
 (use-package evil-numbers
   :ensure t
@@ -55,12 +69,6 @@
     (kbd "<kp-add>") 'evil-numbers/inc-at-pt
     (kbd "<kp-subtract>") 'evil-numbers/dec-at-pt))
 
-(use-package evil-anzu
-  :ensure t
-  :requires evil
-  :config
-  (global-anzu-mode 1))
-
 (use-package undo-tree
   :ensure t
   :after evil
@@ -68,15 +76,6 @@
   ;; Enable undo-tree for Evil
   (setq undo-tree-history-directory-alist '(("." . "/tmp")))
   (global-undo-tree-mode 1))
-
-(use-package key-chord
-  :ensure t
-  :requires evil
-  :config
-  ;; Enable key-chord to exit insert mode in Evil
-  (setq key-chord-two-keys-delay 0.2)
-  (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
-  (key-chord-mode 1))
 
 (after 'evil
   (when (< (length command-line-args) 2)

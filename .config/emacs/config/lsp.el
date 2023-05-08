@@ -31,4 +31,5 @@
                            company-capf
                            company-files))
   :config
+  (require 'text-property-search)
   (add-hook 'after-init-hook 'global-company-mode))
