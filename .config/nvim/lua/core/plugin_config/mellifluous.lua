@@ -21,4 +21,4 @@ require('mellifluous').setup({
 })
 
 vim.o.termguicolors = true
-vim.cmd [[ colorscheme mellifluous ]]
+vim.cmd("colorscheme mellifluous")

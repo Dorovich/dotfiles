@@ -1,30 +1,78 @@
 *.font:     mononoki NF:pixelsize=18:antialias=true:autohint=true
 *.alpha:    0.97
 
+Sxiv.font: mononoki NF:size=14
+Sxiv.foreground: #d1d1d1
+Sxiv.background: #151515
+
+
+!!! mis colores
+
 *.background:   #151515
 *.foreground:   #d1d1d1
 *.cursorColor:  #dbc49b
 
 *.color0:   #1e2127
 *.color8:   #464646
-/* *.color8:   #5c6370 */
+! *.color8:   #5c6370
 *.color1:   #e06c75
 *.color9:   #e06c75
 *.color2:   #98c379
 *.color10:  #98c379
 *.color3:   #d19a66
 *.color11:  #d19a66
+/*
 *.color4:   #61afef
 *.color12:  #61afef
+*/
+*.color4:       #7e9cd8
+*.color12:      #7e9cd8
 *.color5:   #c678dd
 *.color13:  #c678dd
 *.color6:   #346475
-/* *.color6:   #56b6c2 */
+! *.color6:   #56b6c2
 *.color14:  #56b6c2
 *.color7:   #abb2bf
 *.color15:  #abb2bf
-/* *.color15:  #c5c8c6 */
+! *.color15:  #c5c8c6
 
-Sxiv.font: mononoki NF:size=14
-Sxiv.foreground: #d1d1d1
-Sxiv.background: #151515
+
+!!! kanagawa
+
+/*
+*.foreground:   #dcd7ba
+*.background:   #1f1f28
+*.cursorColor:  #dcd7ba
+
+! black
+*.color0:       #090618
+*.color8:       #727169
+
+! red
+*.color1:       #c34043
+*.color9:       #e82424
+
+! green
+*.color2:       #76946a
+*.color10:      #98bb6c
+
+! yellow
+*.color3:       #c0a36e
+*.color11:      #e6c384
+
+! blue
+*.color4:       #7e9cd8
+*.color12:      #7fb4ca
+
+! magenta
+*.color5:       #957fb8
+*.color13:      #938aa9
+
+! cyan
+*.color6:       #6a9589
+*.color14:      #7aa89f
+
+! white
+*.color7:       #c8c093
+*.color15:      #dcd7ba
+*/

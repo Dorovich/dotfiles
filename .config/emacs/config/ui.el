@@ -35,3 +35,6 @@
 (use-package all-the-icons
   :ensure t
   :after (:any dired ibuffer))
+
+;; (use-package autothemer
+;;   :ensure t)

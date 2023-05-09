@@ -106,10 +106,10 @@ _G.packer_plugins = {
     path = "/home/vido25/.local/share/nvim/site/pack/packer/start/everblush",
     url = "https://github.com/Everblush/everblush.nvim"
   },
-  ["gruvbox.nvim"] = {
+  ["kanagawa.nvim"] = {
     loaded = true,
-    path = "/home/vido25/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
-    url = "https://github.com/ellisonleao/gruvbox.nvim"
+    path = "/home/vido25/.local/share/nvim/site/pack/packer/start/kanagawa.nvim",
+    url = "https://github.com/rebelot/kanagawa.nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,
@@ -140,6 +140,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/vido25/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
+  },
+  ["nvim-colorizer.lua"] = {
+    loaded = true,
+    path = "/home/vido25/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
+    url = "https://github.com/norcalli/nvim-colorizer.lua"
   },
   ["nvim-lspconfig"] = {
     loaded = true,

@@ -14,6 +14,8 @@ case $1 in
     "editcfg")		$SCRIPTSDIR/editcfg.sh;;
     "snippet")		$SCRIPTSDIR/snippet.sh $2;;
     "volume") 		$SCRIPTSDIR/volume.sh $2;;
+    "volume-up") 	$SCRIPTSDIR/volume.sh 1;;
+    "volume-down") 	$SCRIPTSDIR/volume.sh 2;;
     "screenshot") 	$SCRIPTSDIR/screenshot.sh $2;;
     "wmquit") 		$SCRIPTSDIR/wmquit.sh;;
     "youtube") 		$SCRIPTSDIR/youtube.sh;;
