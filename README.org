@@ -4,13 +4,13 @@
 /Archivos de configuración de mi sistema y cosas de interés/
 
 #+ATTR_ORG: :width 1000
-[[file:scr/4.png]]
-[[file:scr/5.png]]
+[[file:scr/5-1.png]]
+[[file:scr/5-2.png]]
 
 ** Información
 + Distro: =Pop!_OS= (=Void Linux= la próxima)
-+ DE/WM: [[https://github.com/Dorovich/dwm-vido][dwm]]
-+ Terminal: [[https://github.com/Dorovich/st-vido][st]]
++ DE/WM: [[https://gitlab.com/files-and-configs/dwm-vido][dwm]]
++ Terminal: [[https://gitlab.com/files-and-configs/st-vido][st]]
 + Shell: =zsh=
 + Editor: =neovim=, =emacs=
 + Gestor de archivos: =lf=, =pcmanfm=
