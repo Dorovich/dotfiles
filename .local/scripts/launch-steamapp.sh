@@ -3,8 +3,7 @@
 set -euo pipefail
 
 if [[ "$(pidof steam)" -eq "" ]]; then
-    steam 2&> /dev/null 1&> /dev/null & disown
-    exit 1
+    exec steam
 fi
 
 files=~/.steam/debian-installation/steamapps/appmanifest_*
