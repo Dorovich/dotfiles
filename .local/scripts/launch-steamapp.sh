@@ -2,9 +2,12 @@
 
 set -euo pipefail
 
-if [[ "$(pidof steam)" -eq "" ]]; then
-    exec steam
-fi
+### Descomentar esto si se quiere que el cliente se abra si no se está ejecutando.
+### Si se deja comentado, steam se abrirá igualmente al seleccionar un juego y se ejecutará de fondo.
+#
+# if [[ "$(pidof steam)" -eq "" ]]; then
+#    exec steam
+# fi
 
 files=~/.steam/debian-installation/steamapps/appmanifest_*
 
@@ -21,4 +24,4 @@ done
 selname=$(printf '%s\n' "${!games[@]}" | sort | dmenu -i -l 10 -p 'Select game:' "$@")
 selid=${games[${selname}]}
 
-steam steam://rungameid/$selid
+exec steam steam://rungameid/$selid
