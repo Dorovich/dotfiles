@@ -10,8 +10,8 @@ Nmap('<C-u>', '<C-u>zz', None)
 Nmap('<C-f>', '<C-f>zz', None)
 Nmap('<C-b>', '<C-b>zz', None)
 
--- Nmap('<C-s>', ':w<CR>', None) -- usa ZZ
--- Nmap('<C-q>', ':q<CR>', None) -- usa ZQ
+Nmap('<C-s>', ':w<CR>', None) -- usa ZZ
+Nmap('<C-q>', ':q<CR>', None) -- usa ZQ
 Nmap('<M-h>', ':bprevious<CR>', SL)
 Nmap('<M-l>', ':bnext<CR>', SL)
 Nmap('<Tab>', 'za', NRSL)
