@@ -20,8 +20,9 @@ case $1 in
     "wmquit") 		$SCRIPTSDIR/wmquit.sh;;
     "launch-steamapp")	$SCRIPTSDIR/launch-steamapp.sh;;
     "youtube") 		$SCRIPTSDIR/youtube.sh;;
+    "wifi")		$SCRIPTSDIR/wifi.sh;;
     *) 
-	choice=$(echo "music\npassword\nsoundout\nkill\neditcfg\nsnippet\nvolume\nscreenshot\nyoutube\nlaunch-steamapp" | dmenu -p "Script:")
+	choice=$(echo "music\npassword\nsoundout\nkill\neditcfg\nsnippet\nvolume\nscreenshot\nyoutube\nlaunch-steamapp\nwifi" | dmenu -p "Script:")
 	case $choice in
 		"") exit;;
 		"snippet")
