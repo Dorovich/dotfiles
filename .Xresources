@@ -1,5 +1,5 @@
 *.font:     mononoki NF:pixelsize=18:antialias=true:autohint=true
-*.alpha:    0.97
+*.alpha:    1.00
 
 Sxiv.font: mononoki NF:size=14
 Sxiv.foreground: #d1d1d1
