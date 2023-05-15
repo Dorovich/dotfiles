@@ -151,6 +151,11 @@ _G.packer_plugins = {
     path = "/home/vido25/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-surround"] = {
+    loaded = true,
+    path = "/home/vido25/.local/share/nvim/site/pack/packer/start/nvim-surround",
+    url = "https://github.com/kylechui/nvim-surround"
+  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/home/vido25/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
@@ -165,11 +170,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/vido25/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/nvim-tree/nvim-web-devicons"
-  },
-  orgmode = {
-    loaded = true,
-    path = "/home/vido25/.local/share/nvim/site/pack/packer/start/orgmode",
-    url = "https://github.com/nvim-orgmode/orgmode"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -190,11 +190,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/vido25/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
-  },
-  ["vim-surround"] = {
-    loaded = true,
-    path = "/home/vido25/.local/share/nvim/site/pack/packer/start/vim-surround",
-    url = "https://github.com/tpope/vim-surround"
   }
 }
 
