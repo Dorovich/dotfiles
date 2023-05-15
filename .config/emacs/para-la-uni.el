@@ -63,7 +63,9 @@
 (setq-default bidi-display-reordering 'left-to-right
               bidi-paragraph-direction 'left-to-right
               cursor-in-non-selected-windows nil
-              indent-tabs-mode nil)
+              indent-tabs-mode nil
+              left-margin-width 1
+              right-margin-width 1)
 
 (if (boundp 'comp-deferred-compilation)
     (setq comp-deferred-compilation nil)
@@ -94,7 +96,7 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-(dolist (package '(evil evil-collection undo-tree key-chord nano-modeline gcmh))
+(dolist (package '(evil evil-collection undo-tree evil-escape nano-modeline gcmh))
   (unless (package-installed-p package)
     (package-install package)))
 
@@ -128,18 +130,18 @@
 (require 'evil-collection)
 (evil-collection-init)
 
+;; evil-escape
+
+(require 'evil-escape)
+(setq-default evil-escape-key-sequence "jk"
+              evil-escape-delay 0.2)
+(evil-escape-mode 1)
+
 ;; undo-tree
 
 (require 'undo-tree)
 (setq undo-tree-history-directory-alist '(("." . "/tmp")))
 (global-undo-tree-mode 1)
-
-;; key-chord
-
-(require 'key-chord)
-(setq key-chord-two-keys-delay 0.2)
-(key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
-(key-chord-mode 1)
 
 ;; ibuffer
 

@@ -1,5 +1,6 @@
 --require('core/plugin_config/lualine')
 require('core/plugin_config/better-escape')
+require('core/plugin_config/nvim-surround')
 require('core/plugin_config/treesitter')
 require('core/plugin_config/lsp_config')
 require('core/plugin_config/completions')

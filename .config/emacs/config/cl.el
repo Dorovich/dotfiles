@@ -20,7 +20,7 @@
 ;;       (read-kbd-macro paredit-backward-delete-key) nil))
 ;;   (add-hook 'slime-repl-mode-hook 'override-slime-del-key))
 
-(use-package parinfer-rust-mode
+(use-package smartparens
   :ensure t
   :hook (emacs-lisp-mode
          eval-expression-minibuffer-setup

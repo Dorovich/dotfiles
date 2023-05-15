@@ -41,14 +41,14 @@ cmap <C-d> <Esc>
 cmap <C-c> <Esc>
 imap <C-d> <Esc>
 
-nmap <C-s> :set scripts!|no r<CR>
 nmap <C-m> :sh! mpv $VIMB_URI<CR> 
-nmap <C-t> Y:tabopen trad <C-r>"<CR>
-#nnoremap <C-y> :sh vimb-pass $VIMB_URI<CR>
-nmap gc :sh! st -e nvim ~/.config/vimb/config<CR>
+nmap <c-s> :set scripts!|no r<cr>
+nmap <c-t> y:tabopen trad <c-r>"<cr>
+#nnoremap <c-y> :sh vimb-pass $vimb_uri<cr>
+nmap gc :sh! st -e nvim ~/.config/vimb/config<cr>
 nmap gd :sh! st -e lf ~/Descargas<CR>
-nnoremap xc :sh! ~/.local/bin/vimb-clear-history<CR>
-nnoremap xu :sh! ~/.local/bin/vimb-adblock-update<CR>
+nnoremap xc :sh! vimb-clear-history<CR>
+nnoremap xu :sh! vimb-adblock-update<CR>
 #nnoremap xb :e! ytblock();<CR>
 # }}}
 

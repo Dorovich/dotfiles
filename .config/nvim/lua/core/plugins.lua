@@ -16,7 +16,7 @@ local packer_bootstrap = ensure_packer()
 -- Plugin declaration
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
-    use 'tpope/vim-surround'
+    use 'kylechui/nvim-surround'
     use 'nvim-tree/nvim-tree.lua'
     use 'nvim-tree/nvim-web-devicons'
     use 'nvim-lualine/lualine.nvim'

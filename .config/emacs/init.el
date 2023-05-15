@@ -13,6 +13,7 @@
 (set-face-attribute 'fixed-pitch nil
                     :font default-font-family
                     :height default-font-size)
+
 (set-face-attribute 'variable-pitch nil
                     :font default-font-family
                     :height default-font-size)
@@ -95,6 +96,9 @@
 (setq explicit-shell-file-name "/usr/bin/zsh"
       shell-file-name "zsh"
       explicit-zsh-args '("--login" "--interactive"))
+
+;; Electric pairs mode: autocomplete closing parens
+(electric-pair-mode 1)
 
 ;; Use ibuffer instead of list-buffers.
 (global-set-key (kbd "C-x C-b") 'ibuffer)

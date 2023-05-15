@@ -23,18 +23,15 @@
          eshell-mode
          completion-list-mode))
 
-;; (use-package rainbow-delimiters
-;;   :ensure t
-;;   :defer t
-;;   :hook (emacs-lisp-mode
-;;          ielm-mode
-;;          lisp-interaction-mode
-;;          lisp-mode
-;;          slime-repl-mode))
+(use-package rainbow-delimiters
+  :ensure t
+  :defer t
+  :hook (emacs-lisp-mode
+         ielm-mode
+         lisp-interaction-mode
+         lisp-mode
+         slime-repl-mode))
 
 (use-package all-the-icons
   :ensure t
   :after (:any dired ibuffer))
-
-;; (use-package autothemer
-;;   :ensure t)
