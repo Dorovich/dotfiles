@@ -22,6 +22,8 @@ export PS1="
 %B%F{3}%1~%f %F{8}λ%f%b "
 export PS2="%B%F{8}>%f%b "
 
+export vrchat_cache="/home/vido25/.steam/debian-installation/steamapps/compatdata/438100/pfx/drive_c/users/steamuser/AppData/LocalLow/VRChat/VRChat"
+
 ###########################################
 ###               ALIASES               ###
 ###########################################
