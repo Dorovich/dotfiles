@@ -7,22 +7,22 @@
 #
 
 case $1 in
-    "music")		$SCRIPTSDIR/music.sh;;
-    "password")		$SCRIPTSDIR/password.sh;;
-    "soundout")		$SCRIPTSDIR/soundout.sh;;
-    "kill")		$SCRIPTSDIR/kill.sh;;
-    "editcfg")		$SCRIPTSDIR/editcfg.sh;;
-    "snippet")		$SCRIPTSDIR/snippet.sh $2;;
-    "volume") 		$SCRIPTSDIR/volume.sh $2;;
-    "volume-up") 	$SCRIPTSDIR/volume.sh 1;;
-    "volume-down") 	$SCRIPTSDIR/volume.sh 2;;
-    "screenshot") 	$SCRIPTSDIR/screenshot.sh $2;;
-    "wmquit") 		$SCRIPTSDIR/wmquit.sh;;
-    "launch-steamapp")	$SCRIPTSDIR/launch-steamapp.sh;;
-    "youtube") 		$SCRIPTSDIR/youtube.sh;;
-    "wifi")		$SCRIPTSDIR/wifi.sh;;
+    "music")		$SCRIPTSDIR/dm-music;;
+    "pass")		$SCRIPTSDIR/dm-pass;;
+    "sinks")		$SCRIPTSDIR/dm-sinks;;
+    "kill")		$SCRIPTSDIR/dm-kill;;
+    "editcfg")		$SCRIPTSDIR/dm-editcfg;;
+    "snippet")		$SCRIPTSDIR/dm-snippet $2;;
+    "volume") 		$SCRIPTSDIR/dm-volume $2;;
+    "volume-up") 	$SCRIPTSDIR/dm-volume 1;;
+    "volume-down") 	$SCRIPTSDIR/dm-volume 2;;
+    "scrot") 		$SCRIPTSDIR/dm-scrot $2;;
+    "quit") 		$SCRIPTSDIR/dm-quit;;
+    "steamapp")		$SCRIPTSDIR/dm-steamapp;;
+    "youtube") 		$SCRIPTSDIR/dm-youtube;;
+    "wifi")		$SCRIPTSDIR/dm-wifi;;
     *) 
-	choice=$(echo "music\npassword\nsoundout\nkill\neditcfg\nsnippet\nvolume\nscreenshot\nyoutube\nlaunch-steamapp\nwifi" | dmenu -p "Script:")
+	choice=$(echo "music\npass\nsinks\nkill\neditcfg\nsnippet\nvolume\nscrot\nyoutube\nsteamapp\nwifi\nquit" | dmenu -p "Script:")
 	case $choice in
 		"") exit;;
 		"snippet")
@@ -31,13 +31,13 @@ case $1 in
 				"load") scriptctl snippet 1;;
 				"save") scriptctl snippet 2;;
 			esac;;
-		"screenshot")
-        		option=$(echo "full\nactive\nselect\ncopy" | dmenu -p "Screenshot option:")
+		"screeot")
+        		option=$(echo "full\nactive\nselect\ncopy" | dmenu -p "Screeot option:")
 			case $option in
-				"full") scriptctl screenshot 1;;
-				"active") scriptctl screenshot 2;;
-				"select") scriptctl screenshot 3;;
-				"copy") scriptctl screenshot 4;;
+				"full") scriptctl scrot 1;;
+				"active") scriptctl scrot 2;;
+				"select") scriptctl scrot 3;;
+				"copy") scriptctl scrot 4;;
 			esac;;
 		"volume")
         		option=$(echo "up\ndown" | dmenu -p "Volume option:")

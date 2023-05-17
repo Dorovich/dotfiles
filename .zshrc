@@ -89,6 +89,14 @@ if [ -d "$HOME/.local/bin" ] ;
   then PATH="$HOME/.local/bin:$PATH"
 fi
 
+if [ -d "$HOME/.local/bin/statusbar" ] ;
+  then PATH="$HOME/.local/bin/statusbar:$PATH"
+fi
+
+if [ -d "$HOME/.local/bin/dmenu" ] ;
+  then PATH="$HOME/.local/bin/dmenu:$PATH"
+fi
+
 if [ -d "$HOME/.emacs.d/bin" ] ;
   then PATH="$HOME/.emacs.d/bin:$PATH"
 fi
