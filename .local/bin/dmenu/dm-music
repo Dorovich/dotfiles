@@ -9,33 +9,15 @@ while true; do
     fi
 
     case $choice in
-        play)
-            mpc play
-            ;;
-        pause)
-            mpc pause
-            ;;
-        jump)
-            $SCRIPTSDIR/dm-mpdctl -j
-            ;;
-        artist)
-            $SCRIPTSDIR/dm-mpdctl -a
-            ;;
-        album)
-            $SCRIPTSDIR/dm-mpdctl -l
-            ;;
-        track)
-            $SCRIPTSDIR/dm-mpdctl -t
-            ;;
-        load)
-            $SCRIPTSDIR/dm-mpdctl -p
-            ;;
-        clear)
-            mpc clear
-            ;;
-        update)
-            mpc update
-            ;;
+        play) 	mpc play;;
+        pause) 	mpc pause;;
+        jump) 	$SCRIPTSDIR/dm-mpdctl -j;;
+        artist) $SCRIPTSDIR/dm-mpdctl -a;;
+        album) 	$SCRIPTSDIR/dm-mpdctl -l;;
+        track) 	$SCRIPTSDIR/dm-mpdctl -t;;
+        load) 	$SCRIPTSDIR/dm-mpdctl -p;;
+        clear) 	mpc clear;;
+        update) mpc update;;
         toggle)
             mpc status | grep "random: on" 2> /dev/null
             if [ $? -eq 0 ]; then random="?"; else random="-"; fi
@@ -47,15 +29,9 @@ while true; do
             option=$(echo "random\nconsume\nrepeat" | dmenu -p "[$random$consume$repeat]")
 
             case $option in
-                random)
-                    mpc random
-                    ;;
-                consume)
-                    mpc consume
-                    ;;
-                repeat)
-                    mpc repeat
-                    ;;
+                random)  mpc random;;
+                consume) mpc consume;;
+                repeat)  mpc repeat;;
             esac
             ;;
         *)
