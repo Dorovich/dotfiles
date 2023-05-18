@@ -4,13 +4,13 @@ stty stop undef
 
 export LANGUAGE=es_ES:en_US
 export TERMINAL="st"
-export EDITOR="nvim"
+export EDITOR="vim"
 export VISUAL="emacsclient -c -a 'emacs'"
 export ALTERNATE_EDITOR="emacsclient -t -a ''"
 export HISTSIZE=2000
 export SAVEHIST=2000
 export HISTFILE=~/.zsh_history
-export MYVIMRC="$HOME/.config/nvim/init.lua"
+export MYVIMRC="$HOME/.vimrc"
 export HISTORY_IGNORE="(ls|pwd|exit)"
 
 # Vimb config
