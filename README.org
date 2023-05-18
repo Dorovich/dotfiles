@@ -18,7 +18,7 @@
 + Música: =spotify=, =mpd (+ ncmpcpp)=
 + Navegador: =qutebrowser=, =firefox=
 
-/Para más cositas ver mi lista de [[PROGRAMS.md][programas interesantes]]./
+/Para más cositas ver mi lista de [[PROGRAMS.org][programas interesantes]]./
 
 #+BEGIN_QUOTE
 *OTROS*: Para poder poner acentos en st he tenido que añadir la línea `XPROFILE=` a =/etc/environment=. Los programas que se autoinician estan en =~/.xprofile=. Las variables globales del sistema (como $SCRIPTSDIR, $TERMINAL o $BROWSER) estan en =~/.profile=.
