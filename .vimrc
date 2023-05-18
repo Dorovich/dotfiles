@@ -1,21 +1,27 @@
 " Autoinstalar vim-plug:
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+	silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-let use_org_plugins = 1
+let cargar_orgmode = 1
+let cargar_colores = 1
 
 call plug#begin()
 Plug 'jdhao/better-escape.vim'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'srcery-colors/srcery-vim'
-if use_org_plugins
-    Plug 'jceb/vim-orgmode'
-    Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-commentary'
+if cargar_colores
+	Plug 'srcery-colors/srcery-vim'
+	Plug 'Everblush/everblush.vim'
+	Plug 'rose-pine/vim'
+endif
+if cargar_orgmode
+	Plug 'jceb/vim-orgmode'
+	Plug 'tpope/vim-speeddating'
 endif
 call plug#end()
 
@@ -26,9 +32,16 @@ call plug#end()
 " fugitive.vim - integración con git
 
 let g:better_escape_shortcut = 'jk'
-let g:srcery_bg_passthrough = 1
-let g:srcery_dim_lisp_paren = 1
-let g:srcery_italic = 1
+if cargar_colores
+	let g:srcery_bg_passthrough = 1
+	let g:srcery_dim_lisp_paren = 1
+	let g:srcery_italic = 1
+	let g:everblush_transp_bg = 1
+	let g:disable_bg = 1
+	colorscheme srcery
+else
+	colorscheme pablo
+endif
 
 set nocompatible
 set hidden
@@ -64,8 +77,6 @@ syntax enable
 filetype plugin on
 filetype plugin indent on
 
-colorscheme srcery
-
 let mapleader = ','
 let maplocaleader = ' '
 
@@ -85,3 +96,4 @@ xmap < <gv
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 
+autocmd FileType help :nmap <buffer> <silent> q <c-w>q
