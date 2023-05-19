@@ -31,8 +31,8 @@ case $1 in
 				"load") scriptctl snippet 1;;
 				"save") scriptctl snippet 2;;
 			esac;;
-		"screeot")
-        		option=$(echo "full\nactive\nselect\ncopy" | dmenu -p "Screeot option:")
+		"scrot")
+        		option=$(echo "full\nactive\nselect\ncopy" | dmenu -p "Screenshot option:")
 			case $option in
 				"full") scriptctl scrot 1;;
 				"active") scriptctl scrot 2;;

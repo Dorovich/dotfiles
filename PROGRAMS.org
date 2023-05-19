@@ -1,3 +1,5 @@
+#+options: \n:t num:nil timestamp:nil
+
 * Programas utiles y/o interesantes:
 
 - an-anime-game-launcher
