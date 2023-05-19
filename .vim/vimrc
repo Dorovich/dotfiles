@@ -5,13 +5,15 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" Comprovar que algunas carpetas estén creadas
+" Comprovar que algunas carpetas estén creadas:
 if !isdirectory($HOME.'/.vim/tmp')
 	call mkdir($HOME.'/.vim/tmp/undo', 'p')
 	call mkdir($HOME.'/.vim/tmp/backup', 'p')
 	call mkdir($HOME.'/.vim/tmp/view', 'p')
 endif
 
+" Añadir a la lista los packs de plugins a cargar.
+" Opciones posibles: 'orgmode', 'colores'
 let cargar_plugins = [ 'orgmode', 'colores' ]
 
 call plug#begin()
@@ -72,15 +74,13 @@ set smarttab
 set autoindent
 set title
 set cursorline
+set scrolloff=1 sidescrolloff=1
 set encoding=utf-8
-set scrolloff=1
-set sidescrolloff=1
 set t_Co=256
 set omnifunc=syntaxcomplete#Complete
 set undofile undodir=~/.vim/tmp/undo
 set nobackup writebackup backupdir=~/.vim/tmp/backup
-set viewdir=~/.vim/tmp/view
-set viewoptions-=options
+set viewoptions-=options viewdir=~/.vim/tmp/view
 set viminfo+=n~/.vim/.viminfo
 
 syntax enable
@@ -108,12 +108,13 @@ let &t_EI = "\e[2 q"
 
 autocmd FileType help :nmap <buffer> <silent> q <c-w>q
 
-augroup remember_folds
+augroup guardar_pliegues
 	autocmd!
 	au BufWinLeave ?* mkview
 	au BufWinEnter ?* silent! loadview
 augroup END
 
+" Limpiar la carpeta con archivos temporales:
 function! ClearTemp()
 	call delete($HOME . '/.vim/tmp', 'rf')
 endfunction
