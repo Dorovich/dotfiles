@@ -35,8 +35,8 @@ cmd zip ${{
 # define a custom 'delete' command
 cmd delete ${{
     set -f
-    printf "$fx\n"
-    printf "delete file(s)?[y/n] "
+    printf "\n$fx"
+    printf "\nDelete selected file(s)?[y/n] "
     read ans
     [ "$ans" = "y" ] && rm -rf $fx
 }}
@@ -64,7 +64,7 @@ cmd dragon-all %dragon -a -x $fx
 
 # change permissions
 cmd chmod ${{
-  printf "Mode Bits: "
+  printf "\nMode bits: "
   read ans
 
   for file in "$fx"
@@ -95,7 +95,7 @@ cmd chmod ${{
 # create new file
 cmd newfile ${{
     set -f
-    printf "new file name: "
+    printf "\nNew file name: "
     read name
     [ -n $name ] && touch $name
 }}
@@ -103,10 +103,13 @@ cmd newfile ${{
 # create new directory
 cmd newdir ${{
     set -f
-    printf "new directory name: "
+    printf "\nNew directory name: "
     read name
     [ -n $name ] && mkdir $name
 }}
 
 # upload files to 0x0.st
-cmd share $curl -F"file=@$fx" https://0x0.st | xclip -selection clipboard
+cmd share ${{
+    curl -F"file=@$fx" https://0x0.st | xclip -selection clipboard
+    lf -remote 'send echo "Shared file(s) link copied!"'
+}}
