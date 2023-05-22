@@ -12,7 +12,7 @@
 + DE/WM: [[https://gitlab.com/files-and-configs/dwm-vido][dwm]]
 + Terminal: [[https://gitlab.com/files-and-configs/st-vido][st]]
 + Shell: =zsh=
-+ Editor: =neovim=, =emacs=
++ Editor: =vim=, =emacs=
 + Gestor de archivos: =lf=, =pcmanfm=
 + Fuente: =mononoki (Nerd Font)=
 + Música: =spotify=, =mpd (+ ncmpcpp)=
