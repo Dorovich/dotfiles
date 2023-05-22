@@ -6,18 +6,12 @@ case $confirmation in
     "Logout")
         wm="$(wmname)"
         case $wm in
-            "herbstluftwm")
-                herbstclient quit
-                ;;
-            "dwm")
-                kill -TERM $(pidof dwm)
-                ;;
-            "spectrwm")
-                exit
-                ;;
+            "herbstluftwm") 	exec herbstclient quit;;
+            "dwm") 		exec kill -TERM $(pidof dwm);;
+            "spectrwm")		exit;;
         esac
         ;;
-    "Shutdown") shutdown -h now;;
-    "Reboot") reboot;;
-    *) exit;;
+    "Shutdown") 	exec shutdown -h now;;
+    "Reboot") 		exec reboot;;
+    *) 			exit;;
 esac

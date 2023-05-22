@@ -6,4 +6,4 @@ case $1 in
     *) exit;;
 esac
 
-notify-send "mpd $(mpc volume)"
+exec notify-send "mpd $(mpc volume)"
