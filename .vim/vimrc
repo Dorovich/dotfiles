@@ -79,6 +79,7 @@ xmap < <gv
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 
+
 autocmd FileType help :nmap <buffer> <silent> q <c-w>q
 
 augroup guardar_pliegues
@@ -94,6 +95,12 @@ endfunction
 
 " Para que C-q y C-s lleguen a vim:
 silent !stty -ixon > /dev/null 2>/dev/null
+
+" function! RunFile()
+" 	let s:ft = &ft
+" 	if s:ft = 'c'
+" 		execute('')
+" endfunction
 
 " Si no los plugins que usan filetype no van:
 runtime! ALL ftdetect/*.vim
