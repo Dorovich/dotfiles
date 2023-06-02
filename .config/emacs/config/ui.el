@@ -17,6 +17,9 @@
           (border-mode-line-inactive bg-mode-line-inactive)))
   (load-theme 'modus-vivendi :no-confirm))
 
+(use-package srcery-theme
+  :ensure t)
+
 (use-package hide-mode-line
   :ensure t
   :hook (dired-mode

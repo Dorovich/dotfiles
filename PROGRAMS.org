@@ -56,3 +56,11 @@
 - [[https://pwmt.org/projects/zathura/][zathura]]
 - zip
 - [[https://zsh.sourceforge.io/][zsh]]
+
+* Trucos
+
+- Compilar vim con cosas buenas:
+#+BEGIN_SRC shell
+./configure --enable-python3interp --with-python3-config-dir=/usr/lib/python3.10/config-3.10-x86_64-linux-gnu --enable-gui=no --with-x --enable-cscope --enable-multibyte
+#+END_SRC
+

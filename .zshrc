@@ -111,6 +111,10 @@ if [ -d "/var/lib/flatpak/exports/bin/" ] ;
   then PATH="/var/lib/flatpak/exports/bin/:$PATH"
 fi
 
+if [ -d "$HOME/.vim/bin" ] ;
+  then PATH="$HOME/.vim/bin:$PATH"
+fi
+
 # }}}
 
 ############################################
@@ -198,3 +202,5 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # Fuente: https://github.com/zsh-users/zsh-syntax-highlighting
 source ~/.config/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+if [ -e /home/vido25/.nix-profile/etc/profile.d/nix.sh ]; then . /home/vido25/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
