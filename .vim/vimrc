@@ -41,15 +41,15 @@ set smarttab
 set smartcase
 set autoindent
 set title
-set cursorline
+" set cursorline
 set scrolloff=1 sidescrolloff=1
 set encoding=utf-8 fileencoding=utf-8
 set t_Co=256
-set omnifunc=syntaxcomplete#Complete
 set undofile undodir=~/.vim/tmp/undo
 set nobackup writebackup backupdir=~/.vim/tmp/backup
 set viewoptions-=options viewdir=~/.vim/tmp/view
 set viminfo+=n~/.vim/.viminfo
+set shell=/usr/bin/mksh
 
 syntax enable
 filetype plugin on

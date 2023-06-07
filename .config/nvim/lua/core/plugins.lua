@@ -21,7 +21,6 @@ return require('packer').startup(function(use)
     use 'nvim-tree/nvim-web-devicons'
     use 'nvim-lualine/lualine.nvim'
     use 'nvim-treesitter/nvim-treesitter'
-    --use 'nvim-orgmode/orgmode'
     use {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.0',
@@ -33,6 +32,10 @@ return require('packer').startup(function(use)
     }
     use 'norcalli/nvim-colorizer.lua'
 
+    -- Languages
+    use 'tikhomirov/vim-glsl'
+    use 'jceb/vim-orgmode'
+    
     -- LSP
     use {
         'williamboman/mason.nvim',
@@ -63,6 +66,7 @@ return require('packer').startup(function(use)
         as = 'everblush',
     }
     use 'rebelot/kanagawa.nvim'
+    use 'srcery-colors/srcery-vim'
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
