@@ -129,12 +129,9 @@
       evil-want-keybinding nil ; for evil-collection
       evil-want-C-u-scroll t
       evil-want-Y-yank-to-eol t
-      ; evil-normal-state-cursor '(box "#dbc49b")
-      ; evil-insert-state-cursor '((bar . 2) "#dbc49b")
-      ; evil-visual-state-cursor '(hollow "#dbc49b")
-      evil-normal-state-cursor '(box)
-      evil-insert-state-cursor '((bar . 2))
-      evil-visual-state-cursor '(hollow)
+      evil-normal-state-cursor '(box) ; '(box "#dbc49b")
+      evil-insert-state-cursor '((bar . 2)) ; '((bar . 2) "#dbc49b")
+      evil-visual-state-cursor '(hollow) ; '(hollow "#dbc49b")
       evil-split-window-below t
       evil-split-window-right t
       evil-undo-system 'undo-tree)
