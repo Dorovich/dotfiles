@@ -186,10 +186,25 @@ _G.packer_plugins = {
     path = "/home/vido25/.local/share/nvim/site/pack/packer/start/rose-pine",
     url = "https://github.com/rose-pine/neovim"
   },
+  ["srcery-vim"] = {
+    loaded = true,
+    path = "/home/vido25/.local/share/nvim/site/pack/packer/start/srcery-vim",
+    url = "https://github.com/srcery-colors/srcery-vim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/vido25/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["vim-glsl"] = {
+    loaded = true,
+    path = "/home/vido25/.local/share/nvim/site/pack/packer/start/vim-glsl",
+    url = "https://github.com/tikhomirov/vim-glsl"
+  },
+  ["vim-orgmode"] = {
+    loaded = true,
+    path = "/home/vido25/.local/share/nvim/site/pack/packer/start/vim-orgmode",
+    url = "https://github.com/jceb/vim-orgmode"
   }
 }
 

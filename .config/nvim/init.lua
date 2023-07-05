@@ -1,5 +1,5 @@
 -- Activamos la compilación para agilizar la carga...
-vim.loader.enable()
+--vim.loader.enable()
 
 -- Cargamos los distintos cachos de la configuración...
 require('core/options')

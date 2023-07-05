@@ -1,3 +1,10 @@
+" Comprovar que Vim-Plug está instalado:
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 " Comprovar que algunas carpetas estén creadas:
 if !isdirectory($HOME.'/.vim/tmp')
 	call mkdir($HOME.'/.vim/tmp/undo', 'p')
@@ -6,16 +13,11 @@ if !isdirectory($HOME.'/.vim/tmp')
 endif
 
 " Cambiar en lista los grupos de plugins a cargar (1=activo, 0=inactivo)
-let cargar_plugins = { 'fuzzy': 1, 'colores': 1, 'orgmode': 1, 'glsl': 1 }
+let usar_paquetes = { 'fuzzy': 1, 'colores': 1 }
+let usar_lenguajes = { 'org': 1, 'lisp': 1, 'glsl': 1 }
 
 " No guardar la vista (pliegues y tal) en los siguientes filetypes:
 let no_guardar_vista = ['org']
-
-" OTROS PLUGINS ÚTILES:
-" YouCompleteMe - motor de compleción
-" vlime - desarollo de common lisp
-" paredit.vim - paréntesis y s-expressions
-" fugitive.vim - integración con git
 
 set nocompatible
 set hidden
@@ -114,22 +116,50 @@ endfunction
 " Para que C-q y C-s lleguen a vim:
 silent !stty -ixon > /dev/null 2>/dev/null
 
-" Si no los plugins que usan filetype no van:
-runtime! ALL ftdetect/*.vim
+" Si no los plugins que usan filetype no van
+" (solo si se estan usando packs nativos de vim):
+"runtime! ALL ftdetect/*.vim
 
 " Cargar los plugins:
-if cargar_plugins['fuzzy']
-	packadd! fzf
-	packadd! fzf.vim
+call plug#begin()
+Plug 'jdhao/better-escape.vim'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+if usar_paquetes['fuzzy']
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	Plug 'junegunn/fzf.vim'
+endif
+if usar_paquetes['colores']
+	Plug 'srcery-colors/srcery-vim'
+	Plug 'Everblush/everblush.vim'
+	Plug 'rose-pine/vim'
+	Plug 'ap/vim-css-color'
+endif
+if usar_lenguajes['org']
+	Plug 'tpope/vim-speeddating'
+	Plug 'jceb/vim-orgmode'
+endif
+if usar_lenguajes['lisp']
+	Plug 'vlime/vlime', {'rtp': 'vim/'}
+endif
+if usar_lenguajes['glsl']
+	Plug 'tikhomirov/vim-glsl'
+	Plug 'vim-scripts/paredit.vim'
+endif
+call plug#end()
+
+" OTROS PLUGINS ÚTILES:
+" YouCompleteMe - motor de compleción
+" paredit.vim - paréntesis y s-expressions
+" fugitive.vim - integración con git
+
+" Configuraciones extras de plugins
+if usar_paquetes['fuzzy']
 	nmap <leader>f :Files<cr>
 	nmap <leader>b :Buffers<cr>
 endif
 
-if cargar_plugins['colores']
-	packadd! srcery
-	packadd! everblush
-	packadd! rosepine
-	packadd! css-color
+if usar_paquetes['colores']
 	let g:srcery_bg_passthrough = 1
 	let g:srcery_dim_lisp_paren = 1
 	let g:srcery_italic = 1
@@ -139,14 +169,4 @@ if cargar_plugins['colores']
 	colorscheme srcery
 else
 	colorscheme peachpuff
-endif
-
-if cargar_plugins['orgmode']
-	packadd! vim-speeddating
-	packadd! orgmode
-	silent! helptags ALL
-endif
-
-if cargar_plugins['glsl']
-	packadd! glsl
 endif

@@ -17,6 +17,9 @@ export HISTORY_IGNORE="(ls|pwd|exit)"
 export JavaScriptCoreUseJIT="0"
 export WEBKIT_DISABLE_COMPOSITING_MODE=1
 
+# Qutebrowser stuff
+export QUTE_QT_WRAPPER=PyQt6
+
 # Prompt
 export PS1="
 %B%F{3}%1~%f %F{8}λ%f%b "
@@ -29,7 +32,7 @@ export vrchat_cache="/home/vido25/.steam/debian-installation/steamapps/compatdat
 ###########################################
 # {{{
 
-alias v="nvim"
+alias v="vim"
 alias em="emacsclient -t"
 alias grep='grep --color=auto'
 alias ls='exa --icons --group-directories-first --no-time --no-user --color=auto -F'
@@ -43,7 +46,7 @@ alias weather="curl https://wttr.in/"
 alias myip="ip -c a"
 alias emacsc="emacsclient -c -a 'emacs'"
 alias mp="ncmpcpp"
-alias sbcl-rl="rlwrap sbcl --noinform"
+alias sbcl="rlwrap sbcl"
 
 alias yt-mp3="yt-dlp --extract-audio --audio-format mp3 "
 alias yt-mp4="yt-dlp --format mp4 "

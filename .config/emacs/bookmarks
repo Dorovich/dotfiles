@@ -11,7 +11,7 @@
   ("l" (filename . "~/.local/"))
   ("d" (filename . "~/Descargas/"))
   ("i" (filename . "~/Imágenes/"))
-  ("p" (filename . "~/Documentos/Programillas/"))
+  ("p" (filename . "~/Programas/"))
   ("u" (filename . "~/Documentos/UPC/"))
   ("a" (filename . "/media/vido25/Almacenamiento/"))
   ("m" (filename . "/media/vido25/Almacenamiento/Musica/"))
