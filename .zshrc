@@ -58,6 +58,7 @@ alias wacom-small='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" Area 5167 31
 alias wacom-reset='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" ResetArea'
 
 alias qmake-qt5="qmake"
+alias vlime-server="sbcl --load .vim/plugged/vlime/lisp/start-vlime.lisp"
 
 function 0file() { curl -F"file=@$1" https://envs.sh ; }    # 0file "file.png"
 function 0pb() { curl -F"file=@-;" https://envs.sh ; }      # echo "text" | 0pb
