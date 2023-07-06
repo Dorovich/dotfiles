@@ -293,6 +293,13 @@
 
   (ad-activate 'ibuffer-update-title-and-summary))
 
+;; nerd-icons-ibuffer
+
+(use-package nerd-icons-ibuffer
+  :ensure t
+  :after (:all ibuffer nerd-icons)
+  :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
+
 ;; org
 
 (use-package org
@@ -345,6 +352,14 @@
   :after dired
   :init
   (add-hook 'dired-mode-hook 'diredfl-mode))
+
+;; nerd-icons-dired
+
+(use-package nerd-icons-dired
+  :ensure t
+  :after (:all dired nerd-icons)
+  :hook
+  (dired-mode . nerd-icons-dired-mode))
 
 ;; counsel
 
