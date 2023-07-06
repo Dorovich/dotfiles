@@ -259,6 +259,8 @@
        ,@rainbow-html-rgb-colors-font-lock-keywords))
     (font-lock-fontify-buffer)))
 
+(add-hook 'rainbow-mode-hook #'rainbow-turn-off-words)
+
 ;; ibuffer
 
 (use-package ibuffer
