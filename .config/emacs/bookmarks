@@ -7,7 +7,7 @@
   ("h" (filename . "~/"))
   ("c" (filename . "~/.config/"))
   ("e" (filename . "~/.config/emacs/"))
-  ("s" (filename . "~/.srcconfig/"))
+  ("s" (filename . "~/.local/src/"))
   ("l" (filename . "~/.local/"))
   ("d" (filename . "~/Descargas/"))
   ("i" (filename . "~/Imágenes/"))

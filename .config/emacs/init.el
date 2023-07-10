@@ -40,7 +40,8 @@
               cursor-in-non-selected-windows nil
               indent-tabs-mode nil
               left-margin-width 1
-              right-margin-width 1)
+              right-margin-width 1
+              c-basic-offset 4)
 
 (if (boundp 'comp-deferred-compilation)
     (setq comp-deferred-compilation nil)
@@ -126,7 +127,8 @@
     (kbd "ñ") 'evil-ex
     (kbd "U") 'evil-redo
     (kbd "C-+") 'text-scale-increase
-    (kbd "C--") 'text-scale-decrease)
+    (kbd "C--") 'text-scale-decrease
+    "gcc" 'comment-or-uncomment-region)
 
   (evil-define-key 'visual 'global
     (kbd "C-c") 'evil-change-to-initial-state)
@@ -149,8 +151,9 @@
   :config
   (setq-default evil-escape-key-sequence "jk"
                 evil-escape-delay 0.2
-                evil-escape-excluded-states '(visual)
-                evil-escape-excluded-major-modes '(ibuffer-mode))
+                ;; hay que excluir estados/modos porque sino se lagea
+                evil-escape-excluded-states '(normal visual)
+                evil-escape-excluded-major-modes '(ibuffer-mode dired-mode))
   (evil-escape-mode 1))
 
 ;; evil-anzu 
@@ -173,15 +176,9 @@
 
 (use-package paredit
   :ensure t
-  :defer t
-  :config
-  (add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
-  (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
-  (add-hook 'ielm-mode-hook             #'enable-paredit-mode)
-  (add-hook 'lisp-mode-hook             #'enable-paredit-mode)
-  (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
-  (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
-  (add-hook 'sly-repl-mode-hook (lambda () (paredit-mode +1))))
+  :hook ((emacs-lisp-mode eval-expression-minibuffer-setup ielm-mode lisp-mode lisp-interaction-mode scheme-mode) . enable-paredit-mode)
+  :init
+  (add-hook 'sly-repl-mode-hook (lambda () (paredit-mode 1))))
 
 ;; theme
 
@@ -189,7 +186,7 @@
   :ensure t
   :config
   (setq srcery-transparent-background t)
-  (setq srcery-black "#1e2127"
+  (setq srcery-black "#151515" ; el color "#1e2127" hace que se vea feo org-mode y los numeros de linea
         srcery-red "#e06c75"
         srcery-green "#98c379"
         srcery-yellow "#d19a66"
@@ -308,6 +305,7 @@
   :defer t)
 
 (with-eval-after-load 'org
+  (require 'org-tempo) ; abreviaciones como <s o <E
   (setq org-image-actual-width nil
         org-hide-leading-stars t
         org-startup-folded nil
@@ -332,20 +330,41 @@
                         :height (nth 1 face)
                         :weight (nth 2 face))))
 
+(use-package org-bullets
+  :ensure t
+  :hook 
+  (org-mode . org-bullets-mode)
+  :config
+  (setq org-bullets-bullet-list '("󰪥" "" "" "󰴈")))
+
+(use-package toc-org
+  :ensure t
+  :commands toc-org-enable
+  :hook 
+  (org-mode . toc-org-enable))
+
 ;; dired
 
-(evil-define-key 'normal dired-mode-map
-  [mouse-1] 'dired-find-file
-  (kbd "l") 'dired-find-file
-  (kbd "<right>") 'dired-find-file
-  (kbd "h") 'dired-up-directory
-  (kbd "<left>") 'dired-up-directory
-  (kbd "q") 'kill-this-buffer
-  (kbd "'") 'bookmark-jump
-  (kbd "/") 'dired-narrow)
+(use-package dired
+  :defer t
+  :config
+  (evil-define-key 'normal dired-mode-map
+    [mouse-1] 'dired-find-file
+    (kbd "l") 'dired-find-file
+    (kbd "<right>") 'dired-find-file
+    (kbd "h") 'dired-up-directory
+    (kbd "<left>") 'dired-up-directory
+    (kbd "q") 'kill-this-buffer
+    (kbd "'") 'bookmark-jump
+    (kbd "/") 'dired-narrow)
+  (setq dired-listing-switches "-AhgG --group-directories-first --time-style=+%d-%m-%y"
+        dired-dwim-target t))
 
-(setq dired-listing-switches "-AhgG --group-directories-first --time-style=+%d-%m-%y"
-      dired-dwim-target t)
+;; dired-narrow
+
+(use-package dired-narrow
+  :ensure t
+  :after dired)
 
 ;; diredfl
 
@@ -391,6 +410,11 @@
   (add-to-list 'exec-path "/usr/local/bin")
   (setq inferior-lisp-program "sbcl"))
 
+;; lua-mode
+
+(use-package lua-mode
+  :ensure t)
+
 ;; sudo-edit
 
 (use-package sudo-edit
@@ -402,6 +426,38 @@
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1))
+
+;; which-key
+
+(use-package which-key
+  :ensure t
+  :init
+  (which-key-mode 1)
+  :config
+  (setq which-key-side-window-location 'bottom
+        which-key-sort-order #'which-key-key-order
+        which-key-allow-imprecise-window-fit nil
+        which-key-sort-uppercase-first nil
+        which-key-add-column-padding 1
+        which-key-max-display-columns nil
+        which-key-min-display-lines 6
+        which-key-side-window-slot -10
+        which-key-side-window-max-height 0.25
+        which-key-idle-delay 0.8
+        which-key-max-description-length 25
+        which-key-allow-imprecise-window-fit nil
+        which-key-separator " 󰜴 " ))
+
+;; corfu
+
+(use-package corfu
+  :ensure t
+  ;; :hook
+  ;; ((prog-mode shell-mode eshell-mode) . corfu-mode)
+  :init
+  (setq completion-cycle-threshold 3
+        tab-always-indent 'complete)
+  (global-corfu-mode 1))
 
 ;; gcmh
 

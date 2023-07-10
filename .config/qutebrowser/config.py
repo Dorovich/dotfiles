@@ -11,6 +11,7 @@ config.load_autoconfig(False)
 import os
 Terminal = os.getenv("TERMINAL")
 Editor = os.getenv("EDITOR")
+Visual = os.getenv("VISUAL")
 Homedir = os.getenv("HOME")
 
 # UI {{{
