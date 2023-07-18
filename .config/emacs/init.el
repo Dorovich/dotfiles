@@ -33,6 +33,7 @@
       frame-resize-pixelwise t
       echo-keystrokes 0.02
       show-paren-delay 0
+      large-file-warning-threshold (* 35 1024 1024) ;; 20mb
       custom-file (expand-file-name "custom.el" user-emacs-directory))
 
 (setq-default bidi-display-reordering 'left-to-right
@@ -86,6 +87,10 @@
   (load-file user-init-file)
   (load-file user-init-file))
 
+(defun text-scale-reset ()
+  (interactive)
+  (text-scale-set 0))
+
 (defun display-startup-echo-area-message ()
   (message nil))
 
@@ -105,6 +110,8 @@
   :ensure t
   :config
   (setq undo-tree-history-directory-alist '(("." . "/tmp")))
+  (with-eval-after-load 'image-mode
+    (setq undo-tree-auto-save-history nil))
   (global-undo-tree-mode 1))
 
 ;; evil
@@ -113,7 +120,7 @@
   :ensure t
   :init
   (setq evil-want-integration t
-        evil-want-keybinding nil ; for evil-collection
+        evil-want-keybinding nil        ; for evil-collection
         evil-want-C-u-scroll t
         evil-want-Y-yank-to-eol t
         evil-normal-state-cursor '(box "#dbc49b")
@@ -128,11 +135,8 @@
     (kbd "U") 'evil-redo
     (kbd "C-+") 'text-scale-increase
     (kbd "C--") 'text-scale-decrease
+    (kbd "C-=") 'text-scale-reset
     "gcc" 'comment-or-uncomment-region)
-
-  (evil-define-key 'visual 'global
-    (kbd "C-c") 'evil-change-to-initial-state)
-
   (evil-mode 1))
 
 ;; evil-collection
@@ -217,26 +221,6 @@
   (set-face-background 'mode-line "#3a3a3a")
   (set-face-background 'mode-line-inactive "#222222"))
 
-;; (use-package modus-themes
-;; 	     :ensure t
-;; 	     :init
-;; 	     (setq modus-vivendi-palette-overrides
-;; 		   '((bg-main "#151515")
-;; 		     (bg-hl-line "#222222")
-;; 		     (keyword red-faint)
-;; 		     (builtin yellow-cooler)
-;; 		     (fnname green-faint)
-;; 		     (fg-prompt red-faint)
-;; 		     (fg-heading-1 red-faint)
-;; 		     (bg-mode-line-active "#363636")
-;; 		     (bg-mode-line-inactive "#222222")
-;; 		     (border-mode-line-active bg-mode-line-active)
-;; 		     (border-mode-line-inactive bg-mode-line-inactive)))
-;; 	     (setq modus-themes-italic-constructs t
-;; 		   modus-themes-bold-constructs t)
-;; 	     :config
-;; 	     (load-theme 'modus-vivendi :no-confirm))
-
 ;; rainbow
 
 (use-package rainbow-mode
@@ -302,9 +286,8 @@
 ;; org
 
 (use-package org
-  :defer t)
-
-(with-eval-after-load 'org
+  :defer t
+  :config
   (require 'org-tempo) ; abreviaciones como <s o <E
   (setq org-image-actual-width nil
         org-hide-leading-stars t
@@ -313,7 +296,9 @@
         org-fontify-done-headline t
         org-fontify-quote-and-verse-blocks t
         org-fontify-whole-heading-line t
-        org-return-follows-link t)
+        org-return-follows-link t))
+
+(with-eval-after-load 'org
   ;; Set different font sizes to headers
   (dolist
       (face
@@ -332,16 +317,14 @@
 
 (use-package org-bullets
   :ensure t
-  :hook 
-  (org-mode . org-bullets-mode)
+  :hook (org-mode . org-bullets-mode)
   :config
   (setq org-bullets-bullet-list '("󰪥" "" "" "󰴈")))
 
 (use-package toc-org
   :ensure t
   :commands toc-org-enable
-  :hook 
-  (org-mode . toc-org-enable))
+  :hook (org-mode . toc-org-enable))
 
 ;; dired
 
@@ -379,8 +362,7 @@
 (use-package nerd-icons-dired
   :ensure t
   :after (:all dired nerd-icons)
-  :hook
-  (dired-mode . nerd-icons-dired-mode))
+  :hook (dired-mode . nerd-icons-dired-mode))
 
 ;; counsel
 
@@ -421,6 +403,35 @@
   :ensure t
   :defer t)
 
+;; vterm
+
+(use-package vterm
+  :ensure t
+  :config
+  (setq shell-file-name "/bin/zsh"
+        vterm-max-scrollback 2500))
+
+(use-package vterm-toggle
+  :ensure t
+  :after vterm
+  :config
+  (global-set-key (kbd "C-x t t") 'vterm-toggle-cd)
+  (setq vterm-toggle-fullscreen-p nil
+        vterm-toggle-scope 'frame)
+  (add-to-list 'display-buffer-alist
+               '((lambda (buffer-or-name _)
+                   (let ((buffer (get-buffer buffer-or-name)))
+                     (with-current-buffer buffer
+                       (or (equal major-mode 'vterm-mode)
+                           (string-prefix-p vterm-buffer-name (buffer-name buffer))))))
+                 (display-buffer-reuse-window display-buffer-at-bottom)
+                 ;;(display-buffer-reuse-window display-buffer-in-direction)
+                 ;;display-buffer-in-direction/direction/dedicated is added in emacs27
+                 ;;(direction . bottom)
+                 ;;(dedicated . t) ;dedicated is supported in emacs27
+                 (reusable-frames . visible)
+                 (window-height . 0.3))))
+
 ;; doom-modeline
 
 (use-package doom-modeline
@@ -452,8 +463,6 @@
 
 (use-package corfu
   :ensure t
-  ;; :hook
-  ;; ((prog-mode shell-mode eshell-mode) . corfu-mode)
   :init
   (setq completion-cycle-threshold 3
         tab-always-indent 'complete)

@@ -111,6 +111,8 @@ nmap <leader>s :call RunFile()<cr>
 " Limpiar la carpeta con archivos temporales:
 function! ClearTemp()
 	call delete($HOME.'/.vim/tmp', 'rf')
+	call delete($HOME.'/.vim/.viminfo', 'rf')
+	call delete($HOME.'/.vim/.netrwhist', 'rf')
 endfunction
 
 " Para que C-q y C-s lleguen a vim:
