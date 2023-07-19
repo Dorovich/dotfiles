@@ -268,20 +268,22 @@ restore it's always-on-top state afterwords"
 ;; Scripts
 (defparameter *script-manager* "scriptctl")
 
-(defun make-script (name &optional arg)
-  (concatenate 'string
-	       "run-shell-command " *script-manager* " " name " " arg))
+(defun make-script (exec name &optional arg)
+  (let ((cmd (concatenate 'string *script-manager* " " name " " arg)))
+    (if exec
+        (run-shell-command cmd)
+      (concatenate 'string "run-shell-command " cmd))))
 
 (defcommand screenshot () ()
-  (make-script "scrot")
+  (make-script t "scrot")
   (sleep 0.5)
   (message "Screenshot taken!"))
 
 (define-key *top-map* (kbd "s-Print") "screenshot")
-(define-key *top-map* (kbd "s-Insert") (make-script "snippet" "load"))
-(define-key *top-map* (kbd "s-m") (make-script "music"))
-(define-key *top-map* (kbd "s-+") (make-script "volume" "up"))
-(define-key *top-map* (kbd "s--") (make-script "volume" "down"))
-(define-key *top-map* (kbd "s-O") (make-script "sinks"))
-(define-key *top-map* (kbd "s-S") (make-script "steamapp"))
-(define-key *top-map* (kbd "s-P") (make-script "pass"))
+(define-key *top-map* (kbd "s-Insert") (make-script nil "snippet" "load"))
+(define-key *top-map* (kbd "s-m") (make-script nil "music"))
+(define-key *top-map* (kbd "s-+") (make-script nil "volume" "up"))
+(define-key *top-map* (kbd "s--") (make-script nil "volume" "down"))
+(define-key *top-map* (kbd "s-O") (make-script nil "sinks"))
+(define-key *top-map* (kbd "s-S") (make-script nil "steamapp"))
+(define-key *top-map* (kbd "s-P") (make-script nil "pass"))
