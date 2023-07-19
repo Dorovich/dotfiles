@@ -1,0 +1,287 @@
+;;; -*- mode: lisp; -*-
+;;; vi: ft=lisp
+
+(in-package :stumpwm)
+
+;;; Startup Commands
+
+(defvar *first-run* t)
+
+(defun startup-programs ()
+  (run-shell-command "nitrogen --restore")
+  (when *first-run*
+    ;; (run-shell-command "sh ~/.xprofile")
+    (run-shell-command "xsetroot -cursor_name left_ptr")
+    (setf *first-run* nil)))
+
+(add-hook *start-hook* #'startup-programs)
+
+;;; Helpers
+
+(defun always-on-top-off (window) ()
+  "Stop the given WINDOW from always being on top of other windows"
+  (let ((ontop-wins (group-on-top-windows (current-group))))
+    (setf (group-on-top-windows (current-group))
+          (remove window ontop-wins))))
+
+(defun always-on-top-on (window) ()
+       "Set the given WINDOW to always be on top of other windows"
+       (let ((w window)
+             (windows (the list (group-on-top-windows (current-group)))))
+         (when w
+           (unless (find w windows)
+             (push window (group-on-top-windows (current-group)))))))
+
+(defmacro with-on-top (win &body body)
+  "Make sure WIN is on the top level while the body is running and
+restore it's always-on-top state afterwords"
+  (let ((cw (gensym))
+        (ontop (gensym)))
+    `(let* ((,cw ,win)
+            (,ontop (find ,cw (group-on-top-windows (current-group)))))
+       (unwind-protect
+           (progn (unless ,ontop (always-on-top-on ,cw))
+                  ,@body))
+       (unless ,ontop (always-on-top-off ,cw)))))
+
+(defun slop-get-pos ()
+  (mapcar #'parse-integer (ppcre:split "[^0-9]" (run-shell-command
+                                                 "slop -f \"%x %y %w %h\"" t))))
+
+;;; Theme
+(setf *colors*
+      '("#151515"   ;black
+        "#e06c75"   ;red
+        "#98c379"   ;green
+        "#d19a66"   ;yellow
+        "#7e9cd8"   ;blue
+        "#c678dd"   ;magenta
+        "#346475"   ;cyan
+        "#d1d1d1")) ;white
+
+(update-color-map (current-screen))
+
+(defparameter *mode-line-bg-color* (nth 0 *colors*))
+(defparameter *mode-line-fg-color* (nth 7 *colors*))
+(defparameter *msg-bg-color* (nth 0 *colors*))
+(defparameter *msg-fg-color* (nth 7 *colors*))
+(defparameter *msg-border-color* (nth 1 *colors*))
+
+(set-bg-color *msg-bg-color*)
+(set-fg-color *msg-fg-color*)
+(set-border-color *msg-border-color*)
+(set-focus-color (nth 6 *colors*))
+(set-unfocus-color (nth 0 *colors*))
+(set-float-focus-color (nth 6 *colors*))
+(set-float-unfocus-color (nth 0 *colors*))
+
+;;; Gapping
+(load-module "swm-gaps")
+(setf swm-gaps:*inner-gaps-size* 3
+      swm-gaps:*outer-gaps-size* 3
+      swm-gaps:*head-gaps-size* 0)
+
+(when *initializing*
+  (swm-gaps:toggle-gaps))
+
+;;; Decent fonts
+(load-module "ttf-fonts")
+(ql:quickload :clx-truetype)
+(clx-truetype:cache-fonts)
+(set-font (make-instance 'xft:font
+			 :family "mononoki Nerd Font Mono"
+			 :subfamily "Regular"
+			 :size 14
+			 :antialias t))
+
+;;; Basic Settings
+(setf *window-format* "%m%s%35t")
+
+(setf *mode-line-background-color* *mode-line-bg-color*
+      *mode-line-border-color* *mode-line-bg-color*
+      *mode-line-foreground-color* *mode-line-fg-color*
+      *mode-line-timeout* 1)
+
+(setf *message-window-gravity* :center
+      *window-border-style* :thin
+      *message-window-padding* 6
+      *message-window-y-padding* 6
+      *maxsize-border-width* 2
+      *normal-border-width* 2
+      *transient-border-width* 2
+      stumpwm::*float-window-border* 1
+      stumpwm::*float-window-title-height* 1)
+
+(setf *input-window-gravity* :center
+      *message-window-input-gravity* :left
+      *input-completion-show-empty* t)
+
+(set-msg-border-width 3)
+
+(setf *timeout-wait* 5)
+(setf *timeout-frame-indicator-wait* 0)
+
+;; Focus Follow Mouse
+(setf *mouse-focus-policy* :sloppy)
+
+;; Don't jump between groups when switching apps
+(setf *run-or-raise-all-groups* nil)
+
+;; startup message
+;; (setf *startup-message* "Welcome back to ^1Stumpwm^n!")
+(setf *startup-message* nil)
+
+;;; Groups
+(gnew "one")
+(gnewbg "two")
+(gnewbg "three")
+(gnewbg "four")
+(gnewbg "five")
+;;(gnewbg-dynamic "auto")
+
+;;; Splits
+(defcommand hsplit-and-focus () ()
+  "create a new frame on the right and focus it."
+  (hsplit)
+  (move-focus :right))
+
+(defcommand vsplit-and-focus () ()
+  "create a new frame below and focus it."
+  (vsplit)
+  (move-focus :down))
+
+(define-key *root-map* (kbd "v") "hsplit-and-focus")
+(define-key *root-map* (kbd "s") "vsplit-and-focus")
+
+;;; Modeline Settings
+(setf *time-modeline-string* "%a %d de %b, %H:%M")
+(setf *screen-mode-line-format*
+    (list
+    ;; Groups
+    " ^7[^(:fg \"#56b6c2\")%n^7] "
+    ;; Pad to right
+    "^>"
+    ;; Date
+    "^n"
+    "%d "))
+
+(defun enable-mode-line-everywhere ()
+(loop for screen in *screen-list* do
+    (loop for head in (screen-heads screen) do
+            (enable-mode-line screen head t))))
+
+(enable-mode-line-everywhere)
+
+;; Prefix Key (Super-a)
+(set-prefix-key (kbd "s-x"))
+
+(define-key *root-map* (kbd "ESC") "abort")
+
+;; turn on/off the mode line for the current head only.
+(define-key *top-map* (kbd "s-B") "mode-line")
+
+;; Toggle gaps
+(define-key *top-map* (kbd "s-G") "toggle-gaps")
+
+;; Window Focusing
+(define-key *top-map* (kbd "s-h") "move-focus left")
+(define-key *top-map* (kbd "s-j") "move-focus down")
+(define-key *top-map* (kbd "s-k") "move-focus up")
+(define-key *top-map* (kbd "s-l") "move-focus right")
+(define-key *top-map* (kbd "s-g") "windowlist")
+
+;; Window Movement
+(define-key *top-map* (kbd "s-H") "move-window left")
+(define-key *top-map* (kbd "s-J") "move-window down")
+(define-key *top-map* (kbd "s-K") "move-window up")
+(define-key *top-map* (kbd "s-L") "move-window right")
+
+;; Split and maximizing
+(define-key *top-map* (kbd "s-s") "vsplit")
+(define-key *top-map* (kbd "s-v") "hsplit")
+(define-key *top-map* (kbd "s-o") "only")
+(define-key *top-map* (kbd "s-r") "remove")
+
+(defcommand fullscreen-and-raise () ()
+  "Fullscreen window and make sure it's on top of all other windows"
+  (with-on-top (stumpwm:current-window) (fullscreen)))
+
+(define-key *top-map* (kbd "s-f") "fullscreen-and-raise")
+
+;; Pulling windows
+(define-key *top-map* (kbd "s-n") "pull-hidden-next")
+(define-key *top-map* (kbd "s-p") "pull-hidden-previous")
+
+;; Kill windows
+(define-key *top-map* (kbd "s-c") "delete")
+(define-key *top-map* (kbd "s-C") "kill")
+
+;; Session
+(define-key *top-map* (kbd "s-Q") "quit-confirm")
+(define-key *top-map* (kbd "s-R") "restart-hard")
+
+;; Groups
+(define-key *top-map* (kbd "s-1") "gselect one")
+(define-key *top-map* (kbd "s-2") "gselect two")
+(define-key *top-map* (kbd "s-3") "gselect three")
+(define-key *top-map* (kbd "s-4") "gselect four")
+(define-key *top-map* (kbd "s-5") "gselect five")
+;;(define-key *top-map* (kbd "s-6") "gselect auto")
+
+(define-key *top-map* (kbd "s-!") "gmove one")
+(define-key *top-map* (kbd "s-\"") "gmove two")
+(define-key *top-map* (kbd "s-periodcentered") "gmove three")
+(define-key *top-map* (kbd "s-$") "gmove four")
+(define-key *top-map* (kbd "s-%") "gmove five")
+;;(define-key *top-map* (kbd "s-&") "gmove auto")
+
+(defcommand lock (suspendp) ((:y-or-n "Suspend the system as well? "))
+  "Lock the screen, and if suspendp is non-nil, also suspend the system."
+  (run-shell-command "slock")
+  (if suspendp
+      (run-shell-command "systemctl suspend")))
+
+(define-key *top-map* (kbd "s-ESC") "lock")
+
+;; Programs
+(define-key *top-map* (kbd "s-d") "run-shell-command dmenu_run -i -p 'Run:'")
+(define-key *top-map* (kbd "s-RET") "run-shell-command st")
+
+(defcommand firefox () ()
+  "Start Firefox or switch to it, if it is already running"
+  (run-or-raise "firefox" '(:class "Firefox")))
+
+(define-key *top-map* (kbd "s-b") "firefox")
+
+(defcommand emacsclient () ()
+  "Start the Emacs client or switch to it, if it is already running. If no client is running, a new instance is created."
+  (run-or-raise "emacsclient -a 'emacs' -c" '(:class "Emacs")))
+
+(define-key *top-map* (kbd "s-e") "emacsclient")
+
+(defcommand dired () ()
+  "Start Dired on the Emacs client or switch to it, if it is already running. If no client is running, a new instance is created."
+  (run-or-raise "emacsclient -a 'emacs' -ce '(dired nil)'" '(:class "Emacs")))
+
+(define-key *top-map* (kbd "s-w") "dired")
+
+;; Scripts
+(defparameter *script-manager* "scriptctl")
+
+(defun make-script (name &optional arg)
+  (concatenate 'string
+	       "run-shell-command " *script-manager* " " name " " arg))
+
+(defcommand screenshot () ()
+  (make-script "scrot")
+  (sleep 0.5)
+  (message "Screenshot taken!"))
+
+(define-key *top-map* (kbd "s-Print") "screenshot")
+(define-key *top-map* (kbd "s-Insert") (make-script "snippet" "load"))
+(define-key *top-map* (kbd "s-m") (make-script "music"))
+(define-key *top-map* (kbd "s-+") (make-script "volume" "up"))
+(define-key *top-map* (kbd "s--") (make-script "volume" "down"))
+(define-key *top-map* (kbd "s-O") (make-script "sinks"))
+(define-key *top-map* (kbd "s-S") (make-script "steamapp"))
+(define-key *top-map* (kbd "s-P") (make-script "pass"))

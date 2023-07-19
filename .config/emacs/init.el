@@ -296,7 +296,8 @@
         org-fontify-done-headline t
         org-fontify-quote-and-verse-blocks t
         org-fontify-whole-heading-line t
-        org-return-follows-link t))
+        org-return-follows-link t
+        org-html-validation-link nil))
 
 (with-eval-after-load 'org
   ;; Set different font sizes to headers
@@ -388,6 +389,8 @@
 (use-package sly
   :ensure t
   :defer t
+  :init
+  (setq-default sly-symbol-completion-mode nil)
   :config
   (add-to-list 'exec-path "/usr/local/bin")
   (setq inferior-lisp-program "sbcl"))
