@@ -65,7 +65,7 @@ restore it's always-on-top state afterwords"
 (defparameter *mode-line-fg-color* (nth 7 *colors*))
 (defparameter *msg-bg-color* (nth 0 *colors*))
 (defparameter *msg-fg-color* (nth 7 *colors*))
-(defparameter *msg-border-color* (nth 1 *colors*))
+(defparameter *msg-border-color* (nth 6 *colors*))
 
 (set-bg-color *msg-bg-color*)
 (set-fg-color *msg-fg-color*)
@@ -109,12 +109,12 @@ restore it's always-on-top state afterwords"
       *maxsize-border-width* 2
       *normal-border-width* 2
       *transient-border-width* 2
-      stumpwm::*float-window-border* 1
-      stumpwm::*float-window-title-height* 1)
+      stumpwm::*float-window-border* 2
+      stumpwm::*float-window-title-height* 2)
 
 (setf *input-window-gravity* :center
       *message-window-input-gravity* :left
-      *input-completion-show-empty* t)
+      *input-completion-show-empty* nil)
 
 (set-msg-border-width 3)
 
@@ -137,7 +137,6 @@ restore it's always-on-top state afterwords"
 (gnewbg "three")
 (gnewbg "four")
 (gnewbg "five")
-;;(gnewbg-dynamic "auto")
 
 ;;; Splits
 (defcommand hsplit-and-focus () ()
@@ -226,14 +225,12 @@ restore it's always-on-top state afterwords"
 (define-key *top-map* (kbd "s-3") "gselect three")
 (define-key *top-map* (kbd "s-4") "gselect four")
 (define-key *top-map* (kbd "s-5") "gselect five")
-;;(define-key *top-map* (kbd "s-6") "gselect auto")
 
 (define-key *top-map* (kbd "s-!") "gmove one")
 (define-key *top-map* (kbd "s-\"") "gmove two")
 (define-key *top-map* (kbd "s-periodcentered") "gmove three")
 (define-key *top-map* (kbd "s-$") "gmove four")
 (define-key *top-map* (kbd "s-%") "gmove five")
-;;(define-key *top-map* (kbd "s-&") "gmove auto")
 
 (defcommand lock (suspendp) ((:y-or-n "Suspend the system as well? "))
   "Lock the screen, and if suspendp is non-nil, also suspend the system."
