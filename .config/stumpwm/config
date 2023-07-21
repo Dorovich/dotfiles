@@ -10,8 +10,8 @@
 (defun startup-programs ()
   (run-shell-command "nitrogen --restore")
   (when *first-run*
-    ;; (run-shell-command "sh ~/.xprofile")
     (run-shell-command "xsetroot -cursor_name left_ptr")
+    (run-shell-command "setxkbmap -option caps:ctrl_modifier")
     (setf *first-run* nil)))
 
 (add-hook *start-hook* #'startup-programs)
@@ -82,7 +82,7 @@ restore it's always-on-top state afterwords"
       swm-gaps:*head-gaps-size* 0)
 
 (when *initializing*
-  (swm-gaps:toggle-gaps))
+  (swm-gaps:toggle-gaps-on))
 
 ;;; Decent fonts
 (load-module "ttf-fonts")
@@ -116,9 +116,9 @@ restore it's always-on-top state afterwords"
       *message-window-input-gravity* :left
       *input-completion-show-empty* nil)
 
-(set-msg-border-width 3)
+(set-msg-border-width 2)
 
-(setf *timeout-wait* 5)
+(setf *timeout-wait* 3)
 (setf *timeout-frame-indicator-wait* 0)
 
 ;; Focus Follow Mouse
@@ -235,37 +235,36 @@ restore it's always-on-top state afterwords"
 (defcommand lock (suspendp) ((:y-or-n "Suspend the system as well? "))
   "Lock the screen, and if suspendp is non-nil, also suspend the system."
   (run-shell-command "slock")
-  (if suspendp
-      (run-shell-command "systemctl suspend")))
+  (when suspendp (run-shell-command "systemctl suspend")))
 
 (define-key *top-map* (kbd "s-ESC") "lock")
 
 ;; Programs
-(define-key *top-map* (kbd "s-d") "run-shell-command dmenu_run -i -p 'Run:'")
-(define-key *top-map* (kbd "s-RET") "run-shell-command st")
-
 (defcommand firefox () ()
   "Start Firefox or switch to it, if it is already running"
   (run-or-raise "firefox" '(:class "Firefox")))
-
-(define-key *top-map* (kbd "s-b") "firefox")
 
 (defcommand emacsclient () ()
   "Start the Emacs client or switch to it, if it is already running. If no client is running, a new instance is created."
   (run-or-raise "emacsclient -a 'emacs' -c" '(:class "Emacs")))
 
-(define-key *top-map* (kbd "s-e") "emacsclient")
-
 (defcommand dired () ()
   "Start Dired on the Emacs client or switch to it, if it is already running. If no client is running, a new instance is created."
   (run-or-raise "emacsclient -a 'emacs' -ce '(dired nil)'" '(:class "Emacs")))
 
+(define-key *top-map* (kbd "s-d") "run-shell-command dmenu_run -i -p 'Run:'")
+(define-key *top-map* (kbd "s-RET") "run-shell-command st")
+(define-key *top-map* (kbd "s-b") "firefox")
+(define-key *top-map* (kbd "s-e") "emacsclient")
 (define-key *top-map* (kbd "s-w") "dired")
+(define-key *top-map* (kbd "s-W") "run-shell-command pcmanfm")
 
 ;; Scripts
 (defparameter *script-manager* "scriptctl")
 
-(defun make-script (exec name &optional arg)
+(defun make-script (exec &optional name arg)
+  "Make a script command string using `*script-manager*', and optionally a script name and an argument.
+If exec is non-nil, the shell command will be run from this function, else it will return the string."
   (let ((cmd (concatenate 'string *script-manager* " " name " " arg)))
     (if exec
         (run-shell-command cmd)
@@ -284,3 +283,4 @@ restore it's always-on-top state afterwords"
 (define-key *top-map* (kbd "s-O") (make-script nil "sinks"))
 (define-key *top-map* (kbd "s-S") (make-script nil "steamapp"))
 (define-key *top-map* (kbd "s-P") (make-script nil "pass"))
+(define-key *top-map* (kbd "s-y") (make-script nil))
