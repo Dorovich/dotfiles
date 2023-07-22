@@ -1,4 +1,5 @@
 ;;; -*- mode: lisp; -*-
+
 ;;; vi: ft=lisp
 
 (in-package :stumpwm)
@@ -270,6 +271,9 @@ If exec is non-nil, the shell command will be run from this function, else it wi
         (run-shell-command cmd)
       (concatenate 'string "run-shell-command " cmd))))
 
+(defcommand shutdown () ()
+  (run-shell-command "shutdown -h now"))
+
 (defcommand screenshot () ()
   (make-script t "scrot")
   (sleep 0.5)
@@ -284,3 +288,32 @@ If exec is non-nil, the shell command will be run from this function, else it wi
 (define-key *top-map* (kbd "s-S") (make-script nil "steamapp"))
 (define-key *top-map* (kbd "s-P") (make-script nil "pass"))
 (define-key *top-map* (kbd "s-y") (make-script nil))
+
+;; clx-truetype memory leak fix
+
+;; (run-with-timer
+;;  900 900
+;;  (lambda ()
+;;    (loop for font in (stumpwm::screen-fonts (current-screen))
+;;          when (typep font 'xft:font)
+;;            do (clrhash (xft::font-string-line-bboxes font))
+;;               (clrhash (xft::font-string-line-alpha-maps font))
+;;               (clrhash (xft::font-string-bboxes font))
+;;               (clrhash (xft::font-string-alpha-maps font)))))
+
+;; slynk
+
+; parecido, con slime:
+;   https://www.kaashif.co.uk/2015/06/28/hacking-stumpwm-with-common-lisp/
+; con sly:
+;   https://www.reddit.com/r/stumpwm/comments/ouuh1c/how_to_connect_sly_to_stumpwm_to_modifying_it_in/
+
+(require :slynk)
+
+(defcommand slynk (port) ((:string "Port number: "))
+  (sb-thread:make-thread
+   (lambda ()
+     (slynk:create-server
+      :port (parse-integer port)
+      :dont-close t))
+   :name "slynk-manual"))
