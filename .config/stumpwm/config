@@ -166,61 +166,95 @@ restore it's always-on-top state afterwords"
     "%d "))
 
 (defun enable-mode-line-everywhere ()
-(loop for screen in *screen-list* do
+  (loop for screen in *screen-list* do
     (loop for head in (screen-heads screen) do
-            (enable-mode-line screen head t))))
+      (enable-mode-line screen head t))))
 
 (enable-mode-line-everywhere)
 
-;; Prefix Key (Super-a)
+;; Commands
+
+(defcommand fullscreen-and-raise () ()
+  "Fullscreen window and make sure it's on top of all other windows"
+  (with-on-top (stumpwm:current-window) (fullscreen)))
+
+(defcommand lock (suspendp) ((:y-or-n "Suspend the system as well? "))
+  "Lock the screen, and if suspendp is non-nil, also suspend the system."
+  (run-shell-command "slock")
+  (when suspendp (run-shell-command "systemctl suspend")))
+
+(defcommand firefox () ()
+  "Start Firefox or switch to it, if it is already running"
+  (run-or-raise "firefox" '(:class "firefox")))
+
+(defcommand emacsclient () ()
+  "Start the Emacs client or switch to it, if it is already running. If no client is running, a new instance is created."
+  (run-or-raise "emacsclient -a 'emacs' -c" '(:class "Emacs")))
+
+(defcommand dired () ()
+  "Start Dired on the Emacs client or switch to it, if it is already running. If no client is running, a new instance is created."
+  (run-or-raise "emacsclient -a 'emacs' -c" '(:class "Emacs"))
+  (run-shell-command "emacsclient -e '(dired nil)'"))
+
+(defcommand steam () ()
+  "Start Steam or switch to it, if it is already running"
+  (run-or-raise "steam" '(:class "steam")))
+
+(defcommand shutdown () ()
+  (run-shell-command "shutdown -h now"))
+
+(defcommand screenshot () ()
+  (make-script t "scrot")
+  (sleep 0.5)
+  (message "Screenshot taken!"))
+
+;; Key mappings
+
+; Prefix Key (Super-a)
 (set-prefix-key (kbd "s-x"))
 
 (define-key *root-map* (kbd "ESC") "abort")
 
-;; turn on/off the mode line for the current head only.
+; turn on/off the mode line for the current head only.
 (define-key *top-map* (kbd "s-B") "mode-line")
 
-;; Toggle gaps
+; Toggle gaps
 (define-key *top-map* (kbd "s-G") "toggle-gaps")
 
-;; Window Focusing
+; Window Focusing
 (define-key *top-map* (kbd "s-h") "move-focus left")
 (define-key *top-map* (kbd "s-j") "move-focus down")
 (define-key *top-map* (kbd "s-k") "move-focus up")
 (define-key *top-map* (kbd "s-l") "move-focus right")
 (define-key *top-map* (kbd "s-g") "windowlist")
 
-;; Window Movement
+; Window Movement
 (define-key *top-map* (kbd "s-H") "move-window left")
 (define-key *top-map* (kbd "s-J") "move-window down")
 (define-key *top-map* (kbd "s-K") "move-window up")
 (define-key *top-map* (kbd "s-L") "move-window right")
 
-;; Split and maximizing
+; Split and maximizing
 (define-key *top-map* (kbd "s-s") "vsplit")
 (define-key *top-map* (kbd "s-v") "hsplit")
 (define-key *top-map* (kbd "s-o") "only")
 (define-key *top-map* (kbd "s-r") "remove")
 
-(defcommand fullscreen-and-raise () ()
-  "Fullscreen window and make sure it's on top of all other windows"
-  (with-on-top (stumpwm:current-window) (fullscreen)))
-
 (define-key *top-map* (kbd "s-f") "fullscreen-and-raise")
 
-;; Pulling windows
+; Pulling windows
 (define-key *top-map* (kbd "s-n") "pull-hidden-next")
 (define-key *top-map* (kbd "s-p") "pull-hidden-previous")
 
-;; Kill windows
+; Kill windows
 (define-key *top-map* (kbd "s-c") "delete")
 (define-key *top-map* (kbd "s-C") "kill")
 
-;; Session
+; Session
 (define-key *top-map* (kbd "s-Q") "quit-confirm")
 (define-key *top-map* (kbd "s-R") "restart-hard")
 
-;; Groups
+; Groups
 (define-key *top-map* (kbd "s-1") "gselect one")
 (define-key *top-map* (kbd "s-2") "gselect two")
 (define-key *top-map* (kbd "s-3") "gselect three")
@@ -233,26 +267,9 @@ restore it's always-on-top state afterwords"
 (define-key *top-map* (kbd "s-$") "gmove four")
 (define-key *top-map* (kbd "s-%") "gmove five")
 
-(defcommand lock (suspendp) ((:y-or-n "Suspend the system as well? "))
-  "Lock the screen, and if suspendp is non-nil, also suspend the system."
-  (run-shell-command "slock")
-  (when suspendp (run-shell-command "systemctl suspend")))
-
 (define-key *top-map* (kbd "s-ESC") "lock")
 
 ;; Programs
-(defcommand firefox () ()
-  "Start Firefox or switch to it, if it is already running"
-  (run-or-raise "firefox" '(:class "Firefox")))
-
-(defcommand emacsclient () ()
-  "Start the Emacs client or switch to it, if it is already running. If no client is running, a new instance is created."
-  (run-or-raise "emacsclient -a 'emacs' -c" '(:class "Emacs")))
-
-(defcommand dired () ()
-  "Start Dired on the Emacs client or switch to it, if it is already running. If no client is running, a new instance is created."
-  (run-or-raise "emacsclient -a 'emacs' -ce '(dired nil)'" '(:class "Emacs")))
-
 (define-key *top-map* (kbd "s-d") "run-shell-command dmenu_run -i -p 'Run:'")
 (define-key *top-map* (kbd "s-RET") "run-shell-command st")
 (define-key *top-map* (kbd "s-b") "firefox")
@@ -271,14 +288,6 @@ If exec is non-nil, the shell command will be run from this function, else it wi
         (run-shell-command cmd)
       (concatenate 'string "run-shell-command " cmd))))
 
-(defcommand shutdown () ()
-  (run-shell-command "shutdown -h now"))
-
-(defcommand screenshot () ()
-  (make-script t "scrot")
-  (sleep 0.5)
-  (message "Screenshot taken!"))
-
 (define-key *top-map* (kbd "s-Print") "screenshot")
 (define-key *top-map* (kbd "s-Insert") (make-script nil "snippet" "load"))
 (define-key *top-map* (kbd "s-m") (make-script nil "music"))
@@ -290,7 +299,6 @@ If exec is non-nil, the shell command will be run from this function, else it wi
 (define-key *top-map* (kbd "s-y") (make-script nil))
 
 ;; clx-truetype memory leak fix
-
 ;; (run-with-timer
 ;;  900 900
 ;;  (lambda ()
@@ -302,7 +310,6 @@ If exec is non-nil, the shell command will be run from this function, else it wi
 ;;               (clrhash (xft::font-string-alpha-maps font)))))
 
 ;; slynk
-
 ; parecido, con slime:
 ;   https://www.kaashif.co.uk/2015/06/28/hacking-stumpwm-with-common-lisp/
 ; con sly:
