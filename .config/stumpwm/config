@@ -9,45 +9,16 @@
 (defvar *first-run* t)
 
 (defun startup-programs ()
-  (run-shell-command "nitrogen --restore")
-  (when *first-run*
-    (run-shell-command "xsetroot -cursor_name left_ptr")
-    (run-shell-command "setxkbmap -option caps:ctrl_modifier")
-    (setf *first-run* nil)))
+  (sb-thread:make-thread
+   (lambda ()
+     (run-shell-command "nitrogen --restore")
+     (when *first-run*
+       (run-shell-command "xsetroot -cursor_name left_ptr")
+       (run-shell-command "setxkbmap -option caps:ctrl_modifier")
+       (setf *first-run* nil)))
+   :name "startup-programs"))
 
 (add-hook *start-hook* #'startup-programs)
-
-;;; Helpers
-
-(defun always-on-top-off (window) ()
-  "Stop the given WINDOW from always being on top of other windows"
-  (let ((ontop-wins (group-on-top-windows (current-group))))
-    (setf (group-on-top-windows (current-group))
-          (remove window ontop-wins))))
-
-(defun always-on-top-on (window) ()
-       "Set the given WINDOW to always be on top of other windows"
-       (let ((w window)
-             (windows (the list (group-on-top-windows (current-group)))))
-         (when w
-           (unless (find w windows)
-             (push window (group-on-top-windows (current-group)))))))
-
-(defmacro with-on-top (win &body body)
-  "Make sure WIN is on the top level while the body is running and
-restore it's always-on-top state afterwords"
-  (let ((cw (gensym))
-        (ontop (gensym)))
-    `(let* ((,cw ,win)
-            (,ontop (find ,cw (group-on-top-windows (current-group)))))
-       (unwind-protect
-           (progn (unless ,ontop (always-on-top-on ,cw))
-                  ,@body))
-       (unless ,ontop (always-on-top-off ,cw)))))
-
-(defun slop-get-pos ()
-  (mapcar #'parse-integer (ppcre:split "[^0-9]" (run-shell-command
-                                                 "slop -f \"%x %y %w %h\"" t))))
 
 ;;; Theme
 (setf *colors*
@@ -87,13 +58,12 @@ restore it's always-on-top state afterwords"
 
 ;;; Decent fonts
 (load-module "ttf-fonts")
-(ql:quickload :clx-truetype)
 (clx-truetype:cache-fonts)
 (set-font (make-instance 'xft:font
-			 :family "mononoki Nerd Font Mono"
-			 :subfamily "Regular"
-			 :size 14
-			 :antialias t))
+                         :family "mononoki Nerd Font Mono"
+                         :subfamily "Regular"
+                         :size 14
+                         :antialias t))
 
 ;;; Basic Settings
 (setf *window-format* "%m%s%35t")
@@ -154,16 +124,25 @@ restore it's always-on-top state afterwords"
 (define-key *root-map* (kbd "s") "vsplit-and-focus")
 
 ;;; Modeline Settings
-(setf *time-modeline-string* "%a %d de %b, %H:%M")
-(setf *screen-mode-line-format*
-    (list
-    ;; Groups
-    " ^7[^(:fg \"#56b6c2\")%n^7] "
-    ;; Pad to right
-    "^>"
-    ;; Date
-    "^n"
-    "%d "))
+(load-module "battery-portable")
+(load-module "wifi")
+
+(let ((is-laptop nil))
+  (when is-laptop
+    (setf *refresh-time* 30
+          wifi:*wifi-modeline-fmt* "Wifi: %p"))
+  (setf *time-modeline-string* "%a %d de %b, %H:%M"
+        *screen-mode-line-format* (list
+                                   ;; Groups
+                                   " ^7[^(:fg \"#56b6c2\")%n^7] "
+                                   ;; Pad to right
+                                   "^>"
+                                   ;; Battery
+                                   (when is-laptop "^n%B, ") 
+                                   ;; Wifi
+                                   (when is-laptop "^n%I, ") 
+                                   ;; Date
+                                   "^n%d ")))
 
 (defun enable-mode-line-everywhere ()
   (loop for screen in *screen-list* do
@@ -174,17 +153,15 @@ restore it's always-on-top state afterwords"
 
 ;; Commands
 
-(defcommand fullscreen-and-raise () ()
-  "Fullscreen window and make sure it's on top of all other windows"
-  (with-on-top (stumpwm:current-window) (fullscreen)))
-
-(defcommand lock (suspendp) ((:y-or-n "Suspend the system as well? "))
+(defcommand lock () ()
   "Lock the screen, and if suspendp is non-nil, also suspend the system."
-  (run-shell-command "slock")
-  (when suspendp (run-shell-command "systemctl suspend")))
+  (let ((suspendp (y-or-n-p (format nil "Suspend the system as well? "))))
+    (xlib:unmap-window (screen-message-window (current-screen)))
+    (run-shell-command "slock")
+    (when suspendp (run-shell-command "systemctl suspend"))))
 
 (defcommand firefox () ()
-  "Start Firefox or switch to it, if it is already running"
+  "Start Firefox or switch to it, if it is already running."
   (run-or-raise "firefox" '(:class "firefox")))
 
 (defcommand emacsclient () ()
@@ -197,8 +174,14 @@ restore it's always-on-top state afterwords"
   (run-shell-command "emacsclient -e '(dired nil)'"))
 
 (defcommand steam () ()
-  "Start Steam or switch to it, if it is already running"
-  (run-or-raise "steam" '(:class "steam")))
+  "Start Steam or switch to it, if it is already running on any group."
+  (let ((*run-or-raise-all-groups* t))
+    (run-or-raise "steam" '(:class "steam"))))
+
+(defcommand discord () ()
+  "Start Discord (WebCord) or switch to it, if it is already running on any group."
+  (let ((*run-or-raise-all-groups* t))
+    (run-or-raise "discord" '(:class "WebCord"))))
 
 (defcommand shutdown () ()
   (run-shell-command "shutdown -h now"))
@@ -208,9 +191,17 @@ restore it's always-on-top state afterwords"
   (sleep 0.5)
   (message "Screenshot taken!"))
 
+(defcommand hdmi-side () ()
+  (run-shell-command "xrandr --output HDMI-A-0 --auto --right-of DP-0")
+  (run-shell-command "nitrogen --restore")
+  (enable-mode-line-everywhere))
+
+(defcommand hdmi-reset () ()
+  (run-shell-command "xrandr --output DP-0 --auto"))
+
 ;; Key mappings
 
-; Prefix Key (Super-a)
+; Prefix Key (Super-x)
 (set-prefix-key (kbd "s-x"))
 
 (define-key *root-map* (kbd "ESC") "abort")
@@ -227,6 +218,8 @@ restore it's always-on-top state afterwords"
 (define-key *top-map* (kbd "s-k") "move-focus up")
 (define-key *top-map* (kbd "s-l") "move-focus right")
 (define-key *top-map* (kbd "s-g") "windowlist")
+(define-key *top-map* (kbd "s-n") "pull-hidden-next")
+(define-key *top-map* (kbd "s-p") "pull-hidden-previous")
 
 ; Window Movement
 (define-key *top-map* (kbd "s-H") "move-window left")
@@ -239,12 +232,7 @@ restore it's always-on-top state afterwords"
 (define-key *top-map* (kbd "s-v") "hsplit")
 (define-key *top-map* (kbd "s-o") "only")
 (define-key *top-map* (kbd "s-r") "remove")
-
-(define-key *top-map* (kbd "s-f") "fullscreen-and-raise")
-
-; Pulling windows
-(define-key *top-map* (kbd "s-n") "pull-hidden-next")
-(define-key *top-map* (kbd "s-p") "pull-hidden-previous")
+(define-key *top-map* (kbd "s-f") "fullscreen")
 
 ; Kill windows
 (define-key *top-map* (kbd "s-c") "delete")
@@ -286,7 +274,7 @@ If exec is non-nil, the shell command will be run from this function, else it wi
   (let ((cmd (concatenate 'string *script-manager* " " name " " arg)))
     (if exec
         (run-shell-command cmd)
-      (concatenate 'string "run-shell-command " cmd))))
+        (concatenate 'string "run-shell-command " cmd))))
 
 (define-key *top-map* (kbd "s-Print") "screenshot")
 (define-key *top-map* (kbd "s-Insert") (make-script nil "snippet" "load"))
@@ -310,10 +298,10 @@ If exec is non-nil, the shell command will be run from this function, else it wi
 ;;               (clrhash (xft::font-string-alpha-maps font)))))
 
 ;; slynk
-; parecido, con slime:
-;   https://www.kaashif.co.uk/2015/06/28/hacking-stumpwm-with-common-lisp/
-; con sly:
-;   https://www.reddit.com/r/stumpwm/comments/ouuh1c/how_to_connect_sly_to_stumpwm_to_modifying_it_in/
+                                        ; parecido, con slime:
+                                        ;   https://www.kaashif.co.uk/2015/06/28/hacking-stumpwm-with-common-lisp/
+                                        ; con sly:
+                                        ;   https://www.reddit.com/r/stumpwm/comments/ouuh1c/how_to_connect_sly_to_stumpwm_to_modifying_it_in/
 
 (require :slynk)
 
