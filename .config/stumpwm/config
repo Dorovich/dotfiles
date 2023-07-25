@@ -66,7 +66,8 @@
                          :antialias t))
 
 ;;; Basic Settings
-(setf *window-format* "%m%s%35t")
+(setf *window-format* "%s%c"
+      *group-format* "%n")
 
 (setf *mode-line-background-color* *mode-line-bg-color*
       *mode-line-border-color* *mode-line-bg-color*
@@ -99,11 +100,11 @@
 (setf *run-or-raise-all-groups* nil)
 
 ;; startup message
-;; (setf *startup-message* "Welcome back to ^1Stumpwm^n!")
-(setf *startup-message* nil)
+(setf *startup-message* "¡Bienvenido de vuelta a ^1Stumpwm^n!")
+;(setf *startup-message* nil)
 
 ;;; Groups
-(gnew "one")
+(grename "one")
 (gnewbg "two")
 (gnewbg "three")
 (gnewbg "four")
@@ -120,9 +121,6 @@
   (vsplit)
   (move-focus :down))
 
-(define-key *root-map* (kbd "v") "hsplit-and-focus")
-(define-key *root-map* (kbd "s") "vsplit-and-focus")
-
 ;;; Modeline Settings
 (load-module "battery-portable")
 (load-module "wifi")
@@ -134,7 +132,9 @@
   (setf *time-modeline-string* "%a %d de %b, %H:%M"
         *screen-mode-line-format* (list
                                    ;; Groups
-                                   " ^7[^(:fg \"#56b6c2\")%n^7] "
+                                   " ^7[^(:fg \"#56b6c2\")%n^7]"
+                                   ;; Windows
+                                   " ^n%v"
                                    ;; Pad to right
                                    "^>"
                                    ;; Battery
@@ -142,7 +142,8 @@
                                    ;; Wifi
                                    (when is-laptop "^n%I, ") 
                                    ;; Date
-                                   "^n%d ")))
+                                   "^n"
+                                   '(:eval (run-shell-command "date '+%a %d de %b, %H:%M '" t)))))
 
 (defun enable-mode-line-everywhere ()
   (loop for screen in *screen-list* do
@@ -201,10 +202,11 @@
 
 ;; Key mappings
 
-; Prefix Key (Super-x)
+;; Root map
 (set-prefix-key (kbd "s-x"))
-
 (define-key *root-map* (kbd "ESC") "abort")
+(define-key *root-map* (kbd "v") "hsplit-and-focus")
+(define-key *root-map* (kbd "s") "vsplit-and-focus")
 
 ; turn on/off the mode line for the current head only.
 (define-key *top-map* (kbd "s-B") "mode-line")
@@ -217,6 +219,7 @@
 (define-key *top-map* (kbd "s-j") "move-focus down")
 (define-key *top-map* (kbd "s-k") "move-focus up")
 (define-key *top-map* (kbd "s-l") "move-focus right")
+
 (define-key *top-map* (kbd "s-g") "windowlist")
 (define-key *top-map* (kbd "s-n") "pull-hidden-next")
 (define-key *top-map* (kbd "s-p") "pull-hidden-previous")
@@ -239,6 +242,7 @@
 (define-key *top-map* (kbd "s-C") "kill")
 
 ; Session
+(define-key *top-map* (kbd "s-ESC") "lock")
 (define-key *top-map* (kbd "s-Q") "quit-confirm")
 (define-key *top-map* (kbd "s-R") "restart-hard")
 
@@ -254,8 +258,6 @@
 (define-key *top-map* (kbd "s-periodcentered") "gmove three")
 (define-key *top-map* (kbd "s-$") "gmove four")
 (define-key *top-map* (kbd "s-%") "gmove five")
-
-(define-key *top-map* (kbd "s-ESC") "lock")
 
 ;; Programs
 (define-key *top-map* (kbd "s-d") "run-shell-command dmenu_run -i -p 'Run:'")
@@ -286,22 +288,11 @@ If exec is non-nil, the shell command will be run from this function, else it wi
 (define-key *top-map* (kbd "s-P") (make-script nil "pass"))
 (define-key *top-map* (kbd "s-y") (make-script nil))
 
-;; clx-truetype memory leak fix
-;; (run-with-timer
-;;  900 900
-;;  (lambda ()
-;;    (loop for font in (stumpwm::screen-fonts (current-screen))
-;;          when (typep font 'xft:font)
-;;            do (clrhash (xft::font-string-line-bboxes font))
-;;               (clrhash (xft::font-string-line-alpha-maps font))
-;;               (clrhash (xft::font-string-bboxes font))
-;;               (clrhash (xft::font-string-alpha-maps font)))))
-
-;; slynk
-                                        ; parecido, con slime:
-                                        ;   https://www.kaashif.co.uk/2015/06/28/hacking-stumpwm-with-common-lisp/
-                                        ; con sly:
-                                        ;   https://www.reddit.com/r/stumpwm/comments/ouuh1c/how_to_connect_sly_to_stumpwm_to_modifying_it_in/
+;; Slynk (Swank for Sly)
+; parecido, con slime:
+;   https://www.kaashif.co.uk/2015/06/28/hacking-stumpwm-with-common-lisp/
+; con sly:
+;   https://www.reddit.com/r/stumpwm/comments/ouuh1c/how_to_connect_sly_to_stumpwm_to_modifying_it_in/
 
 (require :slynk)
 
