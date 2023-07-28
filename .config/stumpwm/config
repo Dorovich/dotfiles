@@ -48,6 +48,7 @@
 (set-float-unfocus-color (nth 0 *colors*))
 
 ;;; Gapping
+
 (load-module "swm-gaps")
 (setf swm-gaps:*inner-gaps-size* 3
       swm-gaps:*outer-gaps-size* 3
@@ -57,6 +58,7 @@
   (swm-gaps:toggle-gaps-on))
 
 ;;; Decent fonts
+
 (load-module "ttf-fonts")
 (clx-truetype:cache-fonts)
 (set-font (make-instance 'xft:font
@@ -66,8 +68,11 @@
                          :antialias t))
 
 ;;; Basic Settings
+
 (setf *window-format* "%s%c"
-      *group-format* "%n")
+      *group-format* "%n"
+      *hidden-window-color* "^(:fg \"#342d34\")"
+      *mode-line-highlight-template* "~A") ; antes era "^R~A^r"
 
 (setf *mode-line-background-color* *mode-line-bg-color*
       *mode-line-border-color* *mode-line-bg-color*
@@ -89,61 +94,46 @@
       *input-completion-show-empty* nil)
 
 (set-msg-border-width 2)
-
+(setf *mode-line-pad-x* 13) 
 (setf *timeout-wait* 3)
 (setf *timeout-frame-indicator-wait* 0)
-
-;; Focus Follow Mouse
-(setf *mouse-focus-policy* :sloppy)
-
-;; Don't jump between groups when switching apps
+(setf *mouse-focus-policy* :click)
 (setf *run-or-raise-all-groups* nil)
-
-;; startup message
 (setf *startup-message* "¡Bienvenido de vuelta a ^1Stumpwm^n!")
-;(setf *startup-message* nil)
 
 ;;; Groups
+
 (grename "one")
 (gnewbg "two")
 (gnewbg "three")
 (gnewbg "four")
 (gnewbg "five")
 
-;;; Splits
-(defcommand hsplit-and-focus () ()
-  "create a new frame on the right and focus it."
-  (hsplit)
-  (move-focus :right))
-
-(defcommand vsplit-and-focus () ()
-  "create a new frame below and focus it."
-  (vsplit)
-  (move-focus :down))
-
 ;;; Modeline Settings
+
 (load-module "battery-portable")
 (load-module "wifi")
 
-(let ((is-laptop nil))
+(let ((is-laptop nil)
+      (separator " ^(:fg \"#626262\")#^n "))
   (when is-laptop
     (setf *refresh-time* 30
           wifi:*wifi-modeline-fmt* "Wifi: %p"))
   (setf *time-modeline-string* "%a %d de %b, %H:%M"
         *screen-mode-line-format* (list
                                    ;; Groups
-                                   " ^7[^(:fg \"#56b6c2\")%n^7]"
+                                   "^7[^(:fg \"#56b6c2\")%n^7]^n"
                                    ;; Windows
-                                   " ^n%v"
+                                   separator
+                                   "%v"
                                    ;; Pad to right
                                    "^>"
                                    ;; Battery
-                                   (when is-laptop "^n%B, ") 
+                                   (when is-laptop (concatenate 'string "%B" separator)) 
                                    ;; Wifi
-                                   (when is-laptop "^n%I, ") 
+                                   (when is-laptop (concatenate 'string "%I" separator)) 
                                    ;; Date
-                                   "^n"
-                                   '(:eval (run-shell-command "date '+%a %d de %b, %H:%M '" t)))))
+                                   '(:eval (run-shell-command "date '+%a %d de %b, %H:%M'" t)))))
 
 (defun enable-mode-line-everywhere ()
   (loop for screen in *screen-list* do
@@ -153,6 +143,16 @@
 (enable-mode-line-everywhere)
 
 ;; Commands
+
+(defcommand hsplit-and-focus () ()
+  "create a new frame on the right and focus it."
+  (hsplit)
+  (move-focus :right))
+
+(defcommand vsplit-and-focus () ()
+  "create a new frame below and focus it."
+  (vsplit)
+  (move-focus :down))
 
 (defcommand lock () ()
   "Lock the screen, and if suspendp is non-nil, also suspend the system."
