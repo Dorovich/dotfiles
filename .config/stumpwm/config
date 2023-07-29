@@ -21,15 +21,14 @@
 (add-hook *start-hook* #'startup-programs)
 
 ;;; Theme
-(setf *colors*
-      '("#151515"   ;black
-        "#e06c75"   ;red
-        "#98c379"   ;green
-        "#d19a66"   ;yellow
-        "#7e9cd8"   ;blue
-        "#c678dd"   ;magenta
-        "#346475"   ;cyan
-        "#d1d1d1")) ;white
+(setf *colors* '("#151515"   ;black
+                 "#e06c75"   ;red
+                 "#98c379"   ;green
+                 "#d19a66"   ;yellow
+                 "#7e9cd8"   ;blue
+                 "#c678dd"   ;magenta
+                 "#346475"   ;cyan
+                 "#d1d1d1")) ;white
 
 (update-color-map (current-screen))
 
@@ -47,8 +46,9 @@
 (set-float-focus-color (nth 6 *colors*))
 (set-float-unfocus-color (nth 0 *colors*))
 
-;;; Gapping
+;;; Modules
 
+; Window gaps
 (load-module "swm-gaps")
 (setf swm-gaps:*inner-gaps-size* 3
       swm-gaps:*outer-gaps-size* 3
@@ -57,8 +57,7 @@
 (when *initializing*
   (swm-gaps:toggle-gaps-on))
 
-;;; Decent fonts
-
+; Truetype fonts
 (load-module "ttf-fonts")
 (clx-truetype:cache-fonts)
 (set-font (make-instance 'xft:font
@@ -67,17 +66,23 @@
                          :size 14
                          :antialias t))
 
-;;; Basic Settings
+; Battery and Wifi
+(load-module "battery-portable")
+(load-module "wifi")
 
-(setf *window-format* "%s%c"
-      *group-format* "%n"
-      *hidden-window-color* "^(:fg \"#342d34\")"
-      *mode-line-highlight-template* "^[^n~A^]") ; antes era "^R~A^r"
+; Session commands
+(load-module "end-session")
+
+; Pass integration
+(load-module "pass")
+
+;;; Basic Settings
 
 (setf *mode-line-background-color* *mode-line-bg-color*
       *mode-line-border-color* *mode-line-bg-color*
       *mode-line-foreground-color* *mode-line-fg-color*
-      *mode-line-timeout* 1)
+      *mode-line-timeout* 1
+      *mode-line-pad-x* 13)
 
 (setf *message-window-gravity* :center
       *window-border-style* :thin
@@ -94,12 +99,16 @@
       *input-completion-show-empty* nil)
 
 (set-msg-border-width 2)
-(setf *mode-line-pad-x* 13) 
 (setf *timeout-wait* 3)
 (setf *timeout-frame-indicator-wait* 0)
 (setf *mouse-focus-policy* :click)
 (setf *run-or-raise-all-groups* nil)
-(setf *startup-message* "¡Bienvenido de vuelta a ^1Stumpwm^n!")
+(setf *startup-message* nil)
+
+(setf *window-format* "%s%c"
+      *group-format* "%n %t"
+      *hidden-window-color* "^n^(:fg \"#342d34\")"
+      *mode-line-highlight-template* "^[^n~A^]") ; antes era "^R~A^r"
 
 ;;; Groups
 
@@ -110,9 +119,6 @@
 (gnewbg "five")
 
 ;;; Modeline Settings
-
-(load-module "battery-portable")
-(load-module "wifi")
 
 (let ((is-laptop nil)
       (separator " ^(:fg \"#626262\")#^n "))
@@ -129,9 +135,11 @@
                                    ;; Pad to right
                                    "^>"
                                    ;; Battery
-                                   (when is-laptop (concatenate 'string "%B" separator)) 
+                                   (when is-laptop
+                                     (concatenate 'string "%B" separator)) 
                                    ;; Wifi
-                                   (when is-laptop (concatenate 'string "%I" separator)) 
+                                   (when is-laptop
+                                     (concatenate 'string "%I" separator)) 
                                    ;; Date
                                    '(:eval (run-shell-command "date '+%a %d de %b, %H:%M'" t)))))
 
@@ -161,6 +169,19 @@
     (run-shell-command "slock")
     (when suspendp (run-shell-command "systemctl suspend"))))
 
+(defcommand screenshot () ()
+  (make-script t "scrot")
+  (sleep 0.5)
+  (message "Screenshot taken!"))
+
+(defcommand hdmi-side () ()
+  (run-shell-command "xrandr --output HDMI-A-0 --auto --right-of DP-0")
+  (run-shell-command "nitrogen --restore")
+  (enable-mode-line-everywhere))
+
+(defcommand hdmi-reset () ()
+  (run-shell-command "xrandr --output DP-0 --auto"))
+
 (defcommand firefox () ()
   "Start Firefox or switch to it, if it is already running."
   (run-or-raise "firefox" '(:class "firefox")))
@@ -179,26 +200,15 @@
   (let ((*run-or-raise-all-groups* t))
     (run-or-raise "steam" '(:class "steam"))))
 
+(defcommand spotify () ()
+  "Start Spotify or switch to it, if it is already running on any group."
+  (let ((*run-or-raise-all-groups* t))
+    (run-or-raise "spotify" '(:class "Spotify"))))
+
 (defcommand discord () ()
   "Start Discord (WebCord) or switch to it, if it is already running on any group."
   (let ((*run-or-raise-all-groups* t))
     (run-or-raise "discord" '(:class "WebCord"))))
-
-(defcommand shutdown () ()
-  (run-shell-command "shutdown -h now"))
-
-(defcommand screenshot () ()
-  (make-script t "scrot")
-  (sleep 0.5)
-  (message "Screenshot taken!"))
-
-(defcommand hdmi-side () ()
-  (run-shell-command "xrandr --output HDMI-A-0 --auto --right-of DP-0")
-  (run-shell-command "nitrogen --restore")
-  (enable-mode-line-everywhere))
-
-(defcommand hdmi-reset () ()
-  (run-shell-command "xrandr --output DP-0 --auto"))
 
 ;; Key mappings
 
@@ -208,11 +218,9 @@
 (define-key *root-map* (kbd "v") "hsplit-and-focus")
 (define-key *root-map* (kbd "s") "vsplit-and-focus")
 
-; turn on/off the mode line for the current head only.
-(define-key *top-map* (kbd "s-B") "mode-line")
-
-; Toggle gaps
+; Toggle gaps and mode-line
 (define-key *top-map* (kbd "s-G") "toggle-gaps")
+(define-key *top-map* (kbd "s-B") "mode-line")
 
 ; Window Focusing
 (define-key *top-map* (kbd "s-h") "move-focus left")
@@ -231,8 +239,8 @@
 (define-key *top-map* (kbd "s-L") "move-window right")
 
 ; Split and maximizing
-(define-key *top-map* (kbd "s-s") "vsplit")
-(define-key *top-map* (kbd "s-v") "hsplit")
+(define-key *top-map* (kbd "s-v") "hsplit-and-focus")
+(define-key *top-map* (kbd "s-s") "vsplit-and-focus")
 (define-key *top-map* (kbd "s-o") "only")
 (define-key *top-map* (kbd "s-r") "remove")
 (define-key *top-map* (kbd "s-f") "fullscreen")
@@ -243,7 +251,7 @@
 
 ; Session
 (define-key *top-map* (kbd "s-ESC") "lock")
-(define-key *top-map* (kbd "s-Q") "quit-confirm")
+(define-key *top-map* (kbd "s-Q") "logout")
 (define-key *top-map* (kbd "s-R") "restart-hard")
 
 ; Groups
@@ -259,13 +267,16 @@
 (define-key *top-map* (kbd "s-$") "gmove four")
 (define-key *top-map* (kbd "s-%") "gmove five")
 
-;; Programs
+; Programs
 (define-key *top-map* (kbd "s-d") "run-shell-command dmenu_run -i -p 'Run:'")
 (define-key *top-map* (kbd "s-RET") "run-shell-command st")
 (define-key *top-map* (kbd "s-b") "firefox")
 (define-key *top-map* (kbd "s-e") "emacsclient")
 (define-key *top-map* (kbd "s-w") "dired")
 (define-key *top-map* (kbd "s-W") "run-shell-command pcmanfm")
+
+(define-key *top-map* (kbd "s-u") "colon")
+(define-key *top-map* (kbd "s-U") "exec")
 
 ;; Scripts
 (defparameter *script-manager* "scriptctl")
@@ -285,7 +296,7 @@ If exec is non-nil, the shell command will be run from this function, else it wi
 (define-key *top-map* (kbd "s--") (make-script nil "volume" "down"))
 (define-key *top-map* (kbd "s-O") (make-script nil "sinks"))
 (define-key *top-map* (kbd "s-S") (make-script nil "steamapp"))
-(define-key *top-map* (kbd "s-P") (make-script nil "pass"))
+;(define-key *top-map* (kbd "s-P") (make-script nil "pass"))
 (define-key *top-map* (kbd "s-y") (make-script nil))
 
 ;; Slynk (Swank for Sly)
