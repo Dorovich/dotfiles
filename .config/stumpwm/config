@@ -72,7 +72,7 @@
 (setf *window-format* "%s%c"
       *group-format* "%n"
       *hidden-window-color* "^(:fg \"#342d34\")"
-      *mode-line-highlight-template* "~A") ; antes era "^R~A^r"
+      *mode-line-highlight-template* "^[^n~A^]") ; antes era "^R~A^r"
 
 (setf *mode-line-background-color* *mode-line-bg-color*
       *mode-line-border-color* *mode-line-bg-color*
