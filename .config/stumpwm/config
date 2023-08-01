@@ -76,6 +76,9 @@
 ; Pass integration
 (load-module "pass")
 
+; Mpd integration
+;(load-module "mpd")
+
 ;;; Basic Settings
 
 (setf *mode-line-background-color* *mode-line-bg-color*
@@ -107,8 +110,8 @@
 
 (setf *window-format* "%s%c"
       *group-format* "%n %t"
-      *hidden-window-color* "^n^(:fg \"#342d34\")"
-      *mode-line-highlight-template* "^[^n~A^]") ; antes era "^R~A^r"
+      *hidden-window-color* "^(:fg \"#342d34\")"
+      *mode-line-highlight-template* "^B~A^b") ; antes era "^R~A^r"
 
 ;;; Groups
 
