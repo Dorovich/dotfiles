@@ -3,4 +3,4 @@
 #   Displays the window manager keybinds document
 # 
 
-$TERMINAL -e less /usr/share/doc/help_dwm.txt
+$TERMINAL -e less ~/.local/src/dwm-vido-deluxe/help.txt
