@@ -62,6 +62,9 @@ let g:better_escape_shortcut = 'jk'
 let g:netrw_banner = 0
 let g:netrw_liststyle = 0
 let g:netrw_winsize = 25
+let g:netrw_keepdir = 0
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
+let g:netrw_localcopydircmd = 'cp -r'
 
 let g:mapleader = ','
 let g:maplocaleader = ' '
@@ -114,6 +117,56 @@ function! ClearTemp()
 	call delete($HOME.'/.vim/.viminfo', 'rf')
 	call delete($HOME.'/.vim/.netrwhist', 'rf')
 endfunction
+
+" Mapeos para netrw
+function! NetrwRemoveRecursive()
+	if &filetype ==# 'netrw'
+		cnoremap <buffer> <CR> rm -r<CR>
+		normal mu
+		normal mf
+	try
+		normal mx
+	catch
+		echo "Canceled"
+	endtry
+	cunmap <buffer> <CR>
+	endif
+endfunction
+
+function! NetrwMapping()
+	" Consultar para mas info:
+	"   https://vonheikemen.github.io/devlog/tools/using-netrw-vim-builtin-file-explorer/
+	nmap <buffer> H u
+	nmap <buffer> h -^
+	nmap <buffer> l <CR>
+	
+	nmap <buffer> . gh
+	nmap <buffer> P <C-w>z
+	
+	nmap <buffer> ff %:w<CR>:buffer #<CR>
+	nmap <buffer> fr R
+	nmap <buffer> fc mtmc
+	nmap <buffer> fC mc
+	nmap <buffer> fm mtmm
+	nmap <buffer> fM mm
+	nmap <buffer> fñ mx
+	nmap <buffer> fl :echo join(netrw#Expose("netrwmarkfilelist"), "\n")<CR>
+	nmap <buffer> fq :echo 'Target:' . netrw#Expose("netrwmftgt")<CR>
+	nmap <buffer> fd :call NetrwRemoveRecursive()<CR>
+	
+	nmap <buffer> <TAB> mf
+	nmap <buffer> <S-TAB> mF
+	nmap <buffer> <Leader><TAB> mu
+	
+	nmap <buffer> bb mb
+	nmap <buffer> bd mB
+	nmap <buffer> bl gb
+endfunction
+
+augroup netrw_mapping
+  autocmd!
+  autocmd filetype netrw call NetrwMapping()
+augroup END
 
 " Para que C-q y C-s lleguen a vim:
 silent !stty -ixon > /dev/null 2>/dev/null
