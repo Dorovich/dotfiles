@@ -4,19 +4,19 @@
 /Archivos de configuración de mi sistema y cosas de interés/
 
 #+ATTR_ORG: :width 1000
-[[file:scr/5-1.png]]
-[[file:scr/5-2.png]]
+[[file:scr/6-1.png]]
+[[file:scr/6-2.png]]
 
 ** Información
 + Distribución: =Pop!_OS= (=Void Linux= la próxima)
 + Gestor de ventanas: [[https://gitlab.com/files-and-configs/dwm-vido][dwm]]
 + Terminal: [[https://gitlab.com/files-and-configs/st-vido][st]]
 + Shell: =zsh=
-+ Editor: =vim=, =emacs=
++ Editor: =emacs=, =vim=
 + Gestor de archivos: =lf=, =pcmanfm=
 + Fuente: =mononoki (Nerd Font)=
-+ Música: =spotify=, =mpd (+ ncmpcpp)=
-+ Navegador: =qutebrowser=, =firefox=
++ Música: =mpd (+ ncmpcpp)=
++ Navegador: =firefox=
 
 /Para más cositas ver mi lista de [[PROGRAMS.org][programas interesantes]]./
 
