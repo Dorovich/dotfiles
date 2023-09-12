@@ -8,15 +8,15 @@
 [[file:scr/6-2.png]]
 
 ** Información
-+ Distribución: =Pop!_OS= (=Void Linux= la próxima)
++ Distribución: [[https://pop.system76.com/][Pop!_OS]] ([[([[https://voidlinux.org/][Void Linux]] o [[https://www.debian.org/][Debian]] la próxima)
 + Gestor de ventanas: [[https://gitlab.com/files-and-configs/dwm-vido][dwm]]
 + Terminal: [[https://gitlab.com/files-and-configs/st-vido][st]]
 + Shell: =zsh=
-+ Editor: =emacs=, =vim=
++ Editor: [[https://www.gnu.org/software/emacs/][emacs]], [[https://www.vim.org/][vim]]
 + Gestor de archivos: =pcmanfm=, =lf=
-+ Fuente: =mononoki (Nerd Font)=
-+ Música: =mpd (+ ncmpcpp)=
-+ Navegador: =firefox=
++ Fuente: [[https://madmalik.github.io/mononoki/][mononoki]] (Nerd Font)
++ Música: [[https://www.musicpd.org/][mpd]] (+ ncmpcpp)
++ Navegador: [[https://www.mozilla.org/][firefox]] (+ [[https://github.com/arkenfox/user.js/][arkenfox user.js]] modificado)
 
 /Para más cositas ver mi lista de [[PROGRAMS.org][programas interesantes]]./
 
