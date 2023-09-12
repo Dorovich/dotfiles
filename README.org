@@ -13,7 +13,7 @@
 + Terminal: [[https://gitlab.com/files-and-configs/st-vido][st]]
 + Shell: =zsh=
 + Editor: =emacs=, =vim=
-+ Gestor de archivos: =lf=, =pcmanfm=
++ Gestor de archivos: =pcmanfm=, =lf=
 + Fuente: =mononoki (Nerd Font)=
 + Música: =mpd (+ ncmpcpp)=
 + Navegador: =firefox=
