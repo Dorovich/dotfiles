@@ -30,7 +30,6 @@ export vrchat_cache="/home/vido25/.steam/debian-installation/steamapps/compatdat
 ###########################################
 ###               ALIASES               ###
 ###########################################
-# {{{
 
 alias v="vim"
 alias em="emacsclient -t"
@@ -80,12 +79,9 @@ function mergepdfs() {
 
 alias camaraobs="sudo modprobe v4l2loopback exclusive_caps=1 card_label='CamaraOBS:CamaraOBS'"
 
-# }}}
-
 ###########################################
 ###                 PATH                ###
 ###########################################
-# {{{
 
 if [ -d "$HOME/.bin" ] ;
   then PATH="$HOME/.bin:$PATH"
@@ -119,12 +115,9 @@ if [ -d "$HOME/.vim/bin" ] ;
   then PATH="$HOME/.vim/bin:$PATH"
 fi
 
-# }}}
-
 ############################################
 ###                 GIT                  ###
 ############################################
-# {{{
 
 alias ga="git add"
 alias gd="git diff"
@@ -133,7 +126,7 @@ alias gp="git push"
 alias gcl="git clone"
 alias gpl="git pull"
 alias gr="git rm -r"
-alias grs="git reset --hard HEAD"
+alias grst="git reset --hard HEAD"
 alias gl='git log --pretty=format:"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]" --abbrev-commit -30'
 
 function gc() {
@@ -173,12 +166,9 @@ function configstart() {
     echo 'ver comando "gitstart" para mas info de git'
 }
 
-# }}}
-
 ############################################
 ###             COMPLETION               ###
 ############################################
-# {{{
 
 # Use modern completion system
 autoload -Uz compinit
@@ -201,8 +191,6 @@ zstyle ':completion:*' verbose true
 
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
-
-# }}}
 
 # Fuente: https://github.com/zsh-users/zsh-syntax-highlighting
 source ~/.config/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
