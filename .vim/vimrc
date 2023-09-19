@@ -198,17 +198,16 @@ if usar_lenguajes['org']
 	Plug 'jceb/vim-orgmode'
 endif
 if usar_lenguajes['lisp']
+	Plug 'vim-scripts/paredit.vim'
 	Plug 'vlime/vlime', {'rtp': 'vim/'}
 endif
 if usar_lenguajes['glsl']
 	Plug 'tikhomirov/vim-glsl'
-	Plug 'vim-scripts/paredit.vim'
 endif
 call plug#end()
 
 " OTROS PLUGINS ÚTILES:
 " YouCompleteMe - motor de compleción
-" paredit.vim - paréntesis y s-expressions
 " fugitive.vim - integración con git
 
 " Configuraciones extras de plugins

@@ -27,6 +27,9 @@ export PS2="%B%F{8}>%f%b "
 
 export vrchat_cache="/home/vido25/.steam/debian-installation/steamapps/compatdata/438100/pfx/drive_c/users/steamuser/AppData/LocalLow/VRChat/VRChat"
 
+# quartus 2
+export LD_LIBRARY_PATH=/media/vido25/Almacenamiento/UNI/altera/13.0sp1/lib32
+
 ###########################################
 ###               ALIASES               ###
 ###########################################

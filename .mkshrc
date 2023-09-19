@@ -38,6 +38,8 @@ bold=$(tput bold)
 reset=$(tput sgr0)
 export PS1="$accent$boldλ$reset "
 
+export LD_LIBRARY_PATH=/media/vido25/Almacenamiento/UNI/altera/13.0sp1/lib32
+
 # path
 
 [ -d "$HOME/.bin" ] && PATH="$HOME/.bin:$PATH"
