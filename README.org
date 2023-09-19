@@ -9,8 +9,8 @@
 
 ** Información
 + Distribución: [[https://pop.system76.com/][Pop!_OS]] (con [[[[https://voidlinux.org/][Void Linux]] o [[https://www.debian.org/][Debian]] la próxima)
-+ Gestor de ventanas: [[https://gitlab.com/files-and-configs/dwm-vido][dwm]]
-+ Terminal: [[https://gitlab.com/files-and-configs/st-vido][st]]
++ Gestor de ventanas: [[https://gitlab.com/Dorovich/dwm-vido][dwm]]
++ Terminal: [[https://gitlab.com/Dorovich/st-vido][st]]
 + Shell: =zsh=
 + Editor: [[https://www.gnu.org/software/emacs/][emacs]], [[https://www.vim.org/][vim]]
 + Gestor de archivos: =pcmanfm=, =lf=
