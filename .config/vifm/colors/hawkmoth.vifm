@@ -1,0 +1,37 @@
+" vi: ft=vim
+
+highlight clear
+
+highlight Win ctermfg=7 ctermbg=none cterm=none
+highlight OtherWin ctermfg=240 ctermbg=none cterm=none
+
+highlight TopLine ctermfg=7 ctermbg=235 cterm=bold
+highlight TopLineSel ctermfg=7 ctermbg=237 cterm=bold
+
+highlight TabLine ctermfg=7 ctermbg=236 cterm=none
+highlight TabLineSel ctermfg=7 ctermbg=234 cterm=none
+
+highlight JobLine ctermfg=7 ctermbg=237 cterm=none
+highlight StatusLine ctermfg=7 ctermbg=237 cterm=none
+highlight Border ctermfg=8 ctermbg=none cterm=none
+
+highlight CurrLine ctermfg=236 ctermbg=145 cterm=none
+highlight OtherLine ctermfg=0 ctermbg=4 cterm=none
+highlight LineNr ctermfg=240 ctermbg=none cterm=none
+
+highlight Selected ctermfg=0 ctermbg=24 cterm=none
+highlight CmpMismatch ctermfg=0 ctermbg=52 cterm=none
+
+highlight SuggestBox ctermfg=7 ctermbg=8 cterm=none
+highlight WildMenu ctermfg=7 ctermbg=8 cterm=none
+
+highlight CmdLine ctermfg=7 ctermbg=none cterm=none
+highlight ErrorMsg ctermfg=203 ctermbg=234 cterm=none
+
+highlight Directory ctermfg=104 ctermbg=none cterm=none
+highlight Executable ctermfg=36 ctermbg=none cterm=none
+highlight Socket ctermfg=188 ctermbg=none cterm=none
+highlight Device ctermfg=186 ctermbg=none cterm=none
+highlight Fifo ctermfg=222 ctermbg=none cterm=none
+highlight Link ctermfg=174 ctermbg=none cterm=none
+highlight BrokenLink ctermfg=7 ctermbg=89 cterm=none

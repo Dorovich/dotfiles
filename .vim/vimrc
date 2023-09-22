@@ -31,7 +31,7 @@ set ruler
 set number relativenumber
 set splitbelow splitright
 set wildmenu wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.exe,*.o,*.mp3,*.mp4,*.mov,*.mkv,*.ogg,*.dat
-set backspace=indent,eol,start
+set backspace=2
 set autoread
 set lazyredraw
 set shortmess+=a
@@ -227,3 +227,5 @@ if usar_paquetes['colores']
 else
 	colorscheme peachpuff
 endif
+
+" vi: ft=vim
