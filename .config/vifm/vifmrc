@@ -484,6 +484,10 @@ nnoremap ,w :set wrap!<cr>
 map ñ :
 nmap q :q<cr>
 
+" drag files
+nmap df :!dragon %f &<cr>
+nmap dF :!dragon -a -x %f &<cr>
+
 " ------------------------------------------------------------------------------
 
 " Various customization examples
