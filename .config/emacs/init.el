@@ -333,8 +333,10 @@
   :defer t
   :config
   (evil-define-key 'normal dired-mode-map
-    [mouse-1] 'dired-find-file
-    (kbd "l") 'dired-find-file
+    ;; [mouse-1] 'dired-find-file
+    ;; (kbd "l") 'dired-find-file
+    [mouse-1] 'dired-open-file
+    (kbd "l") 'dired-open-file
     (kbd "<right>") 'dired-find-file
     (kbd "h") 'dired-up-directory
     (kbd "<left>") 'dired-up-directory
@@ -349,6 +351,26 @@
 (use-package dired-narrow
   :ensure t
   :after dired)
+
+;; dired-open
+
+(use-package dired-open
+  :ensure t
+  :after dired
+  :config
+  (setq dired-open-extensions '(("gif" . "sxiv")
+                                ("jpg" . "sxiv")
+                                ("jpeg" . "sxiv")
+                                ("png" . "sxiv")
+                                ("webp" . "sxiv")
+                                ("pdf" . "zathura")
+                                ("cbz" . "zathura")
+                                ("mkv" . "mpv")
+                                ("webm" . "mpv")
+                                ("mp4" . "mpv")
+                                ("mp3" . "mpv")
+                                ("flac" . "mpv")
+                                ("xcf" . "gimp"))))
 
 ;; diredfl
 
@@ -419,6 +441,7 @@
   :after vterm
   :config
   (global-set-key (kbd "C-x t t") 'vterm-toggle-cd)
+  (global-set-key (kbd "C-ñ") 'vterm-toggle-cd)
   (setq vterm-toggle-fullscreen-p nil
         vterm-toggle-scope 'frame)
   (add-to-list 'display-buffer-alist
