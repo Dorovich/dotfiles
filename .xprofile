@@ -9,5 +9,5 @@ numlockx on &
 redshift -l 41.39:2.16 -m randr -t 5500:5000 &
 setxkbmap -option caps:ctrl_modifier &
 # picom &
-emacs --daemon &
+# emacs --daemon &
 # sleep 1s && st -e vim ~/tareas &

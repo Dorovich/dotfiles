@@ -51,7 +51,7 @@ set undofile undodir=~/.vim/tmp/undo
 set nobackup writebackup backupdir=~/.vim/tmp/backup
 set viewoptions-=options viewdir=~/.vim/tmp/view
 set viminfo+=n~/.vim/.viminfo
-set shell=/usr/bin/mksh
+set shell=/usr/bin/zsh
 
 syntax enable
 filetype plugin on

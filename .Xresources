@@ -1,4 +1,5 @@
 *.font:     mononoki NF:pixelsize=18:antialias=true:autohint=true
+! *.font:     -*-fixed-*-r-*-*-16-120-*-*-*-*-iso8859-1
 *.alpha:    1.00
 
 Sxiv.font: mononoki NF:size=14
