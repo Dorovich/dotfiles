@@ -4,8 +4,8 @@
 /Archivos de configuración de mi sistema y cosas de interés/
 
 #+ATTR_ORG: :width 1000
-[[file:scr/6-1.png]]
-[[file:scr/6-2.png]]
+[[file:scr/7-1.png]]
+[[file:scr/7-2.png]]
 
 ** Información
 + Distribución: [[https://pop.system76.com/][Pop!_OS]] (con [[[[https://voidlinux.org/][Void Linux]] o [[https://www.debian.org/][Debian]] la próxima)
@@ -16,7 +16,7 @@
 + Gestor de archivos: =pcmanfm=, =lf=
 + Fuente: [[https://madmalik.github.io/mononoki/][mononoki]] (Nerd Font)
 + Música: [[https://www.musicpd.org/][mpd]] (+ ncmpcpp)
-+ Navegador: [[https://www.mozilla.org/][firefox]] (+ [[https://github.com/arkenfox/user.js/][arkenfox user.js]] modificado)
++ Navegador: [[https://librewolf.net/][librewolf]]
 
 /Para más cositas ver mi lista de [[PROGRAMS.org][programas interesantes]]./
 
