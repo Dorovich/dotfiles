@@ -64,7 +64,7 @@
     frame_width = 3
 
     # Defines color of the frame around the notification window.
-    frame_color = "#346475"
+    frame_color = "#a88a3c"
 
     # Define a color for the separator.
     # possible values are:
@@ -302,7 +302,7 @@
 [urgency_normal]
     background = "#151515"
     foreground = "#d1d1d1"
-    frame_color = "#346475"
+    frame_color = "#a88a3c"
     timeout = 5
     # Icon for notifications with normal urgency, uncomment to enable
     icon = /usr/share/icons/Papirus/24x24/actions/bell.svg
