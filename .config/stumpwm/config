@@ -30,25 +30,27 @@
                  "#346475"   ;cyan
                  "#d1d1d1")) ;white
 
+(defparameter color-gold "#a88a3c")
+
 (update-color-map (current-screen))
 
 (defparameter *mode-line-bg-color* (nth 0 *colors*))
 (defparameter *mode-line-fg-color* (nth 7 *colors*))
 (defparameter *msg-bg-color* (nth 0 *colors*))
 (defparameter *msg-fg-color* (nth 7 *colors*))
-(defparameter *msg-border-color* (nth 6 *colors*))
+(defparameter *msg-border-color* color-gold)
 
 (set-bg-color *msg-bg-color*)
 (set-fg-color *msg-fg-color*)
 (set-border-color *msg-border-color*)
-(set-focus-color (nth 6 *colors*))
+(set-focus-color color-gold)
 (set-unfocus-color (nth 0 *colors*))
-(set-float-focus-color (nth 6 *colors*))
+(set-float-focus-color color-gold)
 (set-float-unfocus-color (nth 0 *colors*))
 
 ;;; Modules
 
-; Window gaps
+;; Window gaps
 (load-module "swm-gaps")
 (setf swm-gaps:*inner-gaps-size* 3
       swm-gaps:*outer-gaps-size* 3
@@ -57,34 +59,39 @@
 (when *initializing*
   (swm-gaps:toggle-gaps-on))
 
-; Truetype fonts
-(load-module "ttf-fonts")
-(clx-truetype:cache-fonts)
-(set-font (make-instance 'xft:font
-                         :family "mononoki Nerd Font Mono"
-                         :subfamily "Regular"
-                         :size 14
-                         :antialias t))
+;; Truetype fonts
+;; (load-module "ttf-fonts")
+;; (clx-truetype:cache-fonts)
+;; (set-font (make-instance 'xft:font
+;;                          :family "mononoki Nerd Font Mono"
+;;                          :subfamily "Regular"
+;;                          :size 14
+;;                          :antialias t))
+;; ...or normal fonts
+(set-font "-*-fixed-*-r-normal-*-15-120-*-*-*-*-iso8859-*")
 
-; Battery and Wifi
+;; Battery and Wifi
 (load-module "battery-portable")
 (load-module "wifi")
 
-; Session commands
+(setf *refresh-time* 30
+      wifi:*wifi-modeline-fmt* "Wifi: %p")
+
+;; Session commands
 (load-module "end-session")
 
-; Pass integration
-(load-module "pass")
+;; Pass integration
+;; (load-module "pass")
 
-; Mpd integration
-;(load-module "mpd")
+;; Mpd integration
+;; (load-module "mpd")
 
 ;;; Basic Settings
 
 (setf *mode-line-background-color* *mode-line-bg-color*
       *mode-line-border-color* *mode-line-bg-color*
       *mode-line-foreground-color* *mode-line-fg-color*
-      *mode-line-timeout* 1
+      *mode-line-timeout* 3
       *mode-line-pad-x* 13)
 
 (setf *message-window-gravity* :center
@@ -93,7 +100,7 @@
       *message-window-y-padding* 6
       *maxsize-border-width* 2
       *normal-border-width* 2
-      *transient-border-width* 2
+      *transient-border-width* 0
       stumpwm::*float-window-border* 2
       stumpwm::*float-window-title-height* 2)
 
@@ -108,30 +115,29 @@
 (setf *run-or-raise-all-groups* nil)
 (setf *startup-message* nil)
 
-(setf *window-format* "%s%c"
-      *group-format* "%n %t"
-      *hidden-window-color* "^(:fg \"#342d34\")"
-      *mode-line-highlight-template* "^B~A^b") ; antes era "^R~A^r"
+(setf *window-format* "(%n) %c"
+      *group-format* "%n%s %t"
+      *hidden-window-color* "^**" ; "^(:fg \"#626262\")"
+      *mode-line-highlight-template* "[^5~A^n]") ; antes era "^R~A^r"
 
 ;;; Groups
 
-(grename "one")
-(gnewbg "two")
-(gnewbg "three")
-(gnewbg "four")
-(gnewbg "five")
+(defparameter *group-names* '("one" "two" "three" "four" "five"))
+
+(grename (nth 0 *group-names*))
+(gnewbg (nth 1 *group-names*))
+(gnewbg (nth 2 *group-names*))
+(gnewbg (nth 3 *group-names*))
+(gnewbg (nth 4 *group-names*))
 
 ;;; Modeline Settings
 
 (let ((is-laptop nil)
-      (separator " ^(:fg \"#626262\")#^n "))
-  (when is-laptop
-    (setf *refresh-time* 30
-          wifi:*wifi-modeline-fmt* "Wifi: %p"))
+      (separator " ^(:fg \"#626262\");^n "))
   (setf *time-modeline-string* "%a %d de %b, %H:%M"
         *screen-mode-line-format* (list
                                    ;; Groups
-                                   "^7[^(:fg \"#56b6c2\")%n^7]^n"
+                                   "@ ^(:fg \"#a88a3c\")%n^n"
                                    ;; Windows
                                    separator
                                    "%v"
@@ -165,6 +171,11 @@
   (vsplit)
   (move-focus :down))
 
+(defcommand delete-window-and-frame () ()
+  "Delete the current frame with its window."
+  (delete-window)
+  (remove-split))
+
 (defcommand lock () ()
   "Lock the screen, and if suspendp is non-nil, also suspend the system."
   (let ((suspendp (y-or-n-p (format nil "Suspend the system as well? "))))
@@ -185,33 +196,70 @@
 (defcommand hdmi-reset () ()
   (run-shell-command "xrandr --output DP-0 --auto"))
 
+(defcommand term (&optional program) ()
+  "Invoke a terminal, possibly with a @arg{program}."
+  (sb-thread:make-thread (lambda ()
+                           (run-shell-command (if program
+                                                  (format nil "st ~A" program)
+                                                  "st")))))
+
+(defcommand chromium () ()
+  "Start Ungoogled Chromium or switch to it, if it is already running on any group."
+  (sb-thread:make-thread (lambda ()
+                           (run-or-raise "ungoogled-chromium" '(:class "Chromium-browser") t nil))))
+
 (defcommand firefox () ()
-  "Start Firefox or switch to it, if it is already running."
-  (run-or-raise "firefox" '(:class "firefox")))
+  "Start Firefox or switch to it, if it is already running on any group."
+  (sb-thread:make-thread (lambda ()
+                           (run-or-raise "firefox" '(:class "firefox") t nil))))
 
 (defcommand emacsclient () ()
-  "Start the Emacs client or switch to it, if it is already running. If no client is running, a new instance is created."
-  (run-or-raise "emacsclient -a 'emacs' -c" '(:class "Emacs")))
+  "Start the Emacs client or switch to it, if it is already running on any group. If no client is running, a new instance is created."
+  (sb-thread:make-thread (lambda ()
+                           (run-or-raise "emacsclient -a 'emacs' -c" '(:class "Emacs") t nil))))
 
 (defcommand dired () ()
-  "Start Dired on the Emacs client or switch to it, if it is already running. If no client is running, a new instance is created."
-  (run-or-raise "emacsclient -a 'emacs' -c" '(:class "Emacs"))
-  (run-shell-command "emacsclient -e '(dired nil)'"))
+  "Start Dired on the Emacs client or switch to it, if it is already running on any group. If no client is running, a new instance is created."
+  (sb-thread:make-thread (lambda ()
+                           (run-or-raise "emacsclient -a 'emacs' -c" '(:class "Emacs") t nil)
+                           (run-shell-command "emacsclient -e '(dired nil)'"))))
+
+(defcommand mpc () ()
+  "Start simple-mpc on the Emacs client or switch to it, if it is already running on any group. If no client is running, a new instance is created."
+  (sb-thread:make-thread (lambda ()
+                           (run-or-raise "emacsclient -a 'emacs' -c" '(:class "Emacs") t nil)
+                           (run-shell-command "emacsclient -e '(simple-mpc)'"))))
 
 (defcommand steam () ()
   "Start Steam or switch to it, if it is already running on any group."
-  (let ((*run-or-raise-all-groups* t))
-    (run-or-raise "steam" '(:class "steam"))))
+  (sb-thread:make-thread (lambda ()
+                           (run-or-raise "steam" '(:class "steam") t nil))))
 
 (defcommand spotify () ()
   "Start Spotify or switch to it, if it is already running on any group."
-  (let ((*run-or-raise-all-groups* t))
-    (run-or-raise "spotify" '(:class "Spotify"))))
+  (sb-thread:make-thread (lambda ()
+                           (run-or-raise "spotify" '(:class "Spotify") t nil))))
 
 (defcommand discord () ()
   "Start Discord (WebCord) or switch to it, if it is already running on any group."
-  (let ((*run-or-raise-all-groups* t))
-    (run-or-raise "discord" '(:class "WebCord"))))
+  (sb-thread:make-thread (lambda ()
+                           (run-or-raise "webcord" '(:class "WebCord") t nil))))
+
+;; Slynk (Swank for Sly)
+;; parecido, con slime:
+;;   https://www.kaashif.co.uk/2015/06/28/hacking-stumpwm-with-common-lisp/
+;; con sly:
+;;   https://www.reddit.com/r/stumpwm/comments/ouuh1c/how_to_connect_sly_to_stumpwm_to_modifying_it_in/
+
+(require :slynk)
+
+(defcommand sly-start-server () ()
+  "Start a slynk server for sly."
+  (sb-thread:make-thread (lambda () (slynk:create-server :dont-close t))))
+
+(defcommand sly-stop-server () ()
+  "Stop current slynk server for sly."
+  (sb-thread:make-thread (lambda () (slynk:stop-server 4005))))
 
 ;; Key mappings
 
@@ -221,11 +269,11 @@
 (define-key *root-map* (kbd "v") "hsplit-and-focus")
 (define-key *root-map* (kbd "s") "vsplit-and-focus")
 
-; Toggle gaps and mode-line
+;; Toggle gaps and mode-line
 (define-key *top-map* (kbd "s-G") "toggle-gaps")
 (define-key *top-map* (kbd "s-B") "mode-line")
 
-; Window Focusing
+;; Window Focusing
 (define-key *top-map* (kbd "s-h") "move-focus left")
 (define-key *top-map* (kbd "s-j") "move-focus down")
 (define-key *top-map* (kbd "s-k") "move-focus up")
@@ -235,44 +283,44 @@
 (define-key *top-map* (kbd "s-n") "pull-hidden-next")
 (define-key *top-map* (kbd "s-p") "pull-hidden-previous")
 
-; Window Movement
+;; Window Movement
 (define-key *top-map* (kbd "s-H") "move-window left")
 (define-key *top-map* (kbd "s-J") "move-window down")
 (define-key *top-map* (kbd "s-K") "move-window up")
 (define-key *top-map* (kbd "s-L") "move-window right")
 
-; Split and maximizing
+;; Split and maximizing
 (define-key *top-map* (kbd "s-v") "hsplit-and-focus")
 (define-key *top-map* (kbd "s-s") "vsplit-and-focus")
 (define-key *top-map* (kbd "s-o") "only")
 (define-key *top-map* (kbd "s-r") "remove")
 (define-key *top-map* (kbd "s-f") "fullscreen")
 
-; Kill windows
+;; Kill windows
 (define-key *top-map* (kbd "s-c") "delete")
 (define-key *top-map* (kbd "s-C") "kill")
 
-; Session
+;; Session
 (define-key *top-map* (kbd "s-ESC") "lock")
 (define-key *top-map* (kbd "s-Q") "logout")
 (define-key *top-map* (kbd "s-R") "restart-hard")
 
-; Groups
-(define-key *top-map* (kbd "s-1") "gselect one")
-(define-key *top-map* (kbd "s-2") "gselect two")
-(define-key *top-map* (kbd "s-3") "gselect three")
-(define-key *top-map* (kbd "s-4") "gselect four")
-(define-key *top-map* (kbd "s-5") "gselect five")
+;; Groups
+(define-key *top-map* (kbd "s-1") (concat "gselect " (nth 0 *group-names*)))
+(define-key *top-map* (kbd "s-2") (concat "gselect " (nth 1 *group-names*)))
+(define-key *top-map* (kbd "s-3") (concat "gselect " (nth 2 *group-names*)))
+(define-key *top-map* (kbd "s-4") (concat "gselect " (nth 3 *group-names*)))
+(define-key *top-map* (kbd "s-5") (concat "gselect " (nth 4 *group-names*)))
 
-(define-key *top-map* (kbd "s-!") "gmove one")
-(define-key *top-map* (kbd "s-\"") "gmove two")
-(define-key *top-map* (kbd "s-periodcentered") "gmove three")
-(define-key *top-map* (kbd "s-$") "gmove four")
-(define-key *top-map* (kbd "s-%") "gmove five")
+(define-key *top-map* (kbd "s-!") (concat "gmove " (nth 0 *group-names*)))
+(define-key *top-map* (kbd "s-\"") (concat "gmove " (nth 1 *group-names*)))
+(define-key *top-map* (kbd "s-periodcentered") (concat "gmove " (nth 2 *group-names*)))
+(define-key *top-map* (kbd "s-$") (concat "gmove " (nth 3 *group-names*)))
+(define-key *top-map* (kbd "s-%") (concat "gmove " (nth 4 *group-names*)))
 
-; Programs
+;; Programs
 (define-key *top-map* (kbd "s-d") "run-shell-command dmenu_run -i -p 'Run:'")
-(define-key *top-map* (kbd "s-RET") "run-shell-command st")
+(define-key *top-map* (kbd "s-RET") "term")
 (define-key *top-map* (kbd "s-b") "firefox")
 (define-key *top-map* (kbd "s-e") "emacsclient")
 (define-key *top-map* (kbd "s-w") "dired")
@@ -299,21 +347,5 @@ If exec is non-nil, the shell command will be run from this function, else it wi
 (define-key *top-map* (kbd "s--") (make-script nil "volume" "down"))
 (define-key *top-map* (kbd "s-O") (make-script nil "sinks"))
 (define-key *top-map* (kbd "s-S") (make-script nil "steamapp"))
-;(define-key *top-map* (kbd "s-P") (make-script nil "pass"))
+(define-key *top-map* (kbd "s-P") (make-script nil "pass"))
 (define-key *top-map* (kbd "s-y") (make-script nil))
-
-;; Slynk (Swank for Sly)
-; parecido, con slime:
-;   https://www.kaashif.co.uk/2015/06/28/hacking-stumpwm-with-common-lisp/
-; con sly:
-;   https://www.reddit.com/r/stumpwm/comments/ouuh1c/how_to_connect_sly_to_stumpwm_to_modifying_it_in/
-
-(require :slynk)
-
-(defcommand slynk (port) ((:string "Port number: "))
-  (sb-thread:make-thread
-   (lambda ()
-     (slynk:create-server
-      :port (parse-integer port)
-      :dont-close t))
-   :name "slynk-manual"))
