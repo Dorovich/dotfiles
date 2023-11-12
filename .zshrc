@@ -39,6 +39,8 @@ function 0pb() { curl -F"file=@-;" https://envs.sh ; }      # echo "text" | 0pb
 function 0url() { curl -F"url=$1" https://envs.sh ; }       # 0url "https://url"
 function 0short() { curl -F"shorten=$1" https://envs.sh ; } # 0short "https://long-url"
 
+function restart-emacs-server() { killall emacs ; emacs --daemon ; }
+
 # variables
 
 export LANGUAGE=es_ES:en_US
