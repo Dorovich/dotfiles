@@ -1,11 +1,17 @@
 #!/bin/sh
 
+if [ -f $HOME/.dmenurc ]; then
+  . $HOME/.dmenurc
+else
+  DMENU='dmenu -h 18 -i'
+fi
+
 while true; do
     mpc status | grep "playing" 2> /dev/null
     if [ $? -eq 0 ]; then
-        choice=$(echo "pause\njump\nartist\nalbum\ntrack\nload\nclear\nupdate\ntoggle" | dmenu -p "[>] $(mpc current -f "%title%")")
+        choice=$(echo "pause\njump\nartist\nalbum\ntrack\nload\nclear\nupdate\ntoggle" | $DMENU -p "[>] $(mpc current -f "%title%")")
     else
-        choice=$(echo "play\njump\nartist\nalbum\ntrack\nload\nclear\nupdate\ntoggle" | dmenu -p "[-] $(mpc current -f "%title%")")
+        choice=$(echo "play\njump\nartist\nalbum\ntrack\nload\nclear\nupdate\ntoggle" | $DMENU -p "[-] $(mpc current -f "%title%")")
     fi
 
     case $choice in
@@ -26,7 +32,7 @@ while true; do
             mpc status | grep "repeat: on" 2> /dev/null
             if [ $? -eq 0 ]; then repeat="@"; else repeat="-"; fi
 
-            option=$(echo "random\nconsume\nrepeat" | dmenu -p "[$random$consume$repeat]")
+            option=$(echo "random\nconsume\nrepeat" | $DMENU -p "[$random$consume$repeat]")
 
             case $option in
                 random)  mpc random;;

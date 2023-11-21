@@ -1,8 +1,14 @@
 #!/bin/sh
 
+if [ -f $HOME/.dmenurc ]; then
+  . $HOME/.dmenurc
+else
+  DMENU='dmenu -h 18 -i'
+fi
+
 case $1 in
     1)
-        xdotool type $(grep -v '^#' ~/.local/share/snippets | dmenu -i -l 15 | cut -d' ' -f1)
+        xdotool type $(grep -v '^#' ~/.local/share/snippets | $DMENU -l 15 | cut -d' ' -f1)
         ;;
     2)
         new_snippet="$(xclip -o)"
@@ -16,6 +22,6 @@ case $1 in
         fi
         ;;
     *)
-        xdotool type $(grep -v '^#' ~/.local/share/snippets | dmenu -i -l 15 | cut -d' ' -f1)
+        xdotool type $(grep -v '^#' ~/.local/share/snippets | $DMENU -l 15 | cut -d' ' -f1)
         ;;
 esac

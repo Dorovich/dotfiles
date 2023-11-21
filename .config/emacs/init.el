@@ -18,7 +18,7 @@
 (global-set-key (kbd "<mouse-8>") 'previous-buffer)
 (global-set-key (kbd "<mouse-9>") 'next-buffer)
 (global-set-key (kbd "C-x r C-f") 'recentf-open-files)
-(global-set-key (kbd "C-z") 'undo)
+(global-set-key (kbd "C-x c") 'comment-or-uncomment-region)
 
 ;;; SETTINGS
 (setq load-prefer-newer t
@@ -71,6 +71,7 @@
       org-export-preserve-breaks t
       org-export-with-date nil
       org-export-time-stamp-file nil
+      org-export-headline-levels 5
       org-export-with-author nil
       org-image-actual-width 600
       org-redisplay-inline-images nil
@@ -88,6 +89,8 @@
 	                             ("Emacs" (or
 		                               (name . "^\\*scratch\\*$")
 		                               (name . "^\\*Messages\\*$")))))
+      ;; MPC
+      mpc-browser-tags '(Artist Album)
       ;; ERC
       erc-server "irc.libera.chat"
       erc-nick "dorovich"
@@ -104,10 +107,13 @@
               right-margin-width 1
               c-basic-offset 4)
 
+(with-eval-after-load 'dired
+  (define-key dired-mode-map (kbd "e") #'dired-xdg-open))
+
 (global-auto-revert-mode 1)
 (show-paren-mode 1)
 (blink-cursor-mode 0)
-(set-fringe-mode 0)
+;; (set-fringe-mode 0)
 (delete-selection-mode 1)
 ;; (display-time-mode 1)
 (fido-mode 1)
@@ -130,7 +136,7 @@
   (load-file user-init-file)
   (load-file user-init-file))
 
-(defun dired-open-file ()
+(defun dired-xdg-open ()
   "In dired, open the file named on this line."
   (interactive)
   (let* ((file (dired-get-filename nil t)))
@@ -146,6 +152,14 @@
 
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
+
+(use-package gcmh
+  :ensure t
+  :init
+  (setq gcmh-idle-delay 10
+        gcmh-high-cons-threshold (* 30 1024 1024) ; 30mb
+        gcmh-verbose nil)
+  (add-hook 'emacs-startup-hook 'gcmh-mode))
 
 (use-package modus-themes
   :ensure t
@@ -176,18 +190,16 @@
   :config
   (beacon-mode 1))
 
-(use-package gcmh
+(use-package undo-fu
   :ensure t
-  :init
-  (setq gcmh-idle-delay 10
-        gcmh-high-cons-threshold (* 16 1024 1024) ; 16mb
-        gcmh-verbose nil)
-  (add-hook 'emacs-startup-hook 'gcmh-mode))
+  :config
+  (global-unset-key (kbd "C-z"))
+  (global-set-key (kbd "C-z")   'undo-fu-only-undo)
+  (global-set-key (kbd "C-S-z") 'undo-fu-only-redo))
 
 ;;; UTILITY EXTRAS
 (load-file (expand-file-name "extras/dev.el" user-emacs-directory))
 (load-file (expand-file-name "extras/lisp.el" user-emacs-directory))
-(load-file (expand-file-name "extras/music.el" user-emacs-directory))
 (load-file (expand-file-name "extras/experimental.el" user-emacs-directory))
 
 ;;; COSITAS

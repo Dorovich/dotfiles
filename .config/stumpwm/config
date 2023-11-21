@@ -1,12 +1,12 @@
-;;; -*- mode: lisp; -*-
-
-;;; vi: ft=lisp
+;; -*- mode: lisp; -*-
+;; vi: ft=lisp
 
 (in-package :stumpwm)
 
 ;;; Startup Commands
 
 (defvar *first-run* t)
+(defvar *is-laptop* nil)
 
 (defun startup-programs ()
   (sb-thread:make-thread
@@ -33,6 +33,7 @@
 (defparameter color-gold "#a88a3c")
 
 (update-color-map (current-screen))
+
 
 (defparameter *mode-line-bg-color* (nth 0 *colors*))
 (defparameter *mode-line-fg-color* (nth 7 *colors*))
@@ -63,12 +64,15 @@
 ;; (load-module "ttf-fonts")
 ;; (clx-truetype:cache-fonts)
 ;; (set-font (make-instance 'xft:font
-;;                          :family "mononoki Nerd Font Mono"
+;;                          :family "Mononoki NF"
 ;;                          :subfamily "Regular"
-;;                          :size 14
+;;                          :size 12
 ;;                          :antialias t))
-;; ...or normal fonts
+;; ...Or normal fonts
 (set-font "-*-fixed-*-r-normal-*-15-120-*-*-*-*-iso8859-*")
+
+;; Session commands
+(load-module "end-session")
 
 ;; Battery and Wifi
 (load-module "battery-portable")
@@ -77,16 +81,7 @@
 (setf *refresh-time* 30
       wifi:*wifi-modeline-fmt* "Wifi: %p")
 
-;; Session commands
-(load-module "end-session")
-
-;; Pass integration
-;; (load-module "pass")
-
-;; Mpd integration
-;; (load-module "mpd")
-
-;;; Basic Settings
+;;; Main Settings
 
 (setf *mode-line-background-color* *mode-line-bg-color*
       *mode-line-border-color* *mode-line-bg-color*
@@ -117,8 +112,8 @@
 
 (setf *window-format* "(%n) %c"
       *group-format* "%n%s %t"
-      *hidden-window-color* "^**" ; "^(:fg \"#626262\")"
-      *mode-line-highlight-template* "[^5~A^n]") ; antes era "^R~A^r"
+      *hidden-window-color* "^**"
+      *mode-line-highlight-template* "[^5~A^n]")
 
 ;;; Groups
 
@@ -132,8 +127,7 @@
 
 ;;; Modeline Settings
 
-(let ((is-laptop nil)
-      (separator " ^(:fg \"#626262\");^n "))
+(let ((separator " ^(:fg \"#626262\");^n "))
   (setf *time-modeline-string* "%a %d de %b, %H:%M"
         *screen-mode-line-format* (list
                                    ;; Groups
@@ -144,10 +138,10 @@
                                    ;; Pad to right
                                    "^>"
                                    ;; Battery
-                                   (when is-laptop
+                                   (when *is-laptop*
                                      (concatenate 'string "%B" separator)) 
                                    ;; Wifi
-                                   (when is-laptop
+                                   (when *is-laptop*
                                      (concatenate 'string "%I" separator)) 
                                    ;; Date
                                    '(:eval (run-shell-command "date '+%a %d de %b, %H:%M'" t)))))
@@ -159,7 +153,7 @@
 
 (enable-mode-line-everywhere)
 
-;; Commands
+;;; Commands
 
 (defcommand hsplit-and-focus () ()
   "create a new frame on the right and focus it."
@@ -224,11 +218,17 @@
                            (run-or-raise "emacsclient -a 'emacs' -c" '(:class "Emacs") t nil)
                            (run-shell-command "emacsclient -e '(dired nil)'"))))
 
+
+(defcommand file-manager () ()
+  "Start PCManFM or switch to it, if it is already running on any group."
+  (sb-thread:make-thread (lambda ()
+                           (run-or-raise "pcmanfm" '(:class "Pcmanfm") t nil))))
+
 (defcommand mpc () ()
-  "Start simple-mpc on the Emacs client or switch to it, if it is already running on any group. If no client is running, a new instance is created."
+  "Start mpc-mode on the Emacs client or switch to it, if it is already running on any group. If no client is running, a new instance is created."
   (sb-thread:make-thread (lambda ()
                            (run-or-raise "emacsclient -a 'emacs' -c" '(:class "Emacs") t nil)
-                           (run-shell-command "emacsclient -e '(simple-mpc)'"))))
+                           (run-shell-command "emacsclient -e '(mpc)'"))))
 
 (defcommand steam () ()
   "Start Steam or switch to it, if it is already running on any group."
@@ -239,6 +239,11 @@
   "Start Spotify or switch to it, if it is already running on any group."
   (sb-thread:make-thread (lambda ()
                            (run-or-raise "spotify" '(:class "Spotify") t nil))))
+
+(defcommand mail () ()
+  "Start Thunderbird or switch to it, if it is already running on any group."
+  (sb-thread:make-thread (lambda ()
+                           (run-or-raise "thunderbird" '(:class "thunderbird") t nil))))
 
 (defcommand discord () ()
   "Start Discord (WebCord) or switch to it, if it is already running on any group."
@@ -261,49 +266,38 @@
   "Stop current slynk server for sly."
   (sb-thread:make-thread (lambda () (slynk:stop-server 4005))))
 
-;; Key mappings
+;;; Key mappings
 
 ;; Root map
-(set-prefix-key (kbd "s-x"))
+(set-prefix-key (kbd "s-SPC"))
 (define-key *root-map* (kbd "ESC") "abort")
+(define-key *root-map* (kbd "q") "logout")
 (define-key *root-map* (kbd "v") "hsplit-and-focus")
 (define-key *root-map* (kbd "s") "vsplit-and-focus")
+(define-key *root-map* (kbd "L") "lock")
+(define-key *root-map* (kbd "F") "fullscreen")
 
-;; Toggle gaps and mode-line
-(define-key *top-map* (kbd "s-G") "toggle-gaps")
-(define-key *top-map* (kbd "s-B") "mode-line")
+(undefine-key *root-map* (kbd "r"))
+(define-key *root-map* (kbd "r") "remove")
+(undefine-key *root-map* (kbd "R"))
+(define-key *root-map* (kbd "R") "iresize")
 
-;; Window Focusing
+;; Windows
 (define-key *top-map* (kbd "s-h") "move-focus left")
 (define-key *top-map* (kbd "s-j") "move-focus down")
 (define-key *top-map* (kbd "s-k") "move-focus up")
 (define-key *top-map* (kbd "s-l") "move-focus right")
 
-(define-key *top-map* (kbd "s-g") "windowlist")
-(define-key *top-map* (kbd "s-n") "pull-hidden-next")
-(define-key *top-map* (kbd "s-p") "pull-hidden-previous")
-
-;; Window Movement
 (define-key *top-map* (kbd "s-H") "move-window left")
 (define-key *top-map* (kbd "s-J") "move-window down")
 (define-key *top-map* (kbd "s-K") "move-window up")
 (define-key *top-map* (kbd "s-L") "move-window right")
 
-;; Split and maximizing
-(define-key *top-map* (kbd "s-v") "hsplit-and-focus")
-(define-key *top-map* (kbd "s-s") "vsplit-and-focus")
-(define-key *top-map* (kbd "s-o") "only")
-(define-key *top-map* (kbd "s-r") "remove")
-(define-key *top-map* (kbd "s-f") "fullscreen")
-
-;; Kill windows
-(define-key *top-map* (kbd "s-c") "delete")
-(define-key *top-map* (kbd "s-C") "kill")
-
-;; Session
-(define-key *top-map* (kbd "s-ESC") "lock")
-(define-key *top-map* (kbd "s-Q") "logout")
-(define-key *top-map* (kbd "s-R") "restart-hard")
+(define-key *top-map* (kbd "s-n") "pull-hidden-next")
+(define-key *top-map* (kbd "s-p") "pull-hidden-previous")
+(define-key *top-map* (kbd "s-f") "fnext")
+(define-key *top-map* (kbd "s-b") "fprev")
+(define-key *top-map* (kbd "s-v") "windowlist")
 
 ;; Groups
 (define-key *top-map* (kbd "s-1") (concat "gselect " (nth 0 *group-names*)))
@@ -319,15 +313,15 @@
 (define-key *top-map* (kbd "s-%") (concat "gmove " (nth 4 *group-names*)))
 
 ;; Programs
-(define-key *top-map* (kbd "s-d") "run-shell-command dmenu_run -i -p 'Run:'")
 (define-key *top-map* (kbd "s-RET") "term")
-(define-key *top-map* (kbd "s-b") "firefox")
+(define-key *top-map* (kbd "s-w") "firefox")
 (define-key *top-map* (kbd "s-e") "emacsclient")
-(define-key *top-map* (kbd "s-w") "dired")
-(define-key *top-map* (kbd "s-W") "run-shell-command pcmanfm")
+(define-key *top-map* (kbd "s-d") "file-manager")
+(define-key *top-map* (kbd "s-D") "dired")
+(define-key *top-map* (kbd "s-c") "run-shell-command dmenu_run -i -p 'Run:'")
 
-(define-key *top-map* (kbd "s-u") "colon")
-(define-key *top-map* (kbd "s-U") "exec")
+(define-key *top-map* (kbd "s-x") "colon")
+(define-key *top-map* (kbd "s-X") "exec")
 
 ;; Scripts
 (defparameter *script-manager* "scriptctl")
@@ -348,4 +342,4 @@ If exec is non-nil, the shell command will be run from this function, else it wi
 (define-key *top-map* (kbd "s-O") (make-script nil "sinks"))
 (define-key *top-map* (kbd "s-S") (make-script nil "steamapp"))
 (define-key *top-map* (kbd "s-P") (make-script nil "pass"))
-(define-key *top-map* (kbd "s-y") (make-script nil))
+(define-key *top-map* (kbd "s-s") (make-script nil))

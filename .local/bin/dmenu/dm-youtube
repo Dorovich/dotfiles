@@ -2,6 +2,12 @@
 
 set -euo pipefail
 
+if [ -f $HOME/.dmenurc ]; then
+  . $HOME/.dmenurc
+else
+  DMENU='dmenu -h 18 -i'
+fi
+
 # Youtube channels to check
 declare -A youtube_channels
 youtube_channels[chibidoki]="https://www.youtube.com/@chibidoki/featured"
@@ -49,13 +55,13 @@ parse_rss() { #{{{
   done
 } #}}}
 
-_channel=$(printf '%s\n' "${!youtube_channels[@]}" | sort | dmenu -i -l 10 -p 'Select Channel:' "$@")
+_channel=$(printf '%s\n' "${!youtube_channels[@]}" | sort | $DMENU -l 10 -p 'Select Channel:' "$@")
 _channel_id=$(curl -s -f -L "${youtube_channels[${_channel}]}" | grep -o "channel_id=.*" | sed 's/".*//g')
 
 _feed_url="https://www.youtube.com/feeds/videos.xml?channel_id=${_channel_id##*=}"
 
 _video_list=$(parse_rss "$(curl -s "${_feed_url}")")
-_video=$(printf '%s\n' "${_video_list}" | sort -r | dmenu -i -l 10 -p 'Select Video:' "$@")
+_video=$(printf '%s\n' "${_video_list}" | sort -r | $DMENU -l 10 -p 'Select Video:' "$@")
 _video_id=$(echo "${_video}" | cut -d'|' -f2 | sed -e 's/^[ \t]*//')
 
 if [[ -n ${_video_id} ]]; then

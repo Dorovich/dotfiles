@@ -6,7 +6,7 @@ dmenulines=10
 if [ -f $HOME/.dmenurc ]; then
   . $HOME/.dmenurc
 else
-  DMENU='dmenu -i'
+  DMENU='dmenu -h 18 -i'
 fi
 
 addaftercurrent(){

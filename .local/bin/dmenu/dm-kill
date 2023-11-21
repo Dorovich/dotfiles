@@ -1,11 +1,17 @@
 #!/bin/env bash
 
+if [ -f $HOME/.dmenurc ]; then
+  . $HOME/.dmenurc
+else
+  DMENU='dmenu -h 18 -i'
+fi
+
 selected=$(ps --user "$USER" -F | \
-                dmenu -l 5 -p "Search for process to kill:" | \
+                $DMENU -l 5 -p "Search for process to kill:" | \
                 awk '{print $2" "$11}')
 
 if [ "$selected" ]; then
-    answer=$(echo -e "No\nYes" | dmenu -p "Kill $selected?")
+    answer=$(echo -e "No\nYes" | $DMENU -p "Kill $selected?")
 
     if [ "$answer" == "Yes" ]; then
         kill -9 "${selected%% *}"

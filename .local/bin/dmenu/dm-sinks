@@ -1,5 +1,11 @@
 #!/bin/sh
 
+if [ -f $HOME/.dmenurc ]; then
+  . $HOME/.dmenurc
+else
+  DMENU='dmenu -h 18 -i'
+fi
+
 sinks=$(pactl list sinks short | awk '{print $2}')
-choice=$(echo "$sinks" | dmenu -p "Select sound output:" -l 5)
+choice=$(echo "$sinks" | $DMENU -p "Select sound output:" -l 5)
 pactl set-default-sink $choice

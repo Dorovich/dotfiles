@@ -1,6 +1,12 @@
 #!/bin/sh
 
-confirmation=$(echo "No\nLogout\nShutdown\nReboot" | dmenu -i -p "Do you want to quit?")
+if [ -f $HOME/.dmenurc ]; then
+  . $HOME/.dmenurc
+else
+  DMENU='dmenu -h 18 -i'
+fi
+
+confirmation=$(echo "No\nLogout\nShutdown\nReboot" | $DMENU -p "Do you want to quit?")
 
 case $confirmation in
     "Logout")

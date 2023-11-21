@@ -16,4 +16,6 @@
                             (horizontal-scroll-bars . nil)
                             (background-color . "#000000")
                             (ns-appearance . dark)
-                            (ns-transparent-titlebar . t)))
+                            (ns-transparent-titlebar . t)
+                            (left-fringe . 0)
+                            (right-fringe . 0)))
