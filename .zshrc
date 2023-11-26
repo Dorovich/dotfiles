@@ -52,7 +52,8 @@ export MYVIMRC="$HOME/.vimrc"
 export SAVEHIST=2000
 export HISTFILE=~/.zsh_history
 
-export PS1="%B%F{8}λ%f%b "
+#λ
+export PS1="%B%F{8}%%%f%b "
 export PS2="%B%F{8}>%f%b "
 
 # path

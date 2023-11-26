@@ -27,8 +27,8 @@ c.colors.webpage.darkmode.policy.page = "smart"
 c.colors.webpage.darkmode.policy.images = "never"
 c.completion.show = "auto"
 c.completion.use_best_match = True
-c.scrolling.smooth = False
-c.scrolling.bar = "always"
+c.scrolling.smooth = True
+c.scrolling.bar = "overlay"
 c.completion.height = "35%"
 c.completion.cmd_history_max_items = 100
 c.completion.quick = False
@@ -63,11 +63,11 @@ c.aliases['mpv'] = 'spawn --detach mpv --force-window=immediate {url}'
 
 c.bindings.commands = {
     'normal': {
-        'ñ': 'set-cmd-text :',
+        'ñ': 'cmd-set-text :',
         'ys': 'yank selection', # ya se puede hacer con 'vy'
         'yo': 'yank inline [[{url}][{title}]]',
         'wd': 'close',
-        'gA': 'set-cmd-text -s :tab-take',
+        'gA': 'cmd-set-text -s :tab-take',
         'cs': 'config-source',
         'ce': 'spawn --detach ' + Terminal + ' -e ' + Editor + ' '
                 + Homedir + '/.config/qutebrowser/config.py',
@@ -128,7 +128,7 @@ c.url.searchengines = {
 # }}}
 
 # Web content {{{
-c.url.default_page = "cosas-de-vido.neocities.org"
+c.url.default_page = "about:blank"
 c.url.start_pages = ["cosas-de-vido.neocities.org"]
 c.editor.command = [Terminal, '-e', Editor, '{file}', '-c', 'normal {line}G{column0}l']
 c.fileselect.handler = 'external'
@@ -209,6 +209,6 @@ config.set('content.javascript.enabled', True, 'chrome-devtools://*')
 config.set('content.javascript.enabled', True, 'devtools://*')
 config.set('content.javascript.enabled', True, 'chrome://*/*')
 config.set('content.javascript.enabled', True, 'qute://*/*')
-config.set('content.javascript.can_access_clipboard', True, 'https://github.com/*')
+config.set('content.javascript.clipboard', 'access', 'https://github.com/*')
 config.set('content.media.audio_capture', True, 'https://discord.com/*')
 # }}}

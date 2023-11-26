@@ -9,14 +9,14 @@
 
 ** Información
 + Distribución: [[https://pop.system76.com/][Pop!_OS]] (con [[[[https://voidlinux.org/][Void Linux]] o [[https://www.debian.org/][Debian]] la próxima)
-+ Gestor de ventanas: [[https://gitlab.com/Dorovich/dwm-vido][dwm]]
-+ Terminal: [[https://gitlab.com/Dorovich/st-vido][st]]
++ Gestor de ventanas: [[https://gitlab.com/Dorovich/imagen-bspwm][bspwm]]
++ Terminal: [[http://software.schmorp.de/pkg/rxvt-unicode.html][urxvt]]
 + Shell: =zsh=
 + Editor: [[https://www.gnu.org/software/emacs/][emacs]], [[https://www.vim.org/][vim]]
 + Gestor de archivos: =pcmanfm=, =lf=
 + Fuente: [[https://madmalik.github.io/mononoki/][mononoki]] (Nerd Font)
 + Música: [[https://www.musicpd.org/][mpd]] (+ ncmpcpp)
-+ Navegador: [[https://librewolf.net/][librewolf]]
++ Navegador: [[https://www.mozilla.org/firefox/][firefox]]
 
 /Para más cositas ver mi lista de [[PROGRAMS.org][programas interesantes]]./
 
