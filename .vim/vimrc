@@ -104,6 +104,8 @@ function! RunFile()
 		" execute('!tcc -run %')
 	elseif &ft == 'lisp'
 		execute('!sbcl --script %')
+	elseif &ft == 'xdefaults'
+		execute('!xrdb %')
 	else
 		execute('echo "No runner avaiable!"')
 	endif

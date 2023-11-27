@@ -44,11 +44,12 @@ cmd delete ${{
 # custom open command
 cmd open ${{
     case $(file --mime-type "$(readlink -f $f)" -b) in
-        text/*|application/json|inode/x-empty|application/x-subrip) $EDITOR $fx;;
+        text/*|application/json|inode/x-empty|application/x-subrip) $EDITOR $fx ;;
 	image/x-xcf) setsid -f gimp $f >/dev/null 2>&1 ;;
 	image/svg+xml) display -- $f ;;
-	image/*) setsid -f sxiv $fx ;;
-	audio/*|video/x-ms-asf) mpv --audio-display=no $f ;;
+	image/gif) setsid -f mpv $f >/dev/null 2>&1 ;;
+	image/*) setsid -f sxiv $fx >/dev/null 2>&1 ;;
+	audio/*|video/x-ms-asf) mpv --audio-display=no $f >/dev/null 2>&1 ;;
 	video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
 	application/pdf|application/vnd.djvu|application/epub*|application/vnd.comicbook*) setsid -f zathura $fx >/dev/null 2>&1 ;;
 	application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) localc $fx ;;

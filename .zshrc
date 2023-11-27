@@ -50,7 +50,7 @@ export VISUAL="emacsclient -c -a 'emacs'"
 export MYVIMRC="$HOME/.vimrc"
 
 export SAVEHIST=2000
-export HISTFILE=~/.zsh_history
+export HISTFILE=~/.local/share/shell/zsh_history
 
 #λ
 export PS1="%B%F{8}%%%f%b "
