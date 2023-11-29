@@ -3,7 +3,12 @@
 case $1 in
     1|"up") mpc volume +5;;
     2|"down") mpc volume -5;;
-    *) exit;;
+    *)
+	choice=$(echo -e "up\ndown" | dmenu -p "Volume option:")
+	case $choice in
+		"up") scriptctl volume 1;;
+		"down") scriptctl volume 2;;
+	esac;;
 esac
 
 exec notify-send "mpd $(mpc volume)"

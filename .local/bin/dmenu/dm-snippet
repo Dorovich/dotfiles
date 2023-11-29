@@ -7,10 +7,10 @@ else
 fi
 
 case $1 in
-    1)
+    1|"load")
         xdotool type $(grep -v '^#' ~/.local/share/snippets | $DMENU -l 15 | cut -d' ' -f1)
         ;;
-    2)
+    2|"save")
         new_snippet="$(xclip -o)"
         snippet_file="${HOME}/.local/share/snippets"
 
@@ -22,6 +22,10 @@ case $1 in
         fi
         ;;
     *)
-        xdotool type $(grep -v '^#' ~/.local/share/snippets | $DMENU -l 15 | cut -d' ' -f1)
-        ;;
+    	choice=$(echo "load\nsave" | $DMENU -p "Snippet option:")
+    	case $choice in
+		"load") scriptctl snippet 1;;
+		"save") scriptctl snippet 2;;
+	esac
+	;;
 esac

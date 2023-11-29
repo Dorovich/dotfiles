@@ -206,3 +206,4 @@
 ;; https://config.phundrak.com/emacs.html
 ;; https://opensource.com/article/20/1/emacs-rpgs
 ;; https://github.com/zaeph/org-roll
+(put 'upcase-region 'disabled nil)

@@ -23,29 +23,7 @@ case $1 in
     "wifi")		$SCRIPTSDIR/dm-wifi;;
     *) 
 	choice=$(echo "music\npass\nsinks\nkill\neditcfg\nsnippet\nvolume\nscrot\nyoutube\nsteamapp\nwifi\nquit" | dmenu -p "Script:")
-	case $choice in
-		"") exit;;
-		"snippet")
-        		option=$(echo "load\nsave" | dmenu -p "Snippet option:")
-			case $option in
-				"load") scriptctl snippet 1;;
-				"save") scriptctl snippet 2;;
-			esac;;
-		"scrot")
-        		option=$(echo "full\nactive\nselect\ncopy" | dmenu -p "Screenshot option:")
-			case $option in
-				"full") scriptctl scrot 1;;
-				"active") scriptctl scrot 2;;
-				"select") scriptctl scrot 3;;
-				"copy") scriptctl scrot 4;;
-			esac;;
-		"volume")
-        		option=$(echo "up\ndown" | dmenu -p "Volume option:")
-			case $option in
-				"up") scriptctl volume 1;;
-				"down") scriptctl volume 2;;
-			esac;;
-		*) scriptctl $choice;;
-	esac
+	[ -z $choice ] && exit
+	scriptctl $choice
 	;;
 esac
