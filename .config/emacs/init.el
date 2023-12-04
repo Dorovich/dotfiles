@@ -54,6 +54,11 @@
       fancy-splash-image (expand-file-name "pics/butterfly-hd.png" user-emacs-directory)
       display-time-format "%H:%M"
       scheme-program-name "csi -:c"
+      mouse-wheel-scroll-amount '(2
+                                  ((shift) . hscroll)
+                                  ((meta))
+                                  ((control meta) . global-text-scale)
+                                  ((control) . text-scale))
       ;; ORG
       org-image-actual-width nil
       org-pretty-entities t
@@ -122,6 +127,7 @@
 
 (defalias 'list-buffers 'ibuffer)
 
+(put 'upcase-region 'disabled nil)
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;;; HOOKS
@@ -150,7 +156,8 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-(unless (package-installed-p 'use-package)
+(unless (and (< emacs-major-version 29)
+             (package-installed-p 'use-package))
   (package-install 'use-package))
 
 (use-package gcmh
@@ -201,9 +208,9 @@
 (load-file (expand-file-name "extras/dev.el" user-emacs-directory))
 (load-file (expand-file-name "extras/lisp.el" user-emacs-directory))
 (load-file (expand-file-name "extras/experimental.el" user-emacs-directory))
+(load-file (expand-file-name "extras/meow.el" user-emacs-directory))
 
 ;;; COSITAS
 ;; https://config.phundrak.com/emacs.html
 ;; https://opensource.com/article/20/1/emacs-rpgs
 ;; https://github.com/zaeph/org-roll
-(put 'upcase-region 'disabled nil)

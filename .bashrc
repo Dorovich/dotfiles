@@ -5,6 +5,8 @@ shopt -s histappend
 shopt -s checkwinsize
 shopt -s cdspell
 
+# completion
+
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     source /usr/share/bash-completion/bash_completion
@@ -25,9 +27,13 @@ alias lss="ls -I '*.o' -I '*~' -I '*.out' -I '*.bin' -I '*.s' -I '*.txt'"
 alias grep='grep --color=auto'
 alias clean="bleachbit -c --preset"
 alias fullclean="bleachbit -c --preset && sudo bleachbit -c --preset"
-[[ $- == *i* ]] && alias sbcl="rlwrap sbcl"
 alias qmake-qt5="qmake"
 alias start-vlime-server="sbcl --load .vim/plugged/vlime/lisp/start-vlime.lisp"
+
+if [[ $- == *i* ]]; then
+    alias sbcl="rlwrap sbcl"
+    alias csi="rlwrap csi"
+fi
 
 alias yt-mp3="yt-dlp --extract-audio --audio-format mp3 "
 alias yt-mp4="yt-dlp --format mp4 "
@@ -42,14 +48,17 @@ alias camaraobs="sudo modprobe v4l2loopback exclusive_caps=1 card_label='CamaraO
 
 # utilities
 
-function 0file() { curl -F"file=@$1" https://envs.sh ; }    # 0file "file.png"
-function 0pb() { curl -F"file=@-;" https://envs.sh ; }      # echo "text" | 0pb
-function 0url() { curl -F"url=$1" https://envs.sh ; }       # 0url "https://url"
-function 0short() { curl -F"shorten=$1" https://envs.sh ; } # 0short "https://long-url"
+0file() { curl -F"file=@$1" https://envs.sh ; }    # 0file "file.png"
+0pb() { curl -F"file=@-;" https://envs.sh ; }      # echo "text" | 0pb
+0url() { curl -F"url=$1" https://envs.sh ; }       # 0url "https://url"
+0short() { curl -F"shorten=$1" https://envs.sh ; } # 0short "https://long-url"
 
-function restart-emacs-server() { killall emacs ; emacs --daemon ; }
+restart-emacs-server() {
+    killall emacs
+    emacs --daemon
+}
 
-function mergepdfs() {
+mergepdfs() {
     gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=merged.pdf "$@"
 }
 
@@ -72,18 +81,6 @@ reset=$(tput sgr0)
 export PS1="\n\[$bold$color1\]\W \[$bold$color2\]$\[$reset\] "
 export PS2="\[$bold$color2\]>\[$reset\] "
 
-# path
-
-[ -d "$HOME/.bin" ] && PATH="$HOME/.bin:$PATH"
-[ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
-[ -d "$HOME/.local/bin/statusbar" ] && PATH="$HOME/.local/bin/statusbar:$PATH"
-[ -d "$HOME/.local/bin/dmenu" ] && PATH="$HOME/.local/bin/dmenu:$PATH"
-[ -d "$HOME/.emacs.d/bin" ] && PATH="$HOME/.emacs.d/bin:$PATH"
-[ -d "$HOME/Applications" ] && PATH="$HOME/Applications:$PATH"
-[ -d "/var/lib/flatpak/exports/bin/" ] && PATH="/var/lib/flatpak/exports/bin/:$PATH"
-[ -d "$HOME/.vim/bin" ] && PATH="$HOME/.vim/bin:$PATH"
-[ -d "/opt/bochs_gdb/bin" ] && PATH="/opt/bochs_gdb/bin:$PATH"
-
 # git
 
 alias ga="git add"
@@ -96,11 +93,11 @@ alias gr="git rm -r"
 alias grst="git reset --hard HEAD"
 alias gl='git log --pretty=format:"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]" --abbrev-commit -30'
 
-function gc() {
+gc() {
     git commit -a -m "$*"
 }
 
-function gitstart() {
+gitstart() {
     echo '1. git init'
     echo '2. git remote add origin <link>'
     echo '3. git branch -M main'
@@ -119,11 +116,11 @@ alias configpl="config pull"
 alias configr="config rm -r"
 alias configl='config log --pretty=format:"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]" --abbrev-commit -30'
 
-function configc() {
+configc() {
     config commit -a -m "$*" 
 }
 
-function configstart() {
+configstart() {
     echo '1. mkdir ~/dotfiles'
     echo '2. git init --bare $HOME/dotfiles'
     echo '3. alias config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"'

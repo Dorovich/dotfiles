@@ -1,7 +1,7 @@
 setxkbmap es &
 xset r rate 300 35 &
 /usr/bin/nvidia-settings -l &
-wmname dwm &
+# wmname dwm &
 dwm-status &
 nitrogen --restore &
 mpd &

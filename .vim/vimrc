@@ -28,7 +28,7 @@ set laststatus=0
 set showcmd
 set showmode
 set ruler
-set number relativenumber
+" set number relativenumber
 set splitbelow splitright
 set wildmenu wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.exe,*.o,*.mp3,*.mp4,*.mov,*.mkv,*.ogg,*.dat
 set backspace=2
@@ -51,7 +51,7 @@ set undofile undodir=~/.vim/tmp/undo
 set nobackup writebackup backupdir=~/.vim/tmp/backup
 set viewoptions-=options viewdir=~/.vim/tmp/view
 set viminfo+=n~/.vim/.viminfo
-set shell=/usr/bin/zsh
+set shell=/usr/bin/bash
 
 syntax enable
 filetype plugin on
@@ -219,7 +219,7 @@ if usar_paquetes['fuzzy']
 endif
 
 if usar_paquetes['colores']
-	let g:srcery_bg_passthrough = 1
+	let g:srcery_bg = ['NONE', 'NONE']
 	let g:srcery_dim_lisp_paren = 1
 	let g:srcery_italic = 1
 	let g:srcery_hard_black_terminal_bg = 0
