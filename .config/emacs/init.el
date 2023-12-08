@@ -12,9 +12,6 @@
 (set-face-attribute 'fixed-pitch nil :family my-font-mono :height my-font-size)
 (set-face-attribute 'variable-pitch nil :family my-font-prose :height my-font-size)
 
-(shell-command "setxkbmap -option caps:ctrl_modifier" nil)
-(shell-command "xset r rate 300 35" nil)
-
 (global-set-key (kbd "<mouse-8>") 'previous-buffer)
 (global-set-key (kbd "<mouse-9>") 'next-buffer)
 (global-set-key (kbd "C-x r C-f") 'recentf-open-files)
@@ -137,7 +134,14 @@
 (add-hook 'org-mode-hook (lambda () (variable-pitch-mode 1)))
 
 ;;; FUNCTIONS
+(defun setup-keyboard ()
+  "Setup keyboard repeat rate and caps->control maps."
+  (interactive)
+  (shell-command "setxkbmap -option caps:ctrl_modifier" nil)
+  (shell-command "xset r rate 300 35" nil))
+
 (defun reload-init-file ()
+  "Reload the user's init.el twice."
   (interactive)
   (load-file user-init-file)
   (load-file user-init-file))
@@ -149,6 +153,12 @@
     (message "Opening %s..." file)
     (call-process "xdg-open" nil 0 nil file)
     (message "Opening %s done" file)))
+
+(defun sudo-save ()
+  (interactive)
+  (if (not buffer-file-name)
+      (write-file (concat "/sudo:root@localhost:" (ido-read-file-name "File:")))
+    (write-file (concat "/sudo:root@localhost:" buffer-file-name))))
 
 ;;; PACKAGES
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)

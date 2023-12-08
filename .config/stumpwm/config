@@ -8,7 +8,7 @@
 (defvar *first-run* t)
 (defvar *is-laptop* nil)
 
-(defun startup-programs ()
+(defun setup-commands ()
   (sb-thread:make-thread
    (lambda ()
      (run-shell-command "nitrogen --restore")
@@ -16,11 +16,12 @@
        (run-shell-command "xsetroot -cursor_name left_ptr")
        (run-shell-command "setxkbmap -option caps:ctrl_modifier")
        (setf *first-run* nil)))
-   :name "startup-programs"))
+   :name "setup-commands"))
 
-(add-hook *start-hook* #'startup-programs)
+(add-hook *start-hook* #'setup-commands)
 
 ;;; Theme
+(defparameter color-gold "#baa67f")
 (setf *colors* '("#151515"   ;black
                  "#e06c75"   ;red
                  "#98c379"   ;green
@@ -30,10 +31,7 @@
                  "#346475"   ;cyan
                  "#d1d1d1")) ;white
 
-(defparameter color-gold "#a88a3c")
-
 (update-color-map (current-screen))
-
 
 (defparameter *mode-line-bg-color* (nth 0 *colors*))
 (defparameter *mode-line-fg-color* (nth 7 *colors*))
@@ -104,9 +102,9 @@
       *input-completion-show-empty* nil)
 
 (set-msg-border-width 2)
-(setf *timeout-wait* 3)
+(setf *timeout-wait* 5)
 (setf *timeout-frame-indicator-wait* 0)
-(setf *mouse-focus-policy* :click)
+(setf *mouse-focus-policy* :sloppy)
 (setf *run-or-raise-all-groups* nil)
 (setf *startup-message* nil)
 
@@ -131,7 +129,7 @@
   (setf *time-modeline-string* "%a %d de %b, %H:%M"
         *screen-mode-line-format* (list
                                    ;; Groups
-                                   "@ ^(:fg \"#a88a3c\")%n^n"
+                                   "@ ^(:fg \"#baa67f\")%n^n"
                                    ;; Windows
                                    separator
                                    "%v"
@@ -170,6 +168,12 @@
   (delete-window)
   (remove-split))
 
+(defcommand toggle-floating () ()
+  "Toggle the floating state of the current window"
+  (if (float-window-p (current-window))
+      (unfloat-this)
+    (float-this)))
+
 (defcommand lock () ()
   "Lock the screen, and if suspendp is non-nil, also suspend the system."
   (let ((suspendp (y-or-n-p (format nil "Suspend the system as well? "))))
@@ -178,7 +182,7 @@
     (when suspendp (run-shell-command "systemctl suspend"))))
 
 (defcommand screenshot () ()
-  (make-script t "scrot")
+  (make-script t "scrot" "full")
   (sleep 0.5)
   (message "Screenshot taken!"))
 
@@ -268,6 +272,16 @@
 
 ;;; Key mappings
 
+(defparameter *script-manager* "scriptctl")
+
+(defun make-script (exec &optional name arg)
+  "Make a script command string using `*script-manager*', and optionally a script name and an argument.
+If exec is non-nil, the shell command will be run from this function, else it will return the string."
+  (let ((cmd (concatenate 'string *script-manager* " " name " " arg)))
+    (if exec
+        (run-shell-command cmd)
+        (concatenate 'string "run-shell-command " cmd))))
+
 ;; Root map
 (set-prefix-key (kbd "s-SPC"))
 (define-key *root-map* (kbd "ESC") "abort")
@@ -293,11 +307,25 @@
 (define-key *top-map* (kbd "s-K") "move-window up")
 (define-key *top-map* (kbd "s-L") "move-window right")
 
-(define-key *top-map* (kbd "s-n") "pull-hidden-next")
-(define-key *top-map* (kbd "s-p") "pull-hidden-previous")
-(define-key *top-map* (kbd "s-f") "fnext")
-(define-key *top-map* (kbd "s-b") "fprev")
+(define-key *top-map* (kbd "s-c") "pull-hidden-next")
+(define-key *top-map* (kbd "s-n") "fnext")
+(define-key *top-map* (kbd "s-p") "fprev")
 (define-key *top-map* (kbd "s-v") "windowlist")
+(define-key *top-map* (kbd "s-f") "fullscreen")
+(define-key *top-map* (kbd "s-t") "toggle-floating")
+(define-key *top-map* (kbd "s-x") *exchange-window-map*)
+
+(define-key *top-map* (kbd "s-w") "delete")
+(define-key *top-map* (kbd "s-q") "remove")
+
+(defvar *window-split-map* nil
+  "The keymap that frame splitting key bindings sit on.")
+
+(fill-keymap *window-split-map*
+             (kbd "s") "vsplit-and-focus"
+             (kbd "v") "hsplit-and-focus"
+             (kbd "r") "remove")
+(define-key *top-map* (kbd "s-s") *window-split-map*)
 
 ;; Groups
 (define-key *top-map* (kbd "s-1") (concat "gselect " (nth 0 *group-names*)))
@@ -312,34 +340,34 @@
 (define-key *top-map* (kbd "s-$") (concat "gmove " (nth 3 *group-names*)))
 (define-key *top-map* (kbd "s-%") (concat "gmove " (nth 4 *group-names*)))
 
+;; Utils
+(define-key *top-map* (kbd "s-g") "abort")
+(define-key *top-map* (kbd "s-R") "restart-hard")
+(define-key *top-map* (kbd "s-Q") "logout")
+(define-key *top-map* (kbd "s-BackSpace") "colon")
+
 ;; Programs
 (define-key *top-map* (kbd "s-RET") "term")
-(define-key *top-map* (kbd "s-w") "firefox")
+(define-key *top-map* (kbd "s-b") "firefox")
 (define-key *top-map* (kbd "s-e") "emacsclient")
-(define-key *top-map* (kbd "s-d") "file-manager")
-(define-key *top-map* (kbd "s-D") "dired")
-(define-key *top-map* (kbd "s-c") "run-shell-command dmenu_run -i -p 'Run:'")
-
-(define-key *top-map* (kbd "s-x") "colon")
-(define-key *top-map* (kbd "s-X") "exec")
+(define-key *top-map* (kbd "s-a") "file-manager")
+(define-key *top-map* (kbd "s-d") "run-shell-command dmenu_run -h 12 -c -g 3 -l 10")
 
 ;; Scripts
-(defparameter *script-manager* "scriptctl")
-
-(defun make-script (exec &optional name arg)
-  "Make a script command string using `*script-manager*', and optionally a script name and an argument.
-If exec is non-nil, the shell command will be run from this function, else it will return the string."
-  (let ((cmd (concatenate 'string *script-manager* " " name " " arg)))
-    (if exec
-        (run-shell-command cmd)
-        (concatenate 'string "run-shell-command " cmd))))
-
 (define-key *top-map* (kbd "s-Print") "screenshot")
 (define-key *top-map* (kbd "s-Insert") (make-script nil "snippet" "load"))
-(define-key *top-map* (kbd "s-m") (make-script nil "music"))
 (define-key *top-map* (kbd "s-+") (make-script nil "volume" "up"))
 (define-key *top-map* (kbd "s--") (make-script nil "volume" "down"))
-(define-key *top-map* (kbd "s-O") (make-script nil "sinks"))
-(define-key *top-map* (kbd "s-S") (make-script nil "steamapp"))
-(define-key *top-map* (kbd "s-P") (make-script nil "pass"))
-(define-key *top-map* (kbd "s-s") (make-script nil))
+
+(defvar *scripts-map* nil
+  "The keymap that script-related key bindings sit on.")
+
+(fill-keymap *scripts-map*
+             (kbd "r") (make-script nil)
+             (kbd "m") (make-script nil "music")
+             (kbd "o") (make-script nil "sinks")
+             (kbd "p") (make-script nil "pass")
+             (kbd "s") (make-script nil "scrot")
+             (kbd "k") (make-script nil "kill")
+             (kbd "l") (make-script nil "steamapp"))
+(define-key *top-map* (kbd "s-r") *scripts-map*)
