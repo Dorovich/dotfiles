@@ -4,21 +4,21 @@
 (in-package :stumpwm)
 
 ;;; Startup Commands
+(when *initializing*
+  (run-shell-command "xsetroot -cursor_name left_ptr")
+  (run-shell-command "setxkbmap -option caps:ctrl_modifier")
+  (run-shell-command "nitrogen --restore"))
 
-(defvar *first-run* t)
-(defvar *is-laptop* nil)
+(defvar *is-laptop* (string= "Ness-net"
+                             (string-trim '(#\Newline)(run-shell-command "hostname" t))))
 
-(defun setup-commands ()
-  (sb-thread:make-thread
-   (lambda ()
-     (run-shell-command "nitrogen --restore")
-     (when *first-run*
-       (run-shell-command "xsetroot -cursor_name left_ptr")
-       (run-shell-command "setxkbmap -option caps:ctrl_modifier")
-       (setf *first-run* nil)))
-   :name "setup-commands"))
-
-(add-hook *start-hook* #'setup-commands)
+;;; Fixes
+(defun ratio-or-pixel (length ratio) ; redefining this function...
+  "Return a (rounded) ratio of length unless ratio is an integer.
+If ratio is an integer return the number of pixel desired."
+  (if (integerp ratio)
+      ratio
+      (round (* length ratio)))) ; <-- to fix this line
 
 ;;; Theme
 (defparameter color-gold "#baa67f")
@@ -67,7 +67,9 @@
 ;;                          :size 12
 ;;                          :antialias t))
 ;; ...Or normal fonts
-(set-font "-*-fixed-*-r-normal-*-15-120-*-*-*-*-iso8859-*")
+(set-font (if *is-laptop*
+              "-*-fixed-*-r-normal-*-13-120-*-*-*-*-iso8859-*"
+            "-*-fixed-*-r-normal-*-15-120-*-*-*-*-iso8859-*"))
 
 ;; Session commands
 (load-module "end-session")
@@ -89,6 +91,7 @@
 
 (setf *message-window-gravity* :center
       *window-border-style* :thin
+      *new-window-preferred-frame* '(:empty :focused)
       *message-window-padding* 6
       *message-window-y-padding* 6
       *maxsize-border-width* 2
@@ -103,53 +106,28 @@
 
 (set-msg-border-width 2)
 (setf *timeout-wait* 5)
-(setf *timeout-frame-indicator-wait* 0)
-(setf *mouse-focus-policy* :sloppy)
+(setf *timeout-frame-indicator-wait* 0
+      *suppress-frame-indicator* t)
+(setf *mouse-focus-policy* :click)
+(setf *resize-increment* 30)
 (setf *run-or-raise-all-groups* nil)
 (setf *startup-message* nil)
 
 (setf *window-format* "(%n) %c"
       *group-format* "%n%s %t"
       *hidden-window-color* "^**"
-      *mode-line-highlight-template* "[^5~A^n]")
+      *mode-line-highlight-template* "[^(:fg \"#a566af\")~A^n]")
 
 ;;; Groups
 
-(defparameter *group-names* '("one" "two" "three" "four" "five"))
+(defparameter *group-names* (vector "one" "two" "three" "four" "five"))
 
-(grename (nth 0 *group-names*))
-(gnewbg (nth 1 *group-names*))
-(gnewbg (nth 2 *group-names*))
-(gnewbg (nth 3 *group-names*))
-(gnewbg (nth 4 *group-names*))
-
-;;; Modeline Settings
-
-(let ((separator " ^(:fg \"#626262\");^n "))
-  (setf *time-modeline-string* "%a %d de %b, %H:%M"
-        *screen-mode-line-format* (list
-                                   ;; Groups
-                                   "@ ^(:fg \"#baa67f\")%n^n"
-                                   ;; Windows
-                                   separator
-                                   "%v"
-                                   ;; Pad to right
-                                   "^>"
-                                   ;; Battery
-                                   (when *is-laptop*
-                                     (concatenate 'string "%B" separator)) 
-                                   ;; Wifi
-                                   (when *is-laptop*
-                                     (concatenate 'string "%I" separator)) 
-                                   ;; Date
-                                   '(:eval (run-shell-command "date '+%a %d de %b, %H:%M'" t)))))
-
-(defun enable-mode-line-everywhere ()
-  (loop for screen in *screen-list* do
-    (loop for head in (screen-heads screen) do
-      (enable-mode-line screen head t))))
-
-(enable-mode-line-everywhere)
+(when *initializing*
+  (grename (elt *group-names* 0))
+  (gnewbg (elt *group-names* 1))
+  (gnewbg (elt *group-names* 2))
+  (gnewbg (elt *group-names* 3))
+  (gnewbg (elt *group-names* 4)))
 
 ;;; Commands
 
@@ -174,12 +152,11 @@
       (unfloat-this)
     (float-this)))
 
-(defcommand lock () ()
-  "Lock the screen, and if suspendp is non-nil, also suspend the system."
-  (let ((suspendp (y-or-n-p (format nil "Suspend the system as well? "))))
+(defcommand lock (&optional suspendp) ()
+  "Lock the screen, and if @arg{suspendp} is non-nil, also suspend the system."
     (xlib:unmap-window (screen-message-window (current-screen)))
     (run-shell-command "slock")
-    (when suspendp (run-shell-command "systemctl suspend"))))
+    (when suspendp (run-shell-command "systemctl suspend")))
 
 (defcommand screenshot () ()
   (make-script t "scrot" "full")
@@ -193,6 +170,12 @@
 
 (defcommand hdmi-reset () ()
   (run-shell-command "xrandr --output DP-0 --auto"))
+
+(defcommand clean-resize-direction (d)
+  ((:direction "Direction: "))
+  "Resize frame to direction @var{d} without showing frame borders."
+  (resize-direction d)
+  (clear-frame-outlines (current-group)))
 
 (defcommand term (&optional program) ()
   "Invoke a terminal, possibly with a @arg{program}."
@@ -224,9 +207,9 @@
 
 
 (defcommand file-manager () ()
-  "Start PCManFM or switch to it, if it is already running on any group."
+  "Start PCManFM or switch to it, if it is already running on the current group (any screen)."
   (sb-thread:make-thread (lambda ()
-                           (run-or-raise "pcmanfm" '(:class "Pcmanfm") t nil))))
+                           (run-or-raise "pcmanfm" '(:class "Pcmanfm") nil t))))
 
 (defcommand mpc () ()
   "Start mpc-mode on the Emacs client or switch to it, if it is already running on any group. If no client is running, a new instance is created."
@@ -262,13 +245,91 @@
 
 (require :slynk)
 
+(defvar *slynk-port* 4004)
+(defvar *slynk-started* nil)
+
 (defcommand sly-start-server () ()
   "Start a slynk server for sly."
-  (sb-thread:make-thread (lambda () (slynk:create-server :dont-close t))))
+  (sb-thread:make-thread (lambda ()
+                           (slynk:create-server :port *slynk-port* :dont-close t)
+                           (setf *slynk-started* t))))
 
 (defcommand sly-stop-server () ()
   "Stop current slynk server for sly."
-  (sb-thread:make-thread (lambda () (slynk:stop-server 4005))))
+  (sb-thread:make-thread (lambda ()
+                           (slynk:stop-server *slynk-port*)
+                           (setf *slynk-started* nil))))
+
+;;; Modeline Settings
+
+(let ((separator " ^(:fg \"#626262\");^n "))
+  (setf *time-modeline-string* "%a %d de %b, %H:%M"
+        *screen-mode-line-format* (list
+                                   ;; Groups
+                                   "group: "
+                                   "^(:fg \"#baa67f\")%n^n"
+                                   separator
+                                   ;; Windows
+                                   "%v"
+                                   ;; Pad to right
+                                   "^>"
+                                   ;; Battery
+                                   (when *is-laptop*
+                                     (concatenate 'string "bat: %B" separator)) 
+                                   ;; Network
+                                   "net: "
+                                   '(:eval
+                                     (concatenate 'string
+                                      "^(:fg \"#98c379\")"
+                                      (first (cl-ppcre:split " "
+                                              (run-shell-command "hostname -I" t)))
+                                      "^n"))
+                                   (when *is-laptop* " (%I)")
+                                   separator
+                                   ;; Slynk
+                                   "slynk: "
+                                   '(:eval
+                                     (if *slynk-started*
+                                         (concatenate 'string
+                                                      "^(:fg \"#e06c75\")"
+                                                      (write-to-string *slynk-port*)
+                                                      "^n")
+                                         "-"))
+                                   separator
+                                   ;; Steam
+                                   "steam: "
+                                   '(:eval
+                                     (if (string= "" (run-shell-command "pidof steam" t))
+                                         "-"
+                                         "running"))
+                                   separator
+                                   ;; Date
+                                   '(:eval
+                                     (run-shell-command "date '+%a %d de %b, %H:%M'" t)))))
+
+(defun enable-mode-line-everywhere ()
+  (loop for screen in *screen-list* do
+    (loop for head in (screen-heads screen) do
+      (enable-mode-line screen head t))))
+
+(enable-mode-line-everywhere)
+
+;;; Hooks
+
+(defparameter *floating-classes* '("Sxiv" "mpv"))
+
+(defun float-if-match (window)
+  "Makes a new window floating if its class matches."
+  (when (member (window-class window) *floating-classes* :test #'string=)
+    (float-window window (current-group))
+    (let ((w (* (screen-width (current-screen)) 55/96))
+          (h (* (screen-height (current-screen)) 5/6)))
+      (float-window-move-resize window :width w :height h
+                                       :x (- (/ (screen-width (current-screen)) 2) (/ w 2))
+                                       :y (- (/ (screen-height (current-screen)) 2) (/ h 2))))
+    (group-focus-window (current-group) window)))
+
+(add-hook *new-window-hook* #'float-if-match)
 
 ;;; Key mappings
 
@@ -307,6 +368,11 @@ If exec is non-nil, the shell command will be run from this function, else it wi
 (define-key *top-map* (kbd "s-K") "move-window up")
 (define-key *top-map* (kbd "s-L") "move-window right")
 
+(define-key *top-map* (kbd "s-M-h") "clean-resize-direction left")
+(define-key *top-map* (kbd "s-M-j") "clean-resize-direction down")
+(define-key *top-map* (kbd "s-M-k") "clean-resize-direction up")
+(define-key *top-map* (kbd "s-M-l") "clean-resize-direction right")
+
 (define-key *top-map* (kbd "s-c") "pull-hidden-next")
 (define-key *top-map* (kbd "s-n") "fnext")
 (define-key *top-map* (kbd "s-p") "fprev")
@@ -324,26 +390,28 @@ If exec is non-nil, the shell command will be run from this function, else it wi
 (fill-keymap *window-split-map*
              (kbd "s") "vsplit-and-focus"
              (kbd "v") "hsplit-and-focus"
+             (kbd "o") "only"
              (kbd "r") "remove")
 (define-key *top-map* (kbd "s-s") *window-split-map*)
 
 ;; Groups
-(define-key *top-map* (kbd "s-1") (concat "gselect " (nth 0 *group-names*)))
-(define-key *top-map* (kbd "s-2") (concat "gselect " (nth 1 *group-names*)))
-(define-key *top-map* (kbd "s-3") (concat "gselect " (nth 2 *group-names*)))
-(define-key *top-map* (kbd "s-4") (concat "gselect " (nth 3 *group-names*)))
-(define-key *top-map* (kbd "s-5") (concat "gselect " (nth 4 *group-names*)))
+(define-key *top-map* (kbd "s-1") (concat "gselect " (elt *group-names* 0)))
+(define-key *top-map* (kbd "s-2") (concat "gselect " (elt *group-names* 1)))
+(define-key *top-map* (kbd "s-3") (concat "gselect " (elt *group-names* 2)))
+(define-key *top-map* (kbd "s-4") (concat "gselect " (elt *group-names* 3)))
+(define-key *top-map* (kbd "s-5") (concat "gselect " (elt *group-names* 4)))
 
-(define-key *top-map* (kbd "s-!") (concat "gmove " (nth 0 *group-names*)))
-(define-key *top-map* (kbd "s-\"") (concat "gmove " (nth 1 *group-names*)))
-(define-key *top-map* (kbd "s-periodcentered") (concat "gmove " (nth 2 *group-names*)))
-(define-key *top-map* (kbd "s-$") (concat "gmove " (nth 3 *group-names*)))
-(define-key *top-map* (kbd "s-%") (concat "gmove " (nth 4 *group-names*)))
+(define-key *top-map* (kbd "s-!") (concat "gmove " (elt *group-names* 0)))
+(define-key *top-map* (kbd "s-\"") (concat "gmove " (elt *group-names* 1)))
+(define-key *top-map* (kbd "s-periodcentered") (concat "gmove " (elt *group-names* 2)))
+(define-key *top-map* (kbd "s-$") (concat "gmove " (elt *group-names* 3)))
+(define-key *top-map* (kbd "s-%") (concat "gmove " (elt *group-names* 4)))
 
 ;; Utils
 (define-key *top-map* (kbd "s-g") "abort")
-(define-key *top-map* (kbd "s-R") "restart-hard")
+(define-key *top-map* (kbd "s-R") "loadrc")
 (define-key *top-map* (kbd "s-Q") "logout")
+(define-key *top-map* (kbd "s-ESC") "lock")
 (define-key *top-map* (kbd "s-BackSpace") "colon")
 
 ;; Programs
@@ -369,5 +437,8 @@ If exec is non-nil, the shell command will be run from this function, else it wi
              (kbd "p") (make-script nil "pass")
              (kbd "s") (make-script nil "scrot")
              (kbd "k") (make-script nil "kill")
-             (kbd "l") (make-script nil "steamapp"))
+             (kbd "l") (make-script nil "steamapp")
+             (kbd "q") (make-script nil "quit"))
 (define-key *top-map* (kbd "s-r") *scripts-map*)
+
+(setf *startup-message* "¡^2StumpWM^n está listo!")

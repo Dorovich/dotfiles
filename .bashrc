@@ -72,6 +72,7 @@ export MYVIMRC="$HOME/.vimrc"
 
 export SAVEHIST=2000
 export HISTFILE=~/.local/share/shell/bash_history
+export HISTCONTROL=ignoreboth:erasedups
 
 color1=$(tput setaf 6)
 color2=$(tput setaf 8)
