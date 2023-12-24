@@ -2,6 +2,7 @@
 ;; vi: ft=lisp
 
 (in-package :stumpwm)
+(setf *default-package* :stumpwm)
 
 ;;; Startup Commands
 (when *initializing*
@@ -10,7 +11,7 @@
   (run-shell-command "nitrogen --restore"))
 
 (defvar *is-laptop* (string= "Ness-net"
-                             (string-trim '(#\Newline)(run-shell-command "hostname" t))))
+                             (string-trim '(#\Newline) (run-shell-command "hostname" t))))
 
 ;;; Fixes
 (defun ratio-or-pixel (length ratio) ; redefining this function...
@@ -62,14 +63,14 @@ If ratio is an integer return the number of pixel desired."
 ;; (load-module "ttf-fonts")
 ;; (clx-truetype:cache-fonts)
 ;; (set-font (make-instance 'xft:font
-;;                          :family "Mononoki NF"
+;;                          :family "Roboto Mono"
 ;;                          :subfamily "Regular"
-;;                          :size 12
+;;                          :size 16
 ;;                          :antialias t))
 ;; ...Or normal fonts
 (set-font (if *is-laptop*
               "-*-fixed-*-r-normal-*-13-120-*-*-*-*-iso8859-*"
-            "-*-fixed-*-r-normal-*-15-120-*-*-*-*-iso8859-*"))
+            "-*-terminus-*-r-normal-*-16-*-*-*-*-*-*-*"))
 
 ;; Session commands
 (load-module "end-session")
@@ -79,7 +80,7 @@ If ratio is an integer return the number of pixel desired."
 (load-module "wifi")
 
 (setf *refresh-time* 30
-      wifi:*wifi-modeline-fmt* "Wifi: %p")
+      wifi:*wifi-modeline-fmt* "wifi: %p")
 
 ;;; Main Settings
 
@@ -103,6 +104,10 @@ If ratio is an integer return the number of pixel desired."
 (setf *input-window-gravity* :center
       *message-window-input-gravity* :left
       *input-completion-show-empty* nil)
+
+(set-normal-gravity :center)
+(set-maxsize-gravity :center)
+(set-transient-gravity :center)
 
 (set-msg-border-width 2)
 (setf *timeout-wait* 5)
@@ -210,6 +215,11 @@ If ratio is an integer return the number of pixel desired."
   "Start PCManFM or switch to it, if it is already running on the current group (any screen)."
   (sb-thread:make-thread (lambda ()
                            (run-or-raise "pcmanfm" '(:class "Pcmanfm") nil t))))
+
+(defcommand music-player () ()
+  "Start Qmmp or switch to it, if it is already running on any group."
+  (sb-thread:make-thread (lambda ()
+                           (run-or-raise "qmmp" '(:class "qmmp") t nil))))
 
 (defcommand mpc () ()
   "Start mpc-mode on the Emacs client or switch to it, if it is already running on any group. If no client is running, a new instance is created."
@@ -419,6 +429,7 @@ If exec is non-nil, the shell command will be run from this function, else it wi
 (define-key *top-map* (kbd "s-b") "firefox")
 (define-key *top-map* (kbd "s-e") "emacsclient")
 (define-key *top-map* (kbd "s-a") "file-manager")
+(define-key *top-map* (kbd "s-m") "music-player")
 (define-key *top-map* (kbd "s-d") "run-shell-command dmenu_run -h 12 -c -g 3 -l 10")
 
 ;; Scripts

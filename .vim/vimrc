@@ -13,7 +13,7 @@ if !isdirectory($HOME.'/.vim/tmp')
 endif
 
 " Cambiar en lista los grupos de plugins a cargar (1=activo, 0=inactivo)
-let usar_paquetes = { 'fuzzy': 1, 'colores': 1, 'experimental': 1 }
+let usar_paquetes = { 'fuzzy': 1, 'colores': 1 }
 let usar_lenguajes = { 'org': 1, 'lisp': 1, 'glsl': 1 }
 
 " No guardar la vista (pliegues y tal) en los siguientes filetypes:
@@ -191,9 +191,6 @@ if usar_paquetes['colores']
 	Plug 'Everblush/everblush.vim'
 	Plug 'rose-pine/vim'
 	Plug 'ap/vim-css-color'
-endif
-if usar_paquetes['experimental']
-	Plug 'justinmk/vim-sneak'
 endif
 if usar_lenguajes['org']
 	Plug 'tpope/vim-speeddating'

@@ -3,7 +3,8 @@
 
 !!! urxvt
 
-URxvt.font: xft:mononoki NF:pixelsize=18:antialias=true:autohint=true
+! URxvt.font: xft:mononoki NF:pixelsize=18:antialias=true:autohint=true
+URxvt.font: -*-terminus-*-r-normal-*-18-*-*-*-*-*-*-*
 URxvt.scrollBar: false
 URxvt.internalBorder: 12
 URxvt.saveLines: 2048
