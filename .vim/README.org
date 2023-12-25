@@ -25,8 +25,6 @@ versiones más nuevas en =~/.vim/vimrc=.
 - Everblush/everblush.vim
 - rose-pine/vim
 - ap/vim-css-color
-*(opcional) experimental:*
-- justinmk/vim-sneak
 *(opcional) lenguaje org:*
 - tpope/vim-speeddating
 - jceb/vim-orgmode
