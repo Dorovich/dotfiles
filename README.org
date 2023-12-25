@@ -4,18 +4,19 @@
 /Archivos de configuración de mi sistema y cosas de interés/
 
 #+ATTR_ORG: :width 1000
-[[file:scr/8.png]]
+[[file:scr/9.png]]
 
 ** Información
-+ Distribución: [[https://pop.system76.com/][Pop!_OS]] (con [[[[https://voidlinux.org/][Void Linux]] o [[https://www.debian.org/][Debian]] la próxima)
-+ Gestor de ventanas: [[https://gitlab.com/Dorovich/imagen-bspwm][bspwm]]
-+ Terminal: [[http://software.schmorp.de/pkg/rxvt-unicode.html][urxvt]]
++ Distribución: [[https://pop.system76.com/][Pop!_OS]] (con [[https://voidlinux.org/][Void Linux]] o [[https://www.debian.org/][Debian]] la próxima)
++ Gestor de ventanas: [[https://gitlab.com/Dorovich/stumpwm-vido][stumpwm]]
++ Terminal: [[https://st.suckless.org/][st]]
 + Shell: =zsh=
 + Editor: [[https://www.gnu.org/software/emacs/][emacs]], [[https://www.vim.org/][vim]]
 + Gestor de archivos: =pcmanfm=, =lf=
 + Fuente: [[https://madmalik.github.io/mononoki/][mononoki]] (Nerd Font)
-+ Música: =spotify=, [[https://www.musicpd.org/][mpd]] (+ ncmpcpp)
 + Navegador: [[https://www.mozilla.org/firefox/][firefox]]
++ Música: =spotify=, [[http://qmmp.ylsoftware.com/][qmmp]],  [[https://www.musicpd.org/][mpd]]
++ Vídeo: [[https://mpv.io/][mpv]], [[https://www.videolan.org/vlc/][vlc]]
 
 /Para más cositas ver mi lista de [[PROGRAMS.org][programas interesantes]]./
 
