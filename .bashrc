@@ -106,6 +106,7 @@ gitstart() {
     echo '5. git commit -a -m "mensaje"'
     echo '6. git push -u origin main'
     echo 'recordar contraseña: git config credential.helper store'
+    echo 'añadir otro origen: git remote add origin-alt <url>; git push origin-alt main'
 }
 
 alias config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"

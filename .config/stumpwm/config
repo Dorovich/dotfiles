@@ -4,14 +4,30 @@
 (in-package :stumpwm)
 (setf *default-package* :stumpwm)
 
-;;; Startup Commands
-(when *initializing*
-  (run-shell-command "xsetroot -cursor_name left_ptr")
-  (run-shell-command "setxkbmap -option caps:ctrl_modifier")
-  (run-shell-command "nitrogen --restore"))
+;;; Setup
+(defvar *is-laptop* (string= "Ness-net" (string-trim '(#\Newline) (run-shell-command "hostname" t)))
+  "Whether StumpWM is running on my laptop or a similar device.")
 
-(defvar *is-laptop* (string= "Ness-net"
-                             (string-trim '(#\Newline) (run-shell-command "hostname" t))))
+(defvar *config-path* (uiop:native-namestring "~/.config/stumpwm/")
+  "Where the user configuration files are located.")
+
+(defun v/load (filename)
+  "Load @arg{filename} (without extension) from the `*config-path*'."
+  (let ((file (concat *config-path* filename ".lisp")))
+    (if (probe-file file)
+        (load file)
+      (message (format nil "File ~A not found!") file))))
+
+(defun startup-shell-commands ()
+  "Shell commands to run once when StumpWM starts."
+  (sb-thread:make-thread (lambda ()
+                           (run-shell-command "xsetroot -cursor_name left_ptr")
+                           (run-shell-command "setxkbmap -option caps:ctrl_modifier")
+                           (run-shell-command "nitrogen --restore")
+                           (run-shell-command (concat "ffplay -autoexit -nodisp " *config-path* "media/start.wav"))
+                           (sb-thread:return-from-thread 0))))
+
+(add-hook *start-hook* #'startup-shell-commands)
 
 ;;; Fixes
 (defun ratio-or-pixel (length ratio)
@@ -21,46 +37,7 @@ If ratio is an integer return the number of pixel desired."
       ratio
       (round (* length ratio)))) ; fixing this line
 
-;; Asynchronous modeline redraw
-(defparameter *mode-line-semaphore* (sb-thread:make-semaphore :count 0)
-  "Semaphore to signal pending requests to the thread handling modeline redraws.")
-
-(defparameter *mode-line-requests-lock* (sb-thread:make-mutex)
-  "Lock to access the requests list atomically.")
-
-(defvar *mode-line-async-update* t
-  "If non-nil, the the modeline is updated and redrawn asynchronously with a different thread.")
-
-(defvar *mode-line-requests* nil
-  "List of the screens the modeline should be redrawn for. If -1, modeline is redrawn for all screens")
-
-(defun update-modelines-loop ()
-  "Loop of the thread handling modeline redraws through the requests list."
-  (loop while *mode-line-async-update* do
-    (progn (sb-thread:wait-on-semaphore *mode-line-semaphore* :n 1)
-           (let ((s nil))
-             (sb-thread:with-mutex (*mode-line-requests-lock*)
-               (setf s (car *mode-line-requests*))
-               (setf *mode-line-requests* (cdr *mode-line-requests*)))
-             (if (eq s -1)
-                 (mapc 'redraw-mode-line *mode-lines*)
-                 (dolist (mode-line (screen-mode-lines s))
-                   (redraw-mode-line mode-line))))))
-  (sb-thread:return-from-thread 0))
-
-(defparameter *mode-line-thread* (sb-thread:make-thread #'update-modelines-loop))
-
-(defun update-mode-lines (screen)
-  "Update all mode lines on SCREEN"
-  (sb-thread:with-mutex (*mode-line-requests-lock*)
-    (setf *mode-line-requests* (append *mode-line-requests* (cons screen nil))))
-  (sb-thread:signal-semaphore *mode-line-semaphore* 1))
-
-(defun update-all-mode-lines ()
-  "Update all mode lines."
-  (sb-thread:with-mutex (*mode-line-requests-lock*)
-    (setf *mode-line-requests* (append *mode-line-requests* (cons -1 nil))))
-  (sb-thread:signal-semaphore *mode-line-semaphore* 1))
+(v/load "modeline")
 
 ;;; Theme
 (defparameter color-gold "#baa67f")
@@ -124,7 +101,6 @@ If ratio is an integer return the number of pixel desired."
       wifi:*wifi-modeline-fmt* "wifi: %p")
 
 ;;; Main Settings
-
 (setf *mode-line-background-color* *mode-line-bg-color*
       *mode-line-border-color* *mode-line-bg-color*
       *mode-line-foreground-color* *mode-line-fg-color*
@@ -159,13 +135,7 @@ If ratio is an integer return the number of pixel desired."
 (setf *run-or-raise-all-groups* nil)
 (setf *startup-message* nil)
 
-(setf *window-format* "(%n) %c"
-      *group-format* "%n%s %t"
-      *hidden-window-color* "^**"
-      *mode-line-highlight-template* "[^(:fg \"#a566af\")~A^n]")
-
 ;;; Groups
-
 (defparameter *group-names* (vector "one" "two" "three" "four" "five"))
 
 (when *initializing*
@@ -175,152 +145,26 @@ If ratio is an integer return the number of pixel desired."
   (gnewbg (elt *group-names* 3))
   (gnewbg (elt *group-names* 4)))
 
-;;; Commands
-
-(defcommand hsplit-and-focus () ()
-  "create a new frame on the right and focus it."
-  (hsplit)
-  (move-focus :right))
-
-(defcommand vsplit-and-focus () ()
-  "create a new frame below and focus it."
-  (vsplit)
-  (move-focus :down))
-
-(defcommand delete-window-and-frame () ()
-  "Delete the current frame with its window."
-  (delete-window)
-  (remove-split))
-
-(defcommand toggle-floating () ()
-  "Toggle the floating state of the current window"
-  (if (float-window-p (current-window))
-      (unfloat-this)
-    (float-this)))
-
-(defcommand lock (&optional suspendp) ()
-  "Lock the screen, and if @arg{suspendp} is non-nil, also suspend the system."
-    (xlib:unmap-window (screen-message-window (current-screen)))
-    (run-shell-command "slock")
-    (when suspendp (run-shell-command "systemctl suspend")))
-
-(defcommand screenshot () ()
-  "Take a screenshot of the whole monitor."
-  (make-script t "scrot" "full")
-  (sleep 0.5)
-  (message "Screenshot taken!"))
-
-(defcommand smart-fullscreen () ()
-  "Fullscreen the current window, only if there is one."
-  (when (current-window)
-    (fullscreen)))
-
-(defcommand hdmi-side () ()
-  (run-shell-command "xrandr --output HDMI-A-0 --auto --right-of DP-0")
-  (run-shell-command "nitrogen --restore")
-  (enable-mode-line-everywhere))
-
-(defcommand hdmi-reset () ()
-  (run-shell-command "xrandr --output DP-0 --auto"))
-
-(defcommand clean-resize-direction (d)
-  ((:direction "Direction: "))
-  "Resize frame to direction @var{d} without showing frame borders."
-  (resize-direction d)
-  (clear-frame-outlines (current-group)))
-
-(defcommand term (&optional program) ()
-  "Invoke a terminal, possibly with a @arg{program}."
-  (sb-thread:make-thread (lambda ()
-                           (run-shell-command (if program
-                                                  (format nil "st ~A" program)
-                                                  "st")))))
-
-(defcommand chromium () ()
-  "Start Ungoogled Chromium or switch to it, if it is already running on any group."
-  (sb-thread:make-thread (lambda ()
-                           (run-or-raise "ungoogled-chromium" '(:class "Chromium-browser") t nil))))
-
-(defcommand firefox () ()
-  "Start Firefox or switch to it, if it is already running on any group."
-  (sb-thread:make-thread (lambda ()
-                           (run-or-raise "firefox" '(:class "firefox") t nil))))
-
-(defcommand emacsclient () ()
-  "Start the Emacs client or switch to it, if it is already running on any group. If no client is running, a new instance is created."
-  (sb-thread:make-thread (lambda ()
-                           (run-or-raise "emacsclient -a 'emacs' -c" '(:class "Emacs") t nil))))
-
-(defcommand dired () ()
-  "Start Dired on the Emacs client or switch to it, if it is already running on any group. If no client is running, a new instance is created."
-  (sb-thread:make-thread (lambda ()
-                           (run-or-raise "emacsclient -a 'emacs' -c" '(:class "Emacs") t nil)
-                           (run-shell-command "emacsclient -e '(dired nil)'"))))
-
-
-(defcommand file-manager () ()
-  "Start PCManFM or switch to it, if it is already running on the current group (any screen)."
-  (sb-thread:make-thread (lambda ()
-                           (run-or-raise "pcmanfm" '(:class "Pcmanfm") nil t))))
-
-(defcommand music-player () ()
-  "Start Qmmp or switch to it, if it is already running on any group."
-  (sb-thread:make-thread (lambda ()
-                           (run-or-raise "qmmp" '(:class "qmmp") t nil))))
-
-(defcommand mpc () ()
-  "Start mpc-mode on the Emacs client or switch to it, if it is already running on any group. If no client is running, a new instance is created."
-  (sb-thread:make-thread (lambda ()
-                           (run-or-raise "emacsclient -a 'emacs' -c" '(:class "Emacs") t nil)
-                           (run-shell-command "emacsclient -e '(mpc)'"))))
-
-(defcommand steam () ()
-  "Start Steam or switch to it, if it is already running on any group."
-  (sb-thread:make-thread (lambda ()
-                           (run-or-raise "steam" '(:class "steam") t nil))))
-
-(defcommand spotify () ()
-  "Start Spotify or switch to it, if it is already running on any group."
-  (sb-thread:make-thread (lambda ()
-                           (run-or-raise "spotify" '(:class "Spotify") t nil))))
-
-(defcommand mail () ()
-  "Start Thunderbird or switch to it, if it is already running on any group."
-  (sb-thread:make-thread (lambda ()
-                           (run-or-raise "thunderbird" '(:class "thunderbird") t nil))))
-
-(defcommand discord () ()
-  "Start Discord (WebCord) or switch to it, if it is already running on any group."
-  (sb-thread:make-thread (lambda ()
-                           (run-or-raise "webcord" '(:class "WebCord") t nil))))
-
-;; Slynk (Swank for Sly)
+;;; Slynk (Swank for Sly)
 ;; parecido, con slime:
 ;;   https://www.kaashif.co.uk/2015/06/28/hacking-stumpwm-with-common-lisp/
 ;; con sly:
 ;;   https://www.reddit.com/r/stumpwm/comments/ouuh1c/how_to_connect_sly_to_stumpwm_to_modifying_it_in/
-
 (require :slynk)
 
 (defvar *slynk-port* 4004)
 (defvar *slynk-started* nil)
 
-(defcommand sly-start-server () ()
-  "Start a slynk server for sly."
-  (sb-thread:make-thread (lambda ()
-                           (slynk:create-server :port *slynk-port* :dont-close t)
-                           (setf *slynk-started* t))))
-
-(defcommand sly-stop-server () ()
-  "Stop current slynk server for sly."
-  (sb-thread:make-thread (lambda ()
-                           (slynk:stop-server *slynk-port*)
-                           (setf *slynk-started* nil))))
+;;; Commands
+(v/load "commands")
 
 ;;; Modeline Settings
-
 (let ((separator " ^(:fg \"#626262\");^n "))
-  (setf *time-modeline-string* "%a %d de %b, %H:%M"
+  (setf *window-format* "%n:%c"
+        *group-format* "%n%s:%t"
+        *hidden-window-color* "^**" ; "^(:fg \"#8e8e8e\")"
+        *mode-line-highlight-template* "[^(:fg \"#a566af\")~A^n]"
+        *time-modeline-string* "%a %d de %b, %H:%M"
         *screen-mode-line-format* (list
                                    ;; Groups
                                    "group: "
@@ -332,7 +176,7 @@ If ratio is an integer return the number of pixel desired."
                                    "^>"
                                    ;; Battery
                                    (when *is-laptop*
-                                     (concatenate 'string "bat: %B" separator)) 
+                                     (concatenate 'string "bat: %B" separator))
                                    ;; Network
                                    "net: "
                                    '(:eval
@@ -372,7 +216,6 @@ If ratio is an integer return the number of pixel desired."
 (enable-mode-line-everywhere)
 
 ;;; Hooks
-
 (defparameter *floating-classes* '("Sxiv" "mpv"))
 
 (defun float-if-match (window)
@@ -388,8 +231,15 @@ If ratio is an integer return the number of pixel desired."
 
 (add-hook *new-window-hook* #'float-if-match)
 
-;;; Key mappings
+(defun sly-stop-server-sync ()
+  (when *slynk-started*
+    (slynk:stop-server *slynk-port*)
+    (setf *slynk-started* nil)))
 
+(add-hook *restart-hook* #'sly-stop-server-sync)
+(add-hook *quit-hook* #'sly-stop-server-sync)
+
+;;; Key mappings
 (defparameter *script-manager* "scriptctl")
 
 (defun make-script (exec &optional name arg)
@@ -398,105 +248,9 @@ If exec is non-nil, the shell command will be run from this function, else it wi
   (let ((cmd (concatenate 'string *script-manager* " " name " " arg)))
     (if exec
         (run-shell-command cmd)
-        (concatenate 'string "run-shell-command " cmd))))
+        (concat "run-shell-command " cmd))))
 
-;; Root map
-(set-prefix-key (kbd "s-SPC"))
-(define-key *root-map* (kbd "ESC") "abort")
-(define-key *root-map* (kbd "q") "logout")
-(define-key *root-map* (kbd "v") "hsplit-and-focus")
-(define-key *root-map* (kbd "s") "vsplit-and-focus")
-(define-key *root-map* (kbd "L") "lock")
-(define-key *root-map* (kbd "F") "fullscreen")
+(v/load "keys")
 
-(undefine-key *root-map* (kbd "r"))
-(define-key *root-map* (kbd "r") "remove")
-(undefine-key *root-map* (kbd "R"))
-(define-key *root-map* (kbd "R") "iresize")
-
-;; Windows
-(define-key *top-map* (kbd "s-h") "move-focus left")
-(define-key *top-map* (kbd "s-j") "move-focus down")
-(define-key *top-map* (kbd "s-k") "move-focus up")
-(define-key *top-map* (kbd "s-l") "move-focus right")
-
-(define-key *top-map* (kbd "s-H") "move-window left")
-(define-key *top-map* (kbd "s-J") "move-window down")
-(define-key *top-map* (kbd "s-K") "move-window up")
-(define-key *top-map* (kbd "s-L") "move-window right")
-
-(define-key *top-map* (kbd "s-M-h") "clean-resize-direction left")
-(define-key *top-map* (kbd "s-M-j") "clean-resize-direction down")
-(define-key *top-map* (kbd "s-M-k") "clean-resize-direction up")
-(define-key *top-map* (kbd "s-M-l") "clean-resize-direction right")
-
-(define-key *top-map* (kbd "s-c") "pull-hidden-next")
-(define-key *top-map* (kbd "s-n") "fnext")
-(define-key *top-map* (kbd "s-p") "fprev")
-(define-key *top-map* (kbd "s-v") "windowlist")
-(define-key *top-map* (kbd "s-f") "smart-fullscreen")
-(define-key *top-map* (kbd "s-t") "toggle-floating")
-(define-key *top-map* (kbd "s-x") *exchange-window-map*)
-
-(define-key *top-map* (kbd "s-w") "delete")
-(define-key *top-map* (kbd "s-q") "remove")
-
-(defvar *window-split-map* nil
-  "The keymap that frame splitting key bindings sit on.")
-
-(fill-keymap *window-split-map*
-             (kbd "s") "vsplit-and-focus"
-             (kbd "v") "hsplit-and-focus"
-             (kbd "o") "only"
-             (kbd "r") "remove")
-(define-key *top-map* (kbd "s-s") *window-split-map*)
-
-;; Groups
-(define-key *top-map* (kbd "s-1") (concat "gselect " (elt *group-names* 0)))
-(define-key *top-map* (kbd "s-2") (concat "gselect " (elt *group-names* 1)))
-(define-key *top-map* (kbd "s-3") (concat "gselect " (elt *group-names* 2)))
-(define-key *top-map* (kbd "s-4") (concat "gselect " (elt *group-names* 3)))
-(define-key *top-map* (kbd "s-5") (concat "gselect " (elt *group-names* 4)))
-
-(define-key *top-map* (kbd "s-!") (concat "gmove " (elt *group-names* 0)))
-(define-key *top-map* (kbd "s-\"") (concat "gmove " (elt *group-names* 1)))
-(define-key *top-map* (kbd "s-periodcentered") (concat "gmove " (elt *group-names* 2)))
-(define-key *top-map* (kbd "s-$") (concat "gmove " (elt *group-names* 3)))
-(define-key *top-map* (kbd "s-%") (concat "gmove " (elt *group-names* 4)))
-
-;; Utils
-(define-key *top-map* (kbd "s-g") "abort")
-(define-key *top-map* (kbd "s-R") "loadrc")
-(define-key *top-map* (kbd "s-Q") "logout")
-(define-key *top-map* (kbd "s-ESC") "lock")
-(define-key *top-map* (kbd "s-BackSpace") "colon")
-
-;; Programs
-(define-key *top-map* (kbd "s-RET") "term")
-(define-key *top-map* (kbd "s-b") "firefox")
-(define-key *top-map* (kbd "s-e") "emacsclient")
-(define-key *top-map* (kbd "s-a") "file-manager")
-(define-key *top-map* (kbd "s-m") "music-player")
-(define-key *top-map* (kbd "s-d") "run-shell-command dmenu_run -h 12 -c -g 3 -l 10")
-
-;; Scripts
-(define-key *top-map* (kbd "s-Print") "screenshot")
-(define-key *top-map* (kbd "s-Insert") (make-script nil "snippet" "load"))
-(define-key *top-map* (kbd "s-+") (make-script nil "volume" "up"))
-(define-key *top-map* (kbd "s--") (make-script nil "volume" "down"))
-
-(defvar *scripts-map* nil
-  "The keymap that script-related key bindings sit on.")
-
-(fill-keymap *scripts-map*
-             (kbd "r") (make-script nil)
-             (kbd "m") (make-script nil "music")
-             (kbd "o") (make-script nil "sinks")
-             (kbd "p") (make-script nil "pass")
-             (kbd "s") (make-script nil "scrot")
-             (kbd "k") (make-script nil "kill")
-             (kbd "l") (make-script nil "steamapp")
-             (kbd "q") (make-script nil "quit"))
-(define-key *top-map* (kbd "s-r") *scripts-map*)
-
+;;; End
 (setf *startup-message* "¡^2StumpWM^n está listo!")

@@ -1,8 +1,8 @@
 " Comprovar que Vim-Plug está instalado:
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+	silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 " Comprovar que algunas carpetas estén creadas:
@@ -14,7 +14,7 @@ endif
 
 " Cambiar en lista los grupos de plugins a cargar (1=activo, 0=inactivo)
 let usar_paquetes = { 'fuzzy': 1, 'colores': 1 }
-let usar_lenguajes = { 'org': 1, 'lisp': 1, 'glsl': 1 }
+let usar_lenguajes = { 'org': 1, 'lisp': 1, 'glsl': 0 }
 
 " No guardar la vista (pliegues y tal) en los siguientes filetypes:
 let no_guardar_vista = ['org']
@@ -166,8 +166,8 @@ function! NetrwMapping()
 endfunction
 
 augroup netrw_mapping
-  autocmd!
-  autocmd filetype netrw call NetrwMapping()
+	autocmd!
+	autocmd filetype netrw call NetrwMapping()
 augroup END
 
 " Para que C-q y C-s lleguen a vim:
