@@ -3,12 +3,6 @@
 
 dmenulines=10
 
-if [ -f $HOME/.dmenurc ]; then
-  . $HOME/.dmenurc
-else
-  DMENU='dmenu -h 18 -i'
-fi
-
 addaftercurrent(){
 	
 	#playlist is empty, just add the song
@@ -72,13 +66,13 @@ case $1 in
 	
 	while true; do
 
-		ARTIST="$(mpc list artist | sort -f | $DMENU -l $dmenulines -p artists:)";
+		ARTIST="$(mpc list artist | sort -f | dmenu $DMENU_FLAGS -l $dmenulines -p artists:)";
 		if [ "$ARTIST" = "" ]; then break; fi
 		
 		while true; do
 
 			ALBUMS=$(mpc list album artist "$ARTIST" | sort -f);
-			ALBUM=$(echo -e "replace all\nadd all\n--------------------------\n$ALBUMS" | $DMENU -l $dmenulines -p albums:);
+			ALBUM=$(echo -e "replace all\nadd all\n--------------------------\n$ALBUMS" | dmenu $DMENU_FLAGS -l $dmenulines -p albums:);
 			if [ "$ALBUM" = "" ]; then break;
 			
 			elif [ "$ALBUM" = "replace all" ]; then
@@ -95,7 +89,7 @@ case $1 in
 			while true; do
 				
 				TITLES=$(mpc list title artist "$ARTIST" album "$ALBUM")
-				TITLE=$(echo -e "replace all\nadd all\n--------------------------\n$TITLES" | $DMENU -l $dmenulines -p tracks:);
+				TITLE=$(echo -e "replace all\nadd all\n--------------------------\n$TITLES" | dmenu $DMENU_FLAGS -l $dmenulines -p tracks:);
 				if [ "$TITLE" = "" ]; then break
 				elif [ "$TITLE" = "replace all" ]; then
 					CUR_SONG=$(mpc current)
@@ -110,7 +104,7 @@ case $1 in
 				fi
 
 				while true; do
-					DEC=$(echo -e "add at the end\nadd after current\nadd after current and play\nreplace" | $DMENU -p options:);
+					DEC=$(echo -e "add at the end\nadd after current\nadd after current and play\nreplace" | dmenu $DMENU_FLAGS -p options:);
 					case $DEC in 
 
 						"")
@@ -146,7 +140,7 @@ case $1 in
 
 	-t|--track)
 		
-	TITLE=$(mpc list title | sort -f | $DMENU -l $dmenulines -p tracks:)
+	TITLE=$(mpc list title | sort -f | dmenu $DMENU_FLAGS -l $dmenulines -p tracks:)
 	if [ "$TITLE" = "" ]; then exit; fi
 	
 	SONG=$(mpc find title "$TITLE" | head -1) 
@@ -154,7 +148,7 @@ case $1 in
 	;;
 
 	-p|--playlist)
-	PLAYLIST=$(mpc lsplaylists | $DMENU -l $dmenulines -p playlists:);
+	PLAYLIST=$(mpc lsplaylists | dmenu $DMENU_FLAGS -l $dmenulines -p playlists:);
 	if [ "$PLAYLIST" = "" ]; then exit; fi
 	CUR_SONG=$(mpc current)
 	mpc clear
@@ -165,7 +159,7 @@ case $1 in
 	-j|--jump)
 	
         CUR_PLAYLIST=$(mpc playlist)
-        CHOICE=$(echo -e "next\nprev\n--------------------------\n$CUR_PLAYLIST" | $DMENU -l $dmenulines -p jump:);
+        CHOICE=$(echo -e "next\nprev\n--------------------------\n$CUR_PLAYLIST" | dmenu $DMENU_FLAGS -l $dmenulines -p jump:);
         case $CHOICE in
             "")
                 break
@@ -187,14 +181,14 @@ case $1 in
 	
 	while true; do
 
-		ALBUM=$(mpc list album | sort -f | $DMENU -l $dmenulines -p albums:);
+		ALBUM=$(mpc list album | sort -f | dmenu $DMENU_FLAGS -l $dmenulines -p albums:);
 		if [ "$ALBUM" = "" ]; then break;
 		fi
 		
 		while true; do
 			
 			TITLES=$(mpc list title album "$ALBUM")
-			TITLE=$(echo -e "replace all\nadd all\n--------------------------\n$TITLES" | $DMENU -l $dmenulines -p tracks:);
+			TITLE=$(echo -e "replace all\nadd all\n--------------------------\n$TITLES" | dmenu $DMENU_FLAGS -l $dmenulines -p tracks:);
 			if [ "$TITLE" = "" ]; then break
 			elif [ "$TITLE" = "replace all" ]; then
 				CUR_SONG=$(mpc current)
@@ -209,7 +203,7 @@ case $1 in
 			fi
 
 			while true; do
-                                DEC=$(echo -e "add at the end\nadd after current\nadd after current and play\nreplace" | $DMENU -p options:);
+                                DEC=$(echo -e "add at the end\nadd after current\nadd after current and play\nreplace" | dmenu $DMENU_FLAGS -p options:);
 				case $DEC in 
 
 					"")

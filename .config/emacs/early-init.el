@@ -10,7 +10,7 @@
 (put 'dired-find-alternate-file 'disabled nil)
 (when (cdr command-line-args)
   (setq inhibit-startup-screen t))
-(setq default-frame-alist '((fullscreen . maximized)
+(setq default-frame-alist '(;(fullscreen . maximized)
                             (alpha . 100)
                             (vertical-scroll-bars . nil)
                             (horizontal-scroll-bars . nil)

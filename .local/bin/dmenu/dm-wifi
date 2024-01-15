@@ -1,16 +1,10 @@
 #!/bin/sh
 
-if [ -f $HOME/.dmenurc ]; then
-  . $HOME/.dmenurc
-else
-  DMENU='dmenu -h 18 -i'
-fi
-
-bssid=$(nmcli device wifi list | sed -n '1!p' | cut -b 9- | $DMENU -p "Select Wifi:" | cut -d' ' -f1)
+bssid=$(nmcli device wifi list | sed -n '1!p' | cut -b 9- | dmenu $DMENU_FLAGS -p "Select Wifi:" | cut -d' ' -f1)
 
 [ -n "$bssid" ] || exit 0
 
-pass=$(echo "" | $DMENU -p "Enter Password:")
+pass=$(echo "" | dmenu $DMENU_FLAGS -p "Enter Password:")
 
 [ -n "$pass" ] && nmcli device wifi connect "$bssid" password "$pass" || nmcli device wifi connect "$bssid"
 sleep 10

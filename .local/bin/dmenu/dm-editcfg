@@ -1,13 +1,7 @@
 #!/bin/sh
 
-if [ -f $HOME/.dmenurc ]; then
-  . $HOME/.dmenurc
-else
-  DMENU='dmenu -h 18 -i'
-fi
-
 choice=$(echo "Window Manager\nTerminal\nVim\nNeovim\nLibrewolf\nFirefox\nBash\nEmacs\nVimb\nCmus\nMpd\nDunst\nIrssi" | \
-    $DMENU -l 10 -p "Edit config file:" )
+    dmenu $DMENU_FLAGS -l 10 -p "Edit config file:" )
 
 case $choice in
     "Window Manager")

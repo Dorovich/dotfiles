@@ -12,11 +12,18 @@
   "Where the user configuration files are located.")
 
 (defun v/load (filename)
-  "Load @arg{filename} (without extension) from the `*config-path*'."
-  (let ((file (concat *config-path* filename ".lisp")))
-    (if (probe-file file)
-        (load file)
-      (message (format nil "File ~A not found!") file))))
+  "Load @arg{filename} (without extension) from the `*config-path*'. Compiled files are preferred."
+  (let ((file-comp (concat *config-path* filename ".fasl"))
+        (file (concat *config-path* filename ".lisp")))
+    (cond
+      ((probe-file file-comp) (load file-comp))
+      ((probe-file file) (load file))
+      (t (message (format nil "File ~A not found!" filename))))))
+
+(defmacro v/compile (filename)
+  "Compile a file from the `*config-path*'. Meant to be used from the REPL."
+  `(compile-file
+    (concat *config-path* ,(string-downcase (write-to-string filename)) ".lisp")))
 
 (defun startup-shell-commands ()
   "Shell commands to run once when StumpWM starts."
@@ -24,7 +31,6 @@
                            (run-shell-command "xsetroot -cursor_name left_ptr")
                            (run-shell-command "setxkbmap -option caps:ctrl_modifier")
                            (run-shell-command "nitrogen --restore")
-                           (run-shell-command (concat "ffplay -autoexit -nodisp " *config-path* "media/start.wav"))
                            (sb-thread:return-from-thread 0))))
 
 (add-hook *start-hook* #'startup-shell-commands)
@@ -37,7 +43,7 @@ If ratio is an integer return the number of pixel desired."
       ratio
       (round (* length ratio)))) ; fixing this line
 
-(v/load "modeline")
+(v/load "modeline-v2")
 
 ;;; Theme
 (defparameter color-gold "#baa67f")
@@ -79,12 +85,11 @@ If ratio is an integer return the number of pixel desired."
 
 ;; Truetype fonts
 ;; (load-module "ttf-fonts")
-;; (clx-truetype:cache-fonts)
+;; (xft:cache-fonts)
 ;; (set-font (make-instance 'xft:font
 ;;                          :family "Roboto Mono"
 ;;                          :subfamily "Regular"
-;;                          :size 16
-;;                          :antialias t))
+;;                          :size 16))
 ;; ...Or normal fonts
 (set-font (if *is-laptop*
               "-*-fixed-*-r-normal-*-13-120-*-*-*-*-iso8859-*"
@@ -222,22 +227,23 @@ If ratio is an integer return the number of pixel desired."
   "Makes a new window floating if its class matches."
   (when (member (window-class window) *floating-classes* :test #'string=)
     (float-window window (current-group))
-    (let ((w (* (screen-width (current-screen)) 55/96))
-          (h (* (screen-height (current-screen)) 5/6)))
-      (float-window-move-resize window :width w :height h
-                                       :x (- (/ (screen-width (current-screen)) 2) (/ w 2))
-                                       :y (- (/ (screen-height (current-screen)) 2) (/ h 2))))
+    (let* ((w (round (* (screen-width (current-screen)) 55/96)))
+           (h (round (* (screen-height (current-screen)) 5/6)))
+           (x (round (- (/ (screen-width (current-screen)) 2) (/ w 2))))
+           (y (round (- (/ (screen-height (current-screen)) 2) (/ h 2)))))
+      (float-window-move-resize window :width w :height h :x x :y y))
     (group-focus-window (current-group) window)))
 
-(add-hook *new-window-hook* #'float-if-match)
+(unless *is-laptop*
+  (add-hook *new-window-hook* #'float-if-match))
 
-(defun sly-stop-server-sync ()
+(defun sly-stop-server-now ()
   (when *slynk-started*
     (slynk:stop-server *slynk-port*)
     (setf *slynk-started* nil)))
 
-(add-hook *restart-hook* #'sly-stop-server-sync)
-(add-hook *quit-hook* #'sly-stop-server-sync)
+(add-hook *restart-hook* #'sly-stop-server-now)
+(add-hook *quit-hook* #'sly-stop-server-now)
 
 ;;; Key mappings
 (defparameter *script-manager* "scriptctl")

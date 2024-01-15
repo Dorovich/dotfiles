@@ -8,7 +8,8 @@ static int min_width = 500;                    /* minimum width when centered */
 static const char *fonts[] = {
 	//"fixed:pixelsize=13:weight=bold"
 	//"mononoki NF:pixelsize=16:antialias=true:autohint=true"
-	"terminus:weight=bold:pixelsize=16:antialias=true:autohint=true"
+	//"terminus:weight=bold:pixelsize=16:antialias=true:autohint=true"
+	"Terminus:size=11:antialias=true:autohint=true"
 };
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
 static const char *colors[SchemeLast][2] = {

@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-if [ -f $HOME/.dmenurc ]; then
-  . $HOME/.dmenurc
-else
-  DMENU='dmenu -h 18 -i'
-fi
-
 case $1 in
     1|"full")   # Full screen
         exec maim ~/Imágenes/Capturas/captura_$(date +%s).png
@@ -20,7 +14,7 @@ case $1 in
         exec maim -s | xclip -selection clipboard -t image/png
         ;;
     *)		# User's choice
-	choice=$(echo -e "full\nactive\nselect\ncopy" | $DMENU -p "Screenshot option:")
+	choice=$(echo -e "full\nactive\nselect\ncopy" | dmenu $DMENU_FLAGS -p "Screenshot option:")
 	case $choice in
 		"full") scriptctl scrot 1;;
 		"active") scriptctl scrot 2;;

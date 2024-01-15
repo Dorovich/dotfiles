@@ -22,7 +22,7 @@ case $1 in
     "youtube") 		$SCRIPTSDIR/dm-youtube;;
     "wifi")		$SCRIPTSDIR/dm-wifi;;
     *) 
-	choice=$(echo "music\npass\nsinks\nkill\neditcfg\nsnippet\nvolume\nscrot\nyoutube\nsteamapp\nwifi\nquit" | dmenu -p "Script:")
+	choice=$(echo "music\npass\nsinks\nkill\neditcfg\nsnippet\nvolume\nscrot\nyoutube\nsteamapp\nwifi\nquit" | dmenu $DMENU_FLAGS -p "Script:")
 	[ -z $choice ] && exit
 	scriptctl $choice
 	;;

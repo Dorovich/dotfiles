@@ -2,12 +2,6 @@
 
 set -euo pipefail
 
-if [ -f $HOME/.dmenurc ]; then
-  . $HOME/.dmenurc
-else
-  DMENU='dmenu -h 18 -i'
-fi
-
 files=~/.steam/debian-installation/steamapps/appmanifest_*
 
 declare -A games
@@ -20,7 +14,7 @@ for f in $files; do
     fi
 done
 
-selname=$(printf '%s\n' "${!games[@]}" | sort | $DMENU -l 10 -p 'Select game:' "$@")
+selname=$(printf '%s\n' "${!games[@]}" | sort | dmenu $DMENU_FLAGS -l 10 -p 'Select game:' "$@")
 selid=${games[${selname}]}
 
 exec steam steam://rungameid/$selid

@@ -217,6 +217,7 @@
 ;;; UTILITY EXTRAS
 (load-file (expand-file-name "extras/dev.el" user-emacs-directory))
 (load-file (expand-file-name "extras/lisp.el" user-emacs-directory))
+(load-file (expand-file-name "extras/lua.el" user-emacs-directory))
 (load-file (expand-file-name "extras/experimental.el" user-emacs-directory))
 (load-file (expand-file-name "extras/meow.el" user-emacs-directory))
 

@@ -13,13 +13,10 @@ AMod=Mod1
 # Programas
 hc keybind $Mod-Escape          spawn slock
 hc keybind $Mod-Return          spawn $terminal
-hc keybind $Mod-d               spawn dmenu_run -i -p "Run:"
-hc keybind $Mod-Shift-d         spawn rofi -show drun
+hc keybind $Mod-d               spawn dmenu_run -h 12 -c -g 3 -l 10
 hc keybind $Mod-b               spawn $browser
-hc keybind $Mod-Shift-b         spawn tabbed -c vimb -e
-hc keybind $Mod-w               spawn $terminal -e lf
-hc keybind $Mod-Shift-w         spawn pcmanfm
-#hc keybind $Mod-e               spawn emacsclient -c -a 'emacs'
+hc keybind $Mod-a               spawn pcmanfm
+hc keybind $Mod-e               spawn emacsclient -c -a 'emacs'
 
 # Scripts
 hc keybind $Mod-m               spawn $SCRIPTSDIR/music.sh
@@ -46,15 +43,11 @@ hc keybind $Mod-Left            focus left
 hc keybind $Mod-Down            focus down
 hc keybind $Mod-Up              focus up
 hc keybind $Mod-Right           focus right
-#hc keybind $Mod-c               cycle
+hc keybind $Mod-c               cycle
 hc keybind $Mod-Tab             cycle_all +1
 hc keybind $Mod-Shift-Tab       cycle_all -1
 hc keybind $Mod-Delete          cycle_monitor
 hc keybind $Mod-i               jumpto urgent
-
-# Movimiento estilo dwm
-#hc keybind $Mod-j               cycle_all +1
-#hc keybind $Mod-k               cycle_all -1
 
 # Cambiar ventanas
 hc keybind $Mod-Shift-h         shift left
@@ -67,20 +60,18 @@ hc keybind $Mod-Shift-Up        shift up
 hc keybind $Mod-Shift-Right     shift right
 
 # Estructura de ventanas
-hc keybind $Mod-c               close_or_remove
-#hc keybind $Mod-q               close
+hc keybind $Mod-w               close
 hc keybind $Mod-f               fullscreen toggle
-hc keybind $Mod-s               set_attr clients.focus.floating toggle
-hc keybind $Mod-Shift-s         floating toggle
+# hc keybind $Mod-s               set_attr clients.focus.floating toggle
+hc keybind $Mod-t               floating toggle
 hc keybind $Mod-Shift-m         set_attr clients.focus.minimized true
 hc keybind $Mod-Control-m       jumpto last-minimized
-hc keybind $Mod-t               pseudotile
 
 # Crear marcos
 hc keybind $Mod-u               split bottom  0.5
 hc keybind $Mod-o               split right   0.5
 hc keybind $Mod-Control-space   split explode
-hc keybind $Mod-Shift-c         remove
+hc keybind $Mod-q               remove
 
 # Cambiar tamaño de marcos
 hc keybind $Mod-Control-h       resize left +$resizestep

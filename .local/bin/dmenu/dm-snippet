@@ -1,14 +1,8 @@
 #!/bin/sh
 
-if [ -f $HOME/.dmenurc ]; then
-  . $HOME/.dmenurc
-else
-  DMENU='dmenu -h 18 -i'
-fi
-
 case $1 in
     1|"load")
-        xdotool type $(grep -v '^#' ~/.local/share/snippets | $DMENU -l 15 | cut -d' ' -f1)
+        xdotool type $(grep -v '^#' ~/.local/share/snippets | dmenu $DMENU_FLAGS -l 15 | cut -d' ' -f1)
         ;;
     2|"save")
         new_snippet="$(xclip -o)"
@@ -22,7 +16,7 @@ case $1 in
         fi
         ;;
     *)
-    	choice=$(echo "load\nsave" | $DMENU -p "Snippet option:")
+    	choice=$(echo "load\nsave" | dmenu $DMENU_FLAGS -p "Snippet option:")
     	case $choice in
 		"load") scriptctl snippet 1;;
 		"save") scriptctl snippet 2;;

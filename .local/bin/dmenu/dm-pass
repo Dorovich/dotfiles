@@ -2,12 +2,6 @@
 
 shopt -s nullglob globstar
 
-if [ -f $HOME/.dmenurc ]; then
-  . $HOME/.dmenurc
-else
-  DMENU='dmenu -h 18 -i'
-fi
-
 typeit=0
 if [[ $1 == "--type" ]]; then
 	typeit=1
@@ -30,7 +24,7 @@ password_files=( "$prefix"/**/*.gpg )
 password_files=( "${password_files[@]#"$prefix"/}" )
 password_files=( "${password_files[@]%.gpg}" )
 
-password=$(printf '%s\n' "${password_files[@]}" | $DMENU "$@")
+password=$(printf '%s\n' "${password_files[@]}" | dmenu $DMENU_FLAGS "$@")
 
 [[ -n $password ]] || exit
 
