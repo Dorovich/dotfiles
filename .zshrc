@@ -20,6 +20,7 @@ alias fullclean="bleachbit -c --preset && sudo bleachbit -c --preset"
 alias sbcl-rl="rlwrap sbcl"
 alias qmake-qt5="qmake"
 alias start-vlime-server="sbcl --load .vim/plugged/vlime/lisp/start-vlime.lisp"
+alias vim="nvim"
 
 alias yt-mp3="yt-dlp --extract-audio --audio-format mp3 "
 alias yt-mp4="yt-dlp --format mp4 "

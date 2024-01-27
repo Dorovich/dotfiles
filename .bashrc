@@ -29,9 +29,11 @@ alias clean="bleachbit -c --preset"
 alias fullclean="bleachbit -c --preset && sudo bleachbit -c --preset"
 alias qmake-qt5="qmake"
 alias start-vlime-server="sbcl --load .vim/plugged/vlime/lisp/start-vlime.lisp"
+alias vim="nvim"
 
 if [[ $- == *i* ]]; then
     alias sbcl="rlwrap sbcl"
+    #alias guile="rlwrap guile"
     alias csi="rlwrap csi"
 fi
 
@@ -66,7 +68,7 @@ mergepdfs() {
 
 export LANGUAGE=es_ES:en_US
 export TERMINAL="urxvt"
-export EDITOR="vim"
+export EDITOR="nvim"
 export VISUAL="emacsclient -c -a 'emacs'"
 export MYVIMRC="$HOME/.vimrc"
 
