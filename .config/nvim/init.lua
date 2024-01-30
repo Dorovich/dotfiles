@@ -14,6 +14,8 @@ opt.laststatus = 0
 opt.splitright = true
 opt.splitbelow = true
 opt.lazyredraw = true
+opt.clipboard = "unnamedplus"
+opt.lispwords = opt.lispwords + "define*,lambda*"
 
 -- Keys, Commands
 
@@ -103,12 +105,25 @@ require("lazy").setup({
       })
     end
   },
+  -- {
+  --   "windwp/nvim-autopairs",
+  --   config = function()
+  --     local nap = require("nvim-autopairs")
+  --     local nap_cond = require("nvim-autopairs.conds")
+  --     local nap_rule = require('nvim-autopairs.rule')
+  --     nap.setup({
+  --       enable_check_bracket_line = false,
+  --       fast_wrap = {},
+  --     })
+  --     nap.get_rules("'")[1].not_filetypes = { "scheme", "lisp" }
+  --     nap.get_rules("'")[1]:with_pair(nap_cond.not_after_text("["))
+  --   end
+  -- },
   {
-    "windwp/nvim-autopairs",
-    config = function()
-      require("nvim-autopairs").setup()
-    end
+    "guns/vim-sexp",
+    dependencies = { "tpope/vim-repeat" }
   },
+  -- poner "https://github.com/Olical/conjure" por aqui
   {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.5",
@@ -124,12 +139,9 @@ require("lazy").setup({
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     ft = "org",
     config = function()
-      org = require("orgmode")
+      local org = require("orgmode")
       org.setup_ts_grammar()
-      org.setup({
-        -- org_agenda_files = "~/org/**/*",
-        -- org_default_notes_file = "~/org/refile.org",
-      })
+      org.setup()
     end,
   },
   {

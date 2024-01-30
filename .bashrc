@@ -67,7 +67,7 @@ mergepdfs() {
 # variables
 
 export LANGUAGE=es_ES:en_US
-export TERMINAL="urxvt"
+export TERMINAL="urxvtc"
 export EDITOR="nvim"
 export VISUAL="emacsclient -c -a 'emacs'"
 export MYVIMRC="$HOME/.vimrc"
