@@ -1,6 +1,0 @@
-#!/bin/sh
-# 
-#   Displays the window manager keybinds document
-# 
-
-$TERMINAL -e less ~/.local/src/dwm-vido-deluxe/help.txt
