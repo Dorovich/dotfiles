@@ -4,10 +4,12 @@ setopt histignorealldups sharehistory
 bindkey -e
 stty stop undef
 
-autoload -Uz compinit
-compinit
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-zstyle ':completion:*' menu select
+if [[ $- == *i* ]]; then
+    autoload -Uz compinit
+    compinit
+    zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+    zstyle ':completion:*' menu select
+fi
 
 # aliases
 
@@ -45,29 +47,28 @@ function restart-emacs-server() { killall emacs ; emacs --daemon ; }
 # variables
 
 export LANGUAGE=es_ES:en_US
-export TERMINAL="st"
-export EDITOR="vim"
+export TERMINAL="urxvtc"
+export EDITOR="nvim"
+export BROWSER="firefox"
 export VISUAL="emacsclient -c -a 'emacs'"
-export MYVIMRC="$HOME/.vimrc"
+export MYVIMRC="$HOME/.vim/vimrc"
 
 export SAVEHIST=2000
 export HISTFILE=~/.local/share/shell/zsh_history
+export HISTCONTROL=ignoreboth:erasedups
 
-#λ
-export PS1="%B%F{8}%%%f%b "
-export PS2="%B%F{8}>%f%b "
+export PS1="%B%F{8}>%f%b " #λ
+export PS2="%B%F{8}...%f%b "
 
 # path
 
-[ -d "$HOME/.bin" ] && PATH="$HOME/.bin:$PATH"
-[ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
-[ -d "$HOME/.local/bin/statusbar" ] && PATH="$HOME/.local/bin/statusbar:$PATH"
-[ -d "$HOME/.local/bin/dmenu" ] && PATH="$HOME/.local/bin/dmenu:$PATH"
-[ -d "$HOME/.emacs.d/bin" ] && PATH="$HOME/.emacs.d/bin:$PATH"
-[ -d "$HOME/Applications" ] && PATH="$HOME/Applications:$PATH"
-[ -d "/var/lib/flatpak/exports/bin/" ] && PATH="/var/lib/flatpak/exports/bin/:$PATH"
-[ -d "$HOME/.vim/bin" ] && PATH="$HOME/.vim/bin:$PATH"
-[ -d "/opt/bochs_gdb/bin" ] && PATH="/opt/bochs_gdb/bin:$PATH"
+# [ -d "$HOME/.bin" ] && PATH="$HOME/.bin:$PATH"
+# [ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
+# [ -d "$HOME/.local/bin/statusbar" ] && PATH="$HOME/.local/bin/statusbar:$PATH"
+# [ -d "$HOME/.local/bin/dmenu" ] && PATH="$HOME/.local/bin/dmenu:$PATH"
+# [ -d "$HOME/Applications" ] && PATH="$HOME/Applications:$PATH"
+# [ -d "/var/lib/flatpak/exports/bin/" ] && PATH="/var/lib/flatpak/exports/bin/:$PATH"
+# [ -d "/opt/bochs_gdb/bin" ] && PATH="/opt/bochs_gdb/bin:$PATH"
 
 # git
 
@@ -77,13 +78,12 @@ alias gs="git status"
 alias gp="git push"
 alias gcl="git clone"
 alias gpl="git pull"
-alias gr="git rm -r"
-alias grst="git reset --hard HEAD"
+alias gr="git rm -r --cached"
+alias gundo="git reset HEAD~"
+alias greset="git reset --hard HEAD"
 alias gl='git log --pretty=format:"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]" --abbrev-commit -30'
 
-function gc() {
-    git commit -a -m "$*"
-}
+function gc() { git commit -a -m "$*" ; }
 
 function gitstart() {
     echo '1. git init'
@@ -93,6 +93,7 @@ function gitstart() {
     echo '5. git commit -a -m "mensaje"'
     echo '6. git push -u origin main'
     echo 'recordar contraseña: git config credential.helper store'
+    echo 'añadir otro origen: git remote add origin-alt <url>; git push origin-alt main'
 }
 
 alias config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
@@ -101,12 +102,10 @@ alias configd="config diff"
 alias configs="config status"
 alias configp="config push"
 alias configpl="config pull"
-alias configr="config rm -r"
+alias configr="config rm -r --cached"
 alias configl='config log --pretty=format:"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]" --abbrev-commit -30'
 
-function configc() {
-    config commit -a -m "$*" 
-}
+function configc() { config commit -a -m "$*" ; }
 
 function configstart() {
     echo '1. mkdir ~/dotfiles'

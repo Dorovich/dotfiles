@@ -70,7 +70,7 @@ export LANGUAGE=es_ES:en_US
 export TERMINAL="urxvtc"
 export EDITOR="nvim"
 export VISUAL="emacsclient -c -a 'emacs'"
-export MYVIMRC="$HOME/.vimrc"
+export MYVIMRC="$HOME/.vim/vimrc"
 
 export SAVEHIST=2000
 export HISTFILE=~/.local/share/shell/bash_history
@@ -93,7 +93,8 @@ alias gp="git push"
 alias gcl="git clone"
 alias gpl="git pull"
 alias gr="git rm -r --cached"
-alias grst="git reset --hard HEAD"
+alias gundo="git reset HEAD~"
+alias greset="git reset --hard HEAD"
 alias gl='git log --pretty=format:"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]" --abbrev-commit -30'
 
 gc() {
