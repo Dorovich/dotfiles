@@ -82,7 +82,7 @@ bold=$(tput bold)
 reset=$(tput sgr0)
 
 export PS1="\n\[$bold$color1\]\W \[$bold$color2\]$\[$reset\] "
-export PS2="\[$bold$color2\]>\[$reset\] "
+export PS2="\[$bold$color2\]...\[$reset\] "
 
 # git
 
