@@ -1,6 +1,0 @@
-#!/bin/sh
-
-setxkbmap es
-xset r rate 300 35
-numlockx on
-setxkbmap -option caps:ctrl_modifier
