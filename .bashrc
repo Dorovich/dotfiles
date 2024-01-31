@@ -92,7 +92,7 @@ alias gs="git status"
 alias gp="git push"
 alias gcl="git clone"
 alias gpl="git pull"
-alias gr="git rm -r"
+alias gr="git rm -r --cached"
 alias grst="git reset --hard HEAD"
 alias gl='git log --pretty=format:"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]" --abbrev-commit -30'
 
@@ -117,7 +117,7 @@ alias configd="config diff"
 alias configs="config status"
 alias configp="config push"
 alias configpl="config pull"
-alias configr="config rm -r"
+alias configr="config rm -r --cached"
 alias configl='config log --pretty=format:"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]" --abbrev-commit -30'
 
 configc() {

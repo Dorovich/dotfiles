@@ -6,7 +6,8 @@ file_name = vim.fn.expand("%:t:r")
 
 -- Settings
 
-g.mapleader = ","
+g.mapleader = ";"
+g.maplocalleader = ","
 
 opt.scrolloff = 1
 opt.sidescrolloff = 1
@@ -90,13 +91,10 @@ require("lazy").setup({
     end
   },
   {
-    "tpope/vim-commentary",
-  },
-  {
     "max397574/better-escape.nvim",
     config = function()
       require("better_escape").setup({
-        mapping = {"jk"},
+        mapping = { "jk" },
         timeout = 100,
         clear_empty_lines = false,
         keys = function()
@@ -105,25 +103,33 @@ require("lazy").setup({
       })
     end
   },
-  -- {
-  --   "windwp/nvim-autopairs",
-  --   config = function()
-  --     local nap = require("nvim-autopairs")
-  --     local nap_cond = require("nvim-autopairs.conds")
-  --     local nap_rule = require('nvim-autopairs.rule')
-  --     nap.setup({
-  --       enable_check_bracket_line = false,
-  --       fast_wrap = {},
-  --     })
-  --     nap.get_rules("'")[1].not_filetypes = { "scheme", "lisp" }
-  --     nap.get_rules("'")[1]:with_pair(nap_cond.not_after_text("["))
-  --   end
-  -- },
+  {
+    "tpope/vim-commentary",
+  },
+  {
+    "windwp/nvim-autopairs",
+    config = function()
+      local nap = require("nvim-autopairs")
+      local nap_cond = require("nvim-autopairs.conds")
+      local nap_rule = require('nvim-autopairs.rule')
+      nap.setup({
+        enable_check_bracket_line = false,
+        fast_wrap = {},
+      })
+      nap.get_rules("'")[1].not_filetypes = { "scheme", "lisp" }
+      nap.get_rules("'")[1]:with_pair(nap_cond.not_after_text("["))
+    end
+  },
   {
     "guns/vim-sexp",
-    dependencies = { "tpope/vim-repeat" }
+    dependencies = { "tpope/vim-repeat" },
+    config = function()
+      g["sexp_enable_insert_mode_mappings"] = 0
+    end
   },
-  -- poner "https://github.com/Olical/conjure" por aqui
+  -- {
+  --   "Olical/conjure"
+  -- },
   {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.5",
@@ -181,5 +187,9 @@ require("lazy").setup({
 }, {})
 
 vim.cmd("colorscheme kanagawa")
+
+-- Conjure
+-- g["conjure#filetype#scheme"] = "conjure.client.guile.socket"
+-- g["conjure#client#guile#socket#pipename"] = "guile-repl.socket"
 
 -- vim: ts=2 sts=2 sw=2 et

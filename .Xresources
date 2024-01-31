@@ -3,7 +3,6 @@
 
 !!! urxvt
 
-!URxvt.font: xft:terminus:pixelsize=18:antialias=true:autohint=true
 URxvt.font: xft:mononoki NF:pixelsize=18:antialias=true:autohint=true
 URxvt.scrollBar: false
 URxvt.internalBorder: 12
@@ -36,9 +35,18 @@ URxvt.keysym.S-Down:   command:\033]721;1\007
 
 !!! sxiv
 
-Sxiv.font: mononoki NF:size=14
-Sxiv.foreground: #d1d1d1
-Sxiv.background: #151515
+/* Sxiv.font: mononoki NF:size=14 */
+/* Sxiv.foreground: #d1d1d1 */
+/* Sxiv.background: #151515 */
+
+!!! nsxiv
+
+Nsxiv.bar.font: mononoki NF:size=14
+Nsxiv.window.foreground: #d1d1d1
+Nsxiv.window.background: #151515
+Nsxiv.bar.foreground: #d1d1d1
+Nsxiv.bar.background: #151515
+Nsxiv.mark.foreground: #535d6c
 
 !!! mis colores
 

@@ -6,8 +6,10 @@ numlockx on &
 redshift -l 41.39:2.16 -m randr -t 5500:5000 &
 setxkbmap -option caps:ctrl_modifier &
 urxvtd -q -f -o &
-emacs --daemon &
+# emacs --daemon &
 # wmname dwm &
 # dwm-status &
 # nitrogen --restore &
 # picom &
+
+# vim: ft=sh
