@@ -24,10 +24,12 @@ hc keybind $Mod-Shift-c close_and_remove
 hc keybind $Mod-Return spawn "${TERMINAL:-xterm}" # use your $TERMINAL with xterm as fallback
 
 # programs
-hc keybind $Mod+d spawn dmenu_run -h 16 -c -g 3 -l 10
-hc keybind $Mod+b spawn run_or_raise class Firefox firefox
-hc keybind $Mod+e spawn emacsclient -c -a 'emacs'
-hc keybind $Mod+a spawn pcmanfm
+hc keybind $Mod+d      spawn dmenu_run -h 16 -c -g 3 -l 10
+hc keybind $Mod+b      spawn run_or_raise class Firefox firefox
+hc keybind $Mod+e      spawn emacsclient -c -a 'emacs'
+hc keybind $Mod+a      spawn pcmanfm
+hc keybind $Mod+Escape spawn slock
+# hc keybind $Mod-F1     spawn "${TERMINAL:-xterm}" -e less /usr/share/doc/help_hlwm.txt
 
 # basic movement in tiling and floating mode
 # focusing clients
