@@ -44,7 +44,7 @@ URxvt.keysym.S-Down:   command:\033]721;1\007
 Nsxiv.bar.font: mononoki NF:size=14
 Nsxiv.window.foreground: #d1d1d1
 Nsxiv.window.background: #151515
-Nsxiv.bar.foreground: #d1d1d1
+Nsxiv.bar.foreground: #626262
 Nsxiv.bar.background: #151515
 Nsxiv.mark.foreground: #535d6c
 

@@ -16,11 +16,15 @@ opt.splitright = true
 opt.splitbelow = true
 opt.lazyredraw = true
 opt.clipboard = "unnamedplus"
-opt.lispwords = opt.lispwords + "define*,lambda*"
+opt.termguicolors = true
+
+opt.lispwords = opt.lispwords + "define-syntax-rule,define*,lambda*" -- scheme, guile
+opt.lispwords = opt.lispwords + "sb-thread:with-mutex,defcommand,define-stumpwm-type" -- sbcl, stumpwm
 
 -- Keys, Commands
 
 keymap("n", "ñ", ":", nil)
+keymap("x", "ñ", ":", nil)
 keymap("n", "U", "<c-r>", nil)
 keymap("n", "Y", "y$", nil)
 keymap("x", ">", ">gv", {silent=true})
@@ -73,6 +77,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+vim.g["conjure#filetype#scheme"] = "conjure.client.guile.socket" -- Conjure
+
 require("lazy").setup({
   {
     "nvim-treesitter/nvim-treesitter",
@@ -80,7 +86,7 @@ require("lazy").setup({
     build = ":TSUpdate",
     config = function()
       require("nvim-treesitter.configs").setup({
-        ensure_installed = { "c", "lua", "commonlisp", "scheme", "org", "query", },
+        ensure_installed = { "c", "lua", "commonlisp", "scheme", "org", "query", "vimdoc" },
         sync_install = false,
         auto_install = false,
         highlight = {
@@ -104,7 +110,12 @@ require("lazy").setup({
     end
   },
   {
-    "tpope/vim-commentary",
+    "tpope/vim-sleuth",
+  },
+  {
+    'numToStr/Comment.nvim',
+    opts = {},
+    lazy = false,
   },
   {
     "windwp/nvim-autopairs",
@@ -124,12 +135,15 @@ require("lazy").setup({
     "guns/vim-sexp",
     dependencies = { "tpope/vim-repeat" },
     config = function()
-      g["sexp_enable_insert_mode_mappings"] = 0
+      vim.g["sexp_enable_insert_mode_mappings"] = 0
     end
   },
-  -- {
-  --   "Olical/conjure"
-  -- },
+  {
+    "Olical/conjure",
+    config = function()
+      vim.g["conjure#client#guile#socket#pipename"] = "/tmp/guile-repl.socket"
+    end
+  },
   {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.5",
@@ -149,6 +163,12 @@ require("lazy").setup({
       org.setup_ts_grammar()
       org.setup()
     end,
+  },
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup()
+    end
   },
   {
     "rebelot/kanagawa.nvim",
@@ -187,9 +207,5 @@ require("lazy").setup({
 }, {})
 
 vim.cmd("colorscheme kanagawa")
-
--- Conjure
--- g["conjure#filetype#scheme"] = "conjure.client.guile.socket"
--- g["conjure#client#guile#socket#pipename"] = "guile-repl.socket"
 
 -- vim: ts=2 sts=2 sw=2 et

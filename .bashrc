@@ -1,3 +1,10 @@
+# exit if not interactive
+
+case $- in
+    *i*) ;;
+    *) return;;
+esac
+
 # bash options
 
 set completion-ignore-case on
@@ -8,12 +15,14 @@ shopt -s cdspell
 # completion
 
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    source /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    source /etc/bash_completion
-  fi
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+	source /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+	source /etc/bash_completion
+    fi
 fi
+
+source /usr/share/bash-completion/completions/herbstclient
 
 # bash insulter
 
@@ -47,6 +56,7 @@ alias wacom-small='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" Area 5167 31
 alias wacom-reset='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" ResetArea'
 
 alias camaraobs="sudo modprobe v4l2loopback exclusive_caps=1 card_label='CamaraOBS:CamaraOBS'"
+alias sinksel="scriptctl sinks"
 
 # utilities
 
@@ -67,7 +77,7 @@ mergepdfs() {
 # variables
 
 export LANGUAGE=es_ES:en_US
-export TERMINAL="urxvtc"
+export TERMINAL="st"
 export EDITOR="nvim"
 export VISUAL="emacsclient -c -a 'emacs'"
 export MYVIMRC="$HOME/.vim/vimrc"
@@ -83,6 +93,18 @@ reset=$(tput sgr0)
 
 export PS1="\n\[$bold$color1\]\W \[$bold$color2\]$\[$reset\] "
 export PS2="\[$bold$color2\]...\[$reset\] "
+
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+case "$TERM" in
+    st*|xterm*|rxvt*)
+	PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+	;;
+    *)
+	;;
+esac
 
 # git
 
@@ -136,7 +158,7 @@ configstart() {
 # interactive startup commands
 
 if [[ $- == *i* ]]; then
-	clear
+    clear
 fi
 
 # vi: ft=sh

@@ -26,11 +26,11 @@
 [ -d "/opt/bochs_gdb/bin" ] && PATH="/opt/bochs_gdb/bin:$PATH"
 
 # other variables
-export TERMINAL="urxvtc"
+export TERMINAL="st"
 export EDITOR="nvim"
 export BROWSER="firefox"
 export SCRIPTSDIR="/home/vido25/.local/bin/dmenu"
-export DMENU_FLAGS="-h 20 -i"
+export DMENU_FLAGS="-h 18 -i"
 export XMODIFIERS=
 export SBCL_HOME=/usr/lib/sbcl/
 

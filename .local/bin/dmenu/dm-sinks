@@ -1,5 +1,14 @@
 #!/bin/sh
 
+if [ -n "$DISPLAY" ]; then
+	selector="dmenu $DMENU_FLAGS -l 5 -p"
+	selector_string="Select sound output:"
+else
+	selector="fzf --prompt"
+	selector_string="Select sound output: "
+fi
+
 sinks=$(pactl list sinks short | awk '{print $2}')
-choice=$(echo "$sinks" | dmenu $DMENU_FLAGS -p "Select sound output:" -l 5)
-pactl set-default-sink $choice
+choice=$(echo "$sinks" | $selector "$selector_string")
+[ -n "$DISPLAY" ] || clear
+[ -n "$choice" ] && pactl set-default-sink $choice

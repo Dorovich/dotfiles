@@ -47,7 +47,7 @@ function restart-emacs-server() { killall emacs ; emacs --daemon ; }
 # variables
 
 export LANGUAGE=es_ES:en_US
-export TERMINAL="urxvtc"
+export TERMINAL="st"
 export EDITOR="nvim"
 export BROWSER="firefox"
 export VISUAL="emacsclient -c -a 'emacs'"

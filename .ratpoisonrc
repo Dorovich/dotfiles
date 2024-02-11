@@ -1,0 +1,70 @@
+exec setxkbmap -option caps:ctrl_modifier
+exec setxkbmap es
+exec xset r rate 300 35
+exec xsetroot -cursor_name left_ptr
+exec nitrogen --restore
+exec /usr/bin/nvidia-settings -l
+exec numlockx on
+exec wmname ratpoison
+exec /usr/bin/rpws init 9 -k
+exec mpd
+
+set winname title
+set wingravity center
+set transgravity center
+set bargravity center
+set border 2
+set font "mononoki NF:size=14"
+set bgcolor #151515
+set fgcolor #d1d1d1
+set fwcolor #346475
+set bwcolor #151515
+set msgwait 4
+set framemsgwait 2
+
+#escape Super_L
+
+alias terminal exec st
+alias files terminal -e lf
+
+bind c terminal
+bind d exec dmenu_run
+bind q delete
+bind j focus
+bind k focusprev
+bind ntilde colon
+bind Escape abort
+bind S-Escape exec slock
+
+#bind s-F1 exec ayuda
+#bind s-Return exec st
+#bind s-b exec firefox
+#bind s-d exec dmenu_run
+#bind s-w exec st -e lf
+#bind s-c delete
+#bind s-Tab focus
+#bind s-ntilde colon
+
+#bind s-h focusleft
+#bind s-l focusright
+#bind s-j focusdown
+#bind s-k focusup
+
+bind s-m exec scriptctl music
+bind s-p exec scriptctl pass
+bind s-o exec scriptctl soundout
+bind s-x exec scriptctl kill
+bind s-Insert exec scriptctl snippet
+bind s-Print exec scriptctl screenshot
+bind s-plus exec scriptctl volume up
+bind s-minus exec scriptctl volume down
+
+bind s-1 exec rpws 1
+bind s-2 exec rpws 2
+bind s-3 exec rpws 3
+bind s-4 exec rpws 4
+bind s-5 exec rpws 5
+bind s-6 exec rpws 6
+bind s-7 exec rpws 7
+bind s-8 exec rpws 8
+bind s-9 exec rpws 9

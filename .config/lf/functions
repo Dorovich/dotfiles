@@ -48,7 +48,7 @@ cmd open ${{
 	image/x-xcf) setsid -f gimp $f >/dev/null 2>&1 ;;
 	image/svg+xml) display -- $f ;;
 	image/gif) setsid -f mpv $f >/dev/null 2>&1 ;;
-	image/*) setsid -f sxiv $fx >/dev/null 2>&1 ;;
+	image/*) setsid -f nsxiv $fx >/dev/null 2>&1 ;;
 	audio/*|video/x-ms-asf) mpv --audio-display=no $f >/dev/null 2>&1 ;;
 	video/*) setsid -f mpv $f --quiet >/dev/null 2>&1 ;;
 	application/pdf|application/vnd.djvu|application/epub*|application/vnd.comicbook*) setsid -f zathura $fx >/dev/null 2>&1 ;;
