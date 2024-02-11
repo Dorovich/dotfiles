@@ -128,7 +128,6 @@ for k in "${keys[@]}" Escape ; do
 done
 
 hc keybind $Mod-r chain \
-    . spawn notify-send "Select a script (key) or press Escape" \
     . keybind "${keys[0]}" chain "${unbind[@]}" , spawn "$scriptmanager" \
     . keybind "${keys[1]}" chain "${unbind[@]}" , spawn "$scriptmanager" music \
     . keybind "${keys[2]}" chain "${unbind[@]}" , spawn "$scriptmanager" sinks \
