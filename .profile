@@ -21,6 +21,7 @@
 [ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
 [ -d "$HOME/.local/bin/statusbar" ] && PATH="$HOME/.local/bin/statusbar:$PATH"
 [ -d "$HOME/.local/bin/dmenu" ] && PATH="$HOME/.local/bin/dmenu:$PATH"
+[ -d "$HOME/.local/bin/herbstluft" ] && PATH="$HOME/.local/bin/herbstluft:$PATH"
 [ -d "$HOME/Applications" ] && PATH="$HOME/Applications:$PATH"
 [ -d "/var/lib/flatpak/exports/bin/" ] && PATH="/var/lib/flatpak/exports/bin/:$PATH"
 [ -d "/opt/bochs_gdb/bin" ] && PATH="/opt/bochs_gdb/bin:$PATH"
