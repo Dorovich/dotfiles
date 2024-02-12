@@ -1,0 +1,26 @@
+set folder = "imaps://vidoski@cock.li@mail.cock.li:993"
+set smtp_url = "smtps://vidoski@cock.li@mail.cock.li:465"
+
+set imap_pass = "`pass show ffx/cock.li | head -n 1`"
+set smtp_pass = $imap_pass
+set smtp_authenticators = "login"
+
+set from = "vidoski@cock.li"
+set realname = "Vidoski"
+
+set spoolfile = "+INBOX"
+set record = "+Sent"
+set trash = "+Trash"
+set postponed = "+Drafts"
+
+mailboxes =INBOX =Sent =Trash =Drafts =Junk
+
+set editor = "nvim"
+# set arrow_cursor
+set askcc
+set copy = yes
+set ssl_force_tls = yes
+unset mark_old
+set charset = "UTF-8"
+
+source ~/.config/mutt/colors

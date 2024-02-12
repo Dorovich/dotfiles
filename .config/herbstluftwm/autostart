@@ -121,13 +121,13 @@ hc keybind $Mod-i jumpto urgent
 # scripts
 # https://github.com/herbstluftwm/herbstluftwm/blob/master/scripts/keychain.sh
 scriptmanager="scriptctl"
-keys=( r m o p s k l i q )
+keys=( x m o p s k l i q )
 unbind=( )
 for k in "${keys[@]}" Escape ; do
     unbind+=( , keyunbind "$k" )
 done
 
-hc keybind $Mod-r chain \
+hc keybind $Mod-x chain \
     . keybind "${keys[0]}" chain "${unbind[@]}" , spawn "$scriptmanager" \
     . keybind "${keys[1]}" chain "${unbind[@]}" , spawn "$scriptmanager" music \
     . keybind "${keys[2]}" chain "${unbind[@]}" , spawn "$scriptmanager" sinks \
@@ -233,3 +233,9 @@ done
 
 # wallpaper
 nitrogen --restore
+
+# run once
+if hc silent new_attr bool my_not_first_autostart ; then
+    wmname herbstluftwm
+    setxkbmap -option caps:ctrl_modifier
+fi
