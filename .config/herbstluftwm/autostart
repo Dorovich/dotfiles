@@ -11,14 +11,20 @@ hc emit_hook reload
 xsetroot -solid '#151515'
 
 # set hostname vars
-if [ $(hostname) == "raspinet" ]; then
-    is_raspi=1
-elif [ $(hostname) == "Ness-net" ]; then
-    is_laptop=1
-else
-    is_raspi=0
-    is_laptop=0
-fi
+case "$(hostname)" in
+    "raspinet")
+        is_raspi=1
+        is_laptop=0
+        ;;
+    "Ness-net")
+        is_raspi=0
+        is_laptop=1
+        ;;
+    *)
+        is_raspi=0
+        is_laptop=0
+        ;;
+esac
 
 # remove all existing keybindings
 hc keyunbind --all

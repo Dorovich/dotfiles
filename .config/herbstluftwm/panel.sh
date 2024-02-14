@@ -26,7 +26,8 @@ panel_width=${geometry[2]}
 panel_height=16
 font="-*-terminus-medium-*-*-*-12-*-*-*-*-*-*-*"
 # extract colors from hlwm and omit alpha-value
-bgcolor=$(hc get frame_border_normal_color|sed 's,^\(\#[0-9a-f]\{6\}\)[0-9a-f]\{2\}$,\1,')
+bgcolor='#151515'
+# bgcolor=$(hc get frame_border_normal_color|sed 's,^\(\#[0-9a-f]\{6\}\)[0-9a-f]\{2\}$,\1,')
 selbg=$(hc get window_border_active_color|sed 's,^\(\#[0-9a-f]\{6\}\)[0-9a-f]\{2\}$,\1,')
 selfg='#efefef'
 

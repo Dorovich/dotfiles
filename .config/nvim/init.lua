@@ -138,12 +138,12 @@ require("lazy").setup({
       vim.g["sexp_enable_insert_mode_mappings"] = 0
     end
   },
-  {
-    "Olical/conjure",
-    config = function()
-      vim.g["conjure#client#guile#socket#pipename"] = "/tmp/guile-repl.socket"
-    end
-  },
+  -- {
+  --   "Olical/conjure",
+  --   config = function()
+  --     vim.g["conjure#client#guile#socket#pipename"] = "/tmp/guile-repl.socket"
+  --   end
+  -- },
   {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.5",
