@@ -18,6 +18,7 @@ opt.lazyredraw = true
 opt.clipboard = "unnamedplus"
 opt.termguicolors = true
 
+opt.lispwords = opt.lispwords + "use-package" -- emacs
 opt.lispwords = opt.lispwords + "define-syntax-rule,define*,lambda*" -- scheme, guile
 opt.lispwords = opt.lispwords + "sb-thread:with-mutex,defcommand,define-stumpwm-type" -- sbcl, stumpwm
 
