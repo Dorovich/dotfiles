@@ -3,10 +3,19 @@
 set -euo pipefail
 
 files=~/.steam/debian-installation/steamapps/appmanifest_*
+files_alm=/media/vido25/Almacenamiento/SteamLibrary/steamapps/appmanifest_*
 
 declare -A games
 
 for f in $files; do
+    name=$(sed -n '/"name"/p' $f | cut -d '"' -f4)
+    if [[ $name != *"Steam"* && $name != *"Proton"* ]]; then
+        appid=$(sed -n '/"appid"/p' $f | cut -d '"' -f4)
+        games[$name]=$appid
+    fi
+done
+
+for f in $files_alm; do
     name=$(sed -n '/"name"/p' $f | cut -d '"' -f4)
     if [[ $name != *"Steam"* && $name != *"Proton"* ]]; then
         appid=$(sed -n '/"appid"/p' $f | cut -d '"' -f4)

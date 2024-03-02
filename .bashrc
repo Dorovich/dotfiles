@@ -39,6 +39,7 @@ alias fullclean="bleachbit -c --preset && sudo bleachbit -c --preset"
 alias qmake-qt5="qmake"
 alias start-vlime-server="sbcl --load .vim/plugged/vlime/lisp/start-vlime.lisp"
 alias vim="nvim"
+alias byebye="shutdown -h now"
 
 if [[ $- == *i* ]]; then
     alias sbcl="rlwrap sbcl"
