@@ -22,7 +22,7 @@ if ! shopt -oq posix; then
     fi
 fi
 
-source /usr/share/bash-completion/completions/herbstclient
+#source /usr/share/bash-completion/completions/herbstclient
 
 # bash insulter
 

@@ -3,7 +3,11 @@
 
 !!! urxvt
 
-URxvt.font: xft:mononoki NF:pixelsize=18:antialias=true:autohint=true
+!URxvt.font: xft:mononoki NF:pixelsize=18:antialias=true:autohint=true
+!URxvt.font: -*-fixed-*-r-*-*-16-150-*-*-*-*-iso8859-*
+URxvt.font: -*-fixed-*
+URxvt.boldFont: -*-fixed-*
+URxvt.italicFont: -*-fixed-*
 URxvt.scrollBar: false
 URxvt.internalBorder: 12
 URxvt.saveLines: 2048
@@ -11,10 +15,18 @@ URxvt.geometry: 92x24
 URxvt.cursorBlink: true
 URxvt.cursorUnderline: false
 URxvt.resize.increment: 1
-URxvt.letterSpace: 0
-URxvt.lineSpace: 0
+URxvt.letterSpace: 1
+URxvt.lineSpace: 3
+URxvt.transparent: false
+URxvt.depth: 32
 URxvt.iso14755: false
 URxvt.iso14755_52: false
+URxvt.scrollTtyOutput: true
+URxvt.scrollTTyKeypress: true
+Xft.antialias: true
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Urxvt.termName: rxvt
 
 URxvt*perl-ext-common:
 URxvt*perl-ext:

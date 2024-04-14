@@ -9,6 +9,9 @@ if [[ $- == *i* ]]; then
     compinit
     zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
     zstyle ':completion:*' menu select
+    clear
+else
+    return
 fi
 
 # aliases
@@ -19,9 +22,6 @@ alias lss="ls -I '*.o' -I '*~' -I '*.out' -I '*.bin' -I '*.s' -I '*.txt'"
 alias grep='grep --color=auto'
 alias clean="bleachbit -c --preset"
 alias fullclean="bleachbit -c --preset && sudo bleachbit -c --preset"
-alias sbcl-rl="rlwrap sbcl"
-alias qmake-qt5="qmake"
-alias start-vlime-server="sbcl --load .vim/plugged/vlime/lisp/start-vlime.lisp"
 alias vim="nvim"
 
 alias yt-mp3="yt-dlp --extract-audio --audio-format mp3 "
@@ -33,6 +33,10 @@ alias wacom-osu='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" Area 5667 3667
 alias wacom-small='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" Area 5167 3167 9133 6333'
 alias wacom-reset='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" ResetArea'
 
+alias sbcl-rl="rlwrap sbcl"
+alias qmake-qt5="qmake"
+alias start-vlime-server="sbcl --load .vim/plugged/vlime/lisp/start-vlime.lisp"
+alias sinksel="scriptctl sinks"
 alias camaraobs="sudo modprobe v4l2loopback exclusive_caps=1 card_label='CamaraOBS:CamaraOBS'"
 
 # utilities
@@ -43,6 +47,10 @@ function 0url() { curl -F"url=$1" https://envs.sh ; }       # 0url "https://url"
 function 0short() { curl -F"shorten=$1" https://envs.sh ; } # 0short "https://long-url"
 
 function restart-emacs-server() { killall emacs ; emacs --daemon ; }
+
+function mergepdfs() {
+    gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=merged.pdf "$@"
+}
 
 # variables
 
@@ -57,7 +65,7 @@ export SAVEHIST=2000
 export HISTFILE=~/.local/share/shell/zsh_history
 export HISTCONTROL=ignoreboth:erasedups
 
-export PS1="%B%F{8}>%f%b " #λ
+export PS1=$'\n'"%B%F{6}%1~%F{8}:%f%b " #λ
 export PS2="%B%F{8}...%f%b "
 
 # path

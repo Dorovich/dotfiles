@@ -25,6 +25,7 @@
 [ -d "$HOME/Applications" ] && PATH="$HOME/Applications:$PATH"
 [ -d "/var/lib/flatpak/exports/bin/" ] && PATH="/var/lib/flatpak/exports/bin/:$PATH"
 [ -d "/opt/bochs_gdb/bin" ] && PATH="/opt/bochs_gdb/bin:$PATH"
+[ -d "$HOME/Documentos/UPC/eines-sisa/bin" ] && PATH="$HOME/Documentos/UPC/eines-sisa/bin:$PATH"
 
 # other variables
 export TERMINAL="st"
