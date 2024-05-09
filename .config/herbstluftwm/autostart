@@ -43,14 +43,15 @@ if [ -f "/usr/share/doc/help_hlwm.txt" ]; then
 fi
 
 # programs
-hc keybind $Mod+d      spawn dmenu_run -h 16 -c -g 3 -l 10
-hc keybind $Mod+e      spawn run_or_raise class Emacs emacsclient -c -a 'emacs'
-hc keybind $Mod+a      spawn pcmanfm
-hc keybind $Mod+Escape spawn slock
+hc keybind $Mod-d      spawn dmenu_run -h 16 -c -g 3 -l 10
+hc keybind $Mod-e      spawn run_or_raise class Emacs emacsclient -c -a 'emacs'
+hc keybind $Mod-a      spawn pcmanfm
+hc keybind $Mod-Escape spawn slock
 if [ $is_raspi -eq 0 ]; then
-    hc keybind $Mod+b  spawn run_or_raise class Firefox firefox
+    hc keybind $Mod-b       spawn run_or_raise class Firefox firefox
+    hc keybind $Mod-Shift-b spawn run_or_raise class Chromium-browser chromium-browser
 else
-    hc keybind $Mod+b  spawn run_or_raise class Chromium-browser chromium-browser
+    hc keybind $Mod-b       spawn run_or_raise class Chromium-browser chromium-browser
 fi
 
 # basic movement in tiling and floating mode
@@ -236,6 +237,7 @@ hc rule fixedsize floating=on
 hc rule class~'.*-prompter|.*\.exe|scratchpad|[Dd]ragon|.*[Ss]xiv|[Mm]pv' floating=on
 hc rule windowrole='GtkFileChooserDialog' floating=on
 hc rule class~'[Aa]n-anime-game-launcher' floating=on
+hc rule class='Emacs' floating=on
 
 hc set tree_style '╾│ ├└╼─┐'
 

@@ -2,7 +2,7 @@
 
 case $1 in
     1|"load")
-        xdotool type $(grep -v '^#' ~/.local/share/snippets | dmenu $DMENU_FLAGS -l 15 | cut -d' ' -f1)
+        xdotool type $(grep -v '^#' ~/.local/share/snippets | dmenu $DMENU_FLAGS -c -g 2 -l 15 | cut -d' ' -f1)
         ;;
     2|"save")
         new_snippet="$(xclip -o)"
