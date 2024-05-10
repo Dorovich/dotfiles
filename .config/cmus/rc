@@ -14,37 +14,38 @@ set format_trackwin_va=%3n. %t%= %a %d
 set color_win_bg=default
 set color_win_fg=default
 set color_win_sel_attr=default
-set color_win_sel_bg=darkgray
+set color_win_sel_bg=gray
 set color_win_sel_fg=default
+set color_win_title_fg=blue
 set color_win_title_bg=default
 
 set color_titleline_attr=bold
 set color_titleline_bg=default
-set color_titleline_fg=default
+set color_titleline_fg=red
 
 set color_statusline_attr=default
 set color_statusline_bg=default
 set color_statusline_fg=default
 
-set color_separator=darkgray
+set color_separator=gray
 
-set color_win_cur_attr=bold
-set color_win_cur=lightblue
+set color_win_cur_attr=blink
+set color_win_cur=yellow
 set color_win_cur_sel_attr=bold
-set color_win_cur_sel_bg=darkgray
-set color_win_cur_sel_fg=lightblue
+set color_win_cur_sel_bg=gray
+set color_win_cur_sel_fg=yellow
 
 set color_win_inactive_sel_attr=default
 set color_win_inactive_sel_bg=default
 set color_win_inactive_sel_fg=default
-set color_win_inactive_cur_sel_attr=bold
+set color_win_inactive_cur_sel_attr=blink
 set color_win_inactive_cur_sel_bg=default
-set color_win_inactive_cur_sel_fg=lightblue
+set color_win_inactive_cur_sel_fg=yellow
 
 set color_win_dir=default
 
 set color_error=red
-set color_info=blue
+set color_info=magenta
 
 set status_display_program=cmusfm
 

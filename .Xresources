@@ -11,7 +11,7 @@ URxvt*scrollBar_right: true
 URxvt*scrollBar_floating: true
 URxvt.internalBorder: 12
 URxvt.saveLines: 2048
-URxvt.geometry: 80x24
+URxvt.geometry: 120x40
 URxvt.cursorBlink: true
 URxvt.cursorUnderline: false
 URxvt.resize.increment: 1
@@ -54,9 +54,9 @@ Nsxiv.mark.foreground: #535d6c
 
 !!! mis colores
 
-*.background:   #ededed
-*.foreground:   #2e3446
-*.cursorColor:  #2e3446
+*.background: #ededed
+*.foreground: #2e3446
+*.cursorColor: #2e3446
 
 *.color0:   #000000
 *.color8:   #5a5a5a
@@ -66,12 +66,12 @@ Nsxiv.mark.foreground: #535d6c
 *.color10:  #008858
 *.color3:   #a45f22
 *.color11:  #a0522d
-*.color4:   #001faf
-*.color12:  #0000ff
+*.color4:   #3a5fcd
+*.color12:  #7090ff
 *.color5:   #721045
 *.color13:  #8b2252
-*.color6:   #1f6fbf
-*.color14:  #008b8b
+*.color6:   #3f7a80
+*.color14:  #2f8fab
 *.color7:   #bfbfbf
 *.color15:  #bfbfbf
 

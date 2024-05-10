@@ -37,7 +37,8 @@ Mod=Mod4   # Use the super key as the main modifier
 hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-Shift-c close_and_remove
-hc keybind $Mod-Return spawn "${TERMINAL:-xterm}" # use your $TERMINAL with xterm as fallback
+hc keybind $Mod-Shift-Return spawn "${TERMINAL:-xterm}" # use your $TERMINAL with xterm as fallback
+hc keybind $Mod-Return spawn urxvtc
 if [ -f "/usr/share/doc/help_hlwm.txt" ]; then
     hc keybind $Mod-F1 spawn "${TERMINAL:-xterm}" -e less /usr/share/doc/help_hlwm.txt
 fi
@@ -229,7 +230,7 @@ hc rule focus=on # normally focus new clients
 hc rule floatplacement=center
 #hc rule focus=off # normally do not focus new clients
 # give focus to most common terminals
-#hc rule class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole)' focus=on
+hc rule class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole|[Ss]t)' focus=on floating=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' floating=on
 hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
@@ -265,4 +266,5 @@ if hc silent new_attr bool my_not_first_autostart ; then
     wmname herbstluftwm
     xmodmap ~/.xmodmap
     setxkbmap -option caps:ctrl_modifier
+    urxvtd -q -o -f
 fi

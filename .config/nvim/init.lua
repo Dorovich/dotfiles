@@ -17,6 +17,7 @@ opt.splitbelow = true
 opt.lazyredraw = true
 opt.clipboard = "unnamedplus"
 opt.termguicolors = true
+opt.background = "light"
 
 opt.lispwords = opt.lispwords + "use-package" -- emacs
 opt.lispwords = opt.lispwords + "define-syntax-rule,define*,lambda*" -- scheme, guile
