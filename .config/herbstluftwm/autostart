@@ -241,6 +241,7 @@ hc rule class~'[Dd]ragon|.*[Ss]xiv|[Mm]pv|[Aa]n-anime-game-launcher' floating=on
 hc rule class='GLFW-Application' floating=on
 hc rule class='Emacs' floating=on
 hc rule class='steam' not title='Steam' floating=on
+hc rule class='qemacs' floating=on
 
 hc set tree_style '╾│ ├└╼─┐'
 
