@@ -102,12 +102,8 @@ require("lazy").setup({
     "max397574/better-escape.nvim",
     config = function()
       require("better_escape").setup({
-        mapping = { "jk" },
+        default_mappings = true,
         timeout = 100,
-        clear_empty_lines = false,
-        keys = function()
-          return vim.api.nvim_win_get_cursor(0)[2] > 1 and '<esc>l' or '<esc>'
-        end,
       })
     end
   },
