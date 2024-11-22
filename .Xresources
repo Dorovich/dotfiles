@@ -1,26 +1,26 @@
-*.font:     mononoki NF:pixelsize=18:antialias=true:autohint=true
+*.font:     Ubuntu mono:pixelsize=18:antialias=true:autohint=true
 *.alpha:    1.00
+
+!!! emacs
+
+Emacs.font: Ubuntu mono:pixelsize=18:antialias=true:autohint=true
 
 !!! urxvt
 
-URxvt.font: -*-terminus-*-*-*-*-*-140-*-*-*-*-*-*,xft:terminus:pixelsize:12
-URxvt.boldFont: -*-terminus-*-*-*-*-*-140-*-*-*-*-*-*,xft:terminus:pixelsize:12
-URxvt.italicFont: -*-terminus-*-*-*-*-*-140-*-*-*-*-*-*,xft:terminus:pixelsize:12
-URxvt.scrollBar: true
-URxvt*scrollBar_right: true
-URxvt*scrollBar_floating: true
-URxvt.internalBorder: 12
-URxvt.saveLines: 2048
-URxvt.geometry: 120x40
+URxvt*font: xft:Ubuntu mono:pixelsize=18:antialias=false:autohint=true
+URxvt.iconFile: /usr/share/icons/breeze-dark/apps/32/utilities-terminal.svg
+URxvt.scrollBar: false
+URxvt.internalBorder: 10
+URxvt.saveLines: 0
+URxvt.geometry: 90x30
 URxvt.cursorBlink: true
 URxvt.cursorUnderline: false
 URxvt.resize.increment: 1
-URxvt.letterSpace: 1
+! URxvt.letterSpace: 1
 URxvt.fading: 30
-URxvt.lineSpace: 3
+! URxvt.lineSpace: 3
 URxvt.transparent: false
 URxvt.depth: 32
-URxvt.scrollstyle: plain
 URxvt.hold: false
 URxvt.iso14755: false
 URxvt.iso14755_52: false
@@ -28,10 +28,8 @@ URxvt.underlineColor: red
 URxvt.scrollTtyOutput: true
 URxvt.scrollTTyKeypress: true
 Urxvt.termName: rxvt
-URxvt.keysym.M-Up:     command:\033]720;1\007
-URxvt.keysym.M-Down:   command:\033]721;1\007
-URxvt*perl-ext-common:
-URxvt*perl-ext:
+URxvt.perl-ext-common:
+URxvt.perl-ext:
 
 Xft.antialias: true
 Xft.hinting: true
@@ -45,7 +43,7 @@ Xft.hintstyle: hintslight
 
 !!! nsxiv
 
-Nsxiv.bar.font: mononoki NF:size=14
+Nsxiv.bar.font: Ubuntu mono:size=14
 Nsxiv.window.foreground: #d1d1d1
 Nsxiv.window.background: #151515
 Nsxiv.bar.foreground: #626262
@@ -54,9 +52,9 @@ Nsxiv.mark.foreground: #535d6c
 
 !!! mis colores
 
-*.background: #ededed
-*.foreground: #2e3446
-*.cursorColor: #2e3446
+*.background: #151515
+*.foreground: #ededed
+*.cursorColor: #ededed
 
 *.color0:   #000000
 *.color8:   #5a5a5a
@@ -74,24 +72,3 @@ Nsxiv.mark.foreground: #535d6c
 *.color14:  #2f8fab
 *.color7:   #bfbfbf
 *.color15:  #bfbfbf
-
-! *.background:   #151515
-! *.foreground:   #d1d1d1
-! *.cursorColor:  #dbc49b
-
-! *.color0:   #1e2127
-! *.color8:   #464646
-! *.color1:   #e06c75
-! *.color9:   #e06c75
-! *.color2:   #98c379
-! *.color10:  #98c379
-! *.color3:   #d19a66
-! *.color11:  #d19a66
-! *.color4:   #7e9cd8
-! *.color12:  #7e9cd8
-! *.color5:   #c678dd
-! *.color13:  #c678dd
-! *.color6:   #346475
-! *.color14:  #56b6c2
-! *.color7:   #abb2bf
-! *.color15:  #abb2bf

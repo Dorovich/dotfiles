@@ -47,6 +47,7 @@ fi
 hc keybind $Mod-d      spawn dmenu_run -h 16 -c -g 3 -l 10
 hc keybind $Mod-e      spawn run_or_raise class Emacs emacsclient -c -a 'emacs'
 hc keybind $Mod-a      spawn pcmanfm
+hc keybind $Mod-v      spawn urxvtc -e vim
 hc keybind $Mod-Escape spawn slock
 if [ $is_raspi -eq 0 ]; then
     hc keybind $Mod-b       spawn run_or_raise class Firefox firefox

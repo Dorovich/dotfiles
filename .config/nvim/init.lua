@@ -1,209 +1,99 @@
-opt = vim.opt
-g = vim.g
-keymap = vim.keymap.set
-autocmd = vim.api.nvim_create_autocmd
-file_name = vim.fn.expand("%:t:r")
+vim.opt.autochdir = true
+vim.opt.cindent = true
+vim.opt.cinoptions = ':0,l1,t0'
+vim.opt.clipboard = 'unnamedplus'
+vim.opt.ignorecase = true
+vim.opt.laststatus = 0
+vim.opt.lazyredraw = true
+vim.opt.makeprg = 'make -j$(nproc)'
+vim.opt.smartcase = true
+vim.opt.swapfile = false
+vim.opt.termguicolors = true
+vim.opt.title = true
+vim.opt.undofile = true
+vim.opt.wrap = false
 
--- Settings
+vim.g.mapleader = ','
 
-g.mapleader = ";"
-g.maplocalleader = ","
+vim.keymap.set('n', '<leader>e', ':cwindow<cr>', { silent = true })
+vim.keymap.set('n', '<leader>r', ':%s//g<left><left>', nil)
+vim.keymap.set('n', 'U', '<c-r>', nil)
+vim.keymap.set('n', 'gb', ':buffers<cr>:b<space>', nil)
+vim.keymap.set('n', 'ñ', ':', nil)
+vim.keymap.set('x', '<', '<gv', nil)
+vim.keymap.set('x', '>', '>gv', nil)
+vim.keymap.set('x', 'ñ', ':', nil)
 
-opt.scrolloff = 1
-opt.sidescrolloff = 1
-opt.laststatus = 0
-opt.splitright = true
-opt.splitbelow = true
-opt.lazyredraw = true
-opt.clipboard = "unnamedplus"
-opt.termguicolors = true
-opt.background = "light"
-
-opt.lispwords = opt.lispwords + "use-package" -- emacs
-opt.lispwords = opt.lispwords + "define-syntax-rule,define*,lambda*" -- scheme, guile
-opt.lispwords = opt.lispwords + "sb-thread:with-mutex,defcommand,define-stumpwm-type" -- sbcl, stumpwm
-
--- Keys, Commands
-
-keymap("n", "ñ", ":", nil)
-keymap("x", "ñ", ":", nil)
-keymap("n", "U", "<c-r>", nil)
-keymap("n", "Y", "y$", nil)
-keymap("x", ">", ">gv", {silent=true})
-keymap("x", "<", "<gv", {silent=true})
-keymap("n", "<c-q>", ":q<cr>", {silent=true})
-keymap("n", "<c-s>", ":w<cr>", nil)
-
-keymap("n", "<leader>t", ":split<cr>:term<cr>A", nil)
-keymap("n", "<leader>r", ":%s//g<left><left>", nil)
-keymap("n", "<leader>c", ":!make<cr>", nil)
-
-vim.cmd("command! -nargs=0 SudoWrite :w !sudo tee %")
-
--- Autocmds
-
-autocmd({ "FileType" }, {
-  pattern = { "text", "org", "markdown" },
-  callback = function()
-    opt.wrap = true
-  end
+vim.api.nvim_create_autocmd({ 'FileType' }, {
+	pattern = { 'c', 'cpp' },
+	callback = function()
+		vim.opt_local.colorcolumn = '80'
+		vim.keymap.set('n', '<c-j>', ':cnext!<cr>', { buffer = true })
+		vim.keymap.set('n', '<c-k>', ':cprev!<cr>', { buffer = true })
+	end
 })
 
-autocmd({ "FileType"  }, {
-  pattern = { "help" },
-  callback = function()
-    keymap("n", "q", "<c-w>q", {buffer=true})
-  end
+vim.api.nvim_create_autocmd({ 'FileType' }, {
+	pattern = { 'qf' },
+	callback = function()
+		vim.keymap.set('n', '<c-j>', ':cnext!<cr>', { buffer = true, silent = true })
+		vim.keymap.set('n', '<c-k>', ':cprev!<cr>', { buffer = true, silent = true })
+	end
 })
 
-autocmd({ "TermEnter" }, {
-  callback = function()
-    opt.number = false
-    opt.relativenumber = false
-  end
+vim.api.nvim_create_autocmd({ 'FileType' }, {
+	pattern = { 'text', 'markdown' },
+	callback = function()
+		vim.opt_local.wrap = true
+		vim.opt_local.linebreak = true
+		fname_noext = vim.fn.expand("%:t:r")
+		fname = vim.fn.expand("%:t")
+		vim.opt_local.makeprg = "pandoc -s -o "..fname_noext..".html".." "..fname
+	end
 })
 
-autocmd({ "TermClose" }, {
-  command = "call nvim_input('<cr>')"
-})
-
--- Plugins
-
-local lazypath = vim.fn.stdpath "data".."/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system {
-    "git", "clone", "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", lazypath
-  }
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+	if vim.v.shell_error ~= 0 then
+		vim.api.nvim_echo({
+			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+			{ out, "WarningMsg" },
+			{ "\nPress any key to exit..." },
+		}, true, {})
+		vim.fn.getchar()
+		os.exit(1)
+	end
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.g["conjure#filetype#scheme"] = "conjure.client.guile.socket" -- Conjure
+require('lazy').setup({
+	'Raimondi/delimitMate',
+	'tpope/vim-commentary',
+	'tpope/vim-surround',
+	{
+		'srcery-colors/srcery-vim',
+		config = function()
+			vim.g.srcery_bg = { 'NONE', 'NONE' }
+			vim.g.srcery_bold = 1
+			vim.g.srcery_italic = 0
+			vim.cmd('colorscheme srcery')
+		end
+	},
+	{
+		'NeogitOrg/neogit',
+		dependencies = {
+			'nvim-lua/plenary.nvim',
+			'sindrets/diffview.nvim',
+			'ibhagwan/fzf-lua'
+		},
+		config = function()
+			neogit = require('neogit')
+			vim.keymap.set('n', '<leader>g', function()
+				neogit.open({ kind = 'split' })
+			end, nil)
+		end
+	}
+})
 
-require("lazy").setup({
-  {
-    "nvim-treesitter/nvim-treesitter",
-    dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
-    build = ":TSUpdate",
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = { "c", "lua", "commonlisp", "scheme", "org", "query", "vimdoc" },
-        sync_install = false,
-        auto_install = false,
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = { "org" },
-        }
-      })
-    end
-  },
-  {
-    "max397574/better-escape.nvim",
-    config = function()
-      require("better_escape").setup({
-        default_mappings = true,
-        timeout = 100,
-      })
-    end
-  },
-  {
-    "tpope/vim-sleuth",
-  },
-  {
-    'numToStr/Comment.nvim',
-    opts = {},
-    lazy = false,
-  },
-  {
-    "windwp/nvim-autopairs",
-    config = function()
-      local nap = require("nvim-autopairs")
-      local nap_cond = require("nvim-autopairs.conds")
-      local nap_rule = require('nvim-autopairs.rule')
-      nap.setup({
-        enable_check_bracket_line = false,
-        fast_wrap = {},
-      })
-      nap.get_rules("'")[1].not_filetypes = { "scheme", "lisp" }
-      nap.get_rules("'")[1]:with_pair(nap_cond.not_after_text("["))
-    end
-  },
-  {
-    "guns/vim-sexp",
-    dependencies = { "tpope/vim-repeat" },
-    config = function()
-      vim.g["sexp_enable_insert_mode_mappings"] = 0
-    end
-  },
-  -- {
-  --   "Olical/conjure",
-  --   config = function()
-  --     vim.g["conjure#client#guile#socket#pipename"] = "/tmp/guile-repl.socket"
-  --   end
-  -- },
-  {
-    "nvim-telescope/telescope.nvim",
-    tag = "0.1.5",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      local builtin = require("telescope.builtin")
-      keymap("n", "<leader>f", builtin.find_files, nil)
-      keymap("n", "<leader>b", builtin.buffers, nil)
-    end
-  },
-  {
-    "nvim-orgmode/orgmode",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    ft = "org",
-    config = function()
-      local org = require("orgmode")
-      org.setup_ts_grammar()
-      org.setup()
-    end,
-  },
-  {
-    "norcalli/nvim-colorizer.lua",
-    config = function()
-      require("colorizer").setup()
-    end
-  },
-  {
-    "rebelot/kanagawa.nvim",
-    config = function()
-      require("kanagawa").setup({
-        compile = true,
-        transparent = true,
-      })
-    end
-  },
-  {
-    "DanisDGK/srcery.nvim",
-    config = function()
-      require("srcery").setup({
-        transparent_background = true,
-        term_colors = true,
-        integrations = {
-          treesitter = true,
-        },
-      })
-    end
-  },
-  {
-    "ramojus/mellifluous.nvim",
-    config = function()
-      require("mellifluous").setup({
-        dim_inactive = false,
-        color_set = "mellifluous",
-        transparent_background = {
-          enabled = true,
-          floating_windows = false,
-        },
-      })
-    end
-  }
-}, {})
-
-vim.cmd("colorscheme kanagawa")
-
--- vim: ts=2 sts=2 sw=2 et

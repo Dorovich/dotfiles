@@ -7,4 +7,4 @@ configuration {
     drun-match-fields: "name";
     drun-display-format: "{name}";
 }
-@theme "~/.config/rofi/themes/dt-center.rasi"
+@theme "/usr/share/rofi/themes/android_notification.rasi"

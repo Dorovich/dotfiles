@@ -38,7 +38,7 @@ alias clean="bleachbit -c --preset"
 alias fullclean="bleachbit -c --preset && sudo bleachbit -c --preset"
 alias qmake-qt5="qmake"
 alias start-vlime-server="sbcl --load .vim/plugged/vlime/lisp/start-vlime.lisp"
-alias vim="nvim"
+# alias vim="nvim"
 alias byebye="shutdown -h now"
 
 if [[ $- == *i* ]]; then
@@ -82,6 +82,7 @@ export TERMINAL="st"
 export EDITOR="nvim"
 export VISUAL="emacsclient -c -a 'emacs'"
 export MYVIMRC="$HOME/.vim/vimrc"
+export MANPAGER="nvim +Man!"
 
 export SAVEHIST=2000
 export HISTFILE=~/.local/share/shell/bash_history

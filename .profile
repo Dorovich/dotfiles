@@ -29,8 +29,8 @@
 [ -d "/opt/maptool/bin" ] && PATH="/opt/maptool/bin:$PATH"
 
 # other variables
-export TERMINAL="st"
-export EDITOR="nvim"
+export TERMINAL="urxvt"
+export EDITOR="vim"
 export BROWSER="firefox"
 export SCRIPTSDIR="/home/vido25/.local/bin/dmenu"
 export DMENU_FLAGS="-h 18 -i"

@@ -1,18 +1,18 @@
+# return if not interactive
+
+[[ $- != *i* ]] && return
+
 # zsh options
+
+autoload -Uz compinit
+compinit
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' menu select
+clear
 
 setopt histignorealldups sharehistory
 bindkey -e
 stty stop undef
-
-if [[ $- == *i* ]]; then
-    autoload -Uz compinit
-    compinit
-    zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-    zstyle ':completion:*' menu select
-    clear
-else
-    return
-fi
 
 # aliases
 
@@ -22,7 +22,7 @@ alias lss="ls -I '*.o' -I '*~' -I '*.out' -I '*.bin' -I '*.s' -I '*.txt'"
 alias grep='grep --color=auto'
 alias clean="bleachbit -c --preset"
 alias fullclean="bleachbit -c --preset && sudo bleachbit -c --preset"
-alias vim="nvim"
+alias byebye="shutdown -h now"
 
 alias yt-mp3="yt-dlp --extract-audio --audio-format mp3 "
 alias yt-mp4="yt-dlp --format mp4 "
@@ -33,39 +33,39 @@ alias wacom-osu='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" Area 5667 3667
 alias wacom-small='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" Area 5167 3167 9133 6333'
 alias wacom-reset='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" ResetArea'
 
-alias sbcl-rl="rlwrap sbcl"
-alias qmake-qt5="qmake"
-alias start-vlime-server="sbcl --load .vim/plugged/vlime/lisp/start-vlime.lisp"
-alias sinksel="scriptctl sinks"
 alias camaraobs="sudo modprobe v4l2loopback exclusive_caps=1 card_label='CamaraOBS:CamaraOBS'"
+
+alias em="emacs -nw"
+
+alias sbcl="rlwrap sbcl"
+alias csi="rlwrap csi"
 
 # utilities
 
-function 0file() { curl -F"file=@$1" https://envs.sh ; }    # 0file "file.png"
-function 0pb() { curl -F"file=@-;" https://envs.sh ; }      # echo "text" | 0pb
-function 0url() { curl -F"url=$1" https://envs.sh ; }       # 0url "https://url"
-function 0short() { curl -F"shorten=$1" https://envs.sh ; } # 0short "https://long-url"
+0file() { curl -F"file=@$1" https://envs.sh ; }    # 0file "file.png"
+0pb() { curl -F"file=@-;" https://envs.sh ; }      # echo "text" | 0pb
+0url() { curl -F"url=$1" https://envs.sh ; }       # 0url "https://url"
+0short() { curl -F"shorten=$1" https://envs.sh ; } # 0short "https://long-url"
 
-function restart-emacs-server() { killall emacs ; emacs --daemon ; }
-
-function mergepdfs() {
+mergepdfs() {
     gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=merged.pdf "$@"
 }
 
 # variables
 
 export LANGUAGE=es_ES:en_US
-export TERMINAL="st"
+export TERMINAL="urxvt"
 export EDITOR="nvim"
 export BROWSER="firefox"
 export VISUAL="emacsclient -c -a 'emacs'"
 export MYVIMRC="$HOME/.vim/vimrc"
+export MANPAGER="nvim +Man!"
 
 export SAVEHIST=2000
 export HISTFILE=~/.local/share/shell/zsh_history
 export HISTCONTROL=ignoreboth:erasedups
 
-export PS1=$'\n'"%B%F{6}%1~%F{8}:%f%b " #λ
+export PS1="%B%F{6}%1~ %F{8}%%%f%b " #λ
 export PS2="%B%F{8}...%f%b "
 
 # path
@@ -80,28 +80,19 @@ export PS2="%B%F{8}...%f%b "
 
 # git
 
-alias ga="git add"
-alias gd="git diff"
-alias gs="git status"
-alias gp="git push"
-alias gcl="git clone"
-alias gpl="git pull"
-alias gr="git rm -r --cached"
-alias gundo="git reset HEAD~"
-alias greset="git reset --hard HEAD"
-alias gl='git log --pretty=format:"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]" --abbrev-commit -30'
-
-function gc() { git commit -a -m "$*" ; }
-
-function gitstart() {
-    echo '1. git init'
-    echo '2. git remote add origin <link>'
-    echo '3. git branch -M main'
-    echo '4. git add <archivos>'
-    echo '5. git commit -a -m "mensaje"'
-    echo '6. git push -u origin main'
-    echo 'recordar contraseña: git config credential.helper store'
-    echo 'añadir otro origen: git remote add origin-alt <url>; git push origin-alt main'
+g() {
+	cmd=$1
+	shift
+	case $cmd in
+		a) git add $* ;;
+		d) git diff $* ;;
+		s) git status $* ;;
+		cl) git clone $* ;;
+		pl) git pull $* ;;
+		l) git log $* ;;
+		c) git commit -a -m "$*" ;;
+		*) ;;
+	esac
 }
 
 alias config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
@@ -113,14 +104,6 @@ alias configpl="config pull"
 alias configr="config rm -r --cached"
 alias configl='config log --pretty=format:"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]" --abbrev-commit -30'
 
-function configc() { config commit -a -m "$*" ; }
-
-function configstart() {
-    echo '1. mkdir ~/dotfiles'
-    echo '2. git init --bare $HOME/dotfiles'
-    echo '3. alias config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"'
-    echo '4. config config --local status.showUntrackedFiles no'
-    echo 'ver comando "gitstart" para mas info de git'
-}
+configc() { config commit -a -m "$*" ; }
 
 # vi: ft=sh
