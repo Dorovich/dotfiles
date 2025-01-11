@@ -10,13 +10,15 @@ Emacs.font: Ubuntu mono:pixelsize=18:antialias=true:autohint=true
 URxvt*font: xft:Ubuntu mono:pixelsize=18:antialias=false:autohint=true
 URxvt.iconFile: /usr/share/icons/breeze-dark/apps/32/utilities-terminal.svg
 URxvt.scrollBar: false
-URxvt.internalBorder: 10
+! URxvt.internalBorder: 10
 URxvt.saveLines: 0
-URxvt.geometry: 90x30
+! URxvt.geometry: 90x30
+URxvt.geometry: 120x40
 URxvt.cursorBlink: true
 URxvt.cursorUnderline: false
 URxvt.resize.increment: 1
 ! URxvt.letterSpace: 1
+URxvt.letterSpace: -1
 URxvt.fading: 30
 ! URxvt.lineSpace: 3
 URxvt.transparent: false
@@ -61,9 +63,9 @@ Nsxiv.mark.foreground: #535d6c
 *.color1:   #b3303a
 *.color9:   #ce2b50
 *.color2:   #228b22
-*.color10:  #008858
+*.color10:  #00ab3a
 *.color3:   #a45f22
-*.color11:  #a0522d
+*.color11:  #c86333
 *.color4:   #3a5fcd
 *.color12:  #7090ff
 *.color5:   #721045

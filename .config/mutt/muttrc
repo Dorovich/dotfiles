@@ -1,7 +1,7 @@
 set folder = "imaps://vidoski@cock.li@mail.cock.li:993"
 set smtp_url = "smtps://vidoski@cock.li@mail.cock.li:465"
 
-set imap_pass = "`pass show ffx/cock.li | head -n 1`"
+set imap_pass = "`pass show ffx/cock.li | sed 1q`"
 set smtp_pass = $imap_pass
 set smtp_authenticators = "login"
 
@@ -15,7 +15,7 @@ set postponed = "+Drafts"
 
 mailboxes =INBOX =Sent =Trash =Drafts =Junk
 
-set editor = "nvim"
+set editor = "vim"
 # set arrow_cursor
 set askcc
 set copy = yes

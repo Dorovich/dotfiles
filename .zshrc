@@ -35,7 +35,7 @@ alias wacom-reset='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" ResetArea'
 
 alias camaraobs="sudo modprobe v4l2loopback exclusive_caps=1 card_label='CamaraOBS:CamaraOBS'"
 
-alias em="emacs -nw"
+alias em="emacs --color=never -nw"
 
 alias sbcl="rlwrap sbcl"
 alias csi="rlwrap csi"
@@ -51,22 +51,41 @@ mergepdfs() {
     gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=merged.pdf "$@"
 }
 
+vscrot() {
+	mode=$1 && shift
+	dt=$(date +%s)
+	case $mode in
+		full)	maim ~/Imágenes/Capturas/captura_$dt.png ;;
+		active)	maim -i $(xdotool getactivewindow) ~/Imágenes/Capturas/ventana_$dt.png ;;
+		select)	maim -s ~/Imágenes/Capturas/recorte_$dt.png ;;
+		copy)	maim -s | xclip -selection clipboard -t image/png ;;
+		*)	maim ~/Imágenes/Capturas/captura_$dt.png ;;
+	esac
+}
+
 # variables
 
-export LANGUAGE=es_ES:en_US
-export TERMINAL="urxvt"
-export EDITOR="nvim"
-export BROWSER="firefox"
-export VISUAL="emacsclient -c -a 'emacs'"
-export MYVIMRC="$HOME/.vim/vimrc"
-export MANPAGER="nvim +Man!"
+LANGUAGE=es_ES:en_US
+TERMINAL="urxvt"
+EDITOR="nvim"
+BROWSER="firefox"
+VISUAL="emacsclient -c -a 'emacs'"
+MYVIMRC="$HOME/.config/vim/vimrc"
+# MANPAGER="nvim +Man!"
+MANPAGER="sh -c \"col -b | vim -c 'set ft=man' -\""
 
-export SAVEHIST=2000
-export HISTFILE=~/.local/share/shell/zsh_history
-export HISTCONTROL=ignoreboth:erasedups
+SAVEHIST=2000
+HISTFILE=~/.local/share/shell/zsh_history
+HISTCONTROL=ignoreboth:erasedups
 
-export PS1="%B%F{6}%1~ %F{8}%%%f%b " #λ
-export PS2="%B%F{8}...%f%b "
+# PS1="%B%F{6}%1~ %F{8}>:%f%b "
+PS1="%B%F{2}%1~ >:%f%b "
+PS2="%B%F{2}…%f%b "
+
+export LANGUAGE TERMINAL EDITOR BROWSER VISUAL MYVIMRC MANPAGER
+export SAVEHIST HISTFILE HISTCONTROL PS1 PS2
+
+[ -z $SCRIPTSDIR ] && source ~/.profile
 
 # path
 
@@ -81,17 +100,17 @@ export PS2="%B%F{8}...%f%b "
 # git
 
 g() {
-	cmd=$1
-	shift
+	cmd=$1 && shift
 	case $cmd in
-		a) git add $* ;;
-		d) git diff $* ;;
-		s) git status $* ;;
-		cl) git clone $* ;;
-		pl) git pull $* ;;
-		l) git log $* ;;
-		c) git commit -a -m "$*" ;;
-		*) ;;
+		a)	git add $* ;;
+		d)	git diff $* ;;
+		s)	git status $* ;;
+		cl)	git clone $* ;;
+		p)	git push $* ;;
+		pl)	git pull $* ;;
+		l)	git log $* ;;
+		c)	git commit -a -m "$*" ;;
+		*)	;;
 	esac
 }
 

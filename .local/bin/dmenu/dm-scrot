@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+[ -z $SCRIPTSDIR ] && source ~/.profile
+
 case $1 in
     1|"full")   # Full screen
         exec maim ~/Imágenes/Capturas/captura_$(date +%s).png
