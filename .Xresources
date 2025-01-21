@@ -4,6 +4,14 @@
 !!! emacs
 
 Emacs.font: Ubuntu mono:pixelsize=18:antialias=true:autohint=true
+Emacs.geometry: 98x48
+Emacs.reverseVideo: false
+Emacs.alpha: 100
+Emacs.scrollBar: false
+Emacs.verticalScrollBars: off
+Emacs.horizontalScrollBars: off
+Emacs.menuBar: false
+Emacs.toolBar: false
 
 !!! urxvt
 
@@ -32,6 +40,8 @@ URxvt.scrollTTyKeypress: true
 Urxvt.termName: rxvt
 URxvt.perl-ext-common:
 URxvt.perl-ext:
+
+!!! xft
 
 Xft.antialias: true
 Xft.hinting: true

@@ -16,8 +16,10 @@ stty stop undef
 
 # aliases
 
-alias ls="ls -gGFhN --color=auto --group-directories-first --time-style=+%d-%m-%y"
-alias la="ls -gGFhNA --color=auto --group-directories-first --time-style=+%d-%m-%y"
+alias ls="ls -FhN --color=auto"
+alias ll="ls -gGFhN --color=auto --time-style=iso"
+alias la="ls -FhNA --color=auto --time-style=iso"
+alias lla="ls -gGFhNA --color=auto --time-style=iso"
 alias lss="ls -I '*.o' -I '*~' -I '*.out' -I '*.bin' -I '*.s' -I '*.txt'"
 alias grep='grep --color=auto'
 alias clean="bleachbit -c --preset"
@@ -67,7 +69,7 @@ vscrot() {
 
 LANGUAGE=es_ES:en_US
 TERMINAL="urxvt"
-EDITOR="nvim"
+EDITOR="vim"
 BROWSER="firefox"
 VISUAL="emacsclient -c -a 'emacs'"
 MYVIMRC="$HOME/.config/vim/vimrc"
@@ -100,8 +102,8 @@ export SAVEHIST HISTFILE HISTCONTROL PS1 PS2
 # git
 
 g() {
-	cmd=$1 && shift
-	case $cmd in
+	_cmd=$1 && shift
+	case $_cmd in
 		a)	git add $* ;;
 		d)	git diff $* ;;
 		s)	git status $* ;;
@@ -115,14 +117,5 @@ g() {
 }
 
 alias config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
-alias configa="config add"
-alias configd="config diff"
-alias configs="config status"
-alias configp="config push"
-alias configpl="config pull"
-alias configr="config rm -r --cached"
-alias configl='config log --pretty=format:"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]" --abbrev-commit -30'
-
-configc() { config commit -a -m "$*" ; }
 
 # vi: ft=sh

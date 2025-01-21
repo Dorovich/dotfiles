@@ -6,6 +6,7 @@ vim.opt.ignorecase = true
 vim.opt.laststatus = 0
 vim.opt.lazyredraw = true
 vim.opt.makeprg = 'make -j$(nproc)'
+vim.opt.number = true
 vim.opt.smartcase = true
 vim.opt.swapfile = false
 vim.opt.termguicolors = true
@@ -96,4 +97,3 @@ require('lazy').setup({
 		end
 	}
 })
-
