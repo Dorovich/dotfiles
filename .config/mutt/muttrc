@@ -7,7 +7,9 @@ set header_cache = "~/.cache/mutt"
 set message_cachedir = "~/.cache/mutt"
 set mail_check = 120
 set charset = "utf-8"
+set mailcap_path="~/.config/mutt/mailcap"
 bind index G imap-fetch-mail
+bind attach <return> view-mailcap
 
 # Account settings
 set from = "gazapoelectronico@gmail.com"

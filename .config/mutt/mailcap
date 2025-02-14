@@ -1,0 +1,5 @@
+text/plain;		cat %s; copiousoutput
+text/html;		firefox %s
+image/*;		sxiv %s
+video/*;		mpv %s
+application/pdf;	okular %s
