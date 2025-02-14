@@ -1,26 +1,40 @@
-set folder = "imaps://vidoski@cock.li@mail.cock.li:993"
-set smtp_url = "smtps://vidoski@cock.li@mail.cock.li:465"
-
-set imap_pass = "`pass show ffx/cock.li | sed 1q`"
-set smtp_pass = $imap_pass
-set smtp_authenticators = "login"
-
-set from = "vidoski@cock.li"
-set realname = "Vidoski"
-
-set spoolfile = "+INBOX"
-set record = "+Sent"
-set trash = "+Trash"
-set postponed = "+Drafts"
-
-mailboxes =INBOX =Sent =Trash =Drafts =Junk
-
-set editor = "vim"
-# set arrow_cursor
-set askcc
-set copy = yes
+set editor="`echo \$EDITOR`"
 set ssl_force_tls = yes
-unset mark_old
-set charset = "UTF-8"
+set abort_nosubject = yes
+set signature = "~/.config/mutt/signature"
+set copy = yes
+set header_cache = "~/.cache/mutt"
+set message_cachedir = "~/.cache/mutt"
+set mail_check = 120
+set charset = "utf-8"
+bind index G imap-fetch-mail
 
-source ~/.config/mutt/colors
+# Account settings
+set from = "gazapoelectronico@gmail.com"
+set realname = "Gazapo"
+
+# Imap settings
+set imap_user = "gazapoelectronico@gmail.com"
+#set imap_pass = "`pass show mail/gazapoelectronico@gmail.com`"
+set imap_authenticators="oauthbearer:xoauth2"
+set imap_oauth_refresh_command="~/.config/mutt/mutt_oauth2.py ~/.config/mutt/.token"
+unset imap_passive
+set imap_keepalive = 300
+
+# Smtp settings
+set smtp_url = "smtps://gazapoelectronico@smtp.gmail.com"
+#set smtp_pass = "`pass show mail/gazapoelectronico@gmail.com`"
+set smtp_authenticators=${imap_authenticators}
+set smtp_oauth_refresh_command=${imap_oauth_refresh_command}
+
+# Remote gmail folders
+set folder = "imaps://imap.gmail.com/"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+set record = "+[Gmail]/Sent Mail"
+set trash = "+[Gmail]/Trash"
+
+macro index Mi "<change-folder>${spoolfile}<Enter>" "go to inbox"
+macro index Md "<change-folder>${postponed}<enter>" "go to drafts"
+macro index Ms "<change-folder>=[Gmail]/Sent%20Mail<enter>" "go to sent"
+macro index Mt "<change-folder>${trash}<enter>" "go to trash"
