@@ -40,3 +40,5 @@ macro index Mi "<change-folder>${spoolfile}<Enter>" "go to inbox"
 macro index Md "<change-folder>${postponed}<enter>" "go to drafts"
 macro index Ms "<change-folder>=[Gmail]/Sent%20Mail<enter>" "go to sent"
 macro index Mt "<change-folder>${trash}<enter>" "go to trash"
+
+source colors
