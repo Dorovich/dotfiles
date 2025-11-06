@@ -1,34 +1,96 @@
-*.font:     Ubuntu mono:pixelsize=18:antialias=true:autohint=true
+!*.font:     Ubuntu mono:pixelsize=18:antialias=true:autohint=true
+*.font:     JuliaMono:size=15
 *.alpha:    1.00
+
+*background: #151515
+*foreground: #ededed
+*cursorColor: #ededed
+
+*color0:   #000000
+*color8:   #5a5a5a
+*color1:   #b3303a
+*color9:   #ce2b50
+*color2:   #228b22
+*color10:  #00ab3a
+*color3:   #a45f22
+*color11:  #c86333
+*color4:   #3a5fcd
+*color12:  #7090ff
+*color5:   #721045
+*color13:  #8b2252
+*color6:   #3f7a80
+*color14:  #2f8fab
+*color7:   #bfbfbf
+*color15:  #bfbfbf
 
 !!! emacs
 
-Emacs.font: Ubuntu mono:pixelsize=18:antialias=true:autohint=true
-Emacs.geometry: 98x48
-Emacs.reverseVideo: false
-Emacs.alpha: 100
-Emacs.scrollBar: false
-Emacs.verticalScrollBars: off
-Emacs.horizontalScrollBars: off
-Emacs.menuBar: false
-Emacs.toolBar: false
+!Emacs.font: Ubuntu mono:pixelsize=18:antialias=true:autohint=true
+!Emacs.font: JuliaMono:size=14
+!Emacs.font: Roboto Mono:style=Light:size=14
+!Emacs.geometry: 98x48
+!Emacs.reverseVideo: true
+!Emacs.alpha: 100
+!Emacs.scrollBar: false
+!Emacs.verticalScrollBars: off
+!Emacs.horizontalScrollBars: off
+!Emacs.menuBar: false
+!Emacs.toolBar: false
+
+!!! xterm
+
+XTerm*utf8: 1
+!XTerm*faceName: xft:Ubuntu Mono:pixelsize=18
+XTerm*faceName: xft:JuliaMono
+XTerm*faceSize: 11
+XTerm*selectToClipboard: true
+XTerm*SaveLines: 0
+XTerm*ScrollBar: false
+XTerm*ScrollKey: true
+XTerm*termName: xterm-256color
+XTerm*geometry: 96x32
+XTerm*cursorBlink: false
+XTerm*dynamicColors: true
+XTerm*TrimSelection: true
+XTerm*internalBorder: 0
+
+XTerm*background: #151515
+XTerm*foreground: #ededed
+XTerm*cursorColor: #ededed
+XTerm*color0:   #000000
+XTerm*color8:   #5a5a5a
+XTerm*color1:   #b3303a
+XTerm*color9:   #ce2b50
+XTerm*color2:   #228b22
+XTerm*color10:  #00ab3a
+XTerm*color3:   #a45f22
+XTerm*color11:  #c86333
+XTerm*color4:   #3a5fcd
+XTerm*color12:  #7090ff
+XTerm*color5:   #721045
+XTerm*color13:  #8b2252
+XTerm*color6:   #3f7a80
+XTerm*color14:  #2f8fab
+XTerm*color7:   #bfbfbf
+XTerm*color15:  #bfbfbf
 
 !!! urxvt
 
-URxvt*font: xft:Ubuntu mono:pixelsize=18:antialias=false:autohint=true
-URxvt.iconFile: /usr/share/icons/breeze-dark/apps/32/utilities-terminal.svg
+!URxvt*font: xft:Ubuntu mono:pixelsize=18:antialias=false:autohint=true
+!URxvt*font: terminus-16
+URxvt*font: xft:JuliaMono:size=11
+URxvt.iconFile: /usr/share/icons/elementary-xfce/apps/32/xfce-terminal.png
 URxvt.scrollBar: false
-! URxvt.internalBorder: 10
-URxvt.saveLines: 0
-! URxvt.geometry: 90x30
-URxvt.geometry: 120x40
+URxvt.internalBorder: 0
+URxvt.saveLines: 2500
+URxvt.geometry: 96x32
 URxvt.cursorBlink: true
 URxvt.cursorUnderline: false
 URxvt.resize.increment: 1
-! URxvt.letterSpace: 1
-URxvt.letterSpace: -1
+URxvt.letterSpace: 0
+!URxvt.letterSpace: -1
 URxvt.fading: 30
-! URxvt.lineSpace: 3
+!URxvt.lineSpace: 3
 URxvt.transparent: false
 URxvt.depth: 32
 URxvt.hold: false
@@ -49,38 +111,30 @@ Xft.hintstyle: hintslight
 
 !!! sxiv
 
-/* Sxiv.font: mononoki NF:size=14 */
-/* Sxiv.foreground: #d1d1d1 */
-/* Sxiv.background: #151515 */
+!Sxiv.font: Ubuntu mono:size=12
+Sxiv.font: fixed-10
+Sxiv.foreground: #d1d1d1
+!Sxiv.foreground: #ffffff
+Sxiv.background: #151515
 
 !!! nsxiv
 
-Nsxiv.bar.font: Ubuntu mono:size=14
+Nsxiv.bar.font: Ubuntu mono:size=12
 Nsxiv.window.foreground: #d1d1d1
 Nsxiv.window.background: #151515
 Nsxiv.bar.foreground: #626262
 Nsxiv.bar.background: #151515
 Nsxiv.mark.foreground: #535d6c
 
-!!! mis colores
+!!! xdvi
 
-*.background: #151515
-*.foreground: #ededed
-*.cursorColor: #ededed
+XDvi*font: -*-fixed-*-*-*-*-13-*-*-*-*-*-*-*
+XDvi*foreground: #000000
+XDvi*background: #ffffff
+XDvi*cursorColor: #000000
 
-*.color0:   #000000
-*.color8:   #5a5a5a
-*.color1:   #b3303a
-*.color9:   #ce2b50
-*.color2:   #228b22
-*.color10:  #00ab3a
-*.color3:   #a45f22
-*.color11:  #c86333
-*.color4:   #3a5fcd
-*.color12:  #7090ff
-*.color5:   #721045
-*.color13:  #8b2252
-*.color6:   #3f7a80
-*.color14:  #2f8fab
-*.color7:   #bfbfbf
-*.color15:  #bfbfbf
+!!! xpdf
+
+Xpdf*font: -*-fixed-*-*-*-*-13-*-*-*-*-*-*-*
+Xpdf*Foreground: #000000
+Xpdf*Background: #ffffff

@@ -21,6 +21,7 @@ alias ll="ls -gGFhN --color=auto --time-style=iso"
 alias la="ls -FhNA --color=auto --time-style=iso"
 alias lla="ls -gGFhNA --color=auto --time-style=iso"
 alias lss="ls -I '*.o' -I '*~' -I '*.out' -I '*.bin' -I '*.s' -I '*.txt'"
+alias bc="bc -l"
 alias grep='grep --color=auto'
 alias clean="bleachbit -c --preset"
 alias fullclean="bleachbit -c --preset && sudo bleachbit -c --preset"
@@ -68,7 +69,7 @@ vscrot() {
 # variables
 
 LANGUAGE=es_ES:en_US
-TERMINAL="urxvt"
+TERMINAL="xterm"
 EDITOR="vim"
 BROWSER="firefox"
 VISUAL="emacsclient -c -a 'emacs'"
@@ -80,9 +81,9 @@ SAVEHIST=2000
 HISTFILE=~/.local/share/shell/zsh_history
 HISTCONTROL=ignoreboth:erasedups
 
-# PS1="%B%F{6}%1~ %F{8}>:%f%b "
-PS1="%B%F{2}%1~ >:%f%b "
-PS2="%B%F{2}…%f%b "
+# PS1: see «man zshmisc» for parameters
+PS1="[%B%F{1}%?%f%b:%B%F{2}%1~%f%b]$ "
+PS2="%B%F{8}>%f%b "
 
 export LANGUAGE TERMINAL EDITOR BROWSER VISUAL MYVIMRC MANPAGER
 export SAVEHIST HISTFILE HISTCONTROL PS1 PS2

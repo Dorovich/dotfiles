@@ -29,7 +29,7 @@
 [ -d "/opt/maptool/bin" ] && PATH="/opt/maptool/bin:$PATH"
 
 # other variables
-TERMINAL="urxvt"
+TERMINAL="xterm"
 EDITOR="vim"
 BROWSER="firefox"
 SCRIPTSDIR="/home/vido25/.local/bin/dmenu"

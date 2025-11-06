@@ -1,44 +1,46 @@
-set editor="`echo \$EDITOR`"
-set ssl_force_tls = yes
-set abort_nosubject = yes
-set signature = "~/.config/mutt/signature"
-set copy = yes
+# ================  Mutt ====================
 set header_cache = "~/.cache/mutt"
 set message_cachedir = "~/.cache/mutt"
-set mail_check = 120
-set charset = "utf-8"
 set mailcap_path="~/.config/mutt/mailcap"
-bind index G imap-fetch-mail
-bind attach <return> view-mailcap
+set mail_check = 120
+source ~/.config/mutt/colors
 
-# Account settings
-set from = "gazapoelectronico@gmail.com"
-set realname = "Gazapo"
-
-# Imap settings
+# ================  IMAP  ====================
 set imap_user = "gazapoelectronico@gmail.com"
-#set imap_pass = "`pass show mail/gazapoelectronico@gmail.com`"
 set imap_authenticators="oauthbearer:xoauth2"
 set imap_oauth_refresh_command="~/.config/mutt/mutt_oauth2.py ~/.config/mutt/.token"
-unset imap_passive
 set imap_keepalive = 300
-
-# Smtp settings
-set smtp_url = "smtps://gazapoelectronico@smtp.gmail.com"
-#set smtp_pass = "`pass show mail/gazapoelectronico@gmail.com`"
-set smtp_authenticators=${imap_authenticators}
-set smtp_oauth_refresh_command=${imap_oauth_refresh_command}
-
-# Remote gmail folders
+unset imap_passive
 set folder = "imaps://imap.gmail.com/"
 set spoolfile = "+INBOX"
 set postponed = "+[Gmail]/Drafts"
 set record = "+[Gmail]/Sent Mail"
 set trash = "+[Gmail]/Trash"
+set mbox="+[Gmail]/All Mail"
 
+# ================  SMTP  ====================
+set smtp_url = "smtps://gazapoelectronico@smtp.gmail.com"
+set smtp_authenticators=${imap_authenticators}
+set smtp_oauth_refresh_command=${imap_oauth_refresh_command}
+set ssl_force_tls = yes
+
+# ================  Keys  ====================
 macro index Mi "<change-folder>${spoolfile}<Enter>" "go to inbox"
 macro index Md "<change-folder>${postponed}<enter>" "go to drafts"
 macro index Ms "<change-folder>=[Gmail]/Sent%20Mail<enter>" "go to sent"
 macro index Mt "<change-folder>${trash}<enter>" "go to trash"
+macro index Ma "<change-folder>=[Gmail]/All%20Mail<enter>" "go to all"
+bind index G imap-fetch-mail
+bind attach <return> view-mailcap
 
-source colors
+# ================  Composition  ====================
+set abort_nosubject = yes
+set charset = "UTF-8"
+set copy = yes
+set edit_headers = yes
+set editor = "`echo \$EDITOR`"
+set from = "gazapoelectronico@gmail.com"
+set realname = "Gazapo"
+set signature = "~/.config/mutt/signature"
+set use_from = yes
+unset use_domain

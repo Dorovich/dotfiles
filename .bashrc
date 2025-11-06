@@ -1,9 +1,6 @@
 # exit if not interactive
 
-case $- in
-    *i*) ;;
-    *) return;;
-esac
+[[ $- != *i* ]] && return
 
 # bash options
 
@@ -15,37 +12,25 @@ shopt -s cdspell
 # completion
 
 if ! shopt -oq posix; then
-    if [ -f /usr/share/bash-completion/bash_completion ]; then
-	source /usr/share/bash-completion/bash_completion
-    elif [ -f /etc/bash_completion ]; then
-	source /etc/bash_completion
-    fi
+	comp=/usr/share/bash-completion/bash_completion
+	comp_alt=/etc/bash_completion
+	[ -f $comp ] && source $comp || source $comp_alt
 fi
 
 #source /usr/share/bash-completion/completions/herbstclient
 
-# bash insulter
-
-[ -f /etc/bash.command-not-found ] && source /etc/bash.command-not-found
-
 # aliases
 
-alias ls="ls -gGFhN --color=auto --group-directories-first --time-style=+%d-%m-%y"
-alias la="ls -gGFhNA --color=auto --group-directories-first --time-style=+%d-%m-%y"
+alias ls="ls -FhN --color=auto"
+alias ll="ls -gGFhN --color=auto --time-style=iso"
+alias la="ls -FhNA --color=auto --time-style=iso"
+alias lla="ls -gGFhNA --color=auto --time-style=iso"
 alias lss="ls -I '*.o' -I '*~' -I '*.out' -I '*.bin' -I '*.s' -I '*.txt'"
+alias bc="bc -l"
 alias grep='grep --color=auto'
 alias clean="bleachbit -c --preset"
 alias fullclean="bleachbit -c --preset && sudo bleachbit -c --preset"
-alias qmake-qt5="qmake"
-alias start-vlime-server="sbcl --load .vim/plugged/vlime/lisp/start-vlime.lisp"
-# alias vim="nvim"
 alias byebye="shutdown -h now"
-
-if [[ $- == *i* ]]; then
-    alias sbcl="rlwrap sbcl"
-    #alias guile="rlwrap guile"
-    alias csi="rlwrap csi"
-fi
 
 alias yt-mp3="yt-dlp --extract-audio --audio-format mp3 "
 alias yt-mp4="yt-dlp --format mp4 "
@@ -57,7 +42,11 @@ alias wacom-small='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" Area 5167 31
 alias wacom-reset='xsetwacom --set "Wacom Intuos PT S 2 Pen stylus" ResetArea'
 
 alias camaraobs="sudo modprobe v4l2loopback exclusive_caps=1 card_label='CamaraOBS:CamaraOBS'"
-alias sinksel="scriptctl sinks"
+
+alias em="emacs --color=never -nw"
+
+alias sbcl="rlwrap sbcl"
+alias csi="rlwrap csi"
 
 # utilities
 
@@ -66,101 +55,77 @@ alias sinksel="scriptctl sinks"
 0url() { curl -F"url=$1" https://envs.sh ; }       # 0url "https://url"
 0short() { curl -F"shorten=$1" https://envs.sh ; } # 0short "https://long-url"
 
-restart-emacs-server() {
-    killall emacs
-    emacs --daemon
+mergepdfs() {
+	gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=merged.pdf "$@"
 }
 
-mergepdfs() {
-    gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=merged.pdf "$@"
-}
+vscrot() {
+	mode=$1 && shift
+	dt=$(date +%s)
+	case $mode in
+		full)	maim ~/Imágenes/Capturas/captura_$dt.png ;;
+		active)	maim -i $(xdotool getactivewindow) ~/Imágenes/Capturas/ventana_$dt.png ;;
+		select)	maim -s ~/Imágenes/Capturas/recorte_$dt.png ;;
+			copy)	maim -s | xclip -selection clipboard -t image/png ;;
+			*)	maim ~/Imágenes/Capturas/captura_$dt.png ;;
+		esac
+	}
 
 # variables
 
-export LANGUAGE=es_ES:en_US
-export TERMINAL="st"
-export EDITOR="nvim"
-export VISUAL="emacsclient -c -a 'emacs'"
-export MYVIMRC="$HOME/.vim/vimrc"
-export MANPAGER="nvim +Man!"
+LANGUAGE=es_ES:en_US
+TERMINAL="xterm"
+EDITOR="vim"
+VISUAL="emacsclient -c -a 'emacs'"
+MYVIMRC="$HOME/.config/vim/vimrc"
+# MANPAGER="nvim +Man!"
+MANPAGER="sh -c \"col -b | vim -c 'set ft=man' -\""
 
-export SAVEHIST=2000
-export HISTFILE=~/.local/share/shell/bash_history
-export HISTCONTROL=ignoreboth:erasedups
+SAVEHIST=2000
+HISTFILE=~/.local/share/shell/bash_history
+HISTCONTROL=ignoreboth:erasedups
 
-color1=$(tput setaf 6)
-color2=$(tput setaf 8)
+red=$(tput setaf 1)
+green=$(tput setaf 2)
+gray=$(tput setaf 8)
 bold=$(tput bold)
 reset=$(tput sgr0)
 
-export PS1="\n\[$bold$color1\]\W \[$bold$color2\]$\[$reset\] "
-export PS2="\[$bold$color2\]...\[$reset\] "
+PS1="[\[$bold$red\]$?\[$reset\]:\[$bold$green\]\w\[$reset\]]$ "
+PS2="\[$bold$gray\]>\[$reset\] "
 
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
+	debian_chroot=$(cat /etc/debian_chroot)
 fi
 
 case "$TERM" in
-    st*|xterm*|rxvt*)
-	PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-	;;
-    *)
-	;;
+	st*|xterm*|rxvt*)
+		PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+		;;
+	*)
+		;;
 esac
+
+export LANGUAGE TERMINAL EDITOR BROWSER VISUAL MYVIMRC MANPAGER
+export SAVEHIST HISTFILE HISTCONTROL PS1 PS2
 
 # git
 
-alias ga="git add"
-alias gd="git diff"
-alias gs="git status"
-alias gp="git push"
-alias gcl="git clone"
-alias gpl="git pull"
-alias gr="git rm -r --cached"
-alias gundo="git reset HEAD~"
-alias greset="git reset --hard HEAD"
-alias gl='git log --pretty=format:"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]" --abbrev-commit -30'
-
-gc() {
-    git commit -a -m "$*"
-}
-
-gitstart() {
-    echo '1. git init'
-    echo '2. git remote add origin <link>'
-    echo '3. git branch -M main'
-    echo '4. git add <archivos>'
-    echo '5. git commit -a -m "mensaje"'
-    echo '6. git push -u origin main'
-    echo 'recordar contraseña: git config credential.helper store'
-    echo 'añadir otro origen: git remote add origin-alt <url>; git push origin-alt main'
+g() {
+	_cmd=$1 && shift
+	case $_cmd in
+		a)	git add $* ;;
+		d)	git diff $* ;;
+		s)	git status $* ;;
+		cl)	git clone $* ;;
+		p)	git push $* ;;
+		pl)	git pull $* ;;
+		l)	git log $* ;;
+		c)	git commit -a -m "$*" ;;
+		*)	;;
+	esac
 }
 
 alias config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
-alias configa="config add"
-alias configd="config diff"
-alias configs="config status"
-alias configp="config push"
-alias configpl="config pull"
-alias configr="config rm -r --cached"
-alias configl='config log --pretty=format:"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]" --abbrev-commit -30'
-
-configc() {
-    config commit -a -m "$*" 
-}
-
-configstart() {
-    echo '1. mkdir ~/dotfiles'
-    echo '2. git init --bare $HOME/dotfiles'
-    echo '3. alias config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"'
-    echo '4. config config --local status.showUntrackedFiles no'
-    echo 'ver comando "gitstart" para mas info de git'
-}
-
-# interactive startup commands
-
-if [[ $- == *i* ]]; then
-    clear
-fi
 
 # vi: ft=sh
