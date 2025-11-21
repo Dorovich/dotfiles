@@ -1,5 +1,5 @@
 mpd_host = localhost
 mpd_port = 6600
-mpd_music_dir = /media/vido25/Almacenamiento/Musica
+mpd_music_dir = /media/vido25/Almacenamiento/music
 external_editor = vim
 colors_enabled = "yes"

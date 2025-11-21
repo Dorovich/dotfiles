@@ -29,22 +29,21 @@
 !Emacs.font: JuliaMono:size=14
 !Emacs.font: Roboto Mono:style=Light:size=14
 !Emacs.geometry: 98x48
-!Emacs.reverseVideo: true
-!Emacs.alpha: 100
+Emacs.reverseVideo: true
+Emacs.alpha: 100
 !Emacs.scrollBar: false
 !Emacs.verticalScrollBars: off
 !Emacs.horizontalScrollBars: off
 !Emacs.menuBar: false
-!Emacs.toolBar: false
+Emacs.toolBar: false
 
 !!! xterm
 
 XTerm*utf8: 1
-!XTerm*faceName: xft:Ubuntu Mono:pixelsize=18
 XTerm*faceName: xft:JuliaMono
-XTerm*faceSize: 11
+XTerm*faceSize: 12
 XTerm*selectToClipboard: true
-XTerm*SaveLines: 0
+XTerm*SaveLines: 2000
 XTerm*ScrollBar: false
 XTerm*ScrollKey: true
 XTerm*termName: xterm-256color
@@ -73,6 +72,10 @@ XTerm*color6:   #3f7a80
 XTerm*color14:  #2f8fab
 XTerm*color7:   #bfbfbf
 XTerm*color15:  #bfbfbf
+
+XTerm.vt100.translations: #override \n\
+  Ctrl <Key> minus: smaller-vt-font() \n\
+  Ctrl <Key> plus: larger-vt-font()
 
 !!! urxvt
 
