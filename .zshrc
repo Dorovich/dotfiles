@@ -12,7 +12,7 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' menu select
 
 setopt hist_ignore_all_dups hist_reduce_blanks inc_append_history share_history
-stty stop undef
+#stty stop undef
 
 # aliases
 
@@ -45,21 +45,12 @@ alias csi="rlwrap csi"
 
 # variables
 
-LANGUAGE=es_ES:en_US
-TERMINAL="xterm"
-EDITOR="vim"
-BROWSER="firefox"
-VISUAL="emacs"
-MYVIMRC="$HOME/.config/vim/vimrc"
-MANPAGER="sh -c \"col -b | vim -c 'set ft=man' -\"" # "nvim +Man!"
 HISTSIZE=2000
 SAVEHIST=$HISTSIZE
 HISTFILE=~/.local/share/shell/zsh_history
 PS1=";"
 
-export LANGUAGE TERMINAL EDITOR BROWSER VISUAL MYVIMRC MANPAGER SAVEHIST HISTSIZE HISTFILE PS1 # PS2
-
-[ -z $SCRIPTSDIR ] && source ~/.profile
+[ -z $LANGUAGE ] && source ~/.profile
 
 # git
 

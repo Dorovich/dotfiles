@@ -29,20 +29,21 @@
 [ -d "/opt/maptool/bin" ] && PATH="/opt/maptool/bin:$PATH"
 
 # other variables
-TERMINAL="xterm"
-EDITOR="vim"
-BROWSER="firefox"
-SCRIPTSDIR="/home/vido25/.local/bin/dmenu"
-DMENU_FLAGS="-h 18 -i"
-XMODIFIERS=
-SBCL_HOME=/usr/lib/sbcl/
-EMACSLOADPATH=
-QT_STYLE_OVERRIDE=kvantum
-WEBKIT_DISABLE_COMPOSITING_MODE=1
+export LANGUAGE=es_ES:en_US
+export TERMINAL="xterm"
+export EDITOR="vim"
+export VISUAL="emacs"
+export BROWSER="firefox"
+export MYVIMRC="$HOME/.config/vim/vimrc"
+export SCRIPTSDIR="/home/vido25/.local/bin/dmenu"
+export MANPAGER="sh -c \"col -b | vim -c 'set ft=man' -\"" # "nvim +Man!"
+export DMENU_FLAGS="-h 18 -i"
+export XMODIFIERS=
+export SBCL_HOME=/usr/lib/sbcl/
+export EMACSLOADPATH=
+export QT_STYLE_OVERRIDE=kvantum
+export WEBKIT_DISABLE_COMPOSITING_MODE=1
 
-GUIX_LOCPATH="$HOME/.guix-profile/lib/locale"
-GUIX_PROFILE="$HOME/.guix-profile"
+export GUIX_LOCPATH="$HOME/.guix-profile/lib/locale"
+export GUIX_PROFILE="$HOME/.guix-profile"
 source "$GUIX_PROFILE/etc/profile"
-
-export TERMINAL EDITOR BROWSER SCRIPTSDIR DMENU_FLAGS XMODIFIERS SBCL_HOME EMACSLOADPATH
-export QT_STYLE_OVERRIDE WEBKIT_DISABLE_COMPOSITING_MODE GUIX_LOCPATH GUIX_PROFILE

@@ -52,6 +52,7 @@ XTerm*cursorBlink: false
 XTerm*dynamicColors: true
 XTerm*TrimSelection: true
 XTerm*internalBorder: 0
+XTerm*metaSendsEscape: true
 
 XTerm*background: #151515
 XTerm*foreground: #ededed
